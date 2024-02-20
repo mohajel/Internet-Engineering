@@ -17,14 +17,29 @@ public class CliHandler {
 
     public void start() {
 
-
         while (scanner.hasNextLine()) {
-            String line  = this.scanner.nextLine();
+            String line = this.scanner.nextLine();
             JSONObject input = this.utils.pharseLine(line);
-
-            
+            JSONObject output = this.executeCommand(input);
+            System.out.println(output.toString());
         }
 
         scanner.close();
+    }
+
+    private JSONObject executeCommand(JSONObject input) {
+        String command = input.getString("command");
+
+        if (command == "addUser") {
+            return this.app.addUser(input.getJSONObject("data"));
+
+        }
+
+        // } else if (command == "addRestaurant") {
+        // // return this.app.addRestaurant(input.getJSONObject("data"));
+        // }
+        // TODO add rest
+        return this.app.addUser(input.getJSONObject("data"));
+
     }
 }
