@@ -1,13 +1,15 @@
 package com.github.mohajel.IE.CA1;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println( "Starting app" );
+
+        MizdooniApp app = new MizdooniApp();
+        CliHandler handler = new CliHandler(app);
+
+        handler.start();
     }
 }
