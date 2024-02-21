@@ -34,7 +34,7 @@ class MizdooniApp {
             output.put("data", new JSONObject().put("error", "Invalid input format"));
         } catch (MizdooniError e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", e.getMessage()))
+            output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", "An error occurred while adding user"));
