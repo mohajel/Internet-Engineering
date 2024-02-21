@@ -27,6 +27,10 @@ fix --> for fixing bug
 
 docs --> for adding to readme / reportfile
 
+refactor --> for refactor!
+
+test --> for test!
+
 ## Example
 
 ### simple feature adding
