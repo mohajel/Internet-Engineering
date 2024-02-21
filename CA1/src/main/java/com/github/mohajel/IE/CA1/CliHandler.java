@@ -29,17 +29,30 @@ public class CliHandler {
 
     private JSONObject executeCommand(JSONObject input) {
         String command = input.getString("command");
+        JSONObject data = input.getJSONObject("data");
 
         if (command == "addUser") {
-            return this.app.addUser(input.getJSONObject("data"));
-
+            return this.app.addUser(data);
+        } else if (command == "addRestaurant") {
+            return this.app.addRestaurant(data);
+        } else if (command == "addTable") {
+            return this.app.addTable(data);
+        } else if (command == "reserveTable") {
+            return this.app.reserveTable(data);
+        } else if (command == "cancelReservation") {
+            return this.app.cancelReservation(data);
+        } else if (command == "showReservationHistory") {
+            return this.app.showReservationHistory(data);
+        } else if (command == "searchRestaurantsByType") {
+            return this.app.searchRestaurantsByType(data);
+        } else if (command == "showAvailableTables") {
+            return this.app.showAvailableTables(data);
+        } else if (command == "addReview") {
+            return this.app.addReview(data);
+        } else {
+            return new JSONObject().put("error", "command not found");
         }
 
-        // } else if (command == "addRestaurant") {
-        // // return this.app.addRestaurant(input.getJSONObject("data"));
-        // }
-        // TODO add rest
-        return this.app.addUser(input.getJSONObject("data"));
-
     }
+
 }
