@@ -3,6 +3,8 @@ package com.github.mohajel.IE.CA1.database;
 import java.util.ArrayList;
 
 import com.github.mohajel.IE.CA1.models.*;
+import com.github.mohajel.IE.CA1.utils.MizdooniError;
+import com.github.mohajel.IE.CA1.utils.Utils;
 
 public class Database {
 
@@ -11,7 +13,7 @@ public class Database {
     private ArrayList<Table> tables;
     private ArrayList<User> users;
     private ArrayList<Review> reviews;
-    
+
     public Database() {
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
@@ -20,7 +22,18 @@ public class Database {
         this.reviews = new ArrayList<Review>();
     }
 
-    public void addUser(User user) {
+    public void addUser(User user) throws MizdooniError {
+
+        if (this.getUserByUserName(user.userName) != null) {
+            throw new MizdooniError(MizdooniError.USER_ALREADY_EXISTS);
+        } else if (this.getUserByEmail(user.email) != null) {
+            throw new MizdooniError(MizdooniError.EMAIL_ALREADY_EXISTS);
+        } else if (Utils.containsCharacters(user.userName)) {
+            throw new MizdooniError(MizdooniError.INVALID_USERNAME_CONTAINS_SPECIAL_CHARACTERS);
+        } else if (! Utils.isEmail(user.email)) {
+            throw new MizdooniError(MizdooniError.INVALID_EMAIL_FORMAT);
+        }
+
         this.users.add(user);
     }
 
@@ -49,6 +62,15 @@ public class Database {
         return null;
     }
 
+    public User getUserByEmail(String email) {
+        for (User user : this.users) {
+            if (user.email.equals(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public Restaurant getRestaurantByName(String restaurantName) {
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.name.equals(restaurantName)) {
@@ -67,9 +89,11 @@ public class Database {
         return null;
     }
 
-    public Reserve getReserveByUserNameAndRestaurantNameAndTableId(String userName, String restaurantName, int tableId) {
+    public Reserve getReserveByUserNameAndRestaurantNameAndTableId(String userName, String restaurantName,
+            int tableId) {
         for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName) && reserve.restaurantName.equals(restaurantName) && reserve.tableId == tableId) {
+            if (reserve.userName.equals(userName) && reserve.restaurantName.equals(restaurantName)
+                    && reserve.tableId == tableId) {
                 return reserve;
             }
         }
@@ -96,5 +120,4 @@ public class Database {
         return restaurantReserves;
     }
 
-    
 }
