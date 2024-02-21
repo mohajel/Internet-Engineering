@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA1;
+package com.github.mohajel.IE.CA1.modules;
 
 import org.json.JSONObject;
 

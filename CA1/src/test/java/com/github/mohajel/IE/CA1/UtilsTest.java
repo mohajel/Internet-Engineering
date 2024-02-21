@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import org.json.JSONObject;
 import org.junit.Test;
 
+import com.github.mohajel.IE.CA1.utils.Utils;
+
 public class UtilsTest {
 
     @Test
