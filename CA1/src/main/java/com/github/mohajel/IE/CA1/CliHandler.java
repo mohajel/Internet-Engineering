@@ -31,28 +31,30 @@ public class CliHandler {
         String command = input.getString("command");
         JSONObject data = input.getJSONObject("data");
 
-        if (command == "addUser") {
+        System.out.println("command: --" + command);
+        System.out.println("commandLength: --" + command.length());
+
+        if (command.equals("addUser")) {
             return this.app.addUser(data);
-        } else if (command == "addRestaurant") {
+        } else if (command.equals("addRestaurant")) {
             return this.app.addRestaurant(data);
-        } else if (command == "addTable") {
+        } else if (command.equals("addTable")) {
             return this.app.addTable(data);
-        } else if (command == "reserveTable") {
+        } else if (command.equals("reserveTable")) {
             return this.app.reserveTable(data);
-        } else if (command == "cancelReservation") {
+        } else if (command.equals("cancelReservation")) {
             return this.app.cancelReservation(data);
-        } else if (command == "showReservationHistory") {
+        } else if (command.equals("showReservationHistory")) {
             return this.app.showReservationHistory(data);
-        } else if (command == "searchRestaurantsByType") {
+        } else if (command.equals("searchRestaurantsByType")) {
             return this.app.searchRestaurantsByType(data);
-        } else if (command == "showAvailableTables") {
+        } else if (command.equals("showAvailableTables")) {
             return this.app.showAvailableTables(data);
-        } else if (command == "addReview") {
+        } else if (command.equals("addReview")) {
             return this.app.addReview(data);
         } else {
             return new JSONObject().put("error", "command not found");
         }
 
     }
-
 }

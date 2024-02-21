@@ -12,6 +12,7 @@ public class UtilsTest {
         Utils utils = new Utils();
         JSONObject result = utils.pharseLine(line);
         String command = result.getString("command");
+
         assertEquals(command, "addUser");
     }
 
