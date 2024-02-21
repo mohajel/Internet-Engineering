@@ -2,6 +2,7 @@ package com.github.mohajel.IE.CA1;
 
 import org.json.JSONObject;
 
+import com.github.mohajel.IE.CA1.utils.MizdooniError;
 import com.github.mohajel.IE.CA1.utils.Utils;
 
 import java.util.Scanner;
@@ -19,23 +20,18 @@ public class CliHandler {
     }
 
     public void start() {
-
         while (scanner.hasNextLine()) {
             String line = this.scanner.nextLine();
             JSONObject input = this.utils.pharseLine(line);
             JSONObject output = this.executeCommand(input);
             System.out.println(output.toString());
         }
-
         scanner.close();
     }
 
     private JSONObject executeCommand(JSONObject input) {
         String command = input.getString("command");
         JSONObject data = input.getJSONObject("data");
-
-        System.out.println("command: --" + command);
-        System.out.println("commandLength: --" + command.length());
 
         if (command.equals("addUser")) {
             return this.app.addUser(data);
@@ -56,8 +52,7 @@ public class CliHandler {
         } else if (command.equals("addReview")) {
             return this.app.addReview(data);
         } else {
-            return new JSONObject().put("error", "command not found");
+            return new JSONObject().put("error", MizdooniError.INVALID_COMMAND);
         }
-
     }
 }

@@ -31,13 +31,13 @@ class MizdooniApp {
 
         } catch (JSONException e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", "Invalid input format"));
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
         } catch (MizdooniError e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", "An error occurred while adding user"));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
         }
         return output;
     }
