@@ -44,6 +44,40 @@ public class MizdooniAppAddUserTest {
     }
 
     @Test
+    public void testAddUserInvalidRole() {
+        JSONObject validUser = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject invalidUser = validUser.put("role", "invalid-role");
+        JSONObject res = app.addUser(invalidUser);
+
+        assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.INVALID_ROLE);
+    }
+
+    @Test
+    public void testAddUserInvalidInputFormat() {
+        JSONObject invalidUserFormat = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        invalidUserFormat.remove("password"); 
+        JSONObject res = app.addUser(invalidUserFormat);
+
+        assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.INVALID_JSON);
+    }
+
+    @Test
+    public void testAddUserNoCountry() {
+        JSONObject invalidUserFormat = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        invalidUserFormat.getJSONObject("address").remove("country");
+        System.out.println(invalidUserFormat.toString());
+        JSONObject res = app.addUser(invalidUserFormat);
+
+        assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.INVALID_JSON);
+    }
+
+    @Test
     public void testAddUserRepeatedUserName() {
         JSONObject validUser1 = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
