@@ -6,7 +6,8 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.mohajel.IE.CA1.Utils.Utils;
+import com.github.mohajel.IE.CA1.testUtils.TestUtils;
+import com.github.mohajel.IE.CA1.utils.MizdooniError;
 
 public class MizdooniAppAddUserTest {
 
@@ -19,45 +20,53 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserValid() {
-        JSONObject validUser = Utils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
         JSONObject res = app.addUser(validUser);
         assertEquals(res.getBoolean("success"), true);
     }
 
     @Test
     public void testAddUserInvalidUserName() {
-        JSONObject invalidUser = Utils.createUserInvalidUserName();
+        JSONObject invalidUser = TestUtils.createUserInvalidUserName();
         JSONObject res = app.addUser(invalidUser);
         assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.INVALID_USERNAME_CONTAINS_SPECIAL_CHARACTERS);
     }
 
     @Test
     public void testAddUserInvalidEmail() {
-        JSONObject invalidUser = Utils.createUserInvalidEmail();
+        JSONObject invalidUser = TestUtils.createUserInvalidEmail();
         JSONObject res = app.addUser(invalidUser);
         assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.INVALID_EMAIL_FORMAT);
     }
 
     @Test
     public void testAddUserRepeatedUserName() {
-        JSONObject validUser1 = Utils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameUserName = Utils.createSilmpleUser("user1", "user111@gmail.com");
+        JSONObject validUserSameUserName = TestUtils.createSilmpleUser("user1", "user111@gmail.com");
         JSONObject res = app.addUser(validUserSameUserName);
 
         assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+                MizdooniError.USER_ALREADY_EXISTS);
     }
 
     @Test
     public void testAddUserRepeatedEmail() {
-        JSONObject validUser1 = Utils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameEmail = Utils.createSilmpleUser("user2", "user1@gmail.com");
+        JSONObject validUserSameEmail = TestUtils.createSilmpleUser("user2", "user1@gmail.com");
         JSONObject res = app.addUser(validUserSameEmail);
 
         assertEquals(res.getBoolean("success"), false);
+        assertEquals(res.getJSONObject("data").getString("error"),
+            MizdooniError.EMAIL_ALREADY_EXISTS);
     }
-    
+
 }

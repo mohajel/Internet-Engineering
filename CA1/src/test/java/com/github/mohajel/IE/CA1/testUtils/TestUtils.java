@@ -1,8 +1,8 @@
-package com.github.mohajel.IE.CA1.Utils;
+package com.github.mohajel.IE.CA1.testUtils;
 
 import org.json.JSONObject;
 
-public class Utils {
+public class TestUtils {
 
     static public JSONObject createSilmpleUser(String name, String email) {
         JSONObject user = new JSONObject();
