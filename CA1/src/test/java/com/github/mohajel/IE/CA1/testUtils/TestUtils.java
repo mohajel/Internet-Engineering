@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class TestUtils {
 
-    static public JSONObject createSilmpleUser(String name, String email) {
+    static public JSONObject createSimpleUser(String name, String email) {
         JSONObject user = new JSONObject();
 
         user.put("role", "client");

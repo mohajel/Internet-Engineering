@@ -20,7 +20,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserValid() {
-        JSONObject validUser = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         JSONObject res = app.addUser(validUser);
         assertEquals(res.getBoolean("success"), true);
     }
@@ -45,7 +45,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserInvalidRole() {
-        JSONObject validUser = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         JSONObject invalidUser = validUser.put("role", "invalid-role");
         JSONObject res = app.addUser(invalidUser);
 
@@ -56,7 +56,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserInvalidInputFormat() {
-        JSONObject invalidUserFormat = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject invalidUserFormat = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         invalidUserFormat.remove("password"); 
         JSONObject res = app.addUser(invalidUserFormat);
 
@@ -67,7 +67,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserNoCountry() {
-        JSONObject invalidUserFormat = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject invalidUserFormat = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         invalidUserFormat.getJSONObject("address").remove("country");
         System.out.println(invalidUserFormat.toString());
         JSONObject res = app.addUser(invalidUserFormat);
@@ -79,10 +79,10 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserRepeatedUserName() {
-        JSONObject validUser1 = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameUserName = TestUtils.createSilmpleUser("user1", "user111@gmail.com");
+        JSONObject validUserSameUserName = TestUtils.createSimpleUser("user1", "user111@gmail.com");
         JSONObject res = app.addUser(validUserSameUserName);
 
         assertEquals(res.getBoolean("success"), false);
@@ -92,10 +92,10 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserRepeatedEmail() {
-        JSONObject validUser1 = TestUtils.createSilmpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUtils.createSimpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameEmail = TestUtils.createSilmpleUser("user2", "user1@gmail.com");
+        JSONObject validUserSameEmail = TestUtils.createSimpleUser("user2", "user1@gmail.com");
         JSONObject res = app.addUser(validUserSameEmail);
 
         assertEquals(res.getBoolean("success"), false);
