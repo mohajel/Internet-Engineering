@@ -25,7 +25,7 @@ feat --> for adding feature
 
 fix --> for fixing bug
 
-docs --> for adding to readme / reportfile
+docs --> for adding to readme / report file
 
 refactor --> for refactor!
 
