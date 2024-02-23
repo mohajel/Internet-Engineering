@@ -16,7 +16,7 @@ public class MizdooniError extends Exception {
     // general
     public static final String INVALID_COMMAND = "Invalid command";
     public static final String INVALID_JSON = "Invalid input format";
-    public static final String UNKOOWN_ERROR = "Unknown error accured";
+    public static final String UNKOOWN_ERROR = "Unknown error occurred";
 
     // addUser errors
     public static final String INVALID_ROLE = "Role must be client or manager";
