@@ -31,6 +31,8 @@ refactor --> for refactor!
 
 test --> for test!
 
+chore --> for changes to build process, tools and libraries
+
 ## Example
 
 ### simple feature adding
