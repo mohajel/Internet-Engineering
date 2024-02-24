@@ -33,6 +33,8 @@ test --> for test!
 
 chore --> for changes to build process, tools and libraries
 
+merge --> merge commits
+
 ## Example
 
 ### simple feature adding
