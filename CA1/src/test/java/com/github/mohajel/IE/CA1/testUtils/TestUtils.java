@@ -5,6 +5,7 @@ import org.json.JSONObject;
 public class TestUtils {
 
     static public JSONObject createSimpleUser(String name, String email) {
+        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
         user.put("role", "client");
@@ -22,6 +23,7 @@ public class TestUtils {
     }
 
     static public JSONObject createUserInvalidUserName() {
+        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
 
@@ -40,6 +42,7 @@ public class TestUtils {
     }
 
     static public JSONObject createUserInvalidEmail() {
+        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
 
