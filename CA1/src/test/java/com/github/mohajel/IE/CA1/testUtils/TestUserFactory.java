@@ -23,7 +23,6 @@ public class TestUserFactory {
     }
 
     static public JSONObject createUserInvalidUserName() {
-        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
 
@@ -42,7 +41,6 @@ public class TestUserFactory {
     }
 
     static public JSONObject createUserInvalidEmail() {
-        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
 
