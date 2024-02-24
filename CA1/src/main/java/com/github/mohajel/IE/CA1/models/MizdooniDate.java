@@ -10,7 +10,6 @@ public class MizdooniDate {
     private Hour time;
 
     public MizdooniDate(String dateTime) {
-//        isDateTimeValid(dateTime);
         String[] parts = dateTime.split(" ");
         String[] dateParts = parts[0].split("-");
         this.year = Integer.parseInt(dateParts[0]);
