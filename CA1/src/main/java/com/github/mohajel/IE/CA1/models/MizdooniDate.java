@@ -59,6 +59,10 @@ public class MizdooniDate {
     public boolean isHourRounded() {
         return time.isHourRounded();
     }
+
+    public boolean isHourInRange(Hour start, Hour end) {
+        return time.isTimeInRange(start, end);
+    }
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d %s", year, month, day, time.toString());
