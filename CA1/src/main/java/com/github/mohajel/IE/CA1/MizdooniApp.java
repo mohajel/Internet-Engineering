@@ -126,8 +126,7 @@ class MizdooniApp {
             Reserve reserve = new Reserve(userName, restaurantName, tableNumber, reserveDate);
             db.reserveTable(reserve);
             output.put("success", true);
-//            output.put("data", "Table reserved successfully.");
-            // TODO
+            output.put("data", new JSONObject().put("reservationNumber", reserve.reservationId));
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));

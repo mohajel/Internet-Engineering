@@ -13,8 +13,6 @@ public class Reserve {
         this.userName = userName;
         this.restaurantName = restaurantName;
         this.tableId = tableId;
-//        this.reservationId = reservationId;
-        // TODO: Generate reservationId
         this.reserveDate = reserveDate;
         this.isCancelled = false;
     }

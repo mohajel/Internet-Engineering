@@ -109,6 +109,8 @@ public class Database {
         if (!reserve.reserveDate.isHourInRange(restaurant.startTime, restaurant.endTime)) {
             throw new MizdooniError(MizdooniError.DATETIME_IS_NOT_IN_OPEN_HOURS);
         }
+        user.numberOfReservations++;
+        reserve.reservationId = user.numberOfReservations;
 
         this.reserves.add(reserve);
     }
