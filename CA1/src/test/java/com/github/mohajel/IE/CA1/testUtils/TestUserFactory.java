@@ -56,4 +56,21 @@ public class TestUserFactory {
         
         return user;
     }
+
+    static public JSONObject createSimpleManager(String name, String email) {
+        JSONObject user = new JSONObject();
+
+        user.put("role", "manager");
+        user.put("username", name);
+        user.put("password", "1234");
+        user.put("email", email);
+
+        JSONObject address = new JSONObject();
+        address.put("country", "Iran");
+        address.put("city", "Tehran");
+
+        user.put("address", address);
+
+        return user;
+    }
 }
