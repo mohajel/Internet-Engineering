@@ -4,7 +4,7 @@ import org.json.*;
 
 import com.github.mohajel.IE.CA1.database.Database;
 import com.github.mohajel.IE.CA1.models.*;
-import com.github.mohajel.IE.CA1.utils.MizdooniError;;
+import com.github.mohajel.IE.CA1.utils.MizdooniError;;import java.util.ArrayList;
 
 class MizdooniApp {
 
@@ -152,9 +152,32 @@ class MizdooniApp {
     }
 
     public JSONObject searchRestaurantsByType(JSONObject input) {
-        // TODO
         System.out.println("search restaurants by type called");
-        return input;
+        JSONObject output = new JSONObject();
+        try {
+            String type = input.getString("type");
+
+            ArrayList<Restaurant> restaurants = db.getRestaurantByType(type);
+            if (restaurants.isEmpty()) {
+                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+            }
+
+            output.put("success", true);
+            output.put("data", new JSONObject().put("restaurants", new JSONArray()));
+            for (Restaurant restaurant : restaurants) {
+                output.getJSONObject("data").getJSONArray("restaurants").put(restaurant.toJson());
+            }
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject showAvailableTables(JSONObject input) {

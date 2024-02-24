@@ -112,6 +112,16 @@ public class Database {
         return null;
     }
 
+    public ArrayList<Restaurant> getRestaurantByType(String restaurantType) {
+        ArrayList<Restaurant> restaurantsByType = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.type.equals(restaurantType)) {
+                restaurantsByType.add(restaurant);
+            }
+        }
+        return restaurantsByType;
+    }
+
     public Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
         for (Table table : this.tables) {
             if (table.id == tableId && table.restaurantName.equals(restaurantName)) {
