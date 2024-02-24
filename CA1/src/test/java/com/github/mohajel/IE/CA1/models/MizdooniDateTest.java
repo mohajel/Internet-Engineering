@@ -23,8 +23,8 @@ public class MizdooniDateTest {
             "2020-12-31 23:59, 2020-12-30 23:59, false",
             "2020-12-31 23:59, 2020-12-31 22:58, false",
             "2024-12-31 23:59, 2025-12-31 23:59, true",
-            "2024-12-31 23:59, 2024-11-31 23:59, true",
-            "2024-12-31 23:59, 2024-12-30 23:58, true",
+            "2024-11-31 23:59, 2024-12-31 23:59, true",
+            "2024-12-30 23:59, 2024-12-31 23:58, true",
     })
     public void testMizdooniDate_isBefore(String date1, String date2, boolean expected) {
         MizdooniDate mizdooniDate1 = new MizdooniDate(date1);
@@ -40,8 +40,8 @@ public class MizdooniDateTest {
             "2020-12-31 23:59, 2020-12-30 23:59, true",
             "2020-12-31 23:59, 2020-12-31 22:58, true",
             "2024-12-31 23:59, 2025-12-31 23:59, false",
-            "2024-12-31 23:59, 2024-11-31 23:59, false",
-            "2024-12-31 23:59, 2024-12-30 23:58, false",
+            "2024-11-31 23:59, 2024-12-31 23:59, false",
+            "2024-12-30 23:59, 2024-12-31 23:58, false",
     })
     public void testMizdooniDate_isAfter(String date1, String date2, boolean expected) {
         MizdooniDate mizdooniDate1 = new MizdooniDate(date1);
