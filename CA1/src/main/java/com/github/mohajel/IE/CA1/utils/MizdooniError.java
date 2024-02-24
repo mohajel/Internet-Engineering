@@ -39,6 +39,6 @@ public class MizdooniError extends Exception {
 
     // addReview errors
     public static final String INVALID_RATING = "Rating must be between 0 and 5";
-    public static final String USER_IS_MANAGER = "managers cannot add reviews";
+    public static final String USER_IS_MANAGER = "managers cannot add reviews or reserve tables";
 
 }
