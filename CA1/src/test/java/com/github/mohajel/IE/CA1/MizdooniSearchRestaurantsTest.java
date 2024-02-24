@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 
-public class MizdooniSearchRestaurantsByNameTest {
+public class MizdooniSearchRestaurantsTest {
 
     private MizdooniApp app;
 
