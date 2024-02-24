@@ -77,7 +77,39 @@ public class Database {
         this.tables.add(table);
     }
 
-    public void reserveTable(Reserve reserve) {
+    public void reserveTable(Reserve reserve) throws MizdooniError {
+        User user = this.getUserByUserName(reserve.userName);
+        if (user == null) {
+            throw new MizdooniError(MizdooniError.USER_DOES_NOT_EXIST);
+        }
+        if (user.role == User.Role.MANAGER) {
+            throw new MizdooniError(MizdooniError.USER_IS_MANAGER);
+        }
+        if (!reserve.reserveDate.isHourRounded()) {
+            throw new MizdooniError(MizdooniError.HOUR_IS_NOT_ROUND);
+        }
+
+        Restaurant restaurant = this.getRestaurantByName(reserve.restaurantName);
+        if (restaurant == null) {
+            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+        }
+
+        Table table = this.getTableByIdAndRestaurantName(reserve.tableId, reserve.restaurantName);
+        if (table == null) {
+            throw new MizdooniError(MizdooniError.TABLEID_IN_RESTAURANT_DOES_NOT_EXIST);
+        }
+        if (this.isTableReserved(reserve.tableId, reserve.restaurantName, reserve.reserveDate)) {
+            throw new MizdooniError(MizdooniError.TABLE_IS_RESERVED);
+        }
+        MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
+        if (reserve.reserveDate.isBefore(currentTime)) {
+            throw new MizdooniError(MizdooniError.DATETIME_IS_PASSED);
+        }
+
+        if (!reserve.reserveDate.isHourInRange(restaurant.startTime, restaurant.endTime)) {
+            throw new MizdooniError(MizdooniError.DATETIME_IS_NOT_IN_OPEN_HOURS);
+        }
+
         this.reserves.add(reserve);
     }
 
@@ -142,6 +174,16 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
+        for (Reserve reserve : this.reserves) {
+            if (reserve.tableId == tableId && reserve.restaurantName.equals(restaurantName)
+                    && reserve.reserveDate.equals(reserveDate)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Reserve getReserveByUserNameAndRestaurantNameAndTableId(String userName, String restaurantName,

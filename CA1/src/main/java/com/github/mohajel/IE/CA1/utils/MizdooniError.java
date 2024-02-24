@@ -43,5 +43,9 @@ public class MizdooniError extends Exception {
 
     // reserveTable errors
     public static final String DATETIME_FORMAT_INVALID = "Invalid date time format";
+    public static final String TABLEID_IN_RESTAURANT_DOES_NOT_EXIST = "Table id in this restaurant does not exist";
+    public static final String TABLE_IS_RESERVED = "Table is reserved";
+    public static final String DATETIME_IS_PASSED = "Date time is passed";
+    public static final String DATETIME_IS_NOT_IN_OPEN_HOURS = "Date time is not in open hours of the restaurant";
 
 }

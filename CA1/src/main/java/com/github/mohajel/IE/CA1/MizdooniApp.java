@@ -111,9 +111,35 @@ class MizdooniApp {
     }
 
     public JSONObject reserveTable(JSONObject input) {
-        // TODO
         System.out.println("reserve table called");
-        return input;
+        JSONObject output = new JSONObject();
+        try {
+            String userName = input.getString("userName");
+            String restaurantName = input.getString("restaurantName");
+            int tableNumber = input.getInt("tableNumber");
+
+            if (MizdooniDate.isDateTimeFormatValid(input.getString("datetime"))) {
+                throw new MizdooniError(MizdooniError.DATETIME_FORMAT_INVALID);
+            }
+            MizdooniDate reserveDate = new MizdooniDate(input.getString("datetime"));
+
+            Reserve reserve = new Reserve(userName, restaurantName, tableNumber, reserveDate);
+            db.reserveTable(reserve);
+            output.put("success", true);
+//            output.put("data", "Table reserved successfully.");
+            // TODO
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        // TODO
+        return output;
     }
 
     public JSONObject cancelReservation(JSONObject input) {

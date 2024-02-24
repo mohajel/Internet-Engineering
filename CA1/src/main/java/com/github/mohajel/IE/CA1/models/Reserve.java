@@ -6,4 +6,16 @@ public class Reserve {
     public int tableId;
     public int reservationId;
     public MizdooniDate reserveDate;
+
+    public boolean isCancelled;
+
+    public Reserve(String userName, String restaurantName, int tableId, MizdooniDate reserveDate) {
+        this.userName = userName;
+        this.restaurantName = restaurantName;
+        this.tableId = tableId;
+//        this.reservationId = reservationId;
+        // TODO: Generate reservationId
+        this.reserveDate = reserveDate;
+        this.isCancelled = false;
+    }
 }
