@@ -5,7 +5,6 @@ import org.json.JSONObject;
 public class TestUserFactory {
 
     static public JSONObject createSimpleUser(String name, String email) {
-        // TODO: Use Junit to test this method
         JSONObject user = new JSONObject();
 
         user.put("role", "client");
