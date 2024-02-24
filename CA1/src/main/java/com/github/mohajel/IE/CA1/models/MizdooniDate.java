@@ -63,4 +63,16 @@ public class MizdooniDate {
     public String toString() {
         return String.format("%04d-%02d-%02d %s", year, month, day, time.toString());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof MizdooniDate)) {
+            return false;
+        }
+        MizdooniDate other = (MizdooniDate) obj;
+        return (this.year == other.year) && (this.month == other.month) && (this.day == other.day) && (this.time.equals(other.time));
+    }
 }

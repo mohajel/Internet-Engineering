@@ -33,6 +33,18 @@ public class Hour {
         return String.format("%02d:%02d", hours, minutes);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Hour)) {
+            return false;
+        }
+        Hour other = (Hour) obj;
+        return (this.hours == other.hours) && (this.minutes == other.minutes);
+    }
+
     public boolean isHourRounded() {
         return minutes == 0;
     }
