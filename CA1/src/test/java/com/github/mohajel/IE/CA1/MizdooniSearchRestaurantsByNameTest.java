@@ -22,7 +22,7 @@ public class MizdooniSearchRestaurantsByNameTest {
     }
 
     @Test
-    public void testSearchRestaurantsByName_Valid() {
+    public void testSearchRestaurantsByName_Found() {
         JSONObject validManager = TestUserFactory.createSimpleManager("manager1", "manager1@gmail.com");
         app.addUser(validManager);
         JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
@@ -32,7 +32,7 @@ public class MizdooniSearchRestaurantsByNameTest {
 
         validRestaurant.remove("managerUsername");
         assertTrue(res.getBoolean("success"));
-//        assertEquals(res.getJSONObject("data"), validRestaurant);
+        assertTrue(compareRestaurantsJSON(res.getJSONObject("data"), validRestaurant));
     }
 
     @Test
@@ -47,5 +47,16 @@ public class MizdooniSearchRestaurantsByNameTest {
         assertFalse(res.getBoolean("success"));
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESTAURANT_DOES_NOT_EXIST);
 
+    }
+
+    private boolean compareRestaurantsJSON(JSONObject res, JSONObject validRestaurant) {
+        return res.getString("name").equals(validRestaurant.getString("name")) &&
+                res.getString("type").equals(validRestaurant.getString("type")) &&
+                res.getString("startTime").equals(validRestaurant.getString("startTime")) &&
+                res.getString("endTime").equals(validRestaurant.getString("endTime")) &&
+                res.getString("description").equals(validRestaurant.getString("description")) &&
+                res.getJSONObject("address").getString("street").equals(validRestaurant.getJSONObject("address").getString("street")) &&
+                res.getJSONObject("address").getString("city").equals(validRestaurant.getJSONObject("address").getString("city")) &&
+                res.getJSONObject("address").getString("country").equals(validRestaurant.getJSONObject("address").getString("country"));
     }
 }
