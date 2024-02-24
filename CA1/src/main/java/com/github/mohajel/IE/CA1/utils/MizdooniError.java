@@ -25,5 +25,7 @@ public class MizdooniError extends Exception {
     public static final String INVALID_USERNAME_CONTAINS_SPECIAL_CHARACTERS = "Username contains special characters";
     public static final String INVALID_EMAIL_FORMAT = "Invalid email format";
 
+    public static final String HOUR_IS_NOT_ROUND = "Hour is not round";
+
 
 }
