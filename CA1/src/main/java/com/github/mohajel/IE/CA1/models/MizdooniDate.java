@@ -41,6 +41,9 @@ public class MizdooniDate {
         return false;
     }
 
+    public boolean isHourRounded() {
+        return time.isHourRounded();
+    }
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d %s", year, month, day, time.toString());
