@@ -17,6 +17,9 @@ public class MizdooniError extends Exception {
     public static final String INVALID_COMMAND = "Invalid command";
     public static final String INVALID_JSON = "Invalid input format";
     public static final String UNKOOWN_ERROR = "Unknown error occurred";
+    public static final String HOUR_IS_NOT_ROUND = "Hour is not round";
+    public static final String USER_DOES_NOT_EXIST = "User does not exist";
+    public static final String USER_IS_NOT_MANAGER = "User is not a manager";
 
     // addUser errors
     public static final String INVALID_ROLE = "Role must be client or manager";
@@ -25,11 +28,11 @@ public class MizdooniError extends Exception {
     public static final String INVALID_USERNAME_CONTAINS_SPECIAL_CHARACTERS = "Username contains special characters";
     public static final String INVALID_EMAIL_FORMAT = "Invalid email format";
 
-    public static final String HOUR_IS_NOT_ROUND = "Hour is not round";
 
+    // addRestaurant errors
     public static final String RESTAURANT_ALREADY_EXISTS = "Restaurant already exists";
 
-    public static final String USER_DOES_NOT_EXIST = "User does not exist";
-
-    public static final String USER_IS_NOT_MANAGER = "User is not a manager";
+    // addTable errors
+    public static final String TABLE_ID_NOT_UNIQUE = "Table id is not unique and already exists";
+    public static final String RESTAURANT_DOES_NOT_EXIST = "Restaurant does not exist";
 }
