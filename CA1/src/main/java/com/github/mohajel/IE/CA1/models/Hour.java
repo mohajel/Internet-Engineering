@@ -32,4 +32,8 @@ public class Hour {
     public String toString() {
         return String.format("%02d:%02d", hours, minutes);
     }
+
+    public boolean isHourRounded() {
+        return minutes == 0;
+    }
 }
