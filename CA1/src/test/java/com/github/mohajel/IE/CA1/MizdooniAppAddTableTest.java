@@ -13,7 +13,7 @@ import com.github.mohajel.IE.CA1.utils.MizdooniError;
 
 public class MizdooniAppAddTableTest {
 
-    MizdooniApp app;
+    private MizdooniApp app;
 
     @Before
     public void setUp() {
@@ -30,6 +30,7 @@ public class MizdooniAppAddTableTest {
         JSONObject validTable = TestTableFactory.createSimpleTable(1, 4, "resturant1", "manager1");
         JSONObject res = app.addTable(validTable);
         assertEquals(res.getBoolean("success"), true);
+        System.out.println(res.toString());
     }
 
     @Test
@@ -37,8 +38,9 @@ public class MizdooniAppAddTableTest {
         JSONObject validTable = TestTableFactory.createSimpleTable(1, 4, "resturant1", "manager1");
         app.addTable(validTable);
         JSONObject res = app.addTable(validTable);
+        System.out.println(res.toString());
         assertEquals(res.getBoolean("success"), false);
-        assertEquals(res.getString("error"), MizdooniError.TABLE_ID_NOT_UNIQUE);
+        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.TABLE_ID_NOT_UNIQUE);
     }
 
     @Test
@@ -64,11 +66,12 @@ public class MizdooniAppAddTableTest {
     @Test
     public void testAddTableSeatsNumberNotNatural() {
         JSONObject invalidTable = TestTableFactory.createSimpleTable(1, 2, "resturant1", "manager1");
-        //change capacity to 2.4
-        invalidTable.put("capacity", 2.4);
+        invalidTable.put("seatsNumber", 2.4);
+        System.out.println(invalidTable.toString());
+
         JSONObject res = app.addTable(invalidTable);
 
         assertEquals(res.getBoolean("success"), false);
-        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.INVALID_JSON);
+        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.INVALID_JSON_SEATS_NUMBER_NOT_NATURAL);
     }
 }

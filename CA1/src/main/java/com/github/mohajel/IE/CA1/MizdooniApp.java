@@ -24,7 +24,8 @@ class MizdooniApp {
             String role = input.getString("role");
             JSONObject address = input.getJSONObject("address");
 
-            User user = new User(username, password, email, new Address(address.getString("country"), address.getString("city")), role);
+            User user = new User(username, password, email,
+                    new Address(address.getString("country"), address.getString("city")), role);
             db.addUser(user);
             output.put("success", true);
             output.put("data", "User added successfully.");
@@ -54,7 +55,9 @@ class MizdooniApp {
             String description = input.getString("description");
             JSONObject address = input.getJSONObject("address");
 
-            Restaurant restaurant = new Restaurant(name, managerUsername, type, new Hour(startTime), new Hour(endTime), description, new Address(address.getString("street"), address.getString("city"), address.getString("country")));
+            Restaurant restaurant = new Restaurant(name, managerUsername, type, new Hour(startTime), new Hour(endTime),
+                    description,
+                    new Address(address.getString("street"), address.getString("city"), address.getString("country")));
             db.addRestaurant(restaurant);
             output.put("success", true);
             output.put("data", "Restaurant added successfully.");
@@ -72,9 +75,36 @@ class MizdooniApp {
     }
 
     public JSONObject addTable(JSONObject input) {
-        // TODO
         System.out.println("add table called");
-        return input;
+        JSONObject output = new JSONObject();
+        try {
+            int tableNumber = input.getInt("tableNumber");
+            String restaurantName = input.getString("restaurantName");
+            String managerUsername = input.getString("managerUsername");
+            Double seatsNumber = input.getDouble("seatsNumber");
+            int seatsNumberInt = seatsNumber.intValue();
+
+            if (seatsNumber % 1 != 0) {
+                throw new MizdooniError(MizdooniError.INVALID_JSON_SEATS_NUMBER_NOT_NATURAL);
+            } else {
+                seatsNumberInt = seatsNumber.intValue();
+            };
+
+            Table table = new Table(tableNumber, restaurantName, managerUsername, seatsNumberInt);
+            db.addTable(table);
+            output.put("success", true);
+            output.put("data", "Table added successfully.");
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject reserveTable(JSONObject input) {

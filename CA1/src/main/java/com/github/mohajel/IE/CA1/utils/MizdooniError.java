@@ -35,4 +35,5 @@ public class MizdooniError extends Exception {
     // addTable errors
     public static final String TABLE_ID_NOT_UNIQUE = "Table id is not unique and already exists";
     public static final String RESTAURANT_DOES_NOT_EXIST = "Restaurant does not exist";
+    public static final String INVALID_JSON_SEATS_NUMBER_NOT_NATURAL = "Seats number must be a natural number";
 }

@@ -53,7 +53,27 @@ public class Database {
         this.restaurants.add(restaurant);
     }
 
-    public void addTable(Table table) {
+    public void addTable(Table table) throws MizdooniError{
+        // tableNumber is unique for each restaurant
+        for (Table t : this.tables) {
+            if (t.id == table.id && t.restaurantName.equals(table.restaurantName)) {
+                throw new MizdooniError(MizdooniError.TABLE_ID_NOT_UNIQUE);
+            }
+        }
+        // managerUserName is the manager of the restaurant
+        User manager = this.getUserByUserName(table.managerUserName);
+        // resturant name should exist
+        Restaurant restaurant = this.getRestaurantByName(table.restaurantName);
+        if (restaurant == null) {
+            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+        }
+
+        if (manager == null) {
+            throw new MizdooniError(MizdooniError.USER_DOES_NOT_EXIST);
+        } else if (manager.role != User.Role.MANAGER) {
+            throw new MizdooniError(MizdooniError.USER_IS_NOT_MANAGER);
+        }
+
         this.tables.add(table);
     }
 

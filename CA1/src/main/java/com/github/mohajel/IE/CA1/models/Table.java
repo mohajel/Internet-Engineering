@@ -2,7 +2,7 @@ package com.github.mohajel.IE.CA1.models;
 
 public class Table {
 
-    Table(int id, int capacity, String restaurantName, String managerUserName) {
+    public Table(int id, String restaurantName, String managerUserName, int capacity) {
         this.id = id;
         this.capacity = capacity;
         this.restaurantName = restaurantName;
