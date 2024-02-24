@@ -9,7 +9,8 @@
 ## Run Project
     mvn exec:java
 
-
+## Update Packages TO latest Realease
+    mvn versions:use-latest-releases
 
 # Commit Convention
 
@@ -45,6 +46,8 @@ merge --> merge commits
 
 ### adding feature with specifying scope
     feat(api): feature c added
+
+
 
 
 
