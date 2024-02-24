@@ -62,7 +62,7 @@ public class Database {
         }
         // managerUserName is the manager of the restaurant
         User manager = this.getUserByUserName(table.managerUserName);
-        // resturant name should exist
+        // restaurant name should exist
         Restaurant restaurant = this.getRestaurantByName(table.restaurantName);
         if (restaurant == null) {
             throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
@@ -89,7 +89,7 @@ public class Database {
         } else if (user.role == User.Role.MANAGER) {
             throw new MizdooniError(MizdooniError.USER_IS_MANAGER);
         }
-        // resturant must exist
+        // restaurant must exist
         Restaurant restaurant = this.getRestaurantByName(review.restaurantName);
         if (restaurant == null) {
             throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
