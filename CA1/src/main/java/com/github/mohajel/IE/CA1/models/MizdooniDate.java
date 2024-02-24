@@ -1,5 +1,8 @@
 package com.github.mohajel.IE.CA1.models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class MizdooniDate {
     private int year;
     private int month;
@@ -7,12 +10,25 @@ public class MizdooniDate {
     private Hour time;
 
     public MizdooniDate(String dateTime) {
+//        isDateTimeValid(dateTime);
         String[] parts = dateTime.split(" ");
         String[] dateParts = parts[0].split("-");
         this.year = Integer.parseInt(dateParts[0]);
         this.month = Integer.parseInt(dateParts[1]);
         this.day = Integer.parseInt(dateParts[2]);
         this.time = new Hour(parts[1]);
+    }
+
+    public static boolean isDateTimeFormatValid(String dateTime) {
+        String format = "yyyy-MM-dd HH:mm";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+
+        try {
+            LocalDateTime.parse(dateTime, formatter);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean isBefore(MizdooniDate other) {

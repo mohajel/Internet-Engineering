@@ -49,4 +49,19 @@ public class MizdooniDateTest {
         boolean actual = mizdooniDate1.isAfter(mizdooniDate2);
         assertEquals(expected, actual);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "2020-12-31 23:59, true",
+            "2020-12-31 23:00, true",
+            "2020-12-31 00:59, true",
+            "2020-12-31, false",
+            "2020-12-31 23:59:59, false",
+            "2020/12/31 23:59, false",
+            "23:59, false",
+    })
+    public void testisDateTimeFormatValid(String date, boolean expected) {
+        boolean actual = MizdooniDate.isDateTimeFormatValid(date);
+        assertEquals(expected, actual);
+    }
 }
