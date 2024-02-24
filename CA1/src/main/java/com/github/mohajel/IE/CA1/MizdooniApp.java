@@ -43,9 +43,29 @@ class MizdooniApp {
     }
 
     public JSONObject addRestaurant(JSONObject input) {
-        // TODO
         System.out.println("add restaurant called");
-        return input;
+        JSONObject output = new JSONObject();
+        try {
+            String name = input.getString("name");
+            String managerUsername = input.getString("managerUsername");
+            String type = input.getString("type");
+            String startTime = input.getString("startTime");
+            String endTime = input.getString("endTime");
+            String description = input.getString("description");
+            JSONObject address = input.getJSONObject("address");
+
+            Restaurant restaurant = new Restaurant(name, managerUsername, type, new Hour(startTime), new Hour(endTime), description, new Address(address.getString("street"), address.getString("city"), address.getString("country")));
+            db.addRestaurant(restaurant);
+            output.put("success", true);
+            output.put("data", "Restaurant added successfully.");
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject addTable(JSONObject input) {
