@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.mohajel.IE.CA1.testUtils.TestUtils;
+import com.github.mohajel.IE.CA1.testUtils.TestUserFactory;
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
 
 public class MizdooniAppAddUserTest {
@@ -20,14 +20,14 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserValid() {
-        JSONObject validUser = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject validUser = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         JSONObject res = app.addUser(validUser);
         assertEquals(res.getBoolean("success"), true);
     }
 
     @Test
     public void testAddUserInvalidUserName() {
-        JSONObject invalidUser = TestUtils.createUserInvalidUserName();
+        JSONObject invalidUser = TestUserFactory.createUserInvalidUserName();
         JSONObject res = app.addUser(invalidUser);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"),
@@ -36,7 +36,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserInvalidEmail() {
-        JSONObject invalidUser = TestUtils.createUserInvalidEmail();
+        JSONObject invalidUser = TestUserFactory.createUserInvalidEmail();
         JSONObject res = app.addUser(invalidUser);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"),
@@ -45,7 +45,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserInvalidRole() {
-        JSONObject validUser = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject validUser = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         JSONObject invalidUser = validUser.put("role", "invalid-role");
         JSONObject res = app.addUser(invalidUser);
 
@@ -56,7 +56,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserInvalidInputFormat() {
-        JSONObject invalidUserFormat = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject invalidUserFormat = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         invalidUserFormat.remove("password"); 
         JSONObject res = app.addUser(invalidUserFormat);
 
@@ -67,7 +67,7 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserNoCountry() {
-        JSONObject invalidUserFormat = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject invalidUserFormat = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         invalidUserFormat.getJSONObject("address").remove("country");
         System.out.println(invalidUserFormat.toString());
         JSONObject res = app.addUser(invalidUserFormat);
@@ -79,10 +79,10 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserRepeatedUserName() {
-        JSONObject validUser1 = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameUserName = TestUtils.createSimpleUser("user1", "user111@gmail.com");
+        JSONObject validUserSameUserName = TestUserFactory.createSimpleUser("user1", "user111@gmail.com");
         JSONObject res = app.addUser(validUserSameUserName);
 
         assertEquals(res.getBoolean("success"), false);
@@ -92,10 +92,10 @@ public class MizdooniAppAddUserTest {
 
     @Test
     public void testAddUserRepeatedEmail() {
-        JSONObject validUser1 = TestUtils.createSimpleUser("user1", "user1@gmail.com");
+        JSONObject validUser1 = TestUserFactory.createSimpleUser("user1", "user1@gmail.com");
         app.addUser(validUser1);
 
-        JSONObject validUserSameEmail = TestUtils.createSimpleUser("user2", "user1@gmail.com");
+        JSONObject validUserSameEmail = TestUserFactory.createSimpleUser("user2", "user1@gmail.com");
         JSONObject res = app.addUser(validUserSameEmail);
 
         assertEquals(res.getBoolean("success"), false);

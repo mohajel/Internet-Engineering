@@ -2,7 +2,7 @@ package com.github.mohajel.IE.CA1.testUtils;
 
 import org.json.JSONObject;
 
-public class TestUtils {
+public class TestUserFactory {
 
     static public JSONObject createSimpleUser(String name, String email) {
         // TODO: Use Junit to test this method
