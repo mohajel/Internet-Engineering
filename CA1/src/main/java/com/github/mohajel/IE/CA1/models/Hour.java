@@ -28,6 +28,15 @@ public class Hour {
         return false;
     }
 
+    public boolean isTimeInRange(Hour start, Hour end) {
+        // if start & end are not in the same day
+        if (end.isBefore(start)) {
+            return (this.isAfter(start) || this.equals(start)) || (this.isBefore(end) || this.equals(end));
+        } else {
+            return this.isAfter(start) && this.isBefore(end);
+        }
+    }
+
     @Override
     public String toString() {
         return String.format("%02d:%02d", hours, minutes);
