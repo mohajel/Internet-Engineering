@@ -37,7 +37,19 @@ public class Database {
         this.users.add(user);
     }
 
-    public void addRestaurant(Restaurant restaurant) {
+    public void addRestaurant(Restaurant restaurant) throws MizdooniError {
+
+        if (this.getRestaurantByName(restaurant.name) != null) {
+            throw new MizdooniError(MizdooniError.RESTAURANT_ALREADY_EXISTS);
+        }
+
+        User manager = this.getUserByUserName(restaurant.managerUserName);
+        if (manager == null) {
+            throw new MizdooniError(MizdooniError.USER_DOES_NOT_EXIST);
+        } else if (manager.role != User.Role.MANAGER) {
+            throw new MizdooniError(MizdooniError.USER_IS_NOT_MANAGER);
+        }
+
         this.restaurants.add(restaurant);
     }
 
