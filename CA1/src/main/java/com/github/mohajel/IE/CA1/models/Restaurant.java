@@ -1,6 +1,7 @@
 package com.github.mohajel.IE.CA1.models;
 
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
+import org.json.JSONObject;
 
 public class Restaurant {
 
@@ -26,4 +27,15 @@ public class Restaurant {
     public Hour endTime;
     public String description;
     public Address address;
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.name);
+        json.put("type", this.type);
+        json.put("startTime", this.startTime.toString());
+        json.put("endTime", this.endTime.toString());
+        json.put("description", this.description);
+        json.put("address", this.address.toJson());
+        return json;
+    }
 }
