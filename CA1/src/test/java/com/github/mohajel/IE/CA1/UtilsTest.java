@@ -11,20 +11,16 @@ public class UtilsTest {
     @Test
     public void pharseLineTestCommand() {
         String line = "addUser {'role': 'client', 'username': 'user1', 'password': '1234', 'email':'user1@gmail.com', 'address': {'country': 'Iran', 'city': 'Tehran'}}";
-        Utils utils = new Utils();
-        JSONObject result = utils.pharseLine(line);
+        JSONObject result = Utils.pharseLine(line);
         String command = result.getString("command");
-
         assertEquals(command, "addUser");
     }
 
     @Test
     public void pharseLineTestDataOneLayer() {
         String line = "addUser {'role': 'client', 'username': 'user1', 'password': '1234', 'email':'user1@gmail.com', 'address': {'country': 'Iran', 'city': 'Tehran'}}";
-        Utils utils = new Utils();
-        JSONObject result = utils.pharseLine(line);
+        JSONObject result = Utils.pharseLine(line);
         String countryAddress = result.getJSONObject("data").getJSONObject("address").getString("country");
-
         assertEquals(countryAddress, "Iran");
     }
 
@@ -39,10 +35,8 @@ public class UtilsTest {
     @Test
     public void pharseLineTestDataTwoLayer() {
         String line = "addUser {'role': 'client', 'username': 'user1', 'password': '1234', 'email':'user1@gmail.com', 'address': {'country': 'Iran', 'city': 'Tehran'}}";
-        Utils utils = new Utils();
-        JSONObject result = utils.pharseLine(line);
+        JSONObject result = Utils.pharseLine(line);
         String countryAddress = result.getJSONObject("data").getJSONObject("address").getString("country");
-
         assertEquals(countryAddress, "Iran");
     }
 }
