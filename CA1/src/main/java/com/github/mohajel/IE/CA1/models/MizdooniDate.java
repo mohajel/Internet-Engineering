@@ -1,12 +1,12 @@
 package com.github.mohajel.IE.CA1.models;
 
-public class Date {
+public class MizdooniDate {
     private int year;
     private int month;
     private int day;
     private Hour time;
 
-    public Date(String dateTime) {
+    public MizdooniDate(String dateTime) {
         String[] parts = dateTime.split(" ");
         String[] dateParts = parts[0].split("-");
         this.year = Integer.parseInt(dateParts[0]);
@@ -15,7 +15,7 @@ public class Date {
         this.time = new Hour(parts[1]);
     }
 
-    public boolean isBefore(Date other) {
+    public boolean isBefore(MizdooniDate other) {
         if (this.year < other.year) {
             return true;
         } else if (this.year == other.year && this.month < other.month) {
@@ -28,7 +28,7 @@ public class Date {
         return false;
     }
 
-    public boolean isAfter(Date other) {
+    public boolean isAfter(MizdooniDate other) {
         if (this.year > other.year) {
             return true;
         } else if (this.year == other.year && this.month > other.month) {

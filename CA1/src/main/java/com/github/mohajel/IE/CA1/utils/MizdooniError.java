@@ -36,4 +36,9 @@ public class MizdooniError extends Exception {
     public static final String TABLE_ID_NOT_UNIQUE = "Table id is not unique and already exists";
     public static final String RESTAURANT_DOES_NOT_EXIST = "Restaurant does not exist";
     public static final String INVALID_JSON_SEATS_NUMBER_NOT_NATURAL = "Seats number must be a natural number";
+
+    // addReview errors
+    public static final String INVALID_RATING = "Rating must be between 0 and 5";
+    public static final String USER_IS_MANAGER = "managers cannot add reviews";
+
 }

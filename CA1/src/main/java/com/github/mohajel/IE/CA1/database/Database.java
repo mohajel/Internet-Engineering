@@ -30,7 +30,7 @@ public class Database {
             throw new MizdooniError(MizdooniError.EMAIL_ALREADY_EXISTS);
         } else if (Utils.containsCharacters(user.userName)) {
             throw new MizdooniError(MizdooniError.INVALID_USERNAME_CONTAINS_SPECIAL_CHARACTERS);
-        } else if (! Utils.isEmail(user.email)) {
+        } else if (!Utils.isEmail(user.email)) {
             throw new MizdooniError(MizdooniError.INVALID_EMAIL_FORMAT);
         }
 
@@ -53,7 +53,7 @@ public class Database {
         this.restaurants.add(restaurant);
     }
 
-    public void addTable(Table table) throws MizdooniError{
+    public void addTable(Table table) throws MizdooniError {
         // tableNumber is unique for each restaurant
         for (Table t : this.tables) {
             if (t.id == table.id && t.restaurantName.equals(table.restaurantName)) {
@@ -81,7 +81,20 @@ public class Database {
         this.reserves.add(reserve);
     }
 
-    public void addReviews(Review review) {
+    public void addReview(Review review) throws MizdooniError {
+        // user must exist and must not be manager
+        User user = this.getUserByUserName(review.userName);
+        if (user == null) {
+            throw new MizdooniError(MizdooniError.USER_DOES_NOT_EXIST);
+        } else if (user.role == User.Role.MANAGER) {
+            throw new MizdooniError(MizdooniError.USER_IS_MANAGER);
+        }
+        // resturant must exist
+        Restaurant restaurant = this.getRestaurantByName(review.restaurantName);
+        if (restaurant == null) {
+            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+        }
+
         this.reviews.add(review);
     }
 

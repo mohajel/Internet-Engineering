@@ -4,7 +4,10 @@ import org.json.*;
 
 import com.github.mohajel.IE.CA1.database.Database;
 import com.github.mohajel.IE.CA1.models.*;
-import com.github.mohajel.IE.CA1.utils.MizdooniError;;import java.util.ArrayList;
+import com.github.mohajel.IE.CA1.utils.MizdooniError;
+import com.github.mohajel.IE.CA1.utils.Utils;
+
+import java.util.ArrayList;
 
 class MizdooniApp {
 
@@ -88,7 +91,7 @@ class MizdooniApp {
                 throw new MizdooniError(MizdooniError.INVALID_JSON_SEATS_NUMBER_NOT_NATURAL);
             } else {
                 seatsNumberInt = seatsNumber.intValue();
-            };
+            }
 
             Table table = new Table(tableNumber, restaurantName, managerUsername, seatsNumberInt);
             db.addTable(table);
@@ -187,9 +190,37 @@ class MizdooniApp {
     }
 
     public JSONObject addReview(JSONObject input) {
-        // TODO
         System.out.println("add review called");
-        return input;
+        JSONObject output = new JSONObject();
+
+        try {
+            String userName = input.getString("userName");
+            String restaurantName = input.getString("restaurantName");
+            double foodRate = input.getDouble("foodRate");
+            double serviceRate = input.getDouble("serviceRate");
+            double ambianceRate = input.getDouble("ambianceRate");
+            double overallRate = input.getDouble("overallRate");
+            String comment = input.getString("comment");
+            MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
+
+            Review review = new Review(userName, restaurantName, foodRate,
+                    serviceRate, ambianceRate, overallRate, comment, currentTime);
+            db.addReview(review);
+
+            output.put("success", true);
+            output.put("data", new JSONObject().put("message", "Review added successfully."));
+
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
 }

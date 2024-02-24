@@ -1,10 +1,21 @@
 package com.github.mohajel.IE.CA1.utils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.json.JSONObject;
 
 public class Utils {
 
-    public JSONObject pharseLine(String line) {
+    static public String getCurrentTime() {
+
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String currentTimeString = currentTime.format(formatter);
+        return currentTimeString;
+    }
+
+    static public JSONObject pharseLine(String line) {
 
         int separatorIndex = Math.min(line.indexOf("{"), line.indexOf(" "));
         String command = line.substring(0, separatorIndex).trim();
@@ -39,7 +50,8 @@ public class Utils {
         return str.matches("\\d{2}:\\d{2}");
     }
 
-    // containing characters like @ # $ % ^ & * ( ) _ + - = { } [ ] | \ : " ; ' < > , . ? / ~ ` and space
+    // containing characters like @ # $ % ^ & * ( ) _ + - = { } [ ] | \ : " ; ' < >
+    // , . ? / ~ ` and space
     static public boolean containsCharacters(String str) {
         return str.matches(".*[@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?~` ].*");
     }

@@ -5,5 +5,5 @@ public class Reserve {
     public String restaurantName;
     public int tableId;
     public int reservationId;
-    public Date reserveDate;
+    public MizdooniDate reserveDate;
 }
