@@ -3,6 +3,7 @@ package com.github.mohajel.IE.CA1;
 import com.github.mohajel.IE.CA1.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA1.testUtils.TestUserFactory;
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,7 @@ public class MizdooniSearchRestaurantsTest {
         app = new MizdooniApp();
     }
 
+    //////////////////////////////////////////////////////////////////////////////////// testSearchRestaurantsByName
     @Test
     public void testSearchRestaurantsByName_Found() {
         JSONObject validManager = TestUserFactory.createSimpleManager("manager1", "manager1@gmail.com");
@@ -47,6 +49,61 @@ public class MizdooniSearchRestaurantsTest {
         assertFalse(res.getBoolean("success"));
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESTAURANT_DOES_NOT_EXIST);
 
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////// testSearchRestaurantsByType
+    @Test
+    public void testSearchRestaurantsByType_Found1() {
+        JSONObject validManager = TestUserFactory.createSimpleManager("manager1", "manager1@gmail.com");
+        app.addUser(validManager);
+        JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
+        String type = validRestaurant.getString("type");
+        app.addRestaurant(validRestaurant);
+
+        JSONObject res = app.searchRestaurantsByType(new JSONObject().put("type", type));
+        validRestaurant.remove("managerUsername");
+
+        assertTrue(res.getBoolean("success"));
+
+        res = res.getJSONObject("data").getJSONArray("restaurants").getJSONObject(0);
+        assertTrue(compareRestaurantsJSON(res, validRestaurant));
+    }
+
+    @Test
+    public void testSearchRestaurantsByType_Found2() {
+        JSONObject validManager = TestUserFactory.createSimpleManager("manager1", "manager1@gmail.com");
+        app.addUser(validManager);
+
+        JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
+        String type = validRestaurant.getString("type");
+        app.addRestaurant(validRestaurant);
+        JSONObject validRestaurant2 = TestRestaurantFactory.createSimpleRestaurant("restaurant2", "manager1");
+        app.addRestaurant(validRestaurant2);
+        JSONObject validRestaurant3 = TestRestaurantFactory.createSimpleRestaurant("restaurant3", "manager1");
+        validRestaurant3.put("type", "Japanese");
+        app.addRestaurant(validRestaurant3);
+
+        JSONObject res = app.searchRestaurantsByType(new JSONObject().put("type", type));
+
+        assertTrue(res.getBoolean("success"));
+
+        JSONArray restaurants = res.getJSONObject("data").getJSONArray("restaurants");
+        assertTrue(compareRestaurantsJSON(restaurants.getJSONObject(0), validRestaurant));
+        assertTrue(compareRestaurantsJSON(restaurants.getJSONObject(1), validRestaurant2));
+    }
+
+    @Test
+    public void testSearchRestaurantsByType_NotFound() {
+        JSONObject validManager = TestUserFactory.createSimpleManager("manager1", "manager1@gmail.com");
+        app.addUser(validManager);
+        JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
+        validRestaurant.put("type", "Japanese");
+        app.addRestaurant(validRestaurant);
+
+        JSONObject res = app.searchRestaurantsByType(new JSONObject().put("type", "Italian"));
+
+        assertFalse(res.getBoolean("success"));
+        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESTAURANT_DOES_NOT_EXIST);
     }
 
     private boolean compareRestaurantsJSON(JSONObject res, JSONObject validRestaurant) {
