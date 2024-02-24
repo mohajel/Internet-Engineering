@@ -1,13 +1,11 @@
 package com.github.mohajel.IE.CA1;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-// import com.github.mohajel.IE.CA1.models.User;
 import com.github.mohajel.IE.CA1.testUtils.*;
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
 
