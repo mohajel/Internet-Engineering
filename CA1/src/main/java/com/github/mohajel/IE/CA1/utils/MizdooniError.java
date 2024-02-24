@@ -27,5 +27,9 @@ public class MizdooniError extends Exception {
 
     public static final String HOUR_IS_NOT_ROUND = "Hour is not round";
 
+    public static final String RESTAURANT_ALREADY_EXISTS = "Restaurant already exists";
 
+    public static final String USER_DOES_NOT_EXIST = "User does not exist";
+
+    public static final String USER_IS_NOT_MANAGER = "User is not a manager";
 }
