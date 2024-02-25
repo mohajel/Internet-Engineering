@@ -114,7 +114,7 @@ class MizdooniApp {
         System.out.println("reserve table called");
         JSONObject output = new JSONObject();
         try {
-            String userName = input.getString("userName");
+            String userName = input.getString("username");
             String restaurantName = input.getString("restaurantName");
             int tableNumber = input.getInt("tableNumber");
 
