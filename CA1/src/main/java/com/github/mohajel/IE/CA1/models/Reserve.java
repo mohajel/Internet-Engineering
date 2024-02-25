@@ -1,5 +1,7 @@
 package com.github.mohajel.IE.CA1.models;
 
+import org.json.JSONObject;
+
 public class Reserve {
     public String userName;
     public String restaurantName;
@@ -15,5 +17,10 @@ public class Reserve {
         this.tableId = tableId;
         this.reserveDate = reserveDate;
         this.isCancelled = false;
+    }
+
+    public JSONObject toJson() {
+        return new JSONObject().put("reservationNumber", this.reservationId).put("restaurantName", this.restaurantName)
+                .put("tableNumber", this.tableId).put("datetime", this.reserveDate.toString());
     }
 }

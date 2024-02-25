@@ -193,7 +193,7 @@ public class Database {
     public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
         for (Reserve reserve : this.reserves) {
             if (reserve.tableId == tableId && reserve.restaurantName.equals(restaurantName)
-                    && reserve.reserveDate.equals(reserveDate)) {
+                    && reserve.reserveDate.equals(reserveDate) && !reserve.isCancelled) {
                 return true;
             }
         }
@@ -211,10 +211,10 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Reserve> getReservesByUserName(String userName) {
+    public ArrayList<Reserve> getReservationsByUserName(String userName) {
         ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
         for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName)) {
+            if (reserve.userName.equals(userName) && !reserve.isCancelled) {
                 userReserves.add(reserve);
             }
         }

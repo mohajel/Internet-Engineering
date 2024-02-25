@@ -164,9 +164,26 @@ class MizdooniApp {
     }
 
     public JSONObject showReservationHistory(JSONObject input) {
-        // TODO
         System.out.println("show reservation history called");
-        return input;
+        JSONObject output = new JSONObject();
+        try {
+            String userName = input.getString("username");
+
+            ArrayList<Reserve> reservations = db.getReservationsByUserName(userName);
+
+            output.put("success", true);
+            output.put("data", new JSONObject().put("reservationHistory", new JSONArray()));
+            for (Reserve reservation : reservations) {
+                output.getJSONObject("data").getJSONArray("reservations").put(reservation.toJson());
+            }
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject searchRestaurantsByName(JSONObject data) {
