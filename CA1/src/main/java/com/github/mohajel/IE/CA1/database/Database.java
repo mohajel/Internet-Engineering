@@ -181,7 +181,7 @@ public class Database {
     public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
         for (Reserve reserve : this.reserves) {
             if (reserve.tableId == tableId && reserve.restaurantName.equals(restaurantName)
-                    && reserve.reserveDate.equals(reserveDate)) {
+                    && reserve.reserveDate.equals(reserveDate) && !reserve.isCancelled) {
                 return true;
             }
         }
