@@ -174,7 +174,7 @@ class MizdooniApp {
             output.put("success", true);
             output.put("data", new JSONObject().put("reservationHistory", new JSONArray()));
             for (Reserve reservation : reservations) {
-                output.getJSONObject("data").getJSONArray("reservations").put(reservation.toJson());
+                output.getJSONObject("data").getJSONArray("reservationHistory").put(reservation.toJson());
             }
         } catch (JSONException e) {
             output.put("success", false);
