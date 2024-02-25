@@ -2,16 +2,17 @@ package com.github.mohajel.IE.CA1;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.Test;
-// import org.mockito.Mockito;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import com.github.mohajel.IE.CA1.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA1.testUtils.TestTableFactory;
 import com.github.mohajel.IE.CA1.testUtils.TestUserFactory;
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
-// import com.github.mohajel.IE.CA1.utils.Utils;
+import com.github.mohajel.IE.CA1.utils.Utils;
 
 public class MizdooniAppCancleReservationTest {
 
@@ -67,7 +68,12 @@ public class MizdooniAppCancleReservationTest {
 
     @Test
     public void testCancleReservation_ReserveTimeBeforeCurrentDate() {
-
+        try (MockedStatic<Utils> utilities = Mockito.mockStatic(Utils.class)) {
+            utilities.when(Utils::getCurrentTime).thenReturn("2020-11-11 11:11");
+            String reserveTime = "2020-11-11 11:11";
+            String time = Utils.getCurrentTime();
+            assertEquals(reserveTime, time);
+        }
     }
-    
+
 }
