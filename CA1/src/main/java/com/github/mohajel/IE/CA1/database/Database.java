@@ -199,10 +199,10 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Reserve> getReservesByUserName(String userName) {
+    public ArrayList<Reserve> getReservationsByUserName(String userName) {
         ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
         for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName)) {
+            if (reserve.userName.equals(userName) && !reserve.isCancelled) {
                 userReserves.add(reserve);
             }
         }
