@@ -48,4 +48,6 @@ public class MizdooniError extends Exception {
     public static final String DATETIME_IS_PASSED = "Date time is passed";
     public static final String DATETIME_IS_NOT_IN_OPEN_HOURS = "Date time is not in open hours of the restaurant";
 
+    // cancleReservation errors
+    public static final String RESERVATION_DOES_NOT_EXIST = "Reservation does not exist";
 }

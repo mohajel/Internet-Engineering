@@ -141,9 +141,26 @@ class MizdooniApp {
     }
 
     public JSONObject cancelReservation(JSONObject input) {
-        // TODO
         System.out.println("cancel reservation called");
-        return input;
+
+        JSONObject output = new JSONObject();
+        try {
+            int reservationNumber = input.getInt("reservationNumber");
+            String userName = input.getString("username");
+            db.cancelReservation(userName, reservationNumber);
+            output.put("success", true);
+            output.put("data", new JSONObject().put("message", "Reservation canceled successfully."));
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject showReservationHistory(JSONObject input) {

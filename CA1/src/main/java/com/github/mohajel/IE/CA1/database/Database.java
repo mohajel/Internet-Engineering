@@ -132,6 +132,18 @@ public class Database {
         this.reviews.add(review);
     }
 
+    public void cancelReservation(String userName, int reservationId) throws MizdooniError {
+        Reserve reserve = this.getReserveByReservationIdAndUserName(reservationId, userName);
+        if (reserve == null) {
+            throw new MizdooniError(MizdooniError.RESERVATION_DOES_NOT_EXIST);
+        }
+        MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
+        if (reserve.reserveDate.isBefore(currentTime)) {
+            throw new MizdooniError(MizdooniError.DATETIME_IS_PASSED);
+        }
+        this.reserves.remove(reserve);
+    }
+
     public User getUserByUserName(String userName) {
         for (User user : this.users) {
             if (user.userName.equals(userName)) {
@@ -219,4 +231,12 @@ public class Database {
         return restaurantReserves;
     }
 
+    public Reserve getReserveByReservationIdAndUserName(int reservationId, String userName) {
+        for (Reserve reserve : this.reserves) {
+            if (reserve.reservationId == reservationId && reserve.userName.equals(userName)) {
+                return reserve;
+            }
+        }
+        return null;
+    }
 }
