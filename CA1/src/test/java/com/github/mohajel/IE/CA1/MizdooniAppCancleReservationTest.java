@@ -68,11 +68,16 @@ public class MizdooniAppCancleReservationTest {
 
     @Test
     public void testCancleReservation_ReserveTimeBeforeCurrentDate() {
+        JSONObject reservation = new JSONObject();
+        reservation.put("username", "user1");
+        reservation.put("reservationNumber", 1);
+
         try (MockedStatic<Utils> utilities = Mockito.mockStatic(Utils.class)) {
-            utilities.when(Utils::getCurrentTime).thenReturn("2020-11-11 11:11");
-            String reserveTime = "2020-11-11 11:11";
-            String time = Utils.getCurrentTime();
-            assertEquals(reserveTime, time);
+            utilities.when(Utils::getCurrentTime).thenReturn("2025-11-11 11:11");
+            JSONObject res = app.cancelReservation(reservation);
+            System.out.println(res.toString());
+            assertEquals(res.getBoolean("success"), false);
+            assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESERVATION_TIME_PASSED);
         }
     }
 

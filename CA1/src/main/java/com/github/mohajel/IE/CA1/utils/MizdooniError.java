@@ -50,4 +50,5 @@ public class MizdooniError extends Exception {
 
     // cancleReservation errors
     public static final String RESERVATION_DOES_NOT_EXIST = "Reservation does not exist";
+    public static final String RESERVATION_TIME_PASSED = "Reservation time passed";
 }

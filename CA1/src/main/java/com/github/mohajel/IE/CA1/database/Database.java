@@ -139,7 +139,7 @@ public class Database {
         }
         MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
         if (reserve.reserveDate.isBefore(currentTime)) {
-            throw new MizdooniError(MizdooniError.DATETIME_IS_PASSED);
+            throw new MizdooniError(MizdooniError.RESERVATION_TIME_PASSED);
         }
         this.reserves.remove(reserve);
     }
