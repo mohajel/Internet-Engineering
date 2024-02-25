@@ -118,7 +118,7 @@ class MizdooniApp {
             String restaurantName = input.getString("restaurantName");
             int tableNumber = input.getInt("tableNumber");
 
-            if (MizdooniDate.isDateTimeFormatValid(input.getString("datetime"))) {
+            if (!MizdooniDate.isDateTimeFormatValid(input.getString("datetime"))) {
                 throw new MizdooniError(MizdooniError.DATETIME_FORMAT_INVALID);
             }
             MizdooniDate reserveDate = new MizdooniDate(input.getString("datetime"));
