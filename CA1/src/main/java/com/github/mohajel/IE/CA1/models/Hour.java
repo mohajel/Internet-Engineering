@@ -10,6 +10,10 @@ public class Hour {
         this.minutes = Integer.parseInt(parts[1]);
     }
 
+    public Hour deepCopy() {
+        return new Hour(String.format("%02d:%02d", hours, minutes));
+    }
+
     public int getJustHours() {
         if (minutes > 0)
             return hours + 1;
