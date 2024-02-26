@@ -18,6 +18,10 @@ public class MizdooniDate {
         this.time = new Hour(parts[1]);
     }
 
+    public MizdooniDate deepCopy() {
+        return new MizdooniDate(this.toString());
+    }
+
     public Hour getTime() {
         return time;
     }
