@@ -8,4 +8,4 @@ addTable {"tableNumber": 1, "restaurantName": "restaurant1", "managerUsername": 
 reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2026-12-14 09:00"}
 reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2026-12-14 10:00"}
 showReservationHistory { "username": "user1"}
-showAvailableTables {“restaurantName”: “restaurant1”}
+showAvailableTables {"restaurantName": "restaurant1"}
