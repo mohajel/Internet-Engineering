@@ -10,7 +10,7 @@ public class Hour {
         this.minutes = Integer.parseInt(parts[1]);
     }
 
-    public int getHours() {
+    public int getJustHours() {
         return hours;
     }
 
