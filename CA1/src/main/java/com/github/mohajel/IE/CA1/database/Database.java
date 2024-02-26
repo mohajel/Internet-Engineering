@@ -140,7 +140,7 @@ public class Database {
                         reservedHours.add(reserve.reserveDate.getTime().getJustHours());
                     }
                 }
-                for (int i = restaurant.startTime.getJustHours(); i < restaurant.endTime.getJustHours(); i++) {
+                for (int i = today.getTime().getJustHours(); i < restaurant.endTime.getJustHours(); i++) {
                     if (!reservedHours.contains(i)) {
                         tableJson.getJSONArray("availableTimes").put(today.getDateTime() + " " + String.format("%02d:00", i));
                     }
