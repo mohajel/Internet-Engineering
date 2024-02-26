@@ -2,7 +2,7 @@ addUser {"role": "client", "username": "user1", "password": "1234", "email":"use
 addUser {"role": "manager", "username": "manager1", "password": "1234", "email":"manager1@gmail.com", "address": {"country": "Iran", "city": "Tehran"}}
 showReservationHistory { "username": "user1"}
 addRestaurant {"name": "restaurant1", "managerUsername": "manager1", "type": "Iranian", "startTime": "07:00", "endTime": "14:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "North Kargar"}}
-addRestaurant {"name": "restaurant2", "managerUsername": "manager1", "type": "Italy", "startTime": "17:00", "endTime": "02:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "South Kargar"}}
+addRestaurant {"name": "restaurant2", "managerUsername": "manager1", "type": "Italy", "startTime": "17:00", "endTime": "01:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "South Kargar"}}
 searchRestaurantsByName {"name": "restaurant1"}
 searchRestaurantsByType {"type": "Iranian"}
 searchRestaurantsByType {"type": "Italy"}
@@ -17,4 +17,4 @@ cancelReservation {"username": "user1", "reservationNumber": 2}
 showReservationHistory { "username": "user1"}
 showAvailableTables {"restaurantName": "restaurant1"}
 addTable {"tableNumber": 1, "restaurantName": "restaurant2", "managerUsername": "manager1", "seatsNumber" : 5}
-showAvailableTables {"restaurantName": "restaurant2"} // check this
+showAvailableTables {"restaurantName": "restaurant2"}
