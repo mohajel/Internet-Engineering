@@ -78,7 +78,7 @@ public class MizdooniDate {
 
     public boolean isNDaysAfter(MizdooniDate other, int n) {
         MizdooniDate newDate = other.getNDaysAfter(n);
-        return this.equals(newDate);
+        return (this.year == newDate.year) && (this.month == newDate.month) && (this.day == newDate.day);
     }
 
     public MizdooniDate getNDaysAfter(int n) {
