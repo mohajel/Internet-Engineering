@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.github.mohajel.IE.CA1.models.*;
 import com.github.mohajel.IE.CA1.utils.MizdooniError;
 import com.github.mohajel.IE.CA1.utils.Utils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Database {
 
@@ -113,6 +115,40 @@ public class Database {
         reserve.reservationId = user.numberOfReservations;
 
         this.reserves.add(reserve);
+    }
+
+    public JSONObject showAvailableTablesToday(String restaurantName) throws MizdooniError {
+        Restaurant restaurant = this.getRestaurantByName(restaurantName);
+        if (restaurant == null) {
+            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+        }
+
+        MizdooniDate today = new MizdooniDate(Utils.getCurrentTime());
+        JSONObject availableTablesToday = new JSONObject();
+        availableTablesToday.put("availableTables", new JSONArray());
+        for (Table table : this.tables) {
+            if (table.restaurantName.equals(restaurantName)) {
+                JSONObject tableJson = new JSONObject();
+                tableJson.put("tableNumber", table.id);
+                tableJson.put("seatsNumber", table.capacity);
+                tableJson.put("availableTimes", new JSONArray());
+
+                ArrayList <Integer> reservedHours = new ArrayList<Integer>();
+                for (Reserve reserve : this.reserves) {
+                    if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == table.id
+                            && reserve.reserveDate.isInSameDay(today) && !reserve.isCancelled) {
+                        reservedHours.add(reserve.reserveDate.getTime().getJustHours());
+                    }
+                }
+                for (int i = restaurant.startTime.getJustHours(); i < restaurant.endTime.getJustHours(); i++) {
+                    if (!reservedHours.contains(i)) {
+                        tableJson.getJSONArray("availableTimes").put(today.getDateTime() + " " + String.format("%02d:00", i));
+                    }
+                }
+                availableTablesToday.getJSONArray("availableTables").put(tableJson);
+            }
+        }
+        return availableTablesToday;
     }
 
     public void addReview(Review review) throws MizdooniError {
