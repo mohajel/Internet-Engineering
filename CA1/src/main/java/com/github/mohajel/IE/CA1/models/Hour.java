@@ -11,7 +11,7 @@ public class Hour {
     }
 
     public Hour deepCopy() {
-        return new Hour(String.format("%02d:%02d", hours, minutes));
+        return new Hour(this.toString());
     }
 
     public int getJustHours() {
