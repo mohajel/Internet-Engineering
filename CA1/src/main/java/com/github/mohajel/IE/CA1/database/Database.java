@@ -136,7 +136,7 @@ public class Database {
                 ArrayList <Integer> reservedHours = new ArrayList<Integer>();
                 for (Reserve reserve : this.reserves) {
                     if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == table.id
-                            && reserve.reserveDate.isInSameDay(today) && !reserve.isCancelled) {
+                            && reserve.reserveDate.isNDaysAfter(today, 0) && !reserve.isCancelled) {
                         reservedHours.add(reserve.reserveDate.getTime().getJustHours());
                     }
                 }

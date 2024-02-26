@@ -72,8 +72,8 @@ public class MizdooniDate {
         return time.isTimeInRange(start, end);
     }
 
-    public boolean isInSameDay(MizdooniDate other) {
-        return (this.year == other.year) && (this.month == other.month) && (this.day == other.day);
+    public boolean isNDaysAfter(MizdooniDate other, int n) {
+        return (this.year == other.year) && (this.month == other.month) && (this.day == other.day + n);
     }
     
     @Override
