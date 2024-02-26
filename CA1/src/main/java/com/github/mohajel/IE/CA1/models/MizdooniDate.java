@@ -18,6 +18,10 @@ public class MizdooniDate {
         this.time = new Hour(parts[1]);
     }
 
+    public Hour getTime() {
+        return time;
+    }
+
     public static boolean isDateTimeFormatValid(String dateTime) {
         String format = "yyyy-MM-dd HH:mm";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
