@@ -79,7 +79,24 @@ public class MizdooniDate {
     public boolean isNDaysAfter(MizdooniDate other, int n) {
         return (this.year == other.year) && (this.month == other.month) && (this.day == other.day + n);
     }
-    
+
+    public MizdooniDate getNDaysAfter(int n) {
+        MizdooniDate newDate = this.deepCopy();
+        newDate.day += n;
+        if (newDate.day > 30) {
+            int deltaMonths = newDate.day / 30;
+            newDate.month += deltaMonths;
+            newDate.day = newDate.day % 30;
+
+            if (newDate.month > 12) {
+                int deltaYears = newDate.month / 12;
+                newDate.year += deltaYears;
+                newDate.month = newDate.month % 12;
+            }
+        }
+        return newDate;
+    }
+
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d %s", year, month, day, time.toString());
