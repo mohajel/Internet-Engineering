@@ -63,6 +63,11 @@ public class MizdooniDate {
     public boolean isHourInRange(Hour start, Hour end) {
         return time.isTimeInRange(start, end);
     }
+
+    public boolean isInSameDay(MizdooniDate other) {
+        return (this.year == other.year) && (this.month == other.month) && (this.day == other.day);
+    }
+    
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d %s", year, month, day, time.toString());
