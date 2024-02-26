@@ -5,7 +5,6 @@ import com.github.mohajel.IE.CA1.testUtils.TestTableFactory;
 import com.github.mohajel.IE.CA1.testUtils.TestUserFactory;
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

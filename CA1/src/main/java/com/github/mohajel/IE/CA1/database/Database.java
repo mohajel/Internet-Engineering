@@ -236,17 +236,6 @@ public class Database {
         return false;
     }
 
-    public Reserve getReserveByUserNameAndRestaurantNameAndTableId(String userName, String restaurantName,
-            int tableId) {
-        for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName) && reserve.restaurantName.equals(restaurantName)
-                    && reserve.tableId == tableId) {
-                return reserve;
-            }
-        }
-        return null;
-    }
-
     public ArrayList<Reserve> getReservationsByUserName(String userName) {
         ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
         for (Reserve reserve : this.reserves) {
@@ -255,16 +244,6 @@ public class Database {
             }
         }
         return userReserves;
-    }
-
-    public ArrayList<Reserve> getReservesByRestaurantName(String restaurantName) {
-        ArrayList<Reserve> restaurantReserves = new ArrayList<Reserve>();
-        for (Reserve reserve : this.reserves) {
-            if (reserve.restaurantName.equals(restaurantName)) {
-                restaurantReserves.add(reserve);
-            }
-        }
-        return restaurantReserves;
     }
 
     public Reserve getReserveByReservationIdAndUserName(int reservationId, String userName) {
