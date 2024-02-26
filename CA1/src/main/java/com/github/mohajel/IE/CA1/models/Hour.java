@@ -10,6 +10,10 @@ public class Hour {
         this.minutes = Integer.parseInt(parts[1]);
     }
 
+    public int getHours() {
+        return hours;
+    }
+
     public boolean isBefore(Hour other) {
         if (this.hours < other.hours) {
             return true;
