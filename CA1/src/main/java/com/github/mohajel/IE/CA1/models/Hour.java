@@ -11,6 +11,8 @@ public class Hour {
     }
 
     public int getJustHours() {
+        if (minutes > 0)
+            return hours + 1;
         return hours;
     }
 
