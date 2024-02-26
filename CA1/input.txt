@@ -5,7 +5,12 @@ addRestaurant {"name": "restaurant1", "managerUsername": "manager1", "type": "Ir
 searchRestaurantsByName {"name": "restaurant1"}
 searchRestaurantsByType {"type": "Iranian"}
 addTable {"tableNumber": 1, "restaurantName": "restaurant1", "managerUsername": "manager1", "seatsNumber" : 4}
-reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2024-02-26 09:00"}
-reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2024-02-26 12:00"}
+addTable {"tableNumber": 2, "restaurantName": "restaurant1", "managerUsername": "manager1", "seatsNumber" : 4}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2024-02-27 09:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2024-02-27 12:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 2, "datetime": "2024-02-27 12:00"}
+showReservationHistory { "username": "user1"}
+showAvailableTables {"restaurantName": "restaurant1"}
+cancelReservation {"username": "user1", "reservationNumber": 2}
 showReservationHistory { "username": "user1"}
 showAvailableTables {"restaurantName": "restaurant1"}
