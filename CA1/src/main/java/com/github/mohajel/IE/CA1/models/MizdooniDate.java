@@ -22,6 +22,10 @@ public class MizdooniDate {
         return time;
     }
 
+    public String getDateTime() {
+        return String.format("%04d-%02d-%02d", year, month, day);
+    }
+
     public static boolean isDateTimeFormatValid(String dateTime) {
         String format = "yyyy-MM-dd HH:mm";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
