@@ -1,10 +1,11 @@
 addUser {"role": "client", "username": "user1", "password": "1234", "email":"user1@gmail.com", "address": {"country": "Iran", "city": "Tehran"}}
 addUser {"role": "manager", "username": "manager1", "password": "1234", "email":"manager1@gmail.com", "address": {"country": "Iran", "city": "Tehran"}}
 showReservationHistory { "username": "user1"}
-addRestaurant {"name": "restaurant1", "managerUsername": "manager1", "type": "Iranian", "startTime": "08:00", "endTime": "23:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "North Kargar"}}
+addRestaurant {"name": "restaurant1", "managerUsername": "manager1", "type": "Iranian", "startTime": "08:00", "endTime": "14:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "North Kargar"}}
 searchRestaurantsByName {"name": "restaurant1"}
 searchRestaurantsByType {"type": "Iranian"}
 addTable {"tableNumber": 1, "restaurantName": "restaurant1", "managerUsername": "manager1", "seatsNumber" : 4}
-reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2024-12-14 21:00"}
-reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2025-12-14 21:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2026-12-14 09:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2026-12-14 10:00"}
 showReservationHistory { "username": "user1"}
+showAvailableTables {“restaurantName”: “restaurant1”}
