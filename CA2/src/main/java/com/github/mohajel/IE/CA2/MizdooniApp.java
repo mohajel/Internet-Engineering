@@ -11,8 +11,11 @@ import java.util.ArrayList;
 
 class MizdooniApp {
 
-    Database db;
+    private Database db;
     private static MizdooniApp single_instance = null;
+
+    // using this for loged_in_user.change in nex phase 
+    public String logedInUser = "";
 
     public MizdooniApp() {
         db = new Database();
