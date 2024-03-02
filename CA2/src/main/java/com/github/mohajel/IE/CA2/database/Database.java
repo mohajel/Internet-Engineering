@@ -17,12 +17,25 @@ public class Database {
     private ArrayList<User> users;
     private ArrayList<Review> reviews;
 
-    public Database() {
+    public Database() throws MizdooniError{
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
         this.tables = new ArrayList<Table>();
         this.users = new ArrayList<User>();
         this.reviews = new ArrayList<Review>();
+
+        this.initialize();
+    }
+
+    private void initialize() throws MizdooniError {
+        Address address1 = new Address("Tehran", "Iran");
+
+        this.users.add(new User("client1", "1234", "client1@gmail.com", address1 ,"client"));
+        this.users.add(new User("client2", "1234", "client2@gmail.com", address1 ,"client"));
+        this.users.add(new User("manager1", "1234", "manager1@gmail.com", address1 ,"manager"));
+        this.users.add(new User("manager2", "1234", "manager2@gmail.com", address1 ,"manager"));
+
+        // TODO: add others
     }
 
     public void addUser(User user) throws MizdooniError {
@@ -99,7 +112,7 @@ public class Database {
 
         Table table = this.getTableByIdAndRestaurantName(reserve.tableId, reserve.restaurantName);
         if (table == null) {
-            throw new MizdooniError(MizdooniError.TABLEID_IN_RESTAURANT_DOES_NOT_EXIST);
+            throw new MizdooniError(MizdooniError.TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST);
         }
         if (this.isTableReserved(reserve.tableId, reserve.restaurantName, reserve.reserveDate)) {
             throw new MizdooniError(MizdooniError.TABLE_IS_RESERVED);

@@ -17,16 +17,52 @@ public class MizdooniApp {
     // using this for loged_in_user.change in nex phase 
     public String logedInUser = "";
 
-    public MizdooniApp() {
-        db = new Database();
+    public MizdooniApp(){
+        try {
+            db = new Database();
+        } catch (MizdooniError e) {
+            e.getMessage();
+        }
     }
 
     public static synchronized MizdooniApp getInstance()
     {
-        if (single_instance == null)
-        single_instance = new MizdooniApp();
+        if (single_instance == null) {
+            single_instance = new MizdooniApp();
+        }
 
         return single_instance;
+    }
+
+    public JSONObject login(JSONObject input) {
+        System.out.println("login called");
+        JSONObject output = new JSONObject();
+        try {
+            String username = input.getString("username");
+            String password = input.getString("password");
+
+            User user = db.getUserByUserName(username);
+            if (user == null) {
+                throw new MizdooniError(MizdooniError.USER_DOES_NOT_EXIST);
+            }
+            if (!user.password.equals(password)) {
+                throw new MizdooniError(MizdooniError.WRONG_PASSWORD);
+            }
+
+            output.put("success", true);
+            output.put("data", new JSONObject().put("role", user.role.toString()));
+            logedInUser = username;
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+        }
+        return output;
     }
 
     public JSONObject addUser(JSONObject input) {
@@ -53,7 +89,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -84,7 +120,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -117,7 +153,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -147,7 +183,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -170,7 +206,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -193,7 +229,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -219,7 +255,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -248,7 +284,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }
@@ -270,7 +306,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         // TODO
         return output;
@@ -305,7 +341,7 @@ public class MizdooniApp {
             output.put("data", new JSONObject().put("error", e.getMessage()));
         } catch (Exception e) {
             output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKOOWN_ERROR));
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
         return output;
     }

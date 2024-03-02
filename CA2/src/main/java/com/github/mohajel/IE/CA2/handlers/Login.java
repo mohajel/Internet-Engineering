@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.github.mohajel.IE.CA2.MizdooniApp;
+import com.github.mohajel.IE.CA2.utils.MizdooniError;
 
 
 @WebServlet(name = "Login", urlPatterns = { "/login" })
@@ -38,20 +41,36 @@ public class Login extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
 
-        log("username:" + username);
-        log("password:" + password);
+        try {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
 
-        MizdooniApp app = MizdooniApp.getInstance();
+            JSONObject input = new JSONObject();
+            input.put("username", username);
+            input.put("password", password);
 
-        // response.sendRedirect("/");
-        // if (bolbolestan.doesStudentExist(studentId)) {
-        //     bolbolestan.makeLoggedIn(studentId);
-        //     response.sendRedirect("http://localhost:8080/ca3_war_exploded");
-        // } else {
-        //     response.sendRedirect("http://localhost:8080/ca3_war_exploded/login");
-        // }
+            MizdooniApp app = MizdooniApp.getInstance();
+            JSONObject output = app.login(input);
+
+            if (output.getBoolean("success") == true) {
+                response.sendRedirect("/home");
+                log("Login successful");
+            } else {
+                response.sendRedirect("/login");
+                log("Login failed");
+            }
+
+            // assertEquals(res.getBoolean("success"), false);
+            // assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESERVATION_TIME_PASSED);
+
+            
+            log("username:" + username);
+            log("password:" + password);
+        } catch (Exception e) {
+            // Handle the exception here
+            e.printStackTrace();
+            response.sendRedirect("/login");
+        }
     }
 }

@@ -119,7 +119,7 @@ public class MizdooniReserveTableTest {
         JSONObject res = app.reserveTable(reservation);
 
         assertFalse(res.getBoolean("success"));
-        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.TABLEID_IN_RESTAURANT_DOES_NOT_EXIST);
+        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST);
     }
 
     @Test

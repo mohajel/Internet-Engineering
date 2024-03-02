@@ -16,10 +16,13 @@ public class MizdooniError extends Exception {
     // general
     public static final String INVALID_COMMAND = "Invalid command";
     public static final String INVALID_JSON = "Invalid input format";
-    public static final String UNKOOWN_ERROR = "Unknown error occurred";
+    public static final String UNKNOWN_ERROR = "Unknown error occurred";
     public static final String HOUR_IS_NOT_ROUND = "Hour is not round";
     public static final String USER_DOES_NOT_EXIST = "User does not exist";
     public static final String USER_IS_NOT_MANAGER = "User is not a manager";
+
+    // login errors
+    public static final String WRONG_PASSWORD = "Wrong password";
 
     // addUser errors
     public static final String INVALID_ROLE = "Role must be client or manager";
@@ -43,7 +46,7 @@ public class MizdooniError extends Exception {
 
     // reserveTable errors
     public static final String DATETIME_FORMAT_INVALID = "Invalid date time format";
-    public static final String TABLEID_IN_RESTAURANT_DOES_NOT_EXIST = "Table id in this restaurant does not exist";
+    public static final String TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST = "Table id in this restaurant does not exist";
     public static final String TABLE_IS_RESERVED = "Table is reserved";
     public static final String DATETIME_IS_PASSED = "Date time is passed";
     public static final String DATETIME_IS_NOT_IN_OPEN_HOURS = "Date time is not in open hours of the restaurant";

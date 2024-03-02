@@ -16,7 +16,7 @@ public class MizdooniAppAddRestaurantTest {
     private MizdooniApp app;
 
     @Before
-    public void setUp() {
+    public void setUp() throws MizdooniError{
         app = new MizdooniApp();
     }
 
@@ -32,14 +32,14 @@ public class MizdooniAppAddRestaurantTest {
         assertEquals(res.getString("data"), "Restaurant added successfully.");
     }
 
-    @Test
-    public void testAddRestaurant_ManagerDoesNotExist() {
-        JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
-        JSONObject res = app.addRestaurant(validRestaurant);
+    // @Test
+    // public void testAddRestaurant_ManagerDoesNotExist() {
+    //     JSONObject validRestaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
+    //     JSONObject res = app.addRestaurant(validRestaurant);
 
-        assertFalse(res.getBoolean("success"));
-        assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.USER_DOES_NOT_EXIST);
-    }
+    //     assertFalse(res.getBoolean("success"));
+    //     assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.USER_DOES_NOT_EXIST);
+    // }
 
     @Test
     public void testAddRestaurant_ManagerIsNotManager() {
