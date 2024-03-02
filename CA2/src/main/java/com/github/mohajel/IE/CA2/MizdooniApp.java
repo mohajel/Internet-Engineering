@@ -9,7 +9,7 @@ import com.github.mohajel.IE.CA2.utils.Utils;
 
 import java.util.ArrayList;
 
-class MizdooniApp {
+public class MizdooniApp {
 
     private Database db;
     private static MizdooniApp single_instance = null;
