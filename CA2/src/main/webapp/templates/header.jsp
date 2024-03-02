@@ -1,4 +1,5 @@
 <%@ page import="org.json.JSONObject" %>
+<% JSONObject context = (JSONObject) request.getAttribute("context"); %>
 
 <!doctype html>
 <html lang="en">

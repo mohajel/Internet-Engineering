@@ -15,12 +15,12 @@
 
   <script>
     // alert("Welcome to Mizdooni");
-    Swal.fire({
-      title: 'Welcome to Mizdooni',
-      text: 'Please login to continue',
-      icon: 'info',
-      confirmButtonText: 'Login'
-    })
+    // Swal.fire({
+    //   title: 'Welcome to Mizdooni',
+    //   text: 'Please login to continue',
+    //   icon: 'info',
+    //   confirmButtonText: 'Login'
+    // })
   </script>
 
 <%@include file="footer.jsp" %>

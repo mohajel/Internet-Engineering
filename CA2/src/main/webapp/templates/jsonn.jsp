@@ -6,7 +6,7 @@
 <h1>JSON JSON JSON</h1>
 
 <% String message = (String) request.getAttribute("message"); %>
-<% JSONObject obj = (JSONObject) request.getAttribute("data"); %>
+
 
 
 <p>Message from the servlet: <%= message %></p>

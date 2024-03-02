@@ -22,19 +22,41 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Set the content type of the response to "text/html"
+        // // Set the content type of the response to "text/html"
+        // response.setContentType("text/html");
+
+        // // Create or retrieve the data you want to pass to the JSP file
+        // String message = "login";
+
+        // // Set the data as an attribute in the request object
+        // request.setAttribute("message", message);
+
+        // // Get the RequestDispatcher for the JSP file
+        // RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/login.jsp");
+
+        // // Forward the request and response objects to the JSP file
+
+        MizdooniApp app = MizdooniApp.getInstance();
+
+        JSONObject output = new JSONObject();
+        output.put("success", true);
+        output.put("title", "Login");
+        output.put("data", "login");
+        output.put("message", "login");
+        output.put("icon", "");
+
+        if(app.logedInUser.length() == 0){
+            output.put("message", "Please login to continue");
+            output.put("icon", "warning");
+        } else {
+            output.put("message", "You are already logged in");
+            output.put("icon", "info");
+        }
+
+        request.setAttribute("context", output);
+
         response.setContentType("text/html");
-
-        // Create or retrieve the data you want to pass to the JSP file
-        String message = "login";
-
-        // Set the data as an attribute in the request object
-        request.setAttribute("message", message);
-
-        // Get the RequestDispatcher for the JSP file
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/login.jsp");
-
-        // Forward the request and response objects to the JSP file
         dispatcher.forward(request, response);
 
     }
@@ -54,7 +76,7 @@ public class Login extends HttpServlet {
             JSONObject output = app.login(input);
 
             if (output.getBoolean("success") == true) {
-                response.sendRedirect("/home");
+                response.sendRedirect("/");
                 log("Login successful");
             } else {
                 response.sendRedirect("/login");

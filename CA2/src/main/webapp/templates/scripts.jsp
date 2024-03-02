@@ -9,6 +9,31 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.js"></script>
 
 
+<script>
+    const context = JSON.parse('<%= context.toString() %>');
+    console.log(context);
+
+    if (context.title !== undefined)
+        document.title = context.title;
+
+    if (context.success == false) { //error
+        Swal.fire({
+        title: 'OOPS!',
+        text: context.data.error,
+        icon: "error",
+        confirmButtonText: 'OK'
+    })
+    } else {
+        Swal.fire({
+                title: context.icon,
+                text: context.message,
+                icon: context.icon,
+                confirmButtonText: 'OK'
+    })
+    }
+</script>
+
+
 
 <script>
     // let attention = Prompt();
