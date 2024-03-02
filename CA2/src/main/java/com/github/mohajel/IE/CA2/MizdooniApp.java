@@ -12,9 +12,18 @@ import java.util.ArrayList;
 class MizdooniApp {
 
     Database db;
+    private static MizdooniApp single_instance = null;
 
     public MizdooniApp() {
         db = new Database();
+    }
+
+    public static synchronized MizdooniApp getInstance()
+    {
+        if (single_instance == null)
+        single_instance = new MizdooniApp();
+
+        return single_instance;
     }
 
     public JSONObject addUser(JSONObject input) {
