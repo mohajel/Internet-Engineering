@@ -108,7 +108,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="logout">Logout</a>
+                <a class="nav-link" href="logout" id="logout_btn_id">Logout</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
