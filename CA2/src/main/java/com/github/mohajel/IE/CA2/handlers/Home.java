@@ -52,7 +52,7 @@ public class Home extends HttpServlet {
             User user  = app.db.getUserByUserName(app.logedInUser); // changing this to session in future
             output.put("message", "Welcome to Mizdooni dear " + user.userName);
             output.put("icon", "success");
-            output.put("data", new JSONObject().put("username", user.userName));
+            output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
             RequestDispatcher dispatcher = null;
             if (user.role == User.Role.CLIENT) {
                 dispatcher = request.getRequestDispatcher("./templates/client_home.jsp");
