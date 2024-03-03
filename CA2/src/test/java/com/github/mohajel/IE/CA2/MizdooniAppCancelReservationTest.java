@@ -14,7 +14,7 @@ import com.github.mohajel.IE.CA2.testUtils.TestUserFactory;
 import com.github.mohajel.IE.CA2.utils.MizdooniError;
 import com.github.mohajel.IE.CA2.utils.Utils;
 
-public class MizdooniAppCancleReservationTest {
+public class MizdooniAppCancelReservationTest {
 
     MizdooniApp app;
 
@@ -38,7 +38,7 @@ public class MizdooniAppCancleReservationTest {
     }
 
     @Test
-    public void testCancleReservation_Valid() {
+    public void testCancelReservation_Valid() {
         JSONObject reservation = new JSONObject();
         reservation.put("username", "user1");
         reservation.put("reservationNumber", 1);
@@ -47,7 +47,7 @@ public class MizdooniAppCancleReservationTest {
     }
 
     @Test
-    public void testCancleReservation_ReservationDoesNotExist() {
+    public void testCancelReservation_ReservationDoesNotExist() {
         JSONObject reservation = new JSONObject();
         reservation.put("username", "user1");
         reservation.put("reservationNumber", 2);
@@ -57,7 +57,7 @@ public class MizdooniAppCancleReservationTest {
     }
 
     @Test
-    public void testCancleReservation_UserDoesNotExist() {
+    public void testCancelReservation_UserDoesNotExist() {
         JSONObject reservation = new JSONObject();
         reservation.put("username", "user2");
         reservation.put("reservationNumber", 1);
@@ -67,7 +67,7 @@ public class MizdooniAppCancleReservationTest {
     }
 
     @Test
-    public void testCancleReservation_ReserveTimeBeforeCurrentDate() {
+    public void testCancelReservation_ReserveTimeBeforeCurrentDate() {
         JSONObject reservation = new JSONObject();
         reservation.put("username", "user1");
         reservation.put("reservationNumber", 1);

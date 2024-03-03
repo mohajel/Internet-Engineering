@@ -25,12 +25,20 @@ public class MizdooniApp {
         }
     }
 
+    public MizdooniApp(Database db){
+        this.db = db;
+    }
+
     public static synchronized MizdooniApp getInstance()
     {
         if (single_instance == null) {
-            single_instance = new MizdooniApp();
+            try {
+                Database db = new Database(true);
+                single_instance = new MizdooniApp(db);
+            } catch (Exception e){
+                System.err.println(e.getStackTrace());
+            }
         }
-
         return single_instance;
     }
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA2.MizdooniApp;
-import com.github.mohajel.IE.CA2.utils.MizdooniError;
+// import com.github.mohajel.IE.CA2.utils.MizdooniError;
 
 
 @WebServlet(name = "Login", urlPatterns = { "/login" })

@@ -23,8 +23,18 @@ public class Database {
         this.tables = new ArrayList<Table>();
         this.users = new ArrayList<User>();
         this.reviews = new ArrayList<Review>();
+    }
 
-        this.initialize();
+    public Database(boolean initialize) throws MizdooniError{
+        this.restaurants = new ArrayList<Restaurant>();
+        this.reserves = new ArrayList<Reserve>();
+        this.tables = new ArrayList<Table>();
+        this.users = new ArrayList<User>();
+        this.reviews = new ArrayList<Review>();
+
+        if (initialize) {
+            this.initialize();
+        }
     }
 
     private void initialize() throws MizdooniError {
