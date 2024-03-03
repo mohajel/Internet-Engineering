@@ -11,9 +11,9 @@ com/github/mohajel/IE/CA2/handlers/GetJson.class
 com/github/mohajel/IE/CA2/handlers/Login.class
 com/github/mohajel/IE/CA2/utils/MizdooniError.class
 com/github/mohajel/IE/CA2/models/User.class
+com/github/mohajel/IE/CA2/handlers/Home.class
 com/github/mohajel/IE/CA2/utils/Utils.class
 com/github/mohajel/IE/CA2/models/Review.class
 com/github/mohajel/IE/CA2/handlers/HelloServlet.class
-com/github/mohajel/IE/CA2/handlers/GetHome.class
 com/github/mohajel/IE/CA2/database/Database.class
 com/github/mohajel/IE/CA2/models/User$Role.class

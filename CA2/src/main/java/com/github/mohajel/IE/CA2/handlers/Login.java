@@ -40,10 +40,8 @@ public class Login extends HttpServlet {
 
         JSONObject output = new JSONObject();
         output.put("success", true);
-        output.put("title", "Login");
+        output.put("title", "LoginPage");
         output.put("data", "login");
-        output.put("message", "login");
-        output.put("icon", "");
 
         if(app.logedInUser.length() == 0){
             output.put("message", "Please login to continue");
@@ -52,9 +50,8 @@ public class Login extends HttpServlet {
             output.put("message", "You are already logged in");
             output.put("icon", "info");
         }
-
+        
         request.setAttribute("context", output);
-
         response.setContentType("text/html");
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/login.jsp");
         dispatcher.forward(request, response);

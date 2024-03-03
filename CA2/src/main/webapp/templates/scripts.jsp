@@ -34,6 +34,15 @@
 </script>
 
 
+<script>
+    const name_container = document.getElementById("user_name_container_id");
+    if (context.data.username !== undefined) {
+        name_container.innerHTML = context.data.username;
+    } else {
+        name_container.innerHTML = "Mizdooni";
+    }
+</script>
+
 
 <script>
     // let attention = Prompt();

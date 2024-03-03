@@ -1,5 +1,3 @@
-<%@ page import="org.json.JSONObject" %>
-
 <%@include file="header.jsp" %>
 
 
