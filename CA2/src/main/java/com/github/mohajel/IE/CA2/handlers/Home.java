@@ -56,7 +56,9 @@ public class Home extends HttpServlet {
             RequestDispatcher dispatcher = null;
             if (user.role == User.Role.CLIENT) {
                 dispatcher = request.getRequestDispatcher("./templates/client_home.jsp");
-            } else {
+            } else { //MANAGER
+                JSONObject managerRestaurant = app.getRestaurantByManagerUsername(user.userName);
+                output.getJSONObject("data").put("restaurant", managerRestaurant);
                 dispatcher = request.getRequestDispatcher("./templates/manager_home.jsp");
             }
             request.setAttribute("context", output);
