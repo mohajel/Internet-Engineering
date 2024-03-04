@@ -346,7 +346,7 @@ public class MizdooniApp {
         JSONObject output = new JSONObject();
 
         try {
-            String userName = input.getString("userName");
+            String userName = input.getString("username");
             String restaurantName = input.getString("restaurantName");
             double foodRate = input.getDouble("foodRate");
             double serviceRate = input.getDouble("serviceRate");

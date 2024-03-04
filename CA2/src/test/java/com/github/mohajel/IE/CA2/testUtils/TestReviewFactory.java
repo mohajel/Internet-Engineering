@@ -15,7 +15,7 @@ public class TestReviewFactory {
         String comment = "This is a comment";
 
         JSONObject review = new JSONObject();
-        review.put("userName", userName);
+        review.put("username", userName);
         review.put("restaurantName", restaurantName);
         review.put("foodRate", foodRate);
         review.put("serviceRate", serviceRate);
