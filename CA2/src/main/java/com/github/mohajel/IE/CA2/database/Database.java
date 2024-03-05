@@ -177,6 +177,7 @@ public class Database {
         return availableTablesToday;
     }
 
+    /// Reviews
     public void addReview(Review review) throws MizdooniError {
         // user must exist and must not be manager
         User user = this.getUserByUserName(review.userName);
@@ -191,7 +192,28 @@ public class Database {
             throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
         }
 
-        this.reviews.add(review);
+        Review oldReview = this.getReviewByUserNameAndRestaurantName(review.userName, review.restaurantName);
+
+        if (oldReview == null) {
+            this.reviews.add(review);
+        } else {
+            oldReview.foodRate = review.foodRate;
+            oldReview.serviceRate = review.serviceRate;
+            oldReview.ambianceRate = review.ambianceRate;
+            oldReview.overallRate = review.overallRate;
+            oldReview.comment = review.comment;
+            oldReview.reviewDate = review.reviewDate;
+        }
+
+    }
+
+    private Review getReviewByUserNameAndRestaurantName(String userName, String restaurantName) {
+        for (Review review : this.reviews) {
+            if (review.userName.equals(userName) && review.restaurantName.equals(restaurantName)) {
+                return review;
+            }
+        }
+        return null;
     }
 
     public void cancelReservation(String userName, int reservationId) throws MizdooniError {

@@ -1,6 +1,7 @@
 package com.github.mohajel.IE.CA2;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.json.JSONObject;
 import org.junit.Before;
@@ -63,6 +64,22 @@ public class MizdooniAppAddReviewTest {
         JSONObject res = app.addReview(invalidReview);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.INVALID_RATING);
+    }
+
+    @Test
+    public void testAddReviewExistedReview() {
+        JSONObject validReview = TestReviewFactory.createSimpleReview("user1", "restaurant1", 6.4);
+        app.addReview(validReview);
+
+        JSONObject newReview = TestReviewFactory.createSimpleReview("user1", "restaurant1", 1.0);
+        newReview.put("comment", "This is a new comment");
+        newReview.put("serviceRate", 2.0);
+        newReview.put("ambianceRate", 3.0);
+        newReview.put("overallRate", 4.0);
+        JSONObject res = app.addReview(newReview);
+
+        assertTrue(res.getBoolean("success"));
+        assertEquals(res.getJSONObject("data").getString("message"), "Review added successfully.");
     }
 
 }
