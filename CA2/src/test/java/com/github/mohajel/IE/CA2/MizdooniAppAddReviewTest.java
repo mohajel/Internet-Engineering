@@ -22,28 +22,28 @@ public class MizdooniAppAddReviewTest {
         app.addUser(manager);
         JSONObject user = TestUserFactory.createSimpleUser("user1", "user@gmail.com");
         app.addUser(user);
-        JSONObject restaurant = TestRestaurantFactory.createSimpleRestaurant("resturant1", "manager1");
+        JSONObject restaurant = TestRestaurantFactory.createSimpleRestaurant("restaurant1", "manager1");
         app.addRestaurant(restaurant);
     }
 
     @Test
     public void testAddReviewValid() {
-        JSONObject validReview = TestReviewFactory.createSimpleReview("user1", "resturant1", 3.4);
+        JSONObject validReview = TestReviewFactory.createSimpleReview("user1", "restaurant1", 3.4);
         JSONObject res = app.addReview(validReview);
         assertEquals(res.getBoolean("success"), true);
     }
 
     @Test
     public void testAddReviewUserIsManager() {
-        JSONObject invalidReview = TestReviewFactory.createSimpleReview("manager1", "resturant1", 3.4);
+        JSONObject invalidReview = TestReviewFactory.createSimpleReview("manager1", "restaurant1", 3.4);
         JSONObject res = app.addReview(invalidReview);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.USER_IS_MANAGER);
     }
 
     @Test
-    public void testAddReviewResturantDoesNotExist() {
-        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user1", "resturant2", 3.4);
+    public void testAddReviewRestaurantDoesNotExist() {
+        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user1", "restaurant2", 3.4);
         JSONObject res = app.addReview(invalidReview);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESTAURANT_DOES_NOT_EXIST);
@@ -51,7 +51,7 @@ public class MizdooniAppAddReviewTest {
 
     @Test
     public void testAddReviewUserDoesNotExist() {
-        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user2", "resturant1", 3.4);
+        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user2", "restaurant1", 3.4);
         JSONObject res = app.addReview(invalidReview);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.USER_DOES_NOT_EXIST);
@@ -59,7 +59,7 @@ public class MizdooniAppAddReviewTest {
 
     @Test
     public void testAddReviewInvalidRate() {
-        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user1", "resturant1", 6.4);
+        JSONObject invalidReview = TestReviewFactory.createSimpleReview("user1", "restaurant1", 6.4);
         JSONObject res = app.addReview(invalidReview);
         assertEquals(res.getBoolean("success"), false);
         assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.INVALID_RATING);
