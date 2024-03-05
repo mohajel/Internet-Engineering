@@ -79,7 +79,7 @@ public class MizdooniAppAddReviewTest {
         JSONObject res = app.addReview(newReview);
 
         assertTrue(res.getBoolean("success"));
-        assertEquals(res.getJSONObject("data").getString("message"), "Review added successfully.");
+        assertEquals(res.getString("data"), "Review added successfully.");
     }
 
 }

@@ -393,7 +393,7 @@ public class MizdooniApp {
             db.addReview(review);
 
             output.put("success", true);
-            output.put("data", new JSONObject().put("message", "Review added successfully."));
+            output.put("data", "Review added successfully.");
 
         } catch (JSONException e) {
             output.put("success", false);
