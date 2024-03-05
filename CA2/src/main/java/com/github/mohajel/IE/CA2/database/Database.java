@@ -234,6 +234,7 @@ public class Database {
         return restaurantsContainName;
     }
 
+    /// Search for restaurants
     public Restaurant getRestaurantByName(String restaurantName) {
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.name.equals(restaurantName)) {
@@ -251,6 +252,16 @@ public class Database {
             }
         }
         return restaurantsByType;
+    }
+
+    public ArrayList<Restaurant> getRestaurantByCity(String restaurantLocation) {
+        ArrayList<Restaurant> restaurantsByLocation = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.address.city.equals(restaurantLocation)) {
+                restaurantsByLocation.add(restaurant);
+            }
+        }
+        return restaurantsByLocation;
     }
 
     public Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {

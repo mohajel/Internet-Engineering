@@ -263,6 +263,7 @@ public class MizdooniApp {
         return output;
     }
 
+    /// Search restaurants
     public JSONObject searchRestaurantsContainName(JSONObject data) {
         System.out.println("search restaurants by name called");
         JSONObject output = new JSONObject();
@@ -299,6 +300,35 @@ public class MizdooniApp {
             String type = input.getString("type");
 
             ArrayList<Restaurant> restaurants = db.getRestaurantByType(type);
+            if (restaurants.isEmpty()) {
+                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+            }
+
+            output.put("success", true);
+            output.put("data", new JSONObject().put("restaurants", new JSONArray()));
+            for (Restaurant restaurant : restaurants) {
+                output.getJSONObject("data").getJSONArray("restaurants").put(restaurant.toJson());
+            }
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+        }
+        return output;
+    }
+
+    public JSONObject searchRestaurantsByCity(JSONObject input) {
+        System.out.println("search restaurants by city called");
+        JSONObject output = new JSONObject();
+        try {
+            String city = input.getString("city");
+
+            ArrayList<Restaurant> restaurants = db.getRestaurantByCity(city);
             if (restaurants.isEmpty()) {
                 throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
             }
