@@ -44,7 +44,7 @@ public class CliHandler {
         } else if (command.equals("showReservationHistory")) {
             return this.app.showReservationHistory(data);
         } else if (command.equals("searchRestaurantsByName")) {
-            return this.app.searchRestaurantsByName(data);
+            return this.app.searchRestaurantsContainName(data);
         } else if (command.equals("searchRestaurantsByType")) {
             return this.app.searchRestaurantsByType(data);
         } else if (command.equals("showAvailableTables")) {

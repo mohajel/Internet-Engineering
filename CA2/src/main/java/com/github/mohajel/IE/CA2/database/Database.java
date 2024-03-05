@@ -224,6 +224,16 @@ public class Database {
         return null;
     }
 
+    public ArrayList<Restaurant> getRestaurantsContainName(String restaurantName) {
+        ArrayList<Restaurant> restaurantsContainName = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.name.contains(restaurantName)) {
+                restaurantsContainName.add(restaurant);
+            }
+        }
+        return restaurantsContainName;
+    }
+
     public Restaurant getRestaurantByName(String restaurantName) {
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.name.equals(restaurantName)) {
