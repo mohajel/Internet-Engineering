@@ -370,7 +370,6 @@ public class MizdooniApp {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
-        // TODO
         return output;
     }
 
