@@ -47,6 +47,8 @@ public class CliHandler {
             return this.app.searchRestaurantsContainName(data);
         } else if (command.equals("searchRestaurantsByType")) {
             return this.app.searchRestaurantsByType(data);
+        } else if (command.equals("searchRestaurantsByCity")) {
+            return this.app.searchRestaurantsByCity(data);
         } else if (command.equals("showAvailableTables")) {
             return this.app.showAvailableTables(data);
         } else if (command.equals("addReview")) {
