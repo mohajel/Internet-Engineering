@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA2;
 
+import com.github.mohajel.IE.CA2.utils.InitMizdooniFromFile;
 import org.json.*;
 
 import com.github.mohajel.IE.CA2.database.Database;
@@ -33,8 +34,9 @@ public class MizdooniApp {
     {
         if (single_instance == null) {
             try {
-                Database db = new Database(true);
+                Database db = new Database();
                 single_instance = new MizdooniApp(db);
+                InitMizdooniFromFile.init(single_instance);
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
             }
