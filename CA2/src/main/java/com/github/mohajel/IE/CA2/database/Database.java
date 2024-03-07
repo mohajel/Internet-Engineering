@@ -216,6 +216,33 @@ public class Database {
         return null;
     }
 
+    public JSONObject getRateRestaurantByName(String nameRestaurant) {
+        double sumFoodRate = 0;
+        double sumServiceRate = 0;
+        double sumAmbianceRate = 0;
+        double sumOverallRate = 0;
+
+        int count = 0;
+
+        for (Review review : this.reviews) {
+            if (review.restaurantName.equals(nameRestaurant)) {
+                sumFoodRate += review.foodRate;
+                sumServiceRate += review.serviceRate;
+                sumAmbianceRate += review.ambianceRate;
+                sumOverallRate += review.overallRate;
+                count++;
+            }
+        }
+
+        JSONObject result = new JSONObject();
+        result.put("foodRate", sumFoodRate / count);
+        result.put("serviceRate", sumServiceRate / count);
+        result.put("ambianceRate", sumAmbianceRate / count);
+        result.put("overallRate", sumOverallRate / count);
+
+        return result;
+    }
+
     public void cancelReservation(String userName, int reservationId) throws MizdooniError {
         Reserve reserve = this.getReserveByReservationIdAndUserName(reservationId, userName);
         if (reserve == null) {
