@@ -14,8 +14,8 @@ import org.json.JSONObject;
 import com.github.mohajel.IE.CA2.MizdooniApp;
 import com.github.mohajel.IE.CA2.models.User;
 
-@WebServlet(name = "Home", urlPatterns = { "/" })
-public class Home extends HttpServlet {
+@WebServlet(name = "HomeHandler", urlPatterns = { "/" })
+public class HomeHandler extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +55,7 @@ public class Home extends HttpServlet {
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
             RequestDispatcher dispatcher = null;
             if (user.role == User.Role.CLIENT) {
-                dispatcher = request.getRequestDispatcher("./templates/client_home.jsp");
+                dispatcher = request.getRequestDispatcher("./templates/clientHomePage.jsp");
             } else { //MANAGER
                 JSONObject managersRestaurant = app.getRestaurantByManagerUsername(user.userName);
                 JSONObject restaurantsTables = new JSONObject();
@@ -64,7 +64,7 @@ public class Home extends HttpServlet {
                 }
                 output.getJSONObject("data").put("restaurant", managersRestaurant);
                 output.getJSONObject("data").put("tables", restaurantsTables);
-                dispatcher = request.getRequestDispatcher("./templates/manager_home.jsp");
+                dispatcher = request.getRequestDispatcher("./templates/managerHomePage.jsp");
             }
             request.setAttribute("context", output);
             dispatcher.forward(request, response);;

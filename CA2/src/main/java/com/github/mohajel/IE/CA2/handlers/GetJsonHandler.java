@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 @WebServlet(name = "GetJson", urlPatterns = { "/json" })
-public class GetJson extends HttpServlet {
+public class GetJsonHandler extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

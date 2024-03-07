@@ -9,9 +9,9 @@ com/github/mohajel/IE/CA2/MizdooniShowReservationHistoryTest.class
 com/github/mohajel/IE/CA2/MizdooniAppAddTableTest.class
 com/github/mohajel/IE/CA2/UtilsTest.class
 com/github/mohajel/IE/CA2/models/HourTest.class
-com/github/mohajel/IE/CA2/MizdooniAppAddReviewTest.class
 com/github/mohajel/IE/CA2/testUtils/TestReservationFactory.class
+com/github/mohajel/IE/CA2/MizdooniAppAddReviewTest.class
 com/github/mohajel/IE/CA2/models/MizdooniDateTest.class
 com/github/mohajel/IE/CA2/MizdooniAppCancelReservationTest.class
-com/github/mohajel/IE/CA2/MizdooniSearchRestaurantsTest.class
 com/github/mohajel/IE/CA2/testUtils/TestReviewFactory.class
+com/github/mohajel/IE/CA2/MizdooniSearchRestaurantsTest.class

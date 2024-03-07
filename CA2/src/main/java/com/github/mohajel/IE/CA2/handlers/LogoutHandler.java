@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.github.mohajel.IE.CA2.MizdooniApp;
 
 
-@WebServlet(name = "logout", urlPatterns = { "/logout" })
-public class Logout extends HttpServlet {
+@WebServlet(name = "LogoutHandler", urlPatterns = { "/logout" })
+public class LogoutHandler extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
