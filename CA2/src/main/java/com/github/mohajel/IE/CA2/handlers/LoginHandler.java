@@ -60,12 +60,14 @@ public class LoginHandler extends HttpServlet {
                 response.sendRedirect("/");
                 log("Login successful");
             } else {
-                response.sendRedirect("/login");
+                request.setAttribute("context", output);
+                response.setContentType("text/html");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/loginPage.jsp");
+                dispatcher.forward(request, response);
                 log("Login failed");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/login");
         }
     }
 }
