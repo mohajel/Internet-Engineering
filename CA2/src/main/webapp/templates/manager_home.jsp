@@ -1,9 +1,6 @@
 
 <%@include file="header.jsp" %>
     
-
-<h1>Welcome {user_name} <a href="/logout" style="color: red">Log Out</a></h1>
-
 <h2>Your Restaurant Information:</h2>
 <div id="show_info"></div>
 
@@ -44,10 +41,6 @@
     </tr>
 </table>
 
-
-<!-- <button id="btn" onclick="convert( )"> Click Here </button> <br>
-<h3> Resulting Table: </h3>
-<div id="container"></div> -->
 
 <%@include file="scripts.jsp" %>
 
@@ -104,15 +97,5 @@
 <script>
  
 </script>
-
-<script>
-    // alert("Welcome to Mizdooni");
-    // Swal.fire({
-    //   title: 'Welcome to Mizdooni',
-    //   text: 'Please login to continue',
-    //   icon: 'info',
-    //   confirmButtonText: 'Login'
-    // })
-  </script>
 
 <%@include file="footer.jsp" %>
