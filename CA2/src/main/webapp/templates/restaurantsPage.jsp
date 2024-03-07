@@ -1,4 +1,5 @@
 <%@include file="header.jsp" %>
+<%@include file="scripts.jsp" %>
 
 <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
 <br><br>
@@ -16,10 +17,10 @@
     <button type="submit" name="action" value="sort_by_rate">Overall Score</button>
 </form>
 <br><br>
-<table style="width:100%; text-align:center;" border="1">
+<table id="table" style="width:100%; text-align:center;" border="1">
     <tr>
         <th>Id</th>
-        <th>Name</th> 
+        <th>Name</th>
         <th>City</th>
         <th>Type</th>
         <th>Time</th>
@@ -28,34 +29,12 @@
         <th>Ambiance Score</th>
         <th>Overall Score</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td><a href="/restaurants/1">Fast Food</a></td> 
-        <td>Tehran</td>
-        <td>Italian</td>
-        <td>8:00 - 23:00</td>
-        <td>3.45</td>
-        <td>4.45</td>
-        <td>3.5</td>
-        <td>4.75</td>
-    </tr>
-    <tr>
-        <td>14</td>
-        <td><a href="/restaurants/14">Akbar Agha</a></td> 
-        <td>Esfahan</td>
-        <td>Iranian</td>
-        <td>8:00 - 22:30</td>
-        <td>2.45</td>
-        <td>3.45</td>
-        <td>4.5</td>
-        <td>4.75</td>
-    </tr>
 </table>
 
-<%@include file="scripts.jsp" %>
-
 <script>
-
+    var insideTag = context.restaurants;
+    var table = document.getElementById("table");
+    table.innerHTML = table.innerHTML + insideTag;
 </script>
 
 <%@include file="footer.jsp" %>
