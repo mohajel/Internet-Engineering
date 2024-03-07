@@ -73,6 +73,26 @@ public class MizdooniApp {
         return output;
     }
 
+
+    public JSONObject getTablesByRestaurantName(String restaurantName)
+    {
+        //TODO
+        JSONObject table1 = new JSONObject();
+        table1.put("tableNumber", 12);
+        table1.put("seatsNumber", 23);
+
+        JSONObject table2 = new JSONObject();
+        table2.put("tableNumber", 112);
+
+        table2.put("seatsNumber", 213);
+
+        JSONObject tables = new JSONObject();
+        tables.put("1", table1);
+        tables.put("2", table2);
+
+        return tables;
+    }
+
     public JSONObject getRestaurantByManagerUsername(String managerUsername) {
          // TODO
          JSONObject restaurant = new JSONObject();

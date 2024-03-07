@@ -7,22 +7,23 @@
 <h2>Your Restaurant Information:</h2>
 <div id="show_info"></div>
 
-<!-- <ul>
-    <li id="id">Id: 1</li>
-    <li id="name">Name: Fast Food</li>
-    <li id="type">Type: Italian</li>
-    <li id="time">Time: 08:00 - 23:00</li>
-    <li id="description">Description: "Best food you can eat"</li>
-    <li id="address">Address: North Kargar, Tehran, Iran</li>
-    <li id="tables">Tables:</li>
-    <ul>
-        <li>table1</li>
-        <li>table2</li>
-        <li>table3</li>
-        <li>table4</li>
-        <li>table5</li>
-    </ul>
-</ul> -->
+<table class="table table-striped table-dark" id="restaurant_info_table_id">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Type</th>
+            <th>Manager</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Existing rows will be inserted here -->
+    </tbody>
+</table>
+
 
 <table border="1" cellpadding="10">
     <tr>
@@ -51,73 +52,57 @@
 <%@include file="scripts.jsp" %>
 
 <script>
-
     let c = document.getElementById("show_info");
     c.innerHTML = JSON.stringify(context.data.restaurant);
+    c.innerHTML = c.innerHTML + "Tables:" + JSON.stringify(context.data.tables);
+</script>
 
-   // Function to convert JSON data to HTML table
-   function convert() {
-      
-      // Sample JSON data
-    //   let jsonData = [
-    //      {
-    //         name: "Saurabh",
-    //         age: "20",
-    //         city: "Prayagraj"
-    //      },
-    //      {
-    //         name: "Vipin",
-    //         age: 23,
-    //         city: "Lucknow",
-    //      },
-    //      {
-    //         name: "Saksham",
-    //         age: 21,
-    //         city: "Noida"
-    //      }
-    //   ];
+<script>
+    function addColumnsToRestaurantTable()
+    {
+        // Get the table element
+        var table = document.getElementById("restaurant_info_table_id");
+        var jsonObject = context.data.restaurant;
 
-      let jsonData = context.data.restaurant;
-      
-      // Get the container element where the table will be inserted
-      let container = document.getElementById("container");
-      
-      // Create the table element
-      let table = document.createElement("table");
-      
-      // Get the keys (column names) of the first object in the JSON data
-      let cols = Object.keys(jsonData[0]);
-      
-      // Create the header element
-      let thead = document.createElement("thead");
-      let tr = document.createElement("tr");
-      
-      // Loop through the column names and create header cells
-      cols.forEach((item) => {
-         let th = document.createElement("th");
-         th.innerText = item; // Set the column name as the text of the header cell
-         tr.appendChild(th); // Append the header cell to the header row
-      });
-      thead.appendChild(tr); // Append the header row to the header
-      table.append(tr) // Append the header to the table
-      
-      // Loop through the JSON data and create table rows
-      jsonData.forEach((item) => {
-         let tr = document.createElement("tr");
-         
-         // Get the values of the current object in the JSON data
-         let vals = Object.values(item);
-         
-         // Loop through the values and create table cells
-         vals.forEach((elem) => {
-            let td = document.createElement("td");
-            td.innerText = elem; // Set the value as the text of the table cell
-            tr.appendChild(td); // Append the table cell to the table row
-         });
-         table.appendChild(tr); // Append the table row to the table
-      });
-      container.appendChild(table) // Append the table to the container element
-   }
+        // Create a new row
+        var newRow = table.insertRow();
+
+        // Add cells to the row
+        var nameCell = newRow.insertCell(0);
+        nameCell.innerHTML = jsonObject.name;
+
+        var descriptionCell = newRow.insertCell(1);
+        descriptionCell.innerHTML = jsonObject.description;
+
+        var addressCell = newRow.insertCell(2);
+        addressCell.innerHTML = jsonObject.address.country + ", " + jsonObject.address.city + ", " + jsonObject.address.street;
+
+        var startTimeCell = newRow.insertCell(3);
+        startTimeCell.innerHTML = jsonObject.startTime;
+
+        var endTimeCell = newRow.insertCell(4);
+        endTimeCell.innerHTML = jsonObject.endTime;
+
+        var typeCell = newRow.insertCell(5);
+        typeCell.innerHTML = jsonObject.type;
+
+        var managerCell = newRow.insertCell(6);
+        managerCell.innerHTML = jsonObject.managerUsername;
+    }
+</script>
+
+<script>
+    var table = document.getElementById("restaurant_info_table_id");
+    var size = Object.keys(context.data.restaurant).length;
+    if (size === 0) {
+        table.style.display = "none";
+    } else{
+        addColumnsToRestaurantTable();
+    }
+</script>
+
+<script>
+ 
 </script>
 
 <script>

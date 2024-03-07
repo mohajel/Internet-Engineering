@@ -57,8 +57,13 @@ public class Home extends HttpServlet {
             if (user.role == User.Role.CLIENT) {
                 dispatcher = request.getRequestDispatcher("./templates/client_home.jsp");
             } else { //MANAGER
-                JSONObject managerRestaurant = app.getRestaurantByManagerUsername(user.userName);
-                output.getJSONObject("data").put("restaurant", managerRestaurant);
+                JSONObject managersRestaurant = app.getRestaurantByManagerUsername(user.userName);
+                JSONObject restaurantsTables = new JSONObject();
+                if (!managersRestaurant.isEmpty()) {
+                    restaurantsTables = app.getTablesByRestaurantName(managersRestaurant.getString("name"));    
+                }
+                output.getJSONObject("data").put("restaurant", managersRestaurant);
+                output.getJSONObject("data").put("tables", restaurantsTables);
                 dispatcher = request.getRequestDispatcher("./templates/manager_home.jsp");
             }
             request.setAttribute("context", output);

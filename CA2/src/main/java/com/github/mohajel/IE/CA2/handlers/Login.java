@@ -82,10 +82,6 @@ public class Login extends HttpServlet {
 
             // assertEquals(res.getBoolean("success"), false);
             // assertEquals(res.getJSONObject("data").getString("error"), MizdooniError.RESERVATION_TIME_PASSED);
-
-            
-            log("username:" + username);
-            log("password:" + password);
         } catch (Exception e) {
             // Handle the exception here
             e.printStackTrace();

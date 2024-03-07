@@ -7,6 +7,7 @@ com/github/mohajel/IE/CA2/models/Table.class
 com/github/mohajel/IE/CA2/MizdooniApp.class
 com/github/mohajel/IE/CA2/CliHandler.class
 com/github/mohajel/IE/CA2/models/MizdooniDate.class
+com/github/mohajel/IE/CA2/handlers/PostLogin.class
 com/github/mohajel/IE/CA2/models/Reserve.class
 com/github/mohajel/IE/CA2/handlers/GetJson.class
 com/github/mohajel/IE/CA2/handlers/Login.class
