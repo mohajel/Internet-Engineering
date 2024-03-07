@@ -31,30 +31,31 @@ public class CliHandler {
         String command = input.getString("command");
         JSONObject data = input.getJSONObject("data");
 
-        if (command.equals("addUser")) {
-            return this.app.addUser(data);
-        } else if (command.equals("addRestaurant")) {
-            return this.app.addRestaurant(data);
-        } else if (command.equals("addTable")) {
-            return this.app.addTable(data);
-        } else if (command.equals("reserveTable")) {
-            return this.app.reserveTable(data);
-        } else if (command.equals("cancelReservation")) {
-            return this.app.cancelReservation(data);
-        } else if (command.equals("showReservationHistory")) {
-            return this.app.showReservationHistory(data);
-        } else if (command.equals("searchRestaurantsByName")) {
-            return this.app.searchRestaurantsContainName(data);
-        } else if (command.equals("searchRestaurantsByType")) {
-            return this.app.searchRestaurantsByType(data);
-        } else if (command.equals("searchRestaurantsByCity")) {
-            return this.app.searchRestaurantsByCity(data);
-        } else if (command.equals("showAvailableTables")) {
-            return this.app.showAvailableTables(data);
-        } else if (command.equals("addReview")) {
-            return this.app.addReview(data);
-        } else {
-            return new JSONObject().put("error", MizdooniError.INVALID_COMMAND);
+        switch (command) {
+            case "addUser":
+                return this.app.addUser(data);
+            case "addRestaurant":
+                return this.app.addRestaurant(data);
+            case "addTable":
+                return this.app.addTable(data);
+            case "reserveTable":
+                return this.app.reserveTable(data);
+            case "cancelReservation":
+                return this.app.cancelReservation(data);
+            case "showReservationHistory":
+                return this.app.showReservationHistory(data);
+            case "searchRestaurantsByName":
+                return this.app.searchRestaurantsContainName(data);
+            case "searchRestaurantsByType":
+                return this.app.searchRestaurantsByType(data);
+            case "searchRestaurantsByCity":
+                return this.app.searchRestaurantsByCity(data);
+            case "showAvailableTables":
+                return this.app.showAvailableTables(data);
+            case "addReview":
+                return this.app.addReview(data);
+            default:
+                return new JSONObject().put("error", MizdooniError.INVALID_COMMAND);
         }
     }
 }
