@@ -76,19 +76,15 @@ public class MizdooniApp {
 
     public JSONObject getTablesByRestaurantName(String restaurantName)
     {
-        //TODO
-        JSONObject table1 = new JSONObject();
-        table1.put("tableNumber", 12);
-        table1.put("seatsNumber", 23);
-
-        JSONObject table2 = new JSONObject();
-        table2.put("tableNumber", 112);
-
-        table2.put("seatsNumber", 213);
-
         JSONObject tables = new JSONObject();
-        tables.put("1", table1);
-        tables.put("2", table2);
+
+        ArrayList<Table> tablesList = db.getTablesByRestaurantName(restaurantName);
+        for (int i = 0; i < tablesList.size(); i++) {
+            JSONObject table = new JSONObject();
+            table.put("tableNumber", tablesList.get(i).id);
+            table.put("seatsNumber", tablesList.get(i).capacity);
+            tables.put(String.valueOf(i), table);
+        }
 
         return tables;
     }

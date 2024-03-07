@@ -305,6 +305,16 @@ public class Database {
         return false;
     }
 
+    public ArrayList<Table> getTablesByRestaurantName(String restaurantName) {
+        ArrayList<Table> tablesByRestaurant = new ArrayList<Table>();
+        for (Table table : this.tables) {
+            if (table.restaurantName.equals(restaurantName)) {
+                tablesByRestaurant.add(table);
+            }
+        }
+        return tablesByRestaurant;
+    }
+
     public ArrayList<Reserve> getReservationsByUserName(String userName) {
         ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
         for (Reserve reserve : this.reserves) {
