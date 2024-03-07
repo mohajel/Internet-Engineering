@@ -217,13 +217,12 @@ public class Database {
         return null;
     }
 
-    public JSONObject getAllRestaurantWithAVGRate() {
-        JSONObject result = new JSONObject();
-        for (int i = 0; i < this.restaurants.size(); i++) {
-            Restaurant restaurant = this.restaurants.get(i);
+    public JSONArray getAllRestaurantWithAVGRate() {
+        JSONArray result = new JSONArray();
+        for (Restaurant restaurant : this.restaurants) {
             JSONObject restaurantJson = restaurant.toJson();
             restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
-            result.put(String.valueOf(i), restaurantJson);
+            result.put(restaurantJson);
         }
         return result;
     }
