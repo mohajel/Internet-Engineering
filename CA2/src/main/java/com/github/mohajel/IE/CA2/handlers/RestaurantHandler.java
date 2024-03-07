@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import com.github.mohajel.IE.CA2.MizdooniApp;
+import com.github.mohajel.IE.CA2.models.User;
+
 @WebServlet(name = "RestaurantHandler", urlPatterns = { "/restaurant" })
 public class RestaurantHandler extends HttpServlet {
 
@@ -18,35 +21,24 @@ public class RestaurantHandler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //                      look at these and then remove this comments
 
-        // // Set the content type of the response to "text/html"
-        // response.setContentType("text/html");
+        MizdooniApp app = MizdooniApp.getInstance();
 
-        // // Create or retrieve the data you want to pass to the JSP file
-        // String message = "login";
-
-        // // Set the data as an attribute in the request object
-        // request.setAttribute("message", message);
-
-        // // Get the RequestDispatcher for the JSP file
-        // RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/login.jsp");
-
-        // // Forward the request and response objects to the JSP file
-
-        // MizdooniApp app = MizdooniApp.getInstance();
-
-        //                                  what ever u want to 
         JSONObject output = new JSONObject();
         output.put("success", true);
-        output.put("title", "LoginPage");
-        output.put("data", "login");
-
+        output.put("title", "RestaurantPage");
         
-        request.setAttribute("context", output);
         response.setContentType("text/html");
+        
+        if(app.logedInUser.length() == 0){
+            response.sendRedirect("/login");
+            log("Sending to login page to login first");
+        } else {
+            User user  = app.db.getUserByUserName(app.logedInUser);
+            output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
+        }
+        request.setAttribute("context", output);
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantPage.jsp");
         dispatcher.forward(request, response);
-
     }
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.github.mohajel.IE.CA2.MizdooniApp;
+import com.github.mohajel.IE.CA2.models.User;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,11 +26,13 @@ public class RestaurantsHandler extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        MizdooniApp app = MizdooniApp.getInstance();
+
         JSONObject output = new JSONObject();
         output.put("success", true);
         output.put("title", "restaurantsPage");
 
-        JSONArray restaurants = MizdooniApp.getInstance().showAllRestaurantWithAVGRate();
+        JSONArray restaurants = app.showAllRestaurantWithAVGRate();
         StringBuilder HTMLTable = new StringBuilder();
         for (int i = 0; i < restaurants.length(); i++) {
             JSONObject restaurant = restaurants.getJSONObject(i);
@@ -43,12 +47,19 @@ public class RestaurantsHandler extends HttpServlet {
             HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("ambianceRate")).append("</th>");
             HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("overallRate")).append("</th>");
         }
-
         output.put("restaurants", HTMLTable.toString());
+
+
+        if(app.logedInUser.length() == 0){
+            response.sendRedirect("/login");
+            log("Sending to login page to login first");
+        } else {
+            User user  = app.db.getUserByUserName(app.logedInUser);
+            output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
+        }
         request.setAttribute("context", output);
         response.setContentType("text/html");
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantsPage.jsp");
         dispatcher.forward(request, response);
-
     }
 }
