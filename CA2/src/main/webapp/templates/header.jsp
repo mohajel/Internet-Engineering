@@ -41,6 +41,11 @@
         #lastPara {
             text-decoration: underline;
         }
+        body {
+            background-image:url("http://media.istockphoto.com/id/84008626/photo/unoccupied-table-in-restaurant.jpg?s=2048x2048&w=is&k=20&c=QrUeVlHdrfRYJ1oKqVvVri2mhKxg73Eec8bhkzrRNi8=");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }     
     </style>
 
 </head>
@@ -83,7 +88,7 @@
         </div>
       </nav> -->
       
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="opacity: 0.9;">
         <div class="container">
           <a class="navbar-brand" href="#" id="user_name_container_id">Container</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,15 +109,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
               </li>
-
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown07">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li> -->
             </ul>
             <form class="form-inline my-2 my-md-0">
               <input class="form-control" type="text" placeholder="Search" aria-label="Search">
