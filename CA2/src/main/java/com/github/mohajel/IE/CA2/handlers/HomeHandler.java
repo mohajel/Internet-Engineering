@@ -57,12 +57,12 @@ public class HomeHandler extends HttpServlet {
             if (user.role == User.Role.CLIENT) {
                 dispatcher = request.getRequestDispatcher("./templates/clientHomePage.jsp");
             } else { //MANAGER
-                JSONObject managersRestaurant = app.getRestaurantByManagerUsername(user.userName);
+                JSONObject managersRestaurants = app.getRestaurantByManagerUsername(user.userName);
                 JSONObject restaurantsTables = new JSONObject();
-                if (!managersRestaurant.isEmpty()) {
-                    // restaurantsTables = app.getTablesByRestaurantName(managersRestaurant.getString("name"));    
+                if (!managersRestaurants.isEmpty()) {
+                    restaurantsTables = app.getTablesByManagerName(user.userName);    
                 }
-                output.getJSONObject("data").put("restaurant", managersRestaurant);
+                output.getJSONObject("data").put("restaurant", managersRestaurants);
                 output.getJSONObject("data").put("tables", restaurantsTables);
                 dispatcher = request.getRequestDispatcher("./templates/managerHomePage.jsp");
             }

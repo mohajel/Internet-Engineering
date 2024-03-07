@@ -4,7 +4,7 @@
 <h2>Your Restaurant Information:</h2>
 <div id="show_info"></div>
 
-<table class="table table-striped table-dark" id="restaurant_info_table_id">
+<table class="table table-striped .table-hover table-dark" style="opacity: 0.9;" id="restaurant_info_table_id">
     <thead>
         <tr>
             <th>Name</th>
@@ -22,23 +22,30 @@
 </table>
 
 
-<table border="1" cellpadding="10">
-    <tr>
-        <td>
+<div class="form-group">
+    <h3>Add Table:</h3>
+    <form method="post" action="">
+        <label>Table Number:</label>
+        <input name="table_number" type="number" min="0"/>
+        <br>
+        <label>Seats Number:</label>
+        <input name="seats_number" type="number" min="1"/>
+        <br>
+        <button type="submit">Add</button>
+    </form>
+</div>./r
 
-        <h3>Add Table:</h3>
-        <form method="post" action="">
-            <label>Table Number:</label>
-            <input name="table_number" type="number" min="0"/>
-            <br>
-            <label>Seats Number:</label>
-            <input name="seats_number" type="number" min="1"/>
-            <br>
-            <button type="submit">Add</button>
-        </form>
-
-        </td>
-    </tr>
+<table class="table table-striped .table-hover table-dark" style="opacity: 0.9;"  id="managers_table_info_table_id">
+    <thead>
+        <tr>
+            <th>Restaurant Name</th>
+            <th>Table Number</th>
+            <th>Seats Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Existing rows will be inserted here -->
+    </tbody>
 </table>
 
 
@@ -51,11 +58,11 @@
 </script>
 
 <script>
-    function addColumnsToRestaurantTable()
+    function addColumnsToRestaurantTable(jsonObject)
     {
         // Get the table element
         var table = document.getElementById("restaurant_info_table_id");
-        var jsonObject = context.data.restaurant;
+        // var jsonObject = context.data.restaurant;
 
         // Create a new row
         var newRow = table.insertRow();
@@ -90,12 +97,51 @@
     if (size === 0) {
         table.style.display = "none";
     } else{
-        addColumnsToRestaurantTable();
+        for (var i = 0; i < size; i++) {
+            addColumnsToRestaurantTable(context.data.restaurant[i]);
+        }
     }
 </script>
 
 <script>
+    function addColumnsToManagersTable(restaurantTable, i)
+    {
+        
+
+        // Get the table element
+        var table = document.getElementById("managers_table_info_table_id");
+        // var restaurantTable = context.data.restaurant;
+
+        // Create a new row
+        var newRow = table.insertRow();
+
+        // Add cells to the row
+        var restaurantNameCell = newRow.insertCell(0);
+        restaurantNameCell.innerHTML = restaurantTable.restaurantName;
+
+        var tableNumberCell = newRow.insertCell(1);
+        tableNumberCell.innerHTML = restaurantTable.tableNumber;
+
+        var seatsNumberCell = newRow.insertCell(2);
+        seatsNumberCell.innerHTML = restaurantTable.seatsNumber;
+
+    }
  
+</script>
+
+<script>
+    var table = document.getElementById("managers_table_info_table_id");
+    var size = Object.keys(context.data.tables).length;
+    if (size === 0) {
+        table.style.display = "none";
+    } else{
+
+        for(const x in context.data.tables)
+        {
+            console.log(context.data.tables[x]);
+            addColumnsToManagersTable(context.data.tables[x], 0);  
+        }
+    }
 </script>
 
 <%@include file="footer.jsp" %>
