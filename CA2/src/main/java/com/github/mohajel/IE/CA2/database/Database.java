@@ -295,6 +295,16 @@ public class Database {
         return null;
     }
 
+    public ArrayList<Restaurant> getRestaurantsByManagerUserName(String managerUserName) {
+        ArrayList<Restaurant> restaurantsByManager = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.managerUserName.equals(managerUserName)) {
+                restaurantsByManager.add(restaurant);
+            }
+        }
+        return restaurantsByManager;
+    }
+
     public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
         for (Reserve reserve : this.reserves) {
             if (reserve.tableId == tableId && reserve.restaurantName.equals(restaurantName)
@@ -303,6 +313,16 @@ public class Database {
             }
         }
         return false;
+    }
+
+    public ArrayList<Table> getTablesByRestaurantName(String restaurantName) {
+        ArrayList<Table> tablesByRestaurant = new ArrayList<Table>();
+        for (Table table : this.tables) {
+            if (table.restaurantName.equals(restaurantName)) {
+                tablesByRestaurant.add(table);
+            }
+        }
+        return tablesByRestaurant;
     }
 
     public ArrayList<Reserve> getReservationsByUserName(String userName) {

@@ -76,42 +76,38 @@ public class MizdooniApp {
 
     public JSONObject getTablesByRestaurantName(String restaurantName)
     {
-        //TODO
-        JSONObject table1 = new JSONObject();
-        table1.put("tableNumber", 12);
-        table1.put("seatsNumber", 23);
-
-        JSONObject table2 = new JSONObject();
-        table2.put("tableNumber", 112);
-
-        table2.put("seatsNumber", 213);
-
         JSONObject tables = new JSONObject();
-        tables.put("1", table1);
-        tables.put("2", table2);
+
+        ArrayList<Table> tablesList = db.getTablesByRestaurantName(restaurantName);
+        for (int i = 0; i < tablesList.size(); i++) {
+            JSONObject table = new JSONObject();
+            table.put("tableNumber", tablesList.get(i).id);
+            table.put("seatsNumber", tablesList.get(i).capacity);
+            tables.put(String.valueOf(i), table);
+        }
 
         return tables;
     }
 
     public JSONObject getRestaurantByManagerUsername(String managerUsername) {
-         // TODO
-         JSONObject restaurant = new JSONObject();
+        JSONObject restaurant = new JSONObject();
 
-         restaurant.put("name", "restaurant1");
-         restaurant.put("managerUsername", managerUsername);
-         restaurant.put("type", "Iranian");
-         restaurant.put("startTime", "10:00");
-         restaurant.put("endTime", "22:00");
-         restaurant.put("description", "This is a test restaurant");
- 
-         JSONObject address = new JSONObject();
-         address.put("country", "Iran");
-         address.put("city", "Tehran");
-         address.put("street", "Valiasr");
- 
-         restaurant.put("address", address);
+        ArrayList<Restaurant> restaurants = db.getRestaurantsByManagerUserName(managerUsername);
 
-         return restaurant;
+        for (int i = 0; i < restaurants.size(); i++) {
+            JSONObject restaurantJson = new JSONObject();
+            restaurantJson.put("name", restaurants.get(i).name);
+            restaurantJson.put("managerUsername", restaurants.get(i).managerUserName);
+            restaurantJson.put("type", restaurants.get(i).type);
+            restaurantJson.put("startTime", restaurants.get(i).startTime.toString());
+            restaurantJson.put("endTime", restaurants.get(i).endTime.toString());
+            restaurantJson.put("description", restaurants.get(i).description);
+            restaurantJson.put("address", restaurants.get(i).address.toJson());
+
+            restaurant.put(String.valueOf(i), restaurantJson);
+        }
+
+        return restaurant;
     }
     
     public JSONObject addUser(JSONObject input) {
