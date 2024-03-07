@@ -2,7 +2,6 @@ com/github/mohajel/IE/CA2/models/Hour.class
 com/github/mohajel/IE/CA2/models/Restaurant.class
 com/github/mohajel/IE/CA2/handlers/Logout.class
 com/github/mohajel/IE/CA2/models/Address.class
-com/github/mohajel/IE/CA2/App.class
 com/github/mohajel/IE/CA2/models/Table.class
 com/github/mohajel/IE/CA2/MizdooniApp.class
 com/github/mohajel/IE/CA2/models/MizdooniDate.class
