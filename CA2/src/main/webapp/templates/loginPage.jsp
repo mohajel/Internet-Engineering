@@ -1,5 +1,7 @@
 <%@include file="header.jsp" %>
 
+<br>  <br>  <br>  <br> 
+
   <h1>Welcome to Mizdooni</h1>
   <form method="post" action="">
     <label>Username:</label>

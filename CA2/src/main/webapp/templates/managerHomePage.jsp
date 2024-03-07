@@ -21,32 +21,40 @@
     </tbody>
 </table>
 
+<br>  <br>  <br>  <br> 
 
-<div class="form-group">
-    <h3>Add Table:</h3>
-    <form method="post" action="">
-        <label>Table Number:</label>
-        <input name="table_number" type="number" min="0"/>
-        <br>
-        <label>Seats Number:</label>
-        <input name="seats_number" type="number" min="1"/>
-        <br>
-        <button type="submit">Add</button>
-    </form>
-</div>./r
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <h3>Add Table:</h3>
+            <form method="post" action="">
+                <label>Table Number:</label>
+                <input name="table_number" type="number" min="0"/>
+                <br>
+                <label>Seats Number:</label>
+                <input name="seats_number" type="number" min="1"/>
+                <br>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <div class="col">
+        <table class="table table-striped .table-hover table-dark" style="opacity: 0.9;"  id="managers_table_info_table_id">
+            <thead>
+                <tr>
+                    <th>Restaurant Name</th>
+                    <th>Table Number</th>
+                    <th>Seats Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Existing rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+  </div>
 
-<table class="table table-striped .table-hover table-dark" style="opacity: 0.9;"  id="managers_table_info_table_id">
-    <thead>
-        <tr>
-            <th>Restaurant Name</th>
-            <th>Table Number</th>
-            <th>Seats Number</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Existing rows will be inserted here -->
-    </tbody>
-</table>
+
 
 
 <%@include file="scripts.jsp" %>
