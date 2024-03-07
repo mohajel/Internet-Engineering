@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class InitMizdooniFromFile {
-    public static String input_file = "src/main/java/com/github/mohajel/IE/CA2/utils/input.txt";
+    public static String input_file = "src/main/java/com/github/mohajel/IE/CA2/utils/inputForInit.txt";
     public static void init(MizdooniApp app) {
         Scanner scanner = null;
         try {
