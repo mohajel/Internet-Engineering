@@ -60,7 +60,7 @@ public class HomeHandler extends HttpServlet {
                 JSONObject managersRestaurant = app.getRestaurantByManagerUsername(user.userName);
                 JSONObject restaurantsTables = new JSONObject();
                 if (!managersRestaurant.isEmpty()) {
-                    restaurantsTables = app.getTablesByRestaurantName(managersRestaurant.getString("name"));    
+                    // restaurantsTables = app.getTablesByRestaurantName(managersRestaurant.getString("name"));    
                 }
                 output.getJSONObject("data").put("restaurant", managersRestaurant);
                 output.getJSONObject("data").put("tables", restaurantsTables);
