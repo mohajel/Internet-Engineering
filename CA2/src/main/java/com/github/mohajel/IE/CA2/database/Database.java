@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA2.database;
 
+import java.text.CollationKey;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -216,7 +217,17 @@ public class Database {
         return null;
     }
 
-    public JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
+    public JSONArray getAllRestaurantWithAVGRate() {
+        JSONArray result = new JSONArray();
+        for (Restaurant restaurant : this.restaurants) {
+            JSONObject restaurantJson = restaurant.toJson();
+            restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+            result.put(restaurantJson);
+        }
+        return result;
+    }
+
+    private JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
         double sumFoodRate = 0;
         double sumServiceRate = 0;
         double sumAmbianceRate = 0;
@@ -235,6 +246,15 @@ public class Database {
         }
 
         JSONObject result = new JSONObject();
+
+        if (count == 0) {
+            result.put("foodRate", 0);
+            result.put("serviceRate", 0);
+            result.put("ambianceRate", 0);
+            result.put("overallRate", 0);
+            return result;
+        }
+
         result.put("foodRate", sumFoodRate / count);
         result.put("serviceRate", sumServiceRate / count);
         result.put("ambianceRate", sumAmbianceRate / count);
