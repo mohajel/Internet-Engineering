@@ -84,8 +84,15 @@ public class RestaurantHandler extends HttpServlet {
                 JSONObject feedback = new JSONObject().put("foodRate", food_rate).put("serviceRate", service_rate)
                         .put("ambianceRate", ambiance_rate).put("overallRate", overall_rate).put("comment", comment)
                         .put("restaurantName", restaurantName).put("username", app.logedInUser);
-                app.addReview(feedback);
-                break;
+                JSONObject output = app.addReview(feedback);
+                if (output.getBoolean("success")){
+                    HandlerUtils.createNotification(request, "Reservation successful", "success", "/restaurant?name=" + restaurantName);
+                } else {
+                    String errorMessage = output.getJSONObject("data").getString("error");
+                    HandlerUtils.createNotification(request, errorMessage, "error", "/restaurant?name=" + restaurantName);
+                }
+                response.sendRedirect("/notification");
+                return;
             default:
                 break;
         }
