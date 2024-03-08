@@ -54,6 +54,49 @@ public class RestaurantsHandler extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        String search = request.getParameter("search");
+        MizdooniApp app = MizdooniApp.getInstance();
+        JSONArray restaurants = new JSONArray();
+
+        switch (action) {
+            case "search_by_type":
+                // TODO
+                break;
+            case "search_by_name":
+                // TODO
+                break;
+            case "search_by_city":
+                // TODO
+                break;
+            default:
+                break;
+        }
+
+
+        JSONObject output = new JSONObject();
+        output.put("success", true);
+        output.put("title", "restaurantsPage");
+        StringBuilder HTMLTable = getStringBuilder(restaurants);
+        output.put("restaurants", HTMLTable.toString());
+
+
+        if(app.logedInUser.length() == 0){
+            response.sendRedirect("/login");
+            log("Sending to login page to login first");
+        } else {
+            User user  = app.db.getUserByUserName(app.logedInUser);
+            output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
+        }
+        request.setAttribute("context", output);
+        response.setContentType("text/html");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantsPage.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private static StringBuilder getStringBuilder(JSONArray restaurants) {
         StringBuilder HTMLTable = new StringBuilder();
         for (int i = 0; i < restaurants.length(); i++) {
