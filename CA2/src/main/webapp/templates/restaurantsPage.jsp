@@ -5,10 +5,12 @@
 <br><br>
 <form action="/restaurants" method="POST">
     <label>Search:</label>
-    <input type="text" name="search" value="">
+    <input type="text" name="search" value="" required>
     <button type="submit" name="action" value="search_by_type">Search By Type</button>
     <button type="submit" name="action" value="search_by_name">Search By Name</button>
     <button type="submit" name="action" value="search_by_city">Search By City</button>
+</form>
+<form action="/restaurants" method="POST">
     <button type="submit" name="action" value="clear">Clear Search</button>
 </form>
 <br><br>
