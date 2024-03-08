@@ -115,7 +115,8 @@ public class RestaurantsHandler extends HttpServlet {
             JSONObject restaurant = restaurants.getJSONObject(i);
             HTMLTable.append("<tr>");
             HTMLTable.append("<td>").append(String.valueOf(i)).append("</td>");
-            HTMLTable.append("<td>").append(restaurant.getString("name")).append("</td>");
+            String link = "/restaurant/" + restaurant.getString("name");
+            HTMLTable.append("<td><a href=").append(link).append(">").append(restaurant.getString("name")).append("</a></td>");
             HTMLTable.append("<td>").append(restaurant.getJSONObject("address").getString("city")).append("</td>");
             HTMLTable.append("<td>").append(restaurant.getString("type")).append("</td>");
             HTMLTable.append("<td>").append(restaurant.getString("startTime")).append(" - ").append(restaurant.getString("endTime")).append("</td>");
