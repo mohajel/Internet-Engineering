@@ -3,6 +3,7 @@ addUser {"role": "manager", "username": "manager1", "password": "1234", "email":
 showReservationHistory { "username": "user1"}
 addRestaurant {"name": "restaurant1", "managerUsername": "manager1", "type": "Iranian", "startTime": "07:00", "endTime": "14:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "North Kargar"}}
 addRestaurant {"name": "restaurant2", "managerUsername": "manager1", "type": "Italy", "startTime": "17:00", "endTime": "01:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Tehran", "street": "South Kargar"}}
+addRestaurant {"name": "restaurant3", "managerUsername": "manager1", "type": "Italy", "startTime": "18:00", "endTime": "22:00", "description": "Open seven days a week", "address": {"country": "Iran", "city": "Kish", "street": "South Kargar"}}
 searchRestaurantsByName {"name": "restaurant1"}
 searchRestaurantsByName {"name": "restaurant"}
 searchRestaurantsByType {"type": "Iranian"}
