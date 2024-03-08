@@ -2,6 +2,7 @@ package com.github.mohajel.IE.CA2.handlers;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA2.MizdooniApp;
+import com.github.mohajel.IE.CA2.models.Table;
 import com.github.mohajel.IE.CA2.models.User;
 
 @WebServlet(name = "RestaurantHandler", urlPatterns = { "/restaurant" })
@@ -38,6 +40,9 @@ public class RestaurantHandler extends HttpServlet {
             User user  = app.db.getUserByUserName(app.logedInUser);
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
         }
+        JSONObject tables = app.getTablesByRestaurantName(restaurantName);
+        output.getJSONObject("data").put("tables", tables);
+
         request.setAttribute("context", output);
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantPage.jsp");
         dispatcher.forward(request, response);

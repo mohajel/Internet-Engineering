@@ -89,9 +89,6 @@
       <form action="" method="post">
         <label>Table:</label>
         <select id="table_number" name="table_number">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
         </select>
         <label>Date & Time:</label>
         
@@ -148,6 +145,18 @@
 
   <script>
     const restaurant = JSON.parse('<%= restaurant.toString() %>'); 
+  </script>
+
+  <script>
+    const table_number = document.getElementById('table_number');
+
+    for(const x in context.data.tables)
+        {
+          table_number.innerHTML = table_number.innerHTML + 
+            "<option value='" + context.data.tables[x].tableNumber + 
+            "'>" + context.data.tables[x].tableNumber + "</option>";
+        }
+
   </script>
   
   <%@include file="footer.jsp" %>
