@@ -71,7 +71,8 @@ public class RestaurantsHandler extends HttpServlet {
                 restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
                 break;
             case "search_by_name":
-                // TODO
+                outputMizdooni = app.searchRestaurantsContainName(new JSONObject().put("name", search));
+                restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
                 break;
             case "search_by_city":
                 outputMizdooni = app.searchRestaurantsByCity(new JSONObject().put("city", search));
