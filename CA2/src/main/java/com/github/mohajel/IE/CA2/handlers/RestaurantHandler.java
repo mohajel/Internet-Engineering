@@ -26,6 +26,12 @@ public class RestaurantHandler extends HttpServlet {
         MizdooniApp app = MizdooniApp.getInstance();
 
         JSONObject outputMizdooni = app.getInfoOfRestaurantByName(new JSONObject().put("name", restaurantName));
+        if (!outputMizdooni.getBoolean("success")){
+            String errorMessage = outputMizdooni.getJSONObject("data").getString("error");
+            HandlerUtils.createNotification(request, errorMessage, "error", "/restaurant?name=" + restaurantName);
+            response.sendRedirect("/notification");
+            return;
+        }
         JSONObject output = new JSONObject();
         output.put("restaurantData", outputMizdooni.get("data"));
         output.put("success", true);
