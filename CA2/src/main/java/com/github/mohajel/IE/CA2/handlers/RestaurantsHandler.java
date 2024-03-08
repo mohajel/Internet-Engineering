@@ -62,11 +62,13 @@ public class RestaurantsHandler extends HttpServlet {
         String action = request.getParameter("action");
         String search = request.getParameter("search");
         MizdooniApp app = MizdooniApp.getInstance();
+        JSONObject outputMizdooni = new JSONObject();
         JSONArray restaurants = new JSONArray();
 
         switch (action) {
             case "search_by_type":
-                // TODO
+                outputMizdooni = app.searchRestaurantsByType(new JSONObject().put("type", search));
+                restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
                 break;
             case "search_by_name":
                 // TODO
