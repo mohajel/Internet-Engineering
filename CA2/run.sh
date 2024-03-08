@@ -14,6 +14,6 @@ rm -rf /home/mohajel/Desktop/tomcat/apache-tomcat-9.0.86/webapps/ROOT
 # copy war file to tomcat and rename it to ROOT.war
 cp target/*.war /home/mohajel/Desktop/tomcat/apache-tomcat-9.0.86/webapps/ROOT.war
 
-# open chromium browser localhost:8686
-chromium http://localhost:8686/
+# open chromium browser localhost:8686 in background and redirect all output to /dev/null
+chromium http://localhost:8686 &> /dev/null &
 
