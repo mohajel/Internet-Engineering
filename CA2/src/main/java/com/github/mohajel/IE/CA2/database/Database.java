@@ -185,6 +185,17 @@ public class Database {
 
     }
 
+//    i wanna check user have a reservation that is not cancelled and its date is before current time
+    public boolean isUserHasReservationNotCancelled(String userName) {
+        MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
+        for (Reserve reserve : this.reserves) {
+            if (reserve.userName.equals(userName) && !reserve.isCancelled && reserve.reserveDate.isBefore(currentTime)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public JSONArray getReviewsByRestaurantName(String restaurantName) {
         JSONArray reviewsByRestaurant = new JSONArray();
         for (Review review : this.reviews) {
