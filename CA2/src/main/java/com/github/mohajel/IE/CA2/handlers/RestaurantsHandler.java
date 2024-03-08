@@ -78,6 +78,10 @@ public class RestaurantsHandler extends HttpServlet {
                 outputMizdooni = app.searchRestaurantsByCity(new JSONObject().put("city", search));
                 restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
                 break;
+            case "clear":
+                outputMizdooni = app.showAllRestaurantWithAVGRate();
+                restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
+                break;
             default:
                 break;
         }
