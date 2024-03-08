@@ -58,7 +58,7 @@
               <label>Date & Time:</label>
               <!-- i want date output to be in this format 2024-02-27 09:00 and only round hours -->
               
-              <input type="datetime-local" id="date_time" name="date_time">
+              <input type="datetime-local" id="date_time" name="date_time" required>
               <br>
               <button type="submit" name="action" value="reserve">Reserve</button>
             </form>
@@ -72,16 +72,16 @@
             <label>Feedback:</label>
             <form action="" method="post">                
               <label>Food Rate:</label>
-              <input type="number" id="food_rate" name="food_rate" step="0.1" min="0" max="5">
+              <input type="number" id="food_rate" name="food_rate" step="0.1" min="0" max="5" required>
               <label>Service Rate:</label>
-              <input type="number" id="service_rate" name="service_rate" step="0.1" min="0" max="5">
+              <input type="number" id="service_rate" name="service_rate" step="0.1" min="0" max="5" required>
               <label>Ambiance Rate:</label>
-              <input type="number" id="ambiance_rate" name="ambiance_rate" step="0.1" min="0" max="5">
+              <input type="number" id="ambiance_rate" name="ambiance_rate" step="0.1" min="0" max="5" required>
               <label>Overall Rate:</label>
-              <input type="number" id="overall_rate" name="overall_rate" step="0.1" min="0" max="5">
+              <input type="number" id="overall_rate" name="overall_rate" step="0.1" min="0" max="5" required>
               <br>
               <label>Comment:</label>
-              <textarea name="comment"  id="" cols="30" rows="5" placeholder="Enter your comment"></textarea>
+              <textarea name="comment"  id="" cols="30" rows="5" placeholder="Enter your comment" required></textarea>
               <!-- <input type="textarea" name="comment" value="" /> -->
               <br>
               <button type="submit" name="action" value="feedback">Submit</button>
