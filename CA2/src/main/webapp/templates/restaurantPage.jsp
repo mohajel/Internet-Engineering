@@ -21,7 +21,7 @@
         <li>Overall: <%= rate.getDouble("overallRate") %></li>
       </ul>
       <li id="address">Address: North Kargar, Tehran, Iran</li>
-      <li id="description">Description: Best food you can eat. Best Italian food</li>
+      <li id="description">Description: <%= restaurant.getString("description") %></li>
   </ul>
 
 
