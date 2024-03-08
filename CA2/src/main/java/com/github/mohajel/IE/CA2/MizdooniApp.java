@@ -437,6 +437,11 @@ public class MizdooniApp {
 
             Review review = new Review(userName, restaurantName, foodRate,
                     serviceRate, ambianceRate, overallRate, comment, currentTime);
+
+            if (!db.isUserHasReservationNotCancelled(userName, restaurantName)) {
+                throw new MizdooniError(MizdooniError.USER_HAS_NO_DONE_RESERVATION);
+            }
+
             db.addReview(review);
 
             output.put("success", true);
