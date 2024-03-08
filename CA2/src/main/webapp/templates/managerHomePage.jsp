@@ -32,10 +32,10 @@
                 <input name="restaurant_name" required/>
                 <br>
                 <label>Table Number:</label>
-                <input name="table_number" type="number" min="0"/>
+                <input name="table_number" type="number" min="0" required/>
                 <br>
                 <label>Seats Number:</label>
-                <input name="seats_number" type="number" min="1"/>
+                <input name="seats_number" type="number" min="1" required/>
                 <br>
                 <button type="submit">Add</button>
             </form>
