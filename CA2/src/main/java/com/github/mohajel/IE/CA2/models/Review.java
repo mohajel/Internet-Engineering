@@ -1,6 +1,7 @@
 package com.github.mohajel.IE.CA2.models;
 
 import com.github.mohajel.IE.CA2.utils.MizdooniError;
+import org.json.JSONObject;
 
 public class Review {
 
@@ -20,6 +21,19 @@ public class Review {
                 !isValidRating(ambianceRate) || !isValidRating(overallRate)) {
             throw new MizdooniError(MizdooniError.INVALID_RATING);
         }
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("username", this.userName);
+        json.put("restaurantName", this.restaurantName);
+        json.put("foodRate", this.foodRate);
+        json.put("serviceRate", this.serviceRate);
+        json.put("ambianceRate", this.ambianceRate);
+        json.put("overallRate", this.overallRate);
+        json.put("comment", this.comment);
+        json.put("reviewDate", this.reviewDate.getDateTime());
+        return json;
     }
 
     private boolean isValidRating(double rate) {
