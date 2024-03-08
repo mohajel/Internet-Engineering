@@ -69,6 +69,12 @@ public class HomeHandler extends HttpServlet {
             request.setAttribute("context", output);
             dispatcher.forward(request, response);;
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/addTable");
+        dispatcher.forward(request, response);
     }
 }

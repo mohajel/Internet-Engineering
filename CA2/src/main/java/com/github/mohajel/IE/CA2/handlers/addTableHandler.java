@@ -1,8 +1,6 @@
 package com.github.mohajel.IE.CA2.handlers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +16,10 @@ import com.github.mohajel.IE.CA2.MizdooniApp;
 public class addTableHandler extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
-
             MizdooniApp app = MizdooniApp.getInstance();
 
             String tableNumber = request.getParameter("table_number");
@@ -41,8 +38,9 @@ public class addTableHandler extends HttpServlet {
             JSONObject output = app.addTable(input);
             request.setAttribute("context", output);
 
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
-            dispatcher.forward(request, response);
+            // RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
+            // dispatcher.forward(request, response);
+            response.sendRedirect("/");
 
         } catch (Exception e) {
             e.printStackTrace();

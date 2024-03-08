@@ -27,15 +27,15 @@
     <div class="col">
         <div class="form-group">
             <h3>Add Table:</h3>
-            <form method="get" action="/addTable">
+            <form method="post" action="/addTable">
+                <label>Restaurant</label>
+                <input name="restaurant_name" required/>
+                <br>
                 <label>Table Number:</label>
                 <input name="table_number" type="number" min="0"/>
                 <br>
                 <label>Seats Number:</label>
                 <input name="seats_number" type="number" min="1"/>
-                <br>
-                <label>Restaurant Name</label>
-                <input name="restaurant_name" required/>
                 <br>
                 <button type="submit">Add</button>
             </form>
