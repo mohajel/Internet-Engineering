@@ -295,6 +295,7 @@ public class MizdooniApp {
             }
             output.put("data", new JSONObject());
             output.getJSONObject("data").put("restaurant", restaurant.toJson());
+            output.getJSONObject("data").put("rate", db.getAVGRateRestaurantByName(name));
 
             output.put("success", true);
         } catch (JSONException e) {

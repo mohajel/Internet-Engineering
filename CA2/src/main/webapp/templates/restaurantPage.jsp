@@ -2,6 +2,7 @@
 
 <%
   JSONObject restaurant = context.getJSONObject("restaurantData").getJSONObject("restaurant");
+  JSONObject rate = context.getJSONObject("restaurantData").getJSONObject("rate");
 %>
 
   <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
@@ -14,10 +15,10 @@
       <li id="time">Time: <%= restaurant.getString("startTime") %> - <%= restaurant.getString("endTime") %></li>
       <li id="rate">Scores:</li>
       <ul>
-        <li>Food: 3.45</li>
-        <li>Service: 2.5</li>
-        <li>Ambiance: 4.59</li>
-        <li>Overall: 4.1</li>
+        <li>Food: <%= rate.getDouble("foodRate") %></li>
+        <li>Service: <%= rate.getDouble("serviceRate") %></li>
+        <li>Ambiance: <%= rate.getDouble("ambianceRate") %></li>
+        <li>Overall: <%= rate.getDouble("overallRate") %></li>
       </ul>
       <li id="address">Address: North Kargar, Tehran, Iran</li>
       <li id="description">Description: Best food you can eat. Best Italian food</li>

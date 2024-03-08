@@ -204,7 +204,7 @@ public class Database {
         return result;
     }
 
-    private JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
+    public JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
         double sumFoodRate = 0;
         double sumServiceRate = 0;
         double sumAmbianceRate = 0;
