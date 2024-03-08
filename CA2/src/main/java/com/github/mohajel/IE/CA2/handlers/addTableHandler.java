@@ -40,7 +40,8 @@ public class addTableHandler extends HttpServlet {
 
             // RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
             // dispatcher.forward(request, response);
-            response.sendRedirect("/");
+            HandlerUtils.createNotification(request, "message", "success", "login");
+            response.sendRedirect("/notification");
 
         } catch (Exception e) {
             e.printStackTrace();

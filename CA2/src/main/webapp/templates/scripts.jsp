@@ -15,22 +15,6 @@
 
     if (context.title !== undefined)
         document.title = context.title;
-
-    if (context.success == false) { //error
-        Swal.fire({
-        title: 'OOPS!',
-        text: context.data.error,
-        icon: "error",
-        confirmButtonText: 'OK'
-    })
-    } else if (context.message !== undefined) { //message exists
-        Swal.fire({
-                title: context.icon,
-                text: context.message,
-                icon: context.icon,
-                confirmButtonText: 'OK'
-    })
-    }
 </script>
 
 <script>

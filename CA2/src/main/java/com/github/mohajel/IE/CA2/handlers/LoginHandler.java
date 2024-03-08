@@ -59,6 +59,10 @@ public class LoginHandler extends HttpServlet {
             if (output.getBoolean("success") == true) {
                 response.sendRedirect("/");
                 log("Login successful");
+
+                request.getSession().invalidate();
+                request.getSession(true);
+                 
             } else {
                 request.setAttribute("context", output);
                 response.setContentType("text/html");

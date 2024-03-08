@@ -20,8 +20,8 @@ public class LogoutHandler extends HttpServlet {
 
         MizdooniApp app = MizdooniApp.getInstance();
         app.logedInUser = "";
+        request.getSession().invalidate();
 
         response.sendRedirect("/login");
-
     }
 }
