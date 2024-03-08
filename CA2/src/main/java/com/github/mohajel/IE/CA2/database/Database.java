@@ -293,11 +293,13 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Restaurant> getRestaurantsContainName(String restaurantName) {
-        ArrayList<Restaurant> restaurantsContainName = new ArrayList<Restaurant>();
+    public JSONArray getRestaurantsContainName(String restaurantName) {
+        JSONArray restaurantsContainName = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.name.contains(restaurantName)) {
-                restaurantsContainName.add(restaurant);
+                JSONObject restaurantJson = restaurant.toJson();
+                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+                restaurantsContainName.put(restaurantJson);
             }
         }
         return restaurantsContainName;
