@@ -370,9 +370,13 @@ public class MizdooniApp {
         return output;
     }
 
-    public JSONArray showAllRestaurantWithAVGRate() {
+    public JSONObject showAllRestaurantWithAVGRate() {
         System.out.println("show all restaurant with avg rate called");
-        return db.getAllRestaurantWithAVGRate();
+        JSONObject output = new JSONObject();
+        JSONArray restaurants = db.getAllRestaurantWithAVGRate();
+        output.put("success", true);
+        output.put("data", new JSONObject().put("restaurants", restaurants));
+        return output;
     }
 
     public JSONObject showAvailableTables(JSONObject input) {

@@ -27,9 +27,11 @@ public class RestaurantsHandler extends HttpServlet {
             throws ServletException, IOException {
 
         MizdooniApp app = MizdooniApp.getInstance();
+        JSONObject outputMizdooni = new JSONObject();
         JSONArray restaurants = new JSONArray();
         if (request.getParameter("mode").equals("withoutFilter")) {
-            restaurants = app.showAllRestaurantWithAVGRate();
+            outputMizdooni = app.showAllRestaurantWithAVGRate();
+            restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
         }
 
         JSONObject output = new JSONObject();
