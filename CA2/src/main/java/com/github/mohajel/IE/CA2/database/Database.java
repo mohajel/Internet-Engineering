@@ -185,6 +185,16 @@ public class Database {
 
     }
 
+    public JSONArray getReviewsByRestaurantName(String restaurantName) {
+        JSONArray reviewsByRestaurant = new JSONArray();
+        for (Review review : this.reviews) {
+            if (review.restaurantName.equals(restaurantName)) {
+                reviewsByRestaurant.put(review.toJson());
+            }
+        }
+        return reviewsByRestaurant;
+    }
+
     private Review getReviewByUserNameAndRestaurantName(String userName, String restaurantName) {
         for (Review review : this.reviews) {
             if (review.userName.equals(userName) && review.restaurantName.equals(restaurantName)) {

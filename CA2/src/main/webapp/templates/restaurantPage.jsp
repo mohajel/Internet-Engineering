@@ -1,8 +1,27 @@
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="com.github.mohajel.IE.CA2.models.Review" %>
 <%@include file="header.jsp" %>
 
 <%
   JSONObject restaurant = context.getJSONObject("restaurantData").getJSONObject("restaurant");
   JSONObject rate = context.getJSONObject("restaurantData").getJSONObject("rate");
+  JSONArray reviews = context.getJSONObject("restaurantData").getJSONArray("reviews");
+%>
+
+<%
+  StringBuilder reviewsTableHTML = new StringBuilder();
+  for (int i = 0; i < reviews.length(); i++) {
+    JSONObject review = reviews.getJSONObject(i);
+    reviewsTableHTML.append("<tr>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getString("username")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getString("comment")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getString("reviewDate")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getDouble("foodRate")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getDouble("serviceRate")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getDouble("ambianceRate")).append("</td>\n");
+    reviewsTableHTML.append("\t<td>\n").append(review.getDouble("overallRate")).append("</td>\n");
+    reviewsTableHTML.append("</tr>\n");
+  }
 %>
 
   <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
@@ -86,15 +105,7 @@
       <th>Ambiance Rate</th>
       <th>Overall Rate</th>
     </tr>
-    <tr>
-      <td>user1</td>
-      <td>Food was not bad</td>
-      <td>2022-07-25</td>
-      <td>4.5</td>
-      <td>3</td>
-      <td>4.5</td>
-      <td>4</td>
-    </tr>
+    <%= reviewsTableHTML%>
   </table>
   <br><br>
     
