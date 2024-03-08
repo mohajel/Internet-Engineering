@@ -20,7 +20,7 @@
         <li>Ambiance: <%= rate.getDouble("ambianceRate") %></li>
         <li>Overall: <%= rate.getDouble("overallRate") %></li>
       </ul>
-      <li id="address">Address: North Kargar, Tehran, Iran</li>
+      <li id="address">Address: <%= restaurant.getJSONObject("address").getString("street") %>, <%= restaurant.getJSONObject("address").getString("city") %>, <%= restaurant.getJSONObject("address").getString("country") %></li>
       <li id="description">Description: <%= restaurant.getString("description") %></li>
   </ul>
 
