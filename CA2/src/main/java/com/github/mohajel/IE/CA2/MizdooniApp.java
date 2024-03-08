@@ -283,6 +283,33 @@ public class MizdooniApp {
     }
 
     /// Search restaurants
+    public JSONObject getInfoOfRestaurantByName(JSONObject date) {
+        System.out.println("get info of restaurant by name called");
+        JSONObject output = new JSONObject();
+        try {
+            String name = date.getString("name");
+
+            Restaurant restaurant = db.getRestaurantByName(name);
+            if (restaurant == null) {
+                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+            }
+            output.put("data", new JSONObject());
+            output.getJSONObject("data").put("restaurant", restaurant.toJson());
+
+            output.put("success", true);
+        } catch (JSONException e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+        } catch (MizdooniError e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", e.getMessage()));
+        } catch (Exception e) {
+            output.put("success", false);
+            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+        }
+        return output;
+    }
+
     public JSONObject searchRestaurantsContainName(JSONObject data) {
         System.out.println("search restaurants by name called");
         JSONObject output = new JSONObject();

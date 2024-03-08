@@ -1,13 +1,17 @@
 <%@include file="header.jsp" %>
 
+<%
+  JSONObject restaurant = context.getJSONObject("restaurantData").getJSONObject("restaurant");
+%>
+
   <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
   <br>
   <h2>Restaurant Info:</h2>
   <ul>
     <li id="id">Id: 1</li>
-      <li id="name">Name: Fast Food</li>
-      <li id="type">Type: Italian</li>
-      <li id="time">Time: 08:00 - 23:00</li>
+      <li id="name">Name: <%= restaurant.getString("name") %></li>
+      <li id="type">Type: <%= restaurant.getString("type") %></li>
+      <li id="time">Time: <%= restaurant.getString("startTime") %> - <%= restaurant.getString("endTime") %></li>
       <li id="rate">Scores:</li>
       <ul>
         <li>Food: 3.45</li>

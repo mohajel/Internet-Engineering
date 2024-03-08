@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA2.MizdooniApp;
@@ -20,16 +21,15 @@ public class RestaurantHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
+        String restaurantName = request.getParameter("name");
         MizdooniApp app = MizdooniApp.getInstance();
 
+        JSONObject outputMizdooni = app.getInfoOfRestaurantByName(new JSONObject().put("name", restaurantName));
         JSONObject output = new JSONObject();
+        output.put("restaurantData", outputMizdooni.get("data"));
         output.put("success", true);
         output.put("title", "RestaurantPage");
-        
-        response.setContentType("text/html");
-        
+
         if(app.logedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
