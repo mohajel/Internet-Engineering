@@ -21,3 +21,5 @@ showAvailableTables {"restaurantName": "restaurant1"}
 addTable {"tableNumber": 1, "restaurantName": "restaurant2", "managerUsername": "manager1", "seatsNumber" : 5}
 showAvailableTables {"restaurantName": "restaurant2"}
 addReview {"username": "user1", "restaurantName": "restaurant1", "foodRate": 4.5, "serviceRate": 3, "ambianceRate": 4.5, "overallRate": 4, "comment": "Not bad!"}
+addReview {"username": "user1", "restaurantName": "restaurant2", "foodRate": 5, "serviceRate": 3, "ambianceRate": 4.5, "overallRate": 5, "comment": "Good!"}
+addReview {"username": "user1", "restaurantName": "restaurant3", "foodRate": 5, "serviceRate": 3, "ambianceRate": 4.5, "overallRate": 4.5, "comment": "Good!"}
