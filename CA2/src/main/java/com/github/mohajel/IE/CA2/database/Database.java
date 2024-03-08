@@ -313,11 +313,13 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Restaurant> getRestaurantByType(String restaurantType) {
-        ArrayList<Restaurant> restaurantsByType = new ArrayList<Restaurant>();
+    public JSONArray getRestaurantByType(String restaurantType) {
+        JSONArray restaurantsByType = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.type.equals(restaurantType)) {
-                restaurantsByType.add(restaurant);
+                JSONObject restaurantJson = restaurant.toJson();
+                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+                restaurantsByType.put(restaurantJson);
             }
         }
         return restaurantsByType;

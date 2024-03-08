@@ -318,16 +318,12 @@ public class MizdooniApp {
         try {
             String type = input.getString("type");
 
-            ArrayList<Restaurant> restaurants = db.getRestaurantByType(type);
+            JSONArray restaurants = db.getRestaurantByType(type);
             if (restaurants.isEmpty()) {
                 throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
             }
-
             output.put("success", true);
-            output.put("data", new JSONObject().put("restaurants", new JSONArray()));
-            for (Restaurant restaurant : restaurants) {
-                output.getJSONObject("data").getJSONArray("restaurants").put(restaurant.toJson());
-            }
+            output.put("data", new JSONObject().put("restaurants", restaurants));
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
