@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA2.handlers;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -20,12 +21,12 @@ public class ReservationsHandler extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String restaurantName = request.getParameter("name");
         MizdooniApp app = MizdooniApp.getInstance();
+        String username = app.logedInUser;
 
-//        JSONObject outputMizdooni = app.getInfoOfRestaurantByName(new JSONObject().put("name", restaurantName));
+        JSONObject outputMizdooni = app.showReservationHistory(new JSONObject().put("username", username));
         JSONObject output = new JSONObject();
-//        output.put("restaurantData", outputMizdooni.get("data"));
+        output.put("ReservationData", outputMizdooni);
         output.put("success", true);
         output.put("title", "ReservationsPage");
 
