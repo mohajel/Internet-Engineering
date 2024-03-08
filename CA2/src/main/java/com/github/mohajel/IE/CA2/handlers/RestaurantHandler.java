@@ -87,7 +87,7 @@ public class RestaurantHandler extends HttpServlet {
                         .put("restaurantName", restaurantName).put("username", app.logedInUser);
                 output = app.addReview(feedback);
                 if (output.getBoolean("success")){
-                    HandlerUtils.createNotification(request, "Reservation successful", "success", "/restaurant?name=" + restaurantName);
+                    HandlerUtils.createNotification(request, "feedback successful", "success", "/restaurant?name=" + restaurantName);
                 } else {
                     String errorMessage = output.getJSONObject("data").getString("error");
                     HandlerUtils.createNotification(request, errorMessage, "error", "/restaurant?name=" + restaurantName);
