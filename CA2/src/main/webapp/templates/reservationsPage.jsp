@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reservations</title>
-</head>
-<body>
-    <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
+<%@include file="header.jsp" %>
+
+<%@include file="scripts.jsp" %>
+
     <h1>Your Reservations:</h1>
     <br><br>
     <br><br>
@@ -40,5 +36,5 @@
             </td> 
         </tr>
     </table>
-</body>
-</html>
+
+<%@include file="footer.jsp" %>
