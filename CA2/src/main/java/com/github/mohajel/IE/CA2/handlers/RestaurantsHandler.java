@@ -114,15 +114,15 @@ public class RestaurantsHandler extends HttpServlet {
         for (int i = 0; i < restaurants.length(); i++) {
             JSONObject restaurant = restaurants.getJSONObject(i);
             HTMLTable.append("<tr>");
-            HTMLTable.append("<th>").append(String.valueOf(i)).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("name")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("address").getString("city")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("type")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("startTime")).append(" - ").append(restaurant.getString("endTime")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("serviceRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("foodRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("ambianceRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("overallRate")).append("</th>");
+            HTMLTable.append("<td>").append(String.valueOf(i)).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getString("name")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getJSONObject("address").getString("city")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getString("type")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getString("startTime")).append(" - ").append(restaurant.getString("endTime")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getJSONObject("rate").getDouble("serviceRate")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getJSONObject("rate").getDouble("foodRate")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getJSONObject("rate").getDouble("ambianceRate")).append("</td>");
+            HTMLTable.append("<td>").append(restaurant.getJSONObject("rate").getDouble("overallRate")).append("</td>");
         }
         return HTMLTable;
     }
