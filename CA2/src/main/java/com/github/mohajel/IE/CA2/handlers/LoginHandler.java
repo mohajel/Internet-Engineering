@@ -45,7 +45,6 @@ public class LoginHandler extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        try {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
@@ -56,22 +55,30 @@ public class LoginHandler extends HttpServlet {
             MizdooniApp app = MizdooniApp.getInstance();
             JSONObject output = app.login(input);
 
-            if (output.getBoolean("success") == true) {
-                response.sendRedirect("/");
-                log("Login successful");
-
-                request.getSession().invalidate();
-                request.getSession(true);
-                 
+            if (output.getBoolean("success") == true){
+                HandlerUtils.createNotification(request, "login successful", "success", "/");
+                
             } else {
-                request.setAttribute("context", output);
-                response.setContentType("text/html");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/loginPage.jsp");
-                dispatcher.forward(request, response);
-                log("Login failed");
+                String errorMessage = output.getJSONObject("data").getString("error");
+                HandlerUtils.createNotification(request, errorMessage, "error", "/login");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            response.sendRedirect("/notification");
+
+
+            // if (output.getBoolean("success") == true) {
+            //     response.sendRedirect("/");
+            //     log("Login successful");
+
+            //     request.getSession().invalidate();
+            //     request.getSession(true);
+                 
+            // } else {
+            //     request.setAttribute("context", output);
+            //     response.setContentType("text/html");
+            //     RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/loginPage.jsp");
+            //     dispatcher.forward(request, response);
+            //     log("Login failed");
+            // }
+
     }
 }

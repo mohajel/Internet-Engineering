@@ -22,6 +22,7 @@ public class LogoutHandler extends HttpServlet {
         app.logedInUser = "";
         request.getSession().invalidate();
 
-        response.sendRedirect("/login");
+        HandlerUtils.createNotification(request, "You have been logged out", "info", "/login");
+        response.sendRedirect("/notification");
     }
 }
