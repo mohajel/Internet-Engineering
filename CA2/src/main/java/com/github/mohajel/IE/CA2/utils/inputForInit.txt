@@ -15,7 +15,6 @@ reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber
 reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 2, "datetime": "2025-02-27 12:00"}
 showReservationHistory { "username": "user1"}
 showAvailableTables {"restaurantName": "restaurant1"}
-cancelReservation {"username": "user1", "reservationNumber": 2}
 showReservationHistory { "username": "user1"}
 showAvailableTables {"restaurantName": "restaurant1"}
 addTable {"tableNumber": 1, "restaurantName": "restaurant2", "managerUsername": "manager1", "seatsNumber" : 5}
