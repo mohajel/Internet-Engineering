@@ -26,29 +26,6 @@ public class Database {
         this.reviews = new ArrayList<Review>();
     }
 
-    public Database(boolean initialize) throws MizdooniError{
-        this.restaurants = new ArrayList<Restaurant>();
-        this.reserves = new ArrayList<Reserve>();
-        this.tables = new ArrayList<Table>();
-        this.users = new ArrayList<User>();
-        this.reviews = new ArrayList<Review>();
-
-        if (initialize) {
-            this.initialize();
-        }
-    }
-
-    private void initialize() throws MizdooniError {
-        Address address1 = new Address("Tehran", "Iran");
-
-        this.users.add(new User("client1", "1234", "client1@gmail.com", address1 ,"client"));
-        this.users.add(new User("client2", "1234", "client2@gmail.com", address1 ,"client"));
-        this.users.add(new User("manager1", "1234", "manager1@gmail.com", address1 ,"manager"));
-        this.users.add(new User("manager2", "1234", "manager2@gmail.com", address1 ,"manager"));
-
-        // TODO: add others
-    }
-
     public void addUser(User user) throws MizdooniError {
 
         if (this.getUserByUserName(user.userName) != null) {
