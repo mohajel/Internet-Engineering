@@ -349,7 +349,7 @@ public class MizdooniApp {
             }
 
             output.put("success", true);
-            output.put("data", new JSONObject().put("restaurants", new JSONArray()));
+            output.put("data", new JSONObject().put("restaurants", restaurants));
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
