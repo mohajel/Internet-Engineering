@@ -27,12 +27,14 @@ public class RestaurantsHandler extends HttpServlet {
             throws ServletException, IOException {
 
         MizdooniApp app = MizdooniApp.getInstance();
+        JSONArray restaurants = new JSONArray();
+        if (request.getParameter("mode").equals("withoutFilter")) {
+            restaurants = app.showAllRestaurantWithAVGRate();
+        }
 
         JSONObject output = new JSONObject();
         output.put("success", true);
         output.put("title", "restaurantsPage");
-
-        JSONArray restaurants = app.showAllRestaurantWithAVGRate();
         StringBuilder HTMLTable = new StringBuilder();
         for (int i = 0; i < restaurants.length(); i++) {
             JSONObject restaurant = restaurants.getJSONObject(i);
