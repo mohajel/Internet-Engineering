@@ -62,11 +62,11 @@
 
 <%@include file="scripts.jsp" %>
 
-<script>
+<!-- <script>
     let c = document.getElementById("show_info");
     c.innerHTML = JSON.stringify(context.data.restaurant);
     c.innerHTML = c.innerHTML + "Tables:" + JSON.stringify(context.data.tables);
-</script>
+</script> -->
 
 <script>
     function addColumnsToRestaurantTable(jsonObject)
