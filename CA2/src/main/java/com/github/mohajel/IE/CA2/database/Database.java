@@ -325,14 +325,16 @@ public class Database {
         return restaurantsByType;
     }
 
-    public ArrayList<Restaurant> getRestaurantByCity(String restaurantLocation) {
-        ArrayList<Restaurant> restaurantsByLocation = new ArrayList<Restaurant>();
+    public JSONArray getRestaurantByCity(String restaurantLocation) {
+        JSONArray restaurantsByCity = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.address.city.equals(restaurantLocation)) {
-                restaurantsByLocation.add(restaurant);
+                JSONObject restaurantJson = restaurant.toJson();
+                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+                restaurantsByCity.put(restaurantJson);
             }
         }
-        return restaurantsByLocation;
+        return restaurantsByCity;
     }
 
     public Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
