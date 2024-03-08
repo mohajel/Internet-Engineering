@@ -49,6 +49,7 @@ public class RestaurantHandler extends HttpServlet {
         String action = request.getParameter("action");
         String restaurantName = request.getQueryString().split("=")[1];
         MizdooniApp app = MizdooniApp.getInstance();
+        JSONObject output;
 
         switch (action) {
             case "reserve":
@@ -65,7 +66,7 @@ public class RestaurantHandler extends HttpServlet {
                 input.put("datetime", date);
 
       
-                JSONObject output = app.reserveTable(input);
+                output = app.reserveTable(input);
                 if (output.getBoolean("success") == true){
                     HandlerUtils.createNotification(request, "Reservation successful", "success", "/restaurant?name=" + restaurantName);
                 } else {
@@ -84,7 +85,7 @@ public class RestaurantHandler extends HttpServlet {
                 JSONObject feedback = new JSONObject().put("foodRate", food_rate).put("serviceRate", service_rate)
                         .put("ambianceRate", ambiance_rate).put("overallRate", overall_rate).put("comment", comment)
                         .put("restaurantName", restaurantName).put("username", app.logedInUser);
-                JSONObject output = app.addReview(feedback);
+                output = app.addReview(feedback);
                 if (output.getBoolean("success")){
                     HandlerUtils.createNotification(request, "Reservation successful", "success", "/restaurant?name=" + restaurantName);
                 } else {
