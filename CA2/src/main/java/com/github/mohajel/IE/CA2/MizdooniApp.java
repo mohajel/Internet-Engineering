@@ -215,7 +215,8 @@ public class MizdooniApp {
             int tableNumber = input.getInt("tableNumber");
 
             if (!MizdooniDate.isDateTimeFormatValid(input.getString("datetime"))) {
-                throw new MizdooniError(MizdooniError.DATETIME_FORMAT_INVALID);
+                // throw new MizdooniError(MizdooniError.DATETIME_FORMAT_INVALID);
+                throw new MizdooniError(input.getString("datetime"));
             }
             MizdooniDate reserveDate = new MizdooniDate(input.getString("datetime"));
 

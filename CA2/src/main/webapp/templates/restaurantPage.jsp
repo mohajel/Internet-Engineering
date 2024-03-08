@@ -56,6 +56,8 @@
                 <option value="3">3</option>
               </select>
               <label>Date & Time:</label>
+              <!-- i want date output to be in this format 2024-02-27 09:00 and only round hours -->
+              
               <input type="datetime-local" id="date_time" name="date_time">
               <br>
               <button type="submit" name="action" value="reserve">Reserve</button>

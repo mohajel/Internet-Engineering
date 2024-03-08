@@ -52,8 +52,29 @@ public class RestaurantHandler extends HttpServlet {
 
         switch (action) {
             case "reserve":
-                // TODO: implement reserve
-                break;
+                String userName = app.logedInUser;
+                String tableNumber = request.getParameter("table_number");
+                String date = request.getParameter("date_time");
+                // replace T in date with space
+                date = date.replace('T', ' ');
+
+                JSONObject input = new JSONObject();
+                input.put("username", userName);
+                input.put("restaurantName", restaurantName);
+                input.put("tableNumber", tableNumber);
+                input.put("datetime", date);
+
+      
+                JSONObject output = app.reserveTable(input);
+                if (output.getBoolean("success") == true){
+                    HandlerUtils.createNotification(request, "Reservation successful", "success", "/restaurant?name=" + restaurantName);
+                } else {
+                    String errorMessage = output.getJSONObject("data").getString("error");
+                    HandlerUtils.createNotification(request, errorMessage, "error", "/restaurant?name=" + restaurantName);
+                }
+                response.sendRedirect("/notification");
+                return;
+
             case "feedback":
                 Double food_rate = Double.parseDouble(request.getParameter("food_rate"));
                 Double service_rate = Double.parseDouble(request.getParameter("service_rate"));
