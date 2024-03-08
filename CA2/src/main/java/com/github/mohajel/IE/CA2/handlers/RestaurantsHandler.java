@@ -74,11 +74,14 @@ public class RestaurantsHandler extends HttpServlet {
                 // TODO
                 break;
             case "search_by_city":
-                // TODO
+                outputMizdooni = app.searchRestaurantsByCity(new JSONObject().put("city", search));
+                restaurants = outputMizdooni.getJSONObject("data").getJSONArray("restaurants");
                 break;
             default:
                 break;
         }
+
+        // TODO: handle errors when no restaurants found
 
 
         JSONObject output = new JSONObject();
