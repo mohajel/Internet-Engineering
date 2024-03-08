@@ -2,29 +2,10 @@
 <% JSONObject notification = (JSONObject) request.getAttribute("notification"); %>
 <%@include file="header.jsp" %>
 
-<h1>INFO</h1>
-
 <%@include file="scripts.jsp" %>
 
 <script>
     const notification = JSON.parse('<%= notification.toString() %>');
-
-//     if (context.success == false) { //error
-//         Swal.fire({
-//         title: 'OOPS!',
-//         text: context.data.error,
-//         icon: "error",
-//         confirmButtonText: 'OK'
-//     })
-//     } else if (context.message !== undefined) { //message exists
-//         Swal.fire({
-//                 title: context.icon,
-//                 text: context.message,
-//                 icon: context.icon,
-//                 confirmButtonText: 'OK'
-//     })
-//     }
-//   alert("Welcome to Mizdooni");
 </script>
 
 
