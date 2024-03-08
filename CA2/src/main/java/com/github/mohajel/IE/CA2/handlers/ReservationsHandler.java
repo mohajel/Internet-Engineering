@@ -25,6 +25,13 @@ public class ReservationsHandler extends HttpServlet {
         String username = app.logedInUser;
 
         JSONObject outputMizdooni = app.showReservationHistory(new JSONObject().put("username", username));
+        if (!outputMizdooni.getBoolean("success")){
+            String errorMessage = outputMizdooni.getJSONObject("data").getString("error");
+            HandlerUtils.createNotification(request, errorMessage, "error", "/reservations");
+            response.sendRedirect("/notification");
+            return;
+        }
+
         JSONObject output = new JSONObject();
         output.put("ReservationData", outputMizdooni);
         output.put("success", true);
@@ -49,7 +56,14 @@ public class ReservationsHandler extends HttpServlet {
 
         MizdooniApp app = MizdooniApp.getInstance();
         JSONObject inputMizdooni = new JSONObject().put("reservationNumber", reservationNumber).put("username", app.logedInUser);
-        app.cancelReservation(inputMizdooni);
+        JSONObject outputMizdooni = app.cancelReservation(inputMizdooni);
+        if (!outputMizdooni.getBoolean("success")){
+            String errorMessage = outputMizdooni.getJSONObject("data").getString("error");
+            HandlerUtils.createNotification(request, errorMessage, "error", "/reservations");
+            response.sendRedirect("/notification");
+            return;
+        }
+
         JSONObject output = new JSONObject();
         output.put("success", true);
         output.put("title", "ReservationsPage");
