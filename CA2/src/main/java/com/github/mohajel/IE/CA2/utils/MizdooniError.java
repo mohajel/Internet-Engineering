@@ -43,6 +43,7 @@ public class MizdooniError extends Exception {
     // addReview errors
     public static final String INVALID_RATING = "Rating must be between 0 and 5";
     public static final String USER_IS_MANAGER = "managers cannot add reviews or reserve tables";
+    public static final String USER_HAS_NO_DONE_RESERVATION = "User has no done reservation in this restaurant";
 
     // reserveTable errors
     public static final String DATETIME_FORMAT_INVALID = "Invalid date time format";
