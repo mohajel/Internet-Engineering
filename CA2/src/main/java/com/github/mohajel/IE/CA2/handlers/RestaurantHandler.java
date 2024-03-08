@@ -48,14 +48,22 @@ public class RestaurantHandler extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         String restaurantName = request.getQueryString().split("=")[1];
-
+        MizdooniApp app = MizdooniApp.getInstance();
 
         switch (action) {
             case "reserve":
                 // TODO: implement reserve
                 break;
             case "feedback":
-                // TODO: implement feedback
+                Double food_rate = Double.parseDouble(request.getParameter("food_rate"));
+                Double service_rate = Double.parseDouble(request.getParameter("service_rate"));
+                Double ambiance_rate = Double.parseDouble(request.getParameter("ambiance_rate"));
+                Double overall_rate = Double.parseDouble(request.getParameter("overall_rate"));
+                String comment = request.getParameter("comment");
+                JSONObject feedback = new JSONObject().put("foodRate", food_rate).put("serviceRate", service_rate)
+                        .put("ambianceRate", ambiance_rate).put("overallRate", overall_rate).put("comment", comment)
+                        .put("restaurantName", restaurantName).put("username", app.logedInUser);
+                app.addReview(feedback);
                 break;
             default:
                 break;
