@@ -3,7 +3,7 @@
 
 <p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
 <br><br>
-<form action="" method="POST">
+<form action="/restaurants" method="POST">
     <label>Search:</label>
     <input type="text" name="search" value="">
     <button type="submit" name="action" value="search_by_type">Search By Type</button>
