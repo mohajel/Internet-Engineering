@@ -35,20 +35,9 @@ public class RestaurantsHandler extends HttpServlet {
         JSONObject output = new JSONObject();
         output.put("success", true);
         output.put("title", "restaurantsPage");
-        StringBuilder HTMLTable = new StringBuilder();
-        for (int i = 0; i < restaurants.length(); i++) {
-            JSONObject restaurant = restaurants.getJSONObject(i);
-            HTMLTable.append("<tr>");
-            HTMLTable.append("<th>").append(String.valueOf(i)).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("name")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("address").getString("city")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("type")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getString("startTime")).append(" - ").append(restaurant.getString("endTime")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("serviceRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("foodRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("ambianceRate")).append("</th>");
-            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("overallRate")).append("</th>");
-        }
+
+        StringBuilder HTMLTable = getStringBuilder(restaurants);
+
         output.put("restaurants", HTMLTable.toString());
 
 
@@ -63,5 +52,23 @@ public class RestaurantsHandler extends HttpServlet {
         response.setContentType("text/html");
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantsPage.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private static StringBuilder getStringBuilder(JSONArray restaurants) {
+        StringBuilder HTMLTable = new StringBuilder();
+        for (int i = 0; i < restaurants.length(); i++) {
+            JSONObject restaurant = restaurants.getJSONObject(i);
+            HTMLTable.append("<tr>");
+            HTMLTable.append("<th>").append(String.valueOf(i)).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getString("name")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getJSONObject("address").getString("city")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getString("type")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getString("startTime")).append(" - ").append(restaurant.getString("endTime")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("serviceRate")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("foodRate")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("ambianceRate")).append("</th>");
+            HTMLTable.append("<th>").append(restaurant.getJSONObject("rate").getDouble("overallRate")).append("</th>");
+        }
+        return HTMLTable;
     }
 }
