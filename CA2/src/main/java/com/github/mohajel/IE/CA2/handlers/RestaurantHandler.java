@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA2.handlers;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +20,7 @@ import com.github.mohajel.IE.CA2.models.User;
 public class RestaurantHandler extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String restaurantName = request.getParameter("name");
         MizdooniApp app = MizdooniApp.getInstance();
@@ -40,5 +41,26 @@ public class RestaurantHandler extends HttpServlet {
         request.setAttribute("context", output);
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/restaurantPage.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        String restaurantName = request.getQueryString().split("=")[1];
+
+
+        switch (action) {
+            case "reserve":
+                // TODO: implement reserve
+                break;
+            case "feedback":
+                // TODO: implement feedback
+                break;
+            default:
+                break;
+        }
+
+        response.sendRedirect(request.getContextPath() + "/restaurant?name=" + restaurantName);
     }
 }
