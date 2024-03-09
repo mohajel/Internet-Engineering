@@ -15,9 +15,7 @@
 
     if (context.title !== undefined)
         document.title = context.title;
-</script>
 
-<script>
     const name_container = document.getElementById("user_name_container_id");
     const logout_btn = document.getElementById("logout_btn_id");
 
