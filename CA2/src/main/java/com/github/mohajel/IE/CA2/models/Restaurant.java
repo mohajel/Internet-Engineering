@@ -8,6 +8,8 @@ public class Restaurant {
 
     public Restaurant(String name, String managerUserName, String type, Hour startTime, Hour endTime, String description, Address address) throws MizdooniError {
         this.name = name;
+        OverID++;
+        this.id = OverID;
         this.managerUserName = managerUserName;
         this.type = type;
 
@@ -21,7 +23,10 @@ public class Restaurant {
 
     }
 
+    public static int OverID = 0;
+
     public String name;
+    public int id;
     public String managerUserName;
     public String type;
     public Hour startTime;
@@ -32,6 +37,7 @@ public class Restaurant {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", this.name);
+        json.put("id", this.id);
         json.put("type", this.type);
         json.put("startTime", this.startTime.toString());
         json.put("endTime", this.endTime.toString());

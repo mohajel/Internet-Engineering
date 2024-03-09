@@ -32,7 +32,7 @@
       <table class="table table-striped .table-hover table-dark" style="opacity: 0.9;">
         <tr>
           <td><b>Id:</b></td>
-          <td>1</td>
+          <td><%= restaurant.getInt("id") %></td>
         </tr>
         <tr>
           <td><b>Name:</b></td>
