@@ -13,10 +13,10 @@
     <button type="submit" name="action" value="clear">Clear Search</button>
 </form>
 <br><br>
-<form action="" method="POST">
+<!-- <form action="" method="POST">
     <label>Sort By:</label>
     <button type="submit" name="action" value="sort_by_rate">Overall Score</button>
-</form>
+</form> -->
 <br><br>
 <table id="table" class="table table-striped .table-hover table-dark" style="opacity: 0.9;">
     <tr>
