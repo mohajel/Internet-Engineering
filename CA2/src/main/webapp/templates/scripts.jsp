@@ -19,11 +19,13 @@
     const name_container = document.getElementById("user_name_container_id");
     const logout_btn = document.getElementById("logout_btn_id");
 
-    if (context.data.username !== undefined) {
-        name_container.innerHTML = context.data.username;
-    } else {
+
+    if (context.data == undefined || context.data.username == undefined)
+    {
         name_container.innerHTML = "Mizdooni";
         logout_btn.style.display = "none";
+    } else {
+        name_container.innerHTML = context.data.username;
     }
 </script>
 

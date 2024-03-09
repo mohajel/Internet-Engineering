@@ -145,9 +145,7 @@
 
   <script>
     const restaurant = JSON.parse('<%= restaurant.toString() %>'); 
-  </script>
 
-  <script>
     const table_number = document.getElementById('table_number');
 
     for(const x in context.data.tables)
