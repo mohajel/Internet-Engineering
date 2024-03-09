@@ -25,9 +25,10 @@ public class ReservationsHandler extends HttpServlet {
         String username = app.logedInUser;
 
         JSONObject outputMizdooni = app.showReservationHistory(new JSONObject().put("username", username));
+
         if (!outputMizdooni.getBoolean("success")){
             String errorMessage = outputMizdooni.getJSONObject("data").getString("error");
-            HandlerUtils.createNotification(request, errorMessage, "error", "/reservations");
+            HandlerUtils.createNotification(request, errorMessage, "error", "/");
             response.sendRedirect("/notification");
             return;
         }
@@ -62,13 +63,11 @@ public class ReservationsHandler extends HttpServlet {
             HandlerUtils.createNotification(request, errorMessage, "error", "/reservations");
             response.sendRedirect("/notification");
             return;
+        } else {
+            String successMessage = "Reservation " + reservationNumber + " has been cancelled successfully.";
+            HandlerUtils.createNotification(request, successMessage, "success", "/reservations");
+            response.sendRedirect("/notification");
+            return;
         }
-
-        JSONObject output = new JSONObject();
-        output.put("success", true);
-        output.put("title", "ReservationsPage");
-        request.setAttribute("context", output);
-
-        response.sendRedirect("/reservations");
     }
 }

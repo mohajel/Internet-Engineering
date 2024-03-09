@@ -30,7 +30,7 @@
     <h1>Your Reservations:</h1>
     <br><br>
     <br><br>
-    <table style="width:100%; text-align:center;" border="1">
+    <table class="table table-striped .table-hover table-dark" style="opacity: 0.9;">
         <tr>
             <th>Reservation Id</th> 
             <th>Restaurant Name</th>
