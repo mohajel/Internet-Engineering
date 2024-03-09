@@ -1,7 +1,6 @@
 <%@include file="header.jsp" %>
 <%@include file="scripts.jsp" %>
 
-<p id="username">username: ali <a href="/">Home</a> <a href="/logout" style="color: red">Log Out</a></p>
 <br><br>
 <form action="/restaurants" method="POST">
     <label>Search:</label>
@@ -19,7 +18,7 @@
     <button type="submit" name="action" value="sort_by_rate">Overall Score</button>
 </form>
 <br><br>
-<table id="table" style="width:100%; text-align:center;" border="1">
+<table id="table" class="table table-striped .table-hover table-dark" style="opacity: 0.9;">
     <tr>
         <th>Id</th>
         <th>Name</th>
