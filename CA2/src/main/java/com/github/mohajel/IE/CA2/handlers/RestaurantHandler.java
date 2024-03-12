@@ -1,8 +1,6 @@
 package com.github.mohajel.IE.CA2.handlers;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA2.MizdooniApp;
-import com.github.mohajel.IE.CA2.models.Table;
 import com.github.mohajel.IE.CA2.models.User;
 
 @WebServlet(name = "RestaurantHandler", urlPatterns = { "/restaurant" })

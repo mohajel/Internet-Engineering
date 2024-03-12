@@ -1,6 +1,5 @@
 package com.github.mohajel.IE.CA2.database;
 
-import java.text.CollationKey;
 import java.util.ArrayList;
 
 import org.json.JSONArray;

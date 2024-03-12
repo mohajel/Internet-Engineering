@@ -1,6 +1,5 @@
 package com.github.mohajel.IE.CA2.handlers;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;

@@ -15,9 +15,6 @@ import com.github.mohajel.IE.CA2.models.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-// import com.github.mohajel.IE.CA2.MizdooniApp;
-// import com.github.mohajel.IE.CA2.utils.MizdooniError;
-
 
 @WebServlet(name = "RestaurantsHandler", urlPatterns = { "/restaurants" })
 public class RestaurantsHandler extends HttpServlet {

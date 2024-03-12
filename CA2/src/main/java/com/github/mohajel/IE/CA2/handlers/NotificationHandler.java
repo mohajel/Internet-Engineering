@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
-// import com.github.mohajel.IE.CA2.MizdooniApp;
-// import com.github.mohajel.IE.CA2.models.User;
-
 @WebServlet(name = "NotificationHandler", urlPatterns = { "/notification" })
 public class NotificationHandler extends HttpServlet {
 
