@@ -1,5 +1,4 @@
 <%@ page import="org.json.JSONArray" %>
-<%@ page import="com.github.mohajel.IE.CA2.models.Review" %>
 <%@include file="header.jsp" %>
 
 <%
