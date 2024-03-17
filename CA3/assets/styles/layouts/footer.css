@@ -1,0 +1,10 @@
+@import "./global.css";
+
+footer {
+    background-color: var(--color-red);
+    height: 45px;
+    line-height: 45px;
+}
+footer p {
+    color: var(--color-white);
+}
