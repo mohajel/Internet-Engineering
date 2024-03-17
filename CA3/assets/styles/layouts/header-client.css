@@ -7,7 +7,7 @@
     height: 12%;
     align-items:center;
     box-shadow: 0px 0px 1px 0px #303030;
-    background: var(--color-white)
+    background: var(--color-white);
 }
 
 .header-mizdooni-logo a img{
@@ -15,17 +15,20 @@
     height: auto;
     top: 8px;
     left: 53px;
+    justify-self: left;
+    margin-left: 1vw;
 }
 
 .header-mizdooni-motto h1{
     color: var(--color-red);
+    width: 100%;
     font-family: "Spline Sans";
     font-family: Spline Sans;
     font-size: 22px;
     font-weight: 400;
     line-height: 26px;
-    letter-spacing: 0em;
     text-align: left;
+    margin-left: 2vw;
 }
 
 .header-reservation-button a{
@@ -35,6 +38,7 @@
     width: 130px;
     height: 40px;
     border-radius: 12px;
+    margin-left: 54vw;
 
     font-family: "Spline Sans";
     font-size: 16px;
