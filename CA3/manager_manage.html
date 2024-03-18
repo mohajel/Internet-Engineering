@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="../styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/font.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/colors.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/header.css" rel="stylesheet" type="text/css" />
+    <link href="../styles/footer.css" rel="stylesheet" type="text/css" />
+    <link
+      href="../styles/manager_manage.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body class="min-vh-100 d-flex flex-column">
+    <header class="d-flex sticky-top container-fluid" id="header">
+      <img src="../images/logo.png" alt="logo" class="logo" />
+      <span class="header-text d-none d-sm-block"
+        >Reserve Table From Anywhere!</span
+      >
+      <div class="welcome-user ms-auto">Welcome, Admin!</div>
+      <button class="reserve-button rounded-3 border-0">Reserve Now!</button>
+    </header>
+    <main class="flex-grow-1">
+      <!-- <div class="p-3 container container-fluid vh-100 d-flex flex-column"> -->
+      <div class="d-flex align-items-center p-3">
+        <div id="manage-rest-name">Reservation List</div>
+        <div class="ms-auto" id="manage-rest-address">
+          Address: Vali-e-Asr Square, Boshehr, Iran
+        </div>
+      </div>
+      <div class="container-fluid vh-100 d-flex flex-column">
+        <div class="row flex-grow-1" style="min-height: 0">
+          <div class="col-4 h-100 d-flex flex-column" id="reservation-list">
+            <div class="d-flex align-items-center p-2">
+              <div id="manage-rest-reservation-list-header">
+                Reservation List
+              </div>
+              <div class="ms-auto" id="manage-rest-reservation-list-info">
+                Select a table to see its reservations
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table-responsive table rounded-3 overflow-hidden">
+                <tbody>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+
+                  <tr class="manage-reservation-done">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-done">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-done">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-done">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-done">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                  <tr class="manage-reservation-active">
+                    <td class="manage-reservation-date">17:00 JAn 24th</td>
+                    <td class="reserver">By Tom Holland</td>
+                    <td class="manage-table-id">
+                      <a href="#"> Table 2 </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-8 mh-100" style="overflow-y: scroll" id="add-table">
+            <div class="container p-4">
+              <div
+                class="row w-75 mx-auto row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5 row-cols-xxl-6 g-4"
+              >
+                <div class="col">
+                  <div
+                    class="rest-table mx-auto d-flex flex-column justify-content-center rounded-4"
+                  >
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/hashtag.svg"
+                        alt="hashtag-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/seat.svg"
+                        alt="seat-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div
+                    class="rest-table mx-auto justify-content-center d-flex flex-column rounded-4"
+                  >
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/hashtag.svg"
+                        alt="hashtag-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/seat.svg"
+                        alt="seat-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div
+                    class="rest-table mx-auto justify-content-center d-flex flex-column rounded-4"
+                  >
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/hashtag.svg"
+                        alt="hashtag-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                    <div class="icon-num d-flex justify-content-evenly">
+                      <img
+                        class="table-manage-icon align-self-center"
+                        src="../images/icons/seat.svg"
+                        alt="seat-icon"
+                      />
+                      <div>2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row flex-shrink-0">
+            <div class="col-12 border">Footer</div>
+          </div> -->
+        <footer
+          class="text-center sticky-bottom row flex-shrink-0 p-2 m-0"
+          id="footer"
+        >
+          <p class="m-0">
+            Copyright &copy; 2024 Mizdooni - All rights reserved.
+          </p>
+        </footer>
+      </div>
+      <!-- </div> -->
+    </main>
+
+    <!-- <footer class="text-center row flex-shrink-0 p-2 m-0" id="footer">
+      <p class="m-0">Copyright &copy; 2024 Mizdooni - All rights reserved.</p>
+    </footer> -->
+  </body>
+</html>
