@@ -3,6 +3,13 @@ $light-dark: #333333;
 $red: #ff0000;
 $black: #000000;
 
+@mixin important-text {
+	color: red;
+	font-size: 25px;
+	font-weight: bold;
+	border: 1px solid blue;
+}
+
 #header {
 	align-items: center;
 	width: 100%;
