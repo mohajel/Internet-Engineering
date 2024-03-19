@@ -15,6 +15,7 @@ body {
 .table > tbody > tr > td {
   border-top: 1px solid var(--light-white);
 }
+
 .table > tbody > tr:first-child > td {
   border-top: 0;
 }
@@ -39,6 +40,7 @@ body {
 .table > tbody > tr.reservation-active > td.seats-num {
   color: var(--green);
 }
+
 .table > tbody > tr.reservation-done > td.reservation-date,
 .table > tbody > tr.reservation-done > td.table-id,
 .table > tbody > tr.reservation-done > td.seats-num {
@@ -64,3 +66,5 @@ body {
   background-color: #fff6f7;
   /* border-radius: 12; */
 }
+
+/*# sourceMappingURL=customer.css.map */

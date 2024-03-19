@@ -3,16 +3,15 @@ body {
   font-family: "SplineSans", serif;
   min-height: 100vh;
 }
-
 table.table > thead > tr > th,
 table.table > thead > tr > td {
   background-color: var(--white);
   border: none;
 }
-
 table.table > tbody > tr > th,
 table.table > tbody > tr > td {
   /* background-color: var(---white); */
+
   border: none;
   border-top: 1px solid var(--light-grey2);
 }
@@ -45,5 +44,3 @@ table.table > tbody > tr > td {
 /* .table > tbody > tr:first-child > td {
   border-top: 0;
 } */
-
-/*# sourceMappingURL=manager_restaurants.css.map */
