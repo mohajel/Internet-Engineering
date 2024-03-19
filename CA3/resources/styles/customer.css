@@ -28,6 +28,14 @@ body {
   color: var(--black);
 }
 
+.table > thead.restaurant-header > tr > th {
+  background-color: var(--light-grey);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23.07px;
+  color: var(--black);
+}
+
 .table > tbody > tr > td {
   font-weight: 400;
   font-size: 16px;
@@ -38,6 +46,12 @@ body {
 .table > tbody > tr.reservation-active > td.reservation-date,
 .table > tbody > tr.reservation-active > td.table-id,
 .table > tbody > tr.reservation-active > td.seats-num {
+  color: var(--green);
+}
+
+.table > tbody > tr.restaurant-row > td.reservation-date,
+.table > tbody > tr.restaurant-row > td.table-id,
+.table > tbody > tr.restaurant-row > td.seats-num {
   color: var(--green);
 }
 
