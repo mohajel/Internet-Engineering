@@ -1,3 +1,10 @@
+@import "bootstrap.scss";
+@import "normalize.scss";
+@import "font.scss";
+@import "colors.scss";
+@import "header.scss";
+@import "footer.scss";
+
 body {
   background-color: var(--red);
   font-family: "SplineSans", serif;
