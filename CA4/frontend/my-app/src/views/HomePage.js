@@ -6,6 +6,8 @@ import StarEmpty from "../resources/images/icons/star_empty.svg";
 import StarFilled from "../resources/images/icons/star_filled.svg";
 import LocationIcon from "../resources/images/icons/location.svg";
 
+import Header from './Header';
+
 export default class HomePage extends React.Component {
 
     render() {
@@ -13,20 +15,14 @@ export default class HomePage extends React.Component {
 
             <div class="d-flex flex-column">
 
-                <header class="sticky-top container-fluid d-flex" id="header">
-                    <img src={require("../resources/images/logo.png")} alt="logo" class="logo" />
-                    <span class="header-text d-none d-sm-block">Reserve Table From Anywhere!</span>
-                    <button class="reserve-button rounded-3 border-0 ms-auto">
-                        Reserve Now!
-                    </button>
-                </header>
+                <Header />
 
                 <main class="flex-grow-1">
                     <div class="container-s w-100 text-center">
                         <div class="home-background w-100">
                             <div class="container">
                                 <div class="input-group mb-3">
-                                    <img class="big-logo" src={require("../resources/images/logo.png")}  />
+                                    <img class="big-logo" src={require("../resources/images/logo.png")} alt="logo" />
                                 </div>
                                 <div class="input-group mb-1 text-center">
                                     <select class="custom-select rounded-4 search-input" id="inputGroupSelect01" aria-placeholder="Location">
