@@ -7,7 +7,7 @@ import "../resources/styles/error_page.css"
 import Header from './Header';
 
 
-function ErrorPage(props) {
+function MessagePage(props) {
     const navigate = useNavigate();
     const timerPeriod = 5000;
 
@@ -43,18 +43,6 @@ function ErrorPage(props) {
         <div class="d-flex flex-column">
             <Header />  
             <main class="flex-grow-1 home-background w-100">
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-12 text-center">
-                            {/* <h1 class="display-1 mt-5">404</h1>
-                            <h2 class="display-4">Page Not Found</h2>
-                            <p class="lead">
-                                We are sorry, the page you are looking for is not available.
-                            </p>
-                            <a href="index.html" class="btn btn-primary">Go to Home</a> */}
-                        </div>
-                    </div>
-                </div>
             </main>
 
             <footer class="fixed-bottom text-center p-2 m-0 mt-5" id="footer">
@@ -64,4 +52,4 @@ function ErrorPage(props) {
     );
 }
 
-export default ErrorPage;
+export default MessagePage;

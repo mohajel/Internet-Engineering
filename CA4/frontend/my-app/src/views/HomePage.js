@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import "../resources/styles/home_page.css"
 
@@ -11,8 +12,46 @@ import LocationIcon from "../resources/images/icons/location.svg";
 import Header from './Header';
 
 function HomePage() {
-    const navigate = useNavigate();
-    
+    // const navigate = useNavigate();
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [userStatus, setUserStatus] = useState(null);
+
+    // useEffect(() => {
+    // Make an API call to check if the user is logged in
+    // Assuming the API endpoint returns a boolean value indicating the login status
+    //   fetch('/api')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setIsLoggedIn(data.isLoggedIn);
+    //     //   setIsLoading(false);
+    //       setUserStatus(data);
+    //       console.log('User status:', data);
+    //     })
+    //     .catch(error => {
+    //       console.error('Error checking login status:', error);
+    //     //   setIsLoading(false);
+    //     });
+    // }, []);
+
+
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch("/api")
+            .then((res) => res.json())
+            // .then((data) => setData(data.message));
+            .then((data) => setData(data.title));
+    }, []);
+
+
+
+    if (isLoading) {
+        return <div>data is:: {data}</div>;
+    }
+
+
 
     return (
 

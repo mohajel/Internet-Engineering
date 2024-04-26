@@ -6,7 +6,7 @@ import './App.css';
 // import HomePage from './views/HomePage';
 
 const HomePage = React.lazy(() => import('./views/HomePage'));
-const ErrorPage = React.lazy(() => import('./views/ErrorPage'));
+const MessagePage = React.lazy(() => import('./views/MessagePage'));
 const LoginPage = React.lazy(() => import('./views/LoginPage'));
 
 
@@ -34,9 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="about/*" element={<AboutPage />} />
-          <Route path="/error" element={<ErrorPage type='error' 
-                message='error message here...' 
-              redirectURL='/login' />} />
+          <Route path="/error" element={<MessagePage type='error' message='message' redirectURL='/login' />} />
           <Route path="/login" element={<LoginPage />} />
 
         </Routes>
