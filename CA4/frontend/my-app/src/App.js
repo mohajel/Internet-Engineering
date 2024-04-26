@@ -6,7 +6,8 @@ import './App.css';
 // import HomePage from './views/HomePage';
 
 const HomePage = React.lazy(() => import('./views/HomePage'));
-// import About from './About';
+const ErrorPage = React.lazy(() => import('./views/ErrorPage'));
+
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="about/*" element={<AboutPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
     </Suspense>
