@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import "../resources/styles/home_page.css"
 
 // images
@@ -9,6 +11,8 @@ import LocationIcon from "../resources/images/icons/location.svg";
 import Header from './Header';
 
 function HomePage() {
+    const navigate = useNavigate();
+    
 
     return (
 

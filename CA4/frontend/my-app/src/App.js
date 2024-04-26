@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 
-import {BrowserRouter, Routes, Route,} from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 import './App.css';
 // import HomePage from './views/HomePage';
@@ -26,19 +26,21 @@ function App() {
   // if (userStatus === null) {
   //   return <div>Loading...</div>;
   // }
-  
+
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="about/*" element={<AboutPage />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/login" element={<LoginPage />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="about/*" element={<AboutPage />} />
+          <Route path="/error" element={<ErrorPage type='error' 
+                message='error message here...' 
+              redirectURL='/login' />} />
+          <Route path="/login" element={<LoginPage />} />
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </Suspense>
   );
 }

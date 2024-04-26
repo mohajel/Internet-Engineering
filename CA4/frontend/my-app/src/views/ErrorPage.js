@@ -7,21 +7,21 @@ import "../resources/styles/error_page.css"
 import Header from './Header';
 
 
-function ErrorPage() {
+function ErrorPage(props) {
     const navigate = useNavigate();
     const timerPeriod = 5000;
 
-    var notification = {
-        type: 'error',
-        message: 'An error occurred. Redirecting to home page...',
-        redirectURL: '/'
-    };
+    // var props = {
+    //     type: 'error',
+    //     message: 'An error occurred. Redirecting to home page...',
+    //     redirectURL: '/'
+    // };
 
     let timerInterval;
     Swal.fire({
-        title: notification.type,
-        text: notification.message,
-        icon: notification.type,
+        title: props.type,
+        text: props.message,
+        icon: props.type,
         timer: timerPeriod,
         timerProgressBar: true,
         didOpen: () => {
@@ -33,9 +33,9 @@ function ErrorPage() {
     }).then((result) => {
 
         if (result.dismiss === Swal.DismissReason.timer) {
-            console.log("redirecting to " + notification.redirectURL);
-            navigate('/');
-            //   window.location.href = notification.redirectURL;
+            console.log("redirecting to " + props.redirectURL);
+            navigate(props.redirectURL);
+            //   window.location.href = props.redirectURL;
         }
     });
 
