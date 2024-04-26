@@ -9,7 +9,7 @@ import Header from './Header';
 
 function ErrorPage() {
     const navigate = useNavigate();
-    const timerPeriod = 50000;
+    const timerPeriod = 5000;
 
     var notification = {
         type: 'error',

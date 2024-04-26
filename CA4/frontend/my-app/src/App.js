@@ -7,11 +7,27 @@ import './App.css';
 
 const HomePage = React.lazy(() => import('./views/HomePage'));
 const ErrorPage = React.lazy(() => import('./views/ErrorPage'));
+const LoginPage = React.lazy(() => import('./views/LoginPage'));
 
 
 
 
 function App() {
+  // get state from the server
+  // const [userStatus, setUserStatus] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   fetch("/api/user")
+  //     .then((res) => res.json())
+  //     .then((data) => setUserStatus(data.isLoggedIn));
+  // }
+  // , []);
+
+  // if (userStatus === null) {
+  //   return <div>Loading...</div>;
+  // }
+  
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
     <BrowserRouter>
@@ -19,6 +35,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="about/*" element={<AboutPage />} />
         <Route path="/error" element={<ErrorPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
       </Routes>
     </BrowserRouter>
     </Suspense>
