@@ -18,8 +18,9 @@ public class TestRestaurantFactory {
         address.put("country", "Iran");
         address.put("city", "Tehran");
         address.put("street", "Valiasr");
-
         restaurant.put("address", address);
+
+        restaurant.put("image", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
 
         return restaurant;
     }
@@ -38,8 +39,9 @@ public class TestRestaurantFactory {
         address.put("country", "Iran");
         address.put("city", "Tehran");
         address.put("street", "Valiasr");
-
         restaurant.put("address", address);
+
+        restaurant.put("image", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
 
         return restaurant;
     }
