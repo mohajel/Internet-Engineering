@@ -6,7 +6,7 @@ import com.github.mohajel.IE.CA4.utils.MizdooniError;
 
 public class Restaurant {
 
-    public Restaurant(String name, String managerUserName, String type, Hour startTime, Hour endTime, String description, Address address) throws MizdooniError {
+    public Restaurant(String name, String managerUserName, String type, Hour startTime, Hour endTime, String description, Address address, String pictureAddress) throws MizdooniError {
         this.name = name;
         OverID++;
         this.id = OverID;
@@ -20,7 +20,7 @@ public class Restaurant {
         this.endTime = endTime;
         this.description = description;
         this.address = address;
-
+        this.pictureAddress = pictureAddress;
     }
 
     public static int OverID = 0;
@@ -33,6 +33,7 @@ public class Restaurant {
     public Hour endTime;
     public String description;
     public Address address;
+    public String pictureAddress;
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

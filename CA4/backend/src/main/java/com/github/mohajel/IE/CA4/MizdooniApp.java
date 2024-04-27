@@ -168,10 +168,12 @@ public class MizdooniApp {
             String endTime = input.getString("endTime");
             String description = input.getString("description");
             JSONObject address = input.getJSONObject("address");
+            String pictureAddress = input.getString("image");
 
             Restaurant restaurant = new Restaurant(name, managerUsername, type, new Hour(startTime), new Hour(endTime),
                     description,
-                    new Address(address.getString("street"), address.getString("city"), address.getString("country")));
+                    new Address(address.getString("street"), address.getString("city"), address.getString("country")),
+                    pictureAddress);
             db.addRestaurant(restaurant);
             output.put("success", true);
             output.put("data", "Restaurant added successfully.");
