@@ -56,7 +56,7 @@ public class Utils {
     // containing characters like @ # $ % ^ & * ( ) _ + - = { } [ ] | \ : " ; ' < >
     // , . ? / ~ ` and space
     static public boolean containsCharacters(String str) {
-        return str.matches(".*[@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?~` ].*");
+        return str.matches(".*[@#$%^&*()+\\-=\\[\\]{};':\"\\\\|,.<>/?~` ].*");
     }
 
     static boolean isFirstLog = true;
