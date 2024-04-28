@@ -10,6 +10,15 @@ import "../resources/styles/home_page.css"
 import StarEmpty from "../resources/images/icons/star_empty.svg";
 import StarFilled from "../resources/images/icons/star_filled.svg";
 import LocationIcon from "../resources/images/icons/location.svg";
+import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
+import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
+import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";
+import Restaurant4Img from "../resources/images/restaurants/restaurant4.png";
+import Restaurant5Img from "../resources/images/restaurants/restaurant5.png";
+import Restaurant6Img from "../resources/images/restaurants/restaurant6.png";
+
+
+
 
 import Header from './Header';
 
@@ -133,6 +142,22 @@ function SearchRestaurants() {
 }
 
 function TopRestaurants() {
+
+    const navigate = useNavigate();
+
+    const [topRestaurants, setTopRestaurants] = useState([]);
+    useEffect(() => {
+        fetch("/topRestaurants")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setTopRestaurants(data);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
+
     return (
         <div>
             <div id="top-restaurants-id">
@@ -142,37 +167,58 @@ function TopRestaurants() {
                 <div
                     class="restaurants row p-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
 
-                    <RestaurantCard
-                        numberOfStars="1"
-                        restaurantName="Haida Restaurant"
-                        reviewCount="12096"
-                        restaurantType="Fast Food"
-                        location="Tehran"
-                        openStatus="Open"
-                        durationInfo="Opens at 10 AM"
-                    />
 
-                    <RestaurantCard
-                        numberOfStars="3"
-                        restaurantName="Eline Cafe"
-                        reviewCount="0"
-                        restaurantType="Sea Food"
-                        location="Rasht"
-                        openStatus="Open"
-                        durationInfo="Closes at 12 PM"
-                    />
+                    {topRestaurants.map((restaurant) => (
+                        <RestaurantCard
+                            numberOfStars={restaurant.numberOfStars}
+                            restaurantName={restaurant.restaurantName}
+                            reviewCount={restaurant.reviewCount}
+                            restaurantType={restaurant.restaurantType}
+                            location={restaurant.location}
+                            openStatus={restaurant.openStatus}
+                            durationInfo={restaurant.durationInfo}
+                        />
+                    ))}
 
-                    <RestaurantCard
-                        numberOfStars="4"
-                        restaurantName="Cecconi's"
-                        reviewCount="2096"
-                        restaurantType="Healthy Food"
-                        location="Ahvaz"
-                        openStatus="Open"
-                        durationInfo="Closes at 11 PM"
-                    />
-                    
                 </div>
+            </div>
+        </div>
+    );
+}
+
+function SuggestedRestaurants() {
+
+    const [topRestaurants, setTopRestaurants] = useState([]);
+    useEffect(() => {
+        fetch("/suggestedRestaurants")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setTopRestaurants(data);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
+
+    return (
+        <div>
+            <div class="result-title">You might also like</div>
+            <div
+                class="restaurants row p-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+
+
+                {topRestaurants.map((restaurant) => (
+                    <RestaurantCard
+                        numberOfStars={restaurant.numberOfStars}
+                        restaurantName={restaurant.restaurantName}
+                        reviewCount={restaurant.reviewCount}
+                        restaurantType={restaurant.restaurantType}
+                        location={restaurant.location}
+                        openStatus={restaurant.openStatus}
+                        durationInfo={restaurant.durationInfo}
+                    />
+                ))}
             </div>
         </div>
     );
@@ -189,6 +235,21 @@ function Stars(props) {
         stars.push(<img key={i} className="icon" src={StarEmpty} alt="star_empty" />);
     }
     return stars;
+}
+
+function RandomRestaurantImage() {
+    const pictureNum = Math.floor(Math.random() * 5) + 1;
+
+    return (
+        <img src={
+            pictureNum == 1 ? Restaurant1Img :
+                pictureNum == 2 ? Restaurant2Img :
+                    pictureNum == 3 ? Restaurant3Img :
+                        pictureNum == 4 ? Restaurant4Img :
+                            pictureNum == 5 ? Restaurant5Img : Restaurant6Img
+        }
+            class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
+    );
 }
 
 
@@ -210,8 +271,7 @@ function RestaurantCard(props) {
                     <div class="rate d-flex position-absolute px-2 py-1">
                         <Stars numberOfStars={numberOfStars} />
                     </div>
-                    <img src={require("../resources/images/restaurants/restaurant2.png")}
-                        class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
+                    <RandomRestaurantImage />
                 </a>
                 <div class="card-body">
                     <div class="card-title name">{restaurantName}</div>
@@ -224,210 +284,16 @@ function RestaurantCard(props) {
                         {location}
                     </div>
                     <div class="card-text d-flex time">
-                        {openStatus == "Open" ? <div class="open">Open</div> :  <div class="closed">Closed</div>}
+                        {openStatus == "Open" ? <div class="open">Open</div> : <div class="closed">Closed</div>}
                         <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
                         <div class="close-time">{durationInfo}</div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
 
-function SuggestedRestaurants() {
-    return (
-        <div>
-
-
-            <div class="result-title">You might also like</div>
-            <div
-                class="restaurants row p-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
-                <div class="col">
-                    <div class="restaurant card rounded-4 h-100 position-relative">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant1.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest1_picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">The Ivy Brasserie</div>
-                            <div class="review-count card-text">2096 reviews</div>
-                            <div class="type card-text">Contemporary British</div>
-
-                            <div class="card-text d-flex location">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Tehran
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="open">Open</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Closes at 11 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card rounded-4 h-100 position-relative restaurant">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant2.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">Halia Restaurant</div>
-                            <div class="review-count card-text">12096 reviews</div>
-                            <div class="type card-text">Fast Food</div>
-
-                            <div class="card-text location d-flex ">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Tehran
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="closed">Closed</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Opens at 10 AM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class=" position-relative restaurant card rounded-4 h-100">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant3.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest3_picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">Eline Cafe</div>
-                            <div class="review-count card-text">0 reviews</div>
-                            <div class="type card-text">Sea Food</div>
-
-                            <div class="card-text d-flex location">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Rasht
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="open">Open</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Closes at 12 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="restaurant card rounded-4 h-100 position-relative">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant4.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest4-picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">Cecconi's</div>
-                            <div class="review-count card-text">2096 reviews</div>
-                            <div class="type card-text">Healthy Food</div>
-
-                            <div class="card-text d-flex location">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Ahvaz
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="open">Open</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Closes at 11 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="restaurant card rounded-4 h-100 position-relative">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant5.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest5-picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">Hard Rock Cafe</div>
-                            <div class="review-count card-text">2096 reviews</div>
-                            <div class="type card-text">Vegetarian Food</div>
-
-                            <div class="card-text d-flex location">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Tabriz
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="open">Open</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Closes at 11 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="restaurant card rounded-4 h-100 position-relative">
-                        <a href="#" class="restaurant-link">
-                            <div class="rate d-flex position-absolute px-2 py-1">
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                                <img class="icon" src={StarFilled} alt="star_empty" />
-                                <img class="icon" src={StarFilled} alt="star_filled" />
-                            </div>
-                            <img src={require("../resources/images/restaurants/restaurant6.png")}
-                                class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest6-picture" />
-                        </a>
-                        <div class="card-body">
-                            <div class="card-title name">28 - 50 Marylebone</div>
-                            <div class="review-count card-text">2096 reviews</div>
-                            <div class="type card-text">Kebab</div>
-
-                            <div class="card-text d-flex location">
-                                <img class="icon align-self-center" src={LocationIcon} alt="location-icon" />
-                                Tehran
-                            </div>
-                            <div class="card-text d-flex time">
-                                <div class="open">Open</div>
-                                <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                                <div class="close-time">Closes at 11 PM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 function AboutMizdooni() {
     return (
