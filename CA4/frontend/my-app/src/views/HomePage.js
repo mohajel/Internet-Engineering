@@ -13,26 +13,24 @@ import Header from './Header';
 
 function HomePage() {
 
+   // default of how to use fetch
+   const [user, setUser] = useState([]);
+   useEffect(() => {
+      fetch('/abcde')
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(data);
+            setUser(data);
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+   }, []);
 
-        const [posts, setPosts] = useState([]);
-        useEffect(() => {
-           fetch('/api')
-              .then((response) => response.json())
-              .then((data) => {
-                 console.log(data);
-                 setPosts(data);
-              })
-              .catch((err) => {
-                 console.log(err.message);
-              });
-        }, []);
-     
-     return (
-        <h1>salam {posts.title}</h1>
-     );
-
-
-    }
+   return (
+      <h1>salam <div><pre>{JSON.stringify(user, null, 2)}</pre></div></h1>
+   );
+}
 
 
 
@@ -51,7 +49,7 @@ function HomePage() {
 //     //   <div>
 //     //     sss
 //     //     {photos}
-        
+
 //     //     {/* {photos.map((photo) => (
 //     //       <img key={photo.id} src={photo.url} alt={photo.title} width={100} /> */}
 //     //     {/* ))} */}
