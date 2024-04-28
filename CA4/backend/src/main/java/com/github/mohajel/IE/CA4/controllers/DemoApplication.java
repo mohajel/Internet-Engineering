@@ -3,9 +3,9 @@ package com.github.mohajel.IE.CA4.controllers;
 
 import java.util.Collections;
 
+import com.github.mohajel.IE.CA4.MizdooniApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-// import f;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -14,6 +14,9 @@ public class DemoApplication {
 		SpringApplication app = new SpringApplication(DemoApplication.class);
         app.setDefaultProperties(Collections
           .singletonMap("server.port", "8083"));
+
+		// get the instance of the app for Init it
+		MizdooniApp.getInstance();
         app.run(args);
 	}
 
