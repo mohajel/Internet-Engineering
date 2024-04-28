@@ -1,5 +1,8 @@
 package com.github.mohajel.IE.CA4.utils;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -54,6 +57,29 @@ public class Utils {
     // , . ? / ~ ` and space
     static public boolean containsCharacters(String str) {
         return str.matches(".*[@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?~` ].*");
+    }
+
+    static boolean isFirstLog = true;
+    public static void logAppendFile(String functionName, String message) {
+        // clear content of the file from previous runs
+        if (isFirstLog) {
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA4-logs.txt"));
+                writer.write("");
+                writer.close();
+                isFirstLog = false;
+            } catch (IOException ioe) {
+                System.out.println("Couldn't write to file");
+            }
+        }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA4-logs.txt", true));
+            writer.write("Function: " + functionName + " - " + message + "\n");
+            writer.close();
+        } catch (IOException ioe) {
+            System.out.println("Couldn't write to file");
+        }
     }
 
 }
