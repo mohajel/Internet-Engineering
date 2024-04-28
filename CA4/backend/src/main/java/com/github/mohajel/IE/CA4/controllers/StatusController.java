@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.models.Address;
 import com.github.mohajel.IE.CA4.models.User;
 
@@ -28,8 +29,11 @@ public class StatusController {
 
     @RequestMapping(value ="/status", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public String getStatus() {
+        MizdooniApp app = MizdooniApp.getInstance();
+        String user = app.logedInUser;
+
         JSONObject output = new JSONObject();
-        output.put("status", "loggedOut"); // loggedIn or loggedOut
+        output.put("status", "loggedIn"); // loggedIn or loggedOut
         output.put("role", "manager"); // manager or user
         logger.info("Status: " + output.toString());
         return output.toString();
