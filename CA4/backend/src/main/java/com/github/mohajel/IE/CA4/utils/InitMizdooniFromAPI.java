@@ -10,12 +10,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import static com.github.mohajel.IE.CA4.utils.Utils.logAppendFile;
+
 public class InitMizdooniFromAPI {
-    private static final String URL = "http://91.107.137.117:55";
+    private static final String URL_API = "http://91.107.137.117:55";
 
     public static void init(MizdooniApp app) {
-        initRestaurants(app);
         initUsers(app);
+        initRestaurants(app);
         initTables(app);
         initReviews(app);
     }
@@ -33,38 +35,38 @@ public class InitMizdooniFromAPI {
     }
 
     private static void initRestaurants(MizdooniApp app) {
-        JSONArray restaurants = getDataFromAPI(URL + "/restaurants");
+        JSONArray restaurants = getDataFromAPI(URL_API + "/restaurants");
         for (int i = 0; i < restaurants.length(); i++) {
             JSONObject data = restaurants.getJSONObject(i);
             JSONObject result = app.addRestaurant(data);
-            System.out.println(result.toString());
+            logAppendFile("initRestaurants", result.toString());
         }
     }
 
     private static void initUsers(MizdooniApp app) {
-        JSONArray users = getDataFromAPI(URL + "/users");
+        JSONArray users = getDataFromAPI(URL_API + "/users");
         for (int i = 0; i < users.length(); i++) {
             JSONObject data = users.getJSONObject(i);
             JSONObject result = app.addUser(data);
-            System.out.println(result.toString());
+            logAppendFile("initUsers", result.toString());
         }
     }
 
     private static void initTables(MizdooniApp app) {
-        JSONArray tables = getDataFromAPI(URL + "/tables");
+        JSONArray tables = getDataFromAPI(URL_API + "/tables");
         for (int i = 0; i < tables.length(); i++) {
             JSONObject data = tables.getJSONObject(i);
             JSONObject result = app.addTable(data);
-            System.out.println(result.toString());
+            logAppendFile("initTables", result.toString());
         }
     }
 
     private static void initReviews(MizdooniApp app) {
-        JSONArray reviews = getDataFromAPI(URL + "/reviews");
+        JSONArray reviews = getDataFromAPI(URL_API + "/reviews");
         for (int i = 0; i < reviews.length(); i++) {
             JSONObject data = reviews.getJSONObject(i);
             JSONObject result = app.addReview(data);
-            System.out.println(result.toString());
+            logAppendFile("initReviews", result.toString());
         }
     }
 }
