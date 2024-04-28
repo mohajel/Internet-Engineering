@@ -1,10 +1,10 @@
 package com.github.mohajel.IE.CA4;
 
+import com.github.mohajel.IE.CA4.utils.InitMizdooniFromAPI;
 import org.json.*;
 
 import com.github.mohajel.IE.CA4.database.Database;
 import com.github.mohajel.IE.CA4.models.*;
-import com.github.mohajel.IE.CA4.utils.InitMizdooniFromFile;
 import com.github.mohajel.IE.CA4.utils.MizdooniError;
 import com.github.mohajel.IE.CA4.utils.Utils;
 
@@ -15,7 +15,7 @@ public class MizdooniApp {
     public Database db;
     private static MizdooniApp single_instance = null;
 
-    // using this for loged_in_user.change in nex phase 
+    // using this for logged_in_user.change in nex phase
     public String logedInUser = "";
 
     public MizdooniApp(){
@@ -36,7 +36,7 @@ public class MizdooniApp {
             try {
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
-                InitMizdooniFromFile.init(single_instance);
+                InitMizdooniFromAPI.init(single_instance);
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
             }
