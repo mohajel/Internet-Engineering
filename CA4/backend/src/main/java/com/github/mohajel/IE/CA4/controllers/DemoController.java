@@ -36,6 +36,30 @@ public class DemoController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(output.toString());
     }
 
+    @GetMapping("/api/{sth}")
+    ResponseEntity apiTest(@PathVariable(value = "sth") String sth) {
+        // return "Hello, World!";
+
+        JSONObject output = new JSONObject();
+        // output.put("success", true);
+        output.put("title", "hii " + sth);
+        // return output.toString();
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(output.toString());
+    }
+
+    @GetMapping("/api/13")
+    ResponseEntity apiTest13() {
+        // return "Hello, World!";
+
+        JSONObject output = new JSONObject();
+        // output.put("success", true);
+        output.put("title", "hii 13");
+        // return output.toString();
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(output.toString());
+    }
+
+
+
     @RequestMapping(value ="/abc/{sth}", method=RequestMethod.GET, produces= MediaType.APPLICATION_JSON_VALUE)
     public String GetAbcSth(@PathVariable(value = "sth") String sth) {
         // log the request in the console
