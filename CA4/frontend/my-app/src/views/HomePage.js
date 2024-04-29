@@ -88,8 +88,8 @@ function HomePage() {
 
                     <div class="p-3 container">
                         <div class="p-3 container" id="suggestions-container">
-                            {/* <TopRestaurants /> */}
-                            {/* <SuggestedRestaurants /> */}
+                            <TopRestaurants />
+                            <SuggestedRestaurants />
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@ function TopRestaurants() {
 
     const [topRestaurants, setTopRestaurants] = useState([]);
     useEffect(() => {
-        fetch("/topRestaurants")
+        fetch("/restaurants/topRated")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -190,7 +190,7 @@ function SuggestedRestaurants() {
 
     const [topRestaurants, setTopRestaurants] = useState([]);
     useEffect(() => {
-        fetch("/suggestedRestaurants")
+        fetch("/restaurants/suggested")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);

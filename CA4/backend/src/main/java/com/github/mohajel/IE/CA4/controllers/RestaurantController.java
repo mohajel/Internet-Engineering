@@ -25,7 +25,7 @@ public class RestaurantController {
         return ResponseEntity.ok().body(restaurants.toString());
     }
 
-    @GetMapping("/topRate")
+    @GetMapping("/topRated")
     ResponseEntity<String> getTopRateRestaurants() {
         JSONObject restaurant1 = new JSONObject();
         restaurant1.put("numberOfStars", 5);
@@ -67,7 +67,7 @@ public class RestaurantController {
         return ResponseEntity.ok().body(topRestaurants.toString());
     }
 
-    @GetMapping("/suggestions")
+    @GetMapping("/suggested")
     ResponseEntity<String> getSuggestions() {
         JSONObject restaurant1 = new JSONObject();
         restaurant1.put("numberOfStars", 5);
