@@ -301,6 +301,10 @@ public class MizdooniApp {
     }
 
     /// Search restaurants
+    public JSONArray getAllRestaurantsWithAVGRate() {
+        return db.getAllRestaurantWithAVGRate();
+    }
+
     public JSONObject getInfoOfRestaurantByName(JSONObject date) {
         System.out.println("get info of restaurant by name called");
         JSONObject output = new JSONObject();
