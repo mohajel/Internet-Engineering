@@ -5,8 +5,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import javax.swing.*;
 
 public class Utils {
 
@@ -79,6 +87,37 @@ public class Utils {
             writer.close();
         } catch (IOException ioe) {
             System.out.println("Couldn't write to file");
+        }
+    }
+
+    public static JSONArray sortJSONArray(JSONArray jsonArray, String compareBy, SortOrder sortOrder) {
+        try {
+            List<JSONObject> jsonList = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                jsonList.add(jsonArray.getJSONObject(i));
+            }
+
+            if (jsonList.size() > 0) {
+                Object firstValue = jsonList.get(0).get(compareBy);
+                if (firstValue instanceof Double) {
+                    jsonList.sort(Comparator.comparingDouble(o -> o.getDouble(compareBy)));
+                } else if (firstValue instanceof Integer) {
+                    jsonList.sort(Comparator.comparingInt(o -> o.getInt(compareBy)));
+                } else if (firstValue instanceof String) {
+                    jsonList.sort(Comparator.comparing(o -> o.getString(compareBy)));
+                }
+
+                if (sortOrder == SortOrder.DESCENDING) {
+                    Collections.reverse(jsonList);
+                }
+
+                return new JSONArray(jsonList);
+            } else {
+                return null;
+            }
+        } catch (JSONException e) {
+            System.err.println("Error in sorting JSON Array: " + e.getMessage());
+            return null;
         }
     }
 
