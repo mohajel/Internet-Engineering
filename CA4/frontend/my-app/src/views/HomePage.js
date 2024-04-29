@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { useLayoutEffect } from 'react';
-import ExternalImage from 'react-external-image'
+import { postReq, getReq } from '../utils/api';
 
 import "../resources/styles/home_page.css"
 
@@ -193,16 +193,23 @@ function SuggestedRestaurants() {
 
     const [topRestaurants, setTopRestaurants] = useState([]);
     useEffect(() => {
-        fetch("/restaurants/suggested")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setTopRestaurants(data);
-            })
-            .catch((err) => {
-                console.log(err.message);
+        getReq("/restaurants/suggested")
+            .then(response => {
+                setTopRestaurants(response);
             });
+
+        // fetch("/restaurants/suggested")
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log(data);
+        //         setTopRestaurants(data);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err.message);
+        //     });
     }, []);
+
+    
 
     return (
         <div>
@@ -243,7 +250,7 @@ function Stars(props) {
 
 function RandomRestaurantImage(props) {
     const pictureNum = Math.floor(Math.random() * 5) + 1;
-    
+
     let imgUrl = props.imgUrl;
 
     return (
@@ -288,7 +295,7 @@ function RestaurantCard(props) {
                     </div>
                     <div class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture">
                         {/* <eImg /> */}
-                        <RandomRestaurantImage imgUrl={imgUrl}/>
+                        <RandomRestaurantImage imgUrl={imgUrl} />
                     </div>
                 </a>
                 <div class="card-body">
