@@ -80,7 +80,7 @@ function HomePage() {
         return (
             <div class="d-flex flex-column">
 
-                <Header />
+                <Header buttonText="LogOut" />
 
                 <main class="flex-grow-1">
 
@@ -88,8 +88,8 @@ function HomePage() {
 
                     <div class="p-3 container">
                         <div class="p-3 container" id="suggestions-container">
-                            <TopRestaurants />
-                            <SuggestedRestaurants />
+                            {/* <TopRestaurants /> */}
+                            {/* <SuggestedRestaurants /> */}
                         </div>
                     </div>
 
@@ -293,7 +293,6 @@ function RestaurantCard(props) {
         </div>
     );
 }
-
 
 function AboutMizdooni() {
     return (

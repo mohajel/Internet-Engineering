@@ -14,7 +14,7 @@ function LoginPage() {
 
     return (
         <div class="d-flex flex-column">
-            <Header />
+            <Header buttonText="Reserve Now!" />
             <main class="flex-grow-1">
             
                 {/* create a button that goes to HomePage */}

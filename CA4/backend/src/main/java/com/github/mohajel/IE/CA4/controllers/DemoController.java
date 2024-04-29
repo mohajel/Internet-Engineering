@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.mohajel.IE.CA4.models.Address;
@@ -25,9 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -35,8 +33,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
 
 // DONOT TOUCH THIS FILE
 @RestController
@@ -126,6 +122,22 @@ public class DemoController {
         // output.put("success", true);
         output.put("isLogedIn", "true");
         output.put("role", "manager"); // manager or user
+        return output.toString();
+    }
+
+    @RequestMapping(value = "/testPost", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    // public String PostTestPost(@RequestParam(value = "username") String username,
+    //         @RequestParam(value = "password") String password) {
+
+        public String PostTestPost(@RequestBody String body) {
+
+        logger.info("Request: \n" + body);
+
+        JSONObject output = new JSONObject();
+        output.put("accept", "true");
+        output.put("username", "username");
+        output.put("password", "password");
+
         return output.toString();
     }
 

@@ -8,8 +8,7 @@ import './App.css';
 const HomePage = React.lazy(() => import('./views/HomePage'));
 const MessagePage = React.lazy(() => import('./views/MessagePage'));
 const LoginPage = React.lazy(() => import('./views/LoginPage'));
-
-
+const TestPost = React.lazy(() => import('./views/TestPost'));
 
 
 function App() {
@@ -36,16 +35,13 @@ function App() {
           <Route path="about/*" element={<AboutPage />} />
           <Route path="/error" element={<MessagePage type='error' message='message' redirectURL='/login' />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/test" element={<TestPost />} />
 
         </Routes>
       </BrowserRouter>
     </Suspense>
   );
 }
-
-// function HomePage() {
-//   return <h2>Home</h2>;
-// }
 
 function AboutPage() {
   return <h2>About</h2>;
