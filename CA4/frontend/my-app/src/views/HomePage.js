@@ -252,10 +252,9 @@ function RandomRestaurantImage() {
     );
 }
 
-
 function RestaurantCard(props) {
 
-    let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo;
+    let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo, reference;
     numberOfStars = props.numberOfStars;
     restaurantName = props.restaurantName;
     reviewCount = props.reviewCount;
@@ -263,11 +262,12 @@ function RestaurantCard(props) {
     location = props.location;
     openStatus = props.openStatus;
     durationInfo = props.durationInfo;
+    reference = "/restaurant/" + restaurantName;
 
     return (
         <div class="col">
             <div class="restaurant card rounded-4 h-100 position-relative">
-                <a href="#" class="restaurant-link">
+                <a href={reference} class="restaurant-link">
                     <div class="rate d-flex position-absolute px-2 py-1">
                         <Stars numberOfStars={numberOfStars} />
                     </div>
@@ -335,6 +335,5 @@ function AboutMizdooni() {
         </div>
     );
 }
-
 
 export default HomePage;
