@@ -35,6 +35,8 @@ public class RestaurantController {
         restaurant1.put("location", "Tehran");
         restaurant1.put("openStatus", "Open");
         restaurant1.put("durationInfo", "10:00 - 22:00");
+        restaurant1.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/2/48899571.webp");
+
 
         JSONObject restaurant2 = new JSONObject();
         restaurant2.put("numberOfStars", 4);
@@ -44,6 +46,8 @@ public class RestaurantController {
         restaurant2.put("location", "Tehran");
         restaurant2.put("openStatus", "Open");
         restaurant2.put("durationInfo", "10:00 - 22:00");
+        restaurant2.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/3/54305906.webp");
+
 
         JSONObject restaurant3 = new JSONObject();
         restaurant3.put("numberOfStars", 3);
@@ -53,6 +57,8 @@ public class RestaurantController {
         restaurant3.put("location", "Tehran");
         restaurant3.put("openStatus", "Open");
         restaurant3.put("durationInfo", "10:00 - 22:00");
+        restaurant3.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
+
 
 
         // JSonArray
@@ -77,6 +83,7 @@ public class RestaurantController {
         restaurant1.put("location", "Tehran");
         restaurant1.put("openStatus", "Open");
         restaurant1.put("durationInfo", "10:00 - 22:00");
+        restaurant1.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
 
         JSONObject restaurant2 = new JSONObject();
         restaurant2.put("numberOfStars", 4);
@@ -86,6 +93,8 @@ public class RestaurantController {
         restaurant2.put("location", "Tehran");
         restaurant2.put("openStatus", "Open");
         restaurant2.put("durationInfo", "10:00 - 22:00");
+        restaurant2.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/3/54305906.webp");
+
 
         JSONObject restaurant3 = new JSONObject();
         restaurant3.put("numberOfStars", 3);
@@ -95,6 +104,8 @@ public class RestaurantController {
         restaurant3.put("location", "Tehran");
         restaurant3.put("openStatus", "Open");
         restaurant3.put("durationInfo", "10:00 - 22:00");
+        restaurant3.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/2/48899571.webp");
+
 
 
         // JSonArray

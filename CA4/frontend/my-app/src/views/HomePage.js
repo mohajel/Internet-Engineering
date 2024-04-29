@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { useLayoutEffect } from 'react';
+import ExternalImage from 'react-external-image'
 
 import "../resources/styles/home_page.css"
 
@@ -152,6 +153,7 @@ function TopRestaurants() {
             .then((data) => {
                 console.log(data);
                 setTopRestaurants(data);
+                console.log(topRestaurants);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -177,6 +179,7 @@ function TopRestaurants() {
                             location={restaurant.location}
                             openStatus={restaurant.openStatus}
                             durationInfo={restaurant.durationInfo}
+                            imgUrl={restaurant.imgURL}
                         />
                     ))}
 
@@ -217,6 +220,7 @@ function SuggestedRestaurants() {
                         location={restaurant.location}
                         openStatus={restaurant.openStatus}
                         durationInfo={restaurant.durationInfo}
+                        imgUrl={restaurant.imgURL}
                     />
                 ))}
             </div>
@@ -237,24 +241,30 @@ function Stars(props) {
     return stars;
 }
 
-function RandomRestaurantImage() {
+function RandomRestaurantImage(props) {
     const pictureNum = Math.floor(Math.random() * 5) + 1;
+    
+    let imgUrl = props.imgUrl;
 
     return (
-        <img src={
-            pictureNum == 1 ? Restaurant1Img :
-                pictureNum == 2 ? Restaurant2Img :
-                    pictureNum == 3 ? Restaurant3Img :
-                        pictureNum == 4 ? Restaurant4Img :
-                            pictureNum == 5 ? Restaurant5Img : Restaurant6Img
-        }
-            class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
+        // <div>
+        //     salam e2wr34r34 {imgUrl}
+        // </div>
+        <img src={imgUrl} class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
+        // <img src={
+        //     pictureNum == 1 ? Restaurant1Img :
+        //         pictureNum == 2 ? Restaurant2Img :
+        //             pictureNum == 3 ? Restaurant3Img :
+        //                 pictureNum == 4 ? Restaurant4Img :
+        //                     pictureNum == 5 ? Restaurant5Img : Restaurant6Img
+        // }
+        //     class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
     );
 }
 
 function RestaurantCard(props) {
 
-    let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo, reference;
+    let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo, reference, imgUrl;
     numberOfStars = props.numberOfStars;
     restaurantName = props.restaurantName;
     reviewCount = props.reviewCount;
@@ -263,6 +273,11 @@ function RestaurantCard(props) {
     openStatus = props.openStatus;
     durationInfo = props.durationInfo;
     reference = "/restaurant/" + restaurantName;
+    imgUrl = props.imgUrl;
+
+    // const eImg = () => <ExternalImage src={require(imgUrl)} /> didn't worked
+
+
 
     return (
         <div class="col">
@@ -271,7 +286,10 @@ function RestaurantCard(props) {
                     <div class="rate d-flex position-absolute px-2 py-1">
                         <Stars numberOfStars={numberOfStars} />
                     </div>
-                    <RandomRestaurantImage />
+                    <div class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture">
+                        {/* <eImg /> */}
+                        <RandomRestaurantImage imgUrl={imgUrl}/>
+                    </div>
                 </a>
                 <div class="card-body">
                     <div class="card-title name">{restaurantName}</div>
