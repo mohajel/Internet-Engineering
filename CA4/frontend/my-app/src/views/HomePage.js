@@ -8,9 +8,7 @@ import { postReq, getReq } from '../utils/api';
 import "../resources/styles/home_page.css"
 
 // images
-import StarEmpty from "../resources/images/icons/star_empty.svg";
-import StarFilled from "../resources/images/icons/star_filled.svg";
-import LocationIcon from "../resources/images/icons/location.svg";
+
 import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
 import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
 import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";
@@ -22,8 +20,10 @@ import Restaurant6Img from "../resources/images/restaurants/restaurant6.png";
 
 
 import Header from './Header';
+import RestaurantCard from './RestaurantCard';
 
 const MessagePage = React.lazy(() => import('./MessagePage'));
+
 
 
 // default of how to use fetch
@@ -235,18 +235,6 @@ function SuggestedRestaurants() {
     );
 }
 
-function Stars(props) {
-    const numberOfStars = props.numberOfStars;
-    const stars = [];
-    for (let i = 0; i < numberOfStars; i++) {
-        stars.push(<img key={i} className="icon" src={StarFilled} alt="star_filled" />);
-    }
-
-    for (let i = numberOfStars; i < 5; i++) {
-        stars.push(<img key={i} className="icon" src={StarEmpty} alt="star_empty" />);
-    }
-    return stars;
-}
 
 function RandomRestaurantImage(props) {
     const pictureNum = Math.floor(Math.random() * 5) + 1;
@@ -266,56 +254,6 @@ function RandomRestaurantImage(props) {
         //                     pictureNum == 5 ? Restaurant5Img : Restaurant6Img
         // }
         //     class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture" />
-    );
-}
-
-function RestaurantCard(props) {
-
-    let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo, reference, imgUrl;
-    numberOfStars = props.numberOfStars;
-    restaurantName = props.restaurantName;
-    reviewCount = props.reviewCount;
-    restaurantType = props.restaurantType;
-    location = props.location;
-    openStatus = props.openStatus;
-    durationInfo = props.durationInfo;
-    reference = "/restaurant/" + restaurantName;
-    imgUrl = props.imgUrl;
-
-    // const eImg = () => <ExternalImage src={require(imgUrl)} /> didn't worked
-
-
-
-    return (
-        <div class="col">
-            <div class="restaurant card rounded-4 h-100 position-relative">
-                <a href={reference} class="restaurant-link">
-                    <div class="rate d-flex position-absolute px-2 py-1">
-                        <Stars numberOfStars={numberOfStars} />
-                    </div>
-                    <div class="restaurant-img card-img-top object-fit-cover w-100 rounded-top-4" alt="rest2_picture">
-                        {/* <eImg /> */}
-                        <RandomRestaurantImage imgUrl={imgUrl} />
-                    </div>
-                </a>
-                <div class="card-body">
-                    <div class="card-title name">{restaurantName}</div>
-                    <div class="review-count card-text">{reviewCount} reviews</div>
-                    <div class="type card-text">{restaurantType}</div>
-
-                    <div class="card-text d-flex location">
-                        <img class="icon align-self-center" src={LocationIcon}
-                            alt="location-icon" />
-                        {location}
-                    </div>
-                    <div class="card-text d-flex time">
-                        {openStatus == "Open" ? <div class="open">Open</div> : <div class="closed">Closed</div>}
-                        <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
-                        <div class="close-time">{durationInfo}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     );
 }
 

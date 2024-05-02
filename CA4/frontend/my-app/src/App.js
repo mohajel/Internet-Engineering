@@ -10,6 +10,7 @@ const MessagePage = React.lazy(() => import('./views/MessagePage'));
 const LoginPage = React.lazy(() => import('./views/LoginPage'));
 const TestPost = React.lazy(() => import('./views/TestPost'));
 const LogoutPage = React.lazy(() => import('./views/Logout'));
+const SearchPage = React.lazy(() => import('./views/SearchRestaurantPage'));
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/test" element={<TestPost />} />
           <Route path="/logout" element={<LogoutPage />} />
-          {/* <Route path="/restaurants/{id}" element= */}
+          <Route path="/search" element={<SearchPage />} />
 
         </Routes>
       </BrowserRouter>

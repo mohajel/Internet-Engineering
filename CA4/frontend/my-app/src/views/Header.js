@@ -9,12 +9,6 @@ function Header(props) {
 
     function HandelClickHeaderButton() {
         navigate('/logout');
-    
-        // if (buttonText === "logout") {
-        //     localStorage.removeItem('token');
-        // } else {
-        //     navigate('/');
-        // }
     }
 
     return (
