@@ -81,7 +81,7 @@ function HomePage() {
         return (
             <div class="d-flex flex-column">
 
-                <Header buttonText="LogOut" />
+                <Header buttonText="logout" />
 
                 <main class="flex-grow-1">
 
