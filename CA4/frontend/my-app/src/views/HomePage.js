@@ -133,16 +133,16 @@ function SearchRestaurants() {
                     <div class="input-group mb-1 text-center">
                         <select value={location} onChange={(event) => setLocation(event.target.value)} class="custom-select rounded-4 search-input" id="inputGroupSelect01" aria-placeholder="Location">
                             <option selected>Location</option>
-                            <option value="ff">Tehran</option>
-                            <option value="tf">Rasht</option>
-                            <option value="if">Gonbad</option>
+                            <option value="Tehran">Tehran</option>
+                            <option value="Rasht">Rasht</option>
+                            <option value="Gonbad">Gonbad</option>
                         </select>
 
                         <select value={restaurantType} onChange={(event) => setRestaurantType(event.target.value)} class="custom-select rounded-4 search-input" id="RestaurantType">
                             <option selected>Restaurant</option>
-                            <option value="ff">Fast Food</option>
-                            <option value="tf">Traditional Food</option>
-                            <option value="if">Italian Food</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Traditional Food">Traditional Food</option>
+                            <option value="Italian Food">Italian Food</option>
                         </select>
 
                         <input value={restaurantName} onChange={(event) => setRestaurantName(event.target.value)} type="text" class="search-input restaurant-search rounded-4" placeholder="Type Restaurant ..."

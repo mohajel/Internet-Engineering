@@ -21,12 +21,13 @@ function SearchRestaurantPage() {
             <Header buttonText="Logout" />
             <main class="flex-grow-1">
                 <div class="p-3 container">
-                    <div> Name: {location.state.restaurantName} </div> 
-                    <div> location: {location.state.location} </div> 
-                    <div> type: {location.state.restaurantType} </div> 
-                    <div class="search-result-title">Results for # Restaurant Name</div>
+                    <div class="search-result-title">Results for</div>
+                    <div> Name: {location.state.restaurantName} </div>
+                    <div> location: {location.state.location} </div>
+                    <div> type: {location.state.restaurantType} </div>
                     <div class="restaurants row p-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
-                        <SimilarRestaurantCard />
+                        <SimilarRestaurantCard restaurantName={location.state.restaurantName}
+                            location={location.state.location} restaurantType={location.state.restaurantType} />
                     </div>
                 </div>
             </main>
@@ -38,24 +39,24 @@ function SearchRestaurantPage() {
     )
 }
 
-function SimilarRestaurantCard() {
+function SimilarRestaurantCard(props) {
 
     const [similarRestaurants, setSimilarRestaurants] = useState([]);
     useEffect(() => {
-        fetch("/restaurants/search")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setSimilarRestaurants(data);
-                console.log(similarRestaurants);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+
+        getReq("/restaurants/search", {
+            restaurantName: props.restaurantName,
+            location: props.location,
+            restaurantType: props.restaurantType
+        }).then(response => {
+            setSimilarRestaurants(response);
+        });
+
     }, []);
 
     return (
         <>
+            {/* OK {props.restaurantName} {props.location} {props.restaurantType} */}
             {similarRestaurants.map((restaurant) => (
                 <RestaurantCard
                     numberOfStars={restaurant.numberOfStars}

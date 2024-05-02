@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
-    @GetMapping({"/", ""})
-    ResponseEntity<String> getRestaurantsWithRating() {
-        MizdooniApp app = MizdooniApp.getInstance();
-        JSONArray restaurants = app.getAllRestaurantsWithAVGRate();
+    // @GetMapping({"/", ""})
+    // ResponseEntity<String> getRestaurantsWithRating() {
+    //     MizdooniApp app = MizdooniApp.getInstance();
+    //     JSONArray restaurants = app.getAllRestaurantsWithAVGRate();
 
-        return ResponseEntity.ok().body(restaurants.toString());
-    }
+    //     return ResponseEntity.ok().body(restaurants.toString());
+    // }
 
 
     @GetMapping("/{name}")
@@ -89,7 +90,16 @@ public class RestaurantController {
 
 
     @GetMapping("/search") //complete it
-    ResponseEntity<String> getSearchRestaurants() {
+    ResponseEntity<String> getSearchRestaurants(
+            @RequestParam(value = "restaurantName") String name,
+            @RequestParam(value = "location") String location,
+            @RequestParam(value = "restaurantType") String type
+    ) {
+
+        System.out.println("restaurantName: " + name);
+        System.out.println("location: " + location);
+        System.out.println("restaurantType: " + type);
+
         JSONObject restaurant1 = new JSONObject();
         restaurant1.put("numberOfStars", 5);
         restaurant1.put("restaurantName", "KFC");
