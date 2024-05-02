@@ -8,6 +8,7 @@ import org.json.JSONArray;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,15 @@ public class RestaurantController {
         return ResponseEntity.ok().body(restaurants.toString());
     }
 
+
+    @GetMapping("/{name}")
+    ResponseEntity<String> getRestaurantsWithName(@PathVariable(value = "name") String name) {
+        MizdooniApp app = MizdooniApp.getInstance();
+
+        JSONObject restaurant = app.getInfoOfRestaurantByName(name);
+        return ResponseEntity.ok().body(restaurant.toString());
+    }
+
     @GetMapping("/topRated")
     ResponseEntity<String> getTopRateRestaurants() {
         JSONObject restaurant1 = new JSONObject();
@@ -36,6 +46,7 @@ public class RestaurantController {
         restaurant1.put("openStatus", "Open");
         restaurant1.put("durationInfo", "10:00 - 22:00");
         restaurant1.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/2/48899571.webp");
+        restaurant1.put("id", "1");
 
 
         JSONObject restaurant2 = new JSONObject();
@@ -47,6 +58,8 @@ public class RestaurantController {
         restaurant2.put("openStatus", "Open");
         restaurant2.put("durationInfo", "10:00 - 22:00");
         restaurant2.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/3/54305906.webp");
+        restaurant2.put("id", "2");
+
 
 
         JSONObject restaurant3 = new JSONObject();
@@ -58,6 +71,7 @@ public class RestaurantController {
         restaurant3.put("openStatus", "Open");
         restaurant3.put("durationInfo", "10:00 - 22:00");
         restaurant3.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
+        restaurant3.put("id", "3");
 
 
 
@@ -84,6 +98,9 @@ public class RestaurantController {
         restaurant1.put("openStatus", "Open");
         restaurant1.put("durationInfo", "10:00 - 22:00");
         restaurant1.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/1/31676318.webp");
+        restaurant1.put("id", "1");
+
+        
 
         JSONObject restaurant2 = new JSONObject();
         restaurant2.put("numberOfStars", 4);
@@ -94,6 +111,7 @@ public class RestaurantController {
         restaurant2.put("openStatus", "Open");
         restaurant2.put("durationInfo", "10:00 - 22:00");
         restaurant2.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/3/54305906.webp");
+        restaurant2.put("id", "2");
 
 
         JSONObject restaurant3 = new JSONObject();
@@ -105,6 +123,7 @@ public class RestaurantController {
         restaurant3.put("openStatus", "Open");
         restaurant3.put("durationInfo", "10:00 - 22:00");
         restaurant3.put("imgURL", "https://resizer.otstatic.com/v2/photos/xlarge/2/48899571.webp");
+        restaurant3.put("id", "3");
 
 
 

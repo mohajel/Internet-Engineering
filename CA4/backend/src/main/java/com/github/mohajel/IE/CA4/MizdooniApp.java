@@ -36,11 +36,12 @@ public class MizdooniApp {
     {
         if (single_instance == null) {
             try {
+                // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
                 // InitMizdooniFromAPI.init(single_instance);
                 InitMizdooniFromFile.init(single_instance);
-                
+
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
             }
@@ -309,11 +310,11 @@ public class MizdooniApp {
         return db.getAllRestaurantWithAVGRate();
     }
 
-    public JSONObject getInfoOfRestaurantByName(JSONObject date) {
+    public JSONObject getInfoOfRestaurantByName(String date) {
         System.out.println("get info of restaurant by name called");
         JSONObject output = new JSONObject();
         try {
-            String name = date.getString("name");
+            String name = date;
 
             Restaurant restaurant = db.getRestaurantByName(name);
             if (restaurant == null) {
