@@ -47,11 +47,11 @@ public class HomeHandler extends HttpServlet {
         
         response.setContentType("text/html");
         
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
         } else {
-            User user  = app.db.getUserByUserName(app.logedInUser); // changing this to session in future
+            User user  = app.db.getUserByUserName(app.loggedInUser); // changing this to session in future
             output.put("message", "Welcome to Mizdooni dear " + user.userName);
             output.put("icon", "success");
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));

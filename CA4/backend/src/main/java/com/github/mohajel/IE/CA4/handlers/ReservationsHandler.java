@@ -21,7 +21,7 @@ public class ReservationsHandler extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MizdooniApp app = MizdooniApp.getInstance();
-        String username = app.logedInUser;
+        String username = app.loggedInUser;
 
         JSONObject outputMizdooni = app.showReservationHistory(new JSONObject().put("username", username));
 
@@ -37,11 +37,11 @@ public class ReservationsHandler extends HttpServlet {
         output.put("success", true);
         output.put("title", "ReservationsPage");
 
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
         } else {
-            User user  = app.db.getUserByUserName(app.logedInUser);
+            User user  = app.db.getUserByUserName(app.loggedInUser);
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
         }
         request.setAttribute("context", output);
@@ -55,7 +55,7 @@ public class ReservationsHandler extends HttpServlet {
         String reservationNumber = request.getParameter("action");
 
         MizdooniApp app = MizdooniApp.getInstance();
-        JSONObject inputMizdooni = new JSONObject().put("reservationNumber", reservationNumber).put("username", app.logedInUser);
+        JSONObject inputMizdooni = new JSONObject().put("reservationNumber", reservationNumber).put("username", app.loggedInUser);
         JSONObject outputMizdooni = app.cancelReservation(inputMizdooni);
         if (!outputMizdooni.getBoolean("success")){
             String errorMessage = outputMizdooni.getJSONObject("data").getString("error");

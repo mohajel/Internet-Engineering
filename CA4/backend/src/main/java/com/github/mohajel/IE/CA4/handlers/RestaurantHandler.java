@@ -35,11 +35,11 @@ public class RestaurantHandler extends HttpServlet {
         output.put("success", true);
         output.put("title", "RestaurantPage");
 
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
         } else {
-            User user  = app.db.getUserByUserName(app.logedInUser);
+            User user  = app.db.getUserByUserName(app.loggedInUser);
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
         }
         JSONObject tables = app.getTablesByRestaurantName(restaurantName);
@@ -60,7 +60,7 @@ public class RestaurantHandler extends HttpServlet {
 
         switch (action) {
             case "reserve":
-                String userName = app.logedInUser;
+                String userName = app.loggedInUser;
                 String tableNumber = request.getParameter("table_number");
                 String date = request.getParameter("date_time");
                 // replace T in date with space
@@ -91,7 +91,7 @@ public class RestaurantHandler extends HttpServlet {
                 String comment = request.getParameter("comment");
                 JSONObject feedback = new JSONObject().put("foodRate", food_rate).put("serviceRate", service_rate)
                         .put("ambianceRate", ambiance_rate).put("overallRate", overall_rate).put("comment", comment)
-                        .put("restaurantName", restaurantName).put("username", app.logedInUser);
+                        .put("restaurantName", restaurantName).put("username", app.loggedInUser);
                 output = app.addReview(feedback);
                 if (output.getBoolean("success")){
                     HandlerUtils.createNotification(request, "feedback successful", "success", "/restaurant?name=" + restaurantName);

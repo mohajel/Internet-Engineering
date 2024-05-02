@@ -27,7 +27,7 @@ public class addTableHandler extends HttpServlet {
         JSONObject input = new JSONObject();
         input.put("tableNumber", tableNumber);
         input.put("restaurantName", restaurantName);
-        input.put("managerUsername", app.logedInUser);
+        input.put("managerUsername", app.loggedInUser);
         input.put("seatsNumber", seatsNumber);
 
         JSONObject output = app.addTable(input);

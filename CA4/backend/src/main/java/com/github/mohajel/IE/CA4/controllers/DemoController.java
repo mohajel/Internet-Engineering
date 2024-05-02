@@ -126,17 +126,14 @@ public class DemoController {
     }
 
     @RequestMapping(value = "/testPost", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    // public String PostTestPost(@RequestParam(value = "username") String username,
-    //         @RequestParam(value = "password") String password) {
-
-        public String PostTestPost(@RequestBody String body) {
+    public String PostTestPost(@RequestBody String body) {
 
         logger.info("Request: \n" + body);
 
-        JSONObject output = new JSONObject();
-        output.put("accept", "true");
-        output.put("username", "username");
-        output.put("password", "password");
+        JSONObject output = new JSONObject(body);
+        output.put("accept", "false");
+        // output.put("username", "username");
+        // output.put("password", "password");
 
         return output.toString();
     }

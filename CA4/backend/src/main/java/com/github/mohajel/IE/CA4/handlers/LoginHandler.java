@@ -27,7 +27,7 @@ public class LoginHandler extends HttpServlet {
         output.put("title", "LoginPage");
         output.put("data", "login");
 
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             output.put("message", "Please login to continue");
             output.put("icon", "warning");
         } else {

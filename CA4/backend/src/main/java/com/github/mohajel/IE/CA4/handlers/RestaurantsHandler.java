@@ -40,11 +40,11 @@ public class RestaurantsHandler extends HttpServlet {
         output.put("restaurants", HTMLTable.toString());
 
 
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
         } else {
-            User user  = app.db.getUserByUserName(app.logedInUser);
+            User user  = app.db.getUserByUserName(app.loggedInUser);
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
         }
         request.setAttribute("context", output);
@@ -93,11 +93,11 @@ public class RestaurantsHandler extends HttpServlet {
         output.put("restaurants", HTMLTable.toString());
 
 
-        if(app.logedInUser.length() == 0){
+        if(app.loggedInUser.length() == 0){
             response.sendRedirect("/login");
             log("Sending to login page to login first");
         } else {
-            User user  = app.db.getUserByUserName(app.logedInUser);
+            User user  = app.db.getUserByUserName(app.loggedInUser);
             output.put("data", new JSONObject().put("username", user.userName).put("role", user.role));
         }
         request.setAttribute("context", output);

@@ -16,7 +16,7 @@ public class MizdooniApp {
     private static MizdooniApp single_instance = null;
 
     // using this for logged_in_user.change in nex phase
-    public String logedInUser = "";
+    public String loggedInUser = "";
 
     public MizdooniApp(){
         try {
@@ -36,7 +36,7 @@ public class MizdooniApp {
             try {
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
-                InitMizdooniFromAPI.init(single_instance);
+                // InitMizdooniFromAPI.init(single_instance);
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
             }
@@ -61,7 +61,7 @@ public class MizdooniApp {
 
             output.put("success", true);
             output.put("data", new JSONObject().put("role", user.role.toString()));
-            logedInUser = username;
+            loggedInUser = username;
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));

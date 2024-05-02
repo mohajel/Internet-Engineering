@@ -19,7 +19,7 @@ public class LogoutHandler extends HttpServlet {
             throws ServletException, IOException {
 
         MizdooniApp app = MizdooniApp.getInstance();
-        app.logedInUser = "";
+        app.loggedInUser = "";
         request.getSession().invalidate();
 
         HandlerUtils.createNotification(request, "You have been logged out", "info", "/login");
