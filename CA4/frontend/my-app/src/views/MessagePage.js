@@ -9,7 +9,7 @@ import Header from './Header';
 
 function MessagePage(props) {
     const navigate = useNavigate();
-    const timerPeriod = 5000;
+    const timerPeriod = 2000;
 
     // var props = {
     //     type: 'error',

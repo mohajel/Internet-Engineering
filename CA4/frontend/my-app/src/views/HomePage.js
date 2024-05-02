@@ -109,6 +109,20 @@ function HomePage() {
 }
 
 function SearchRestaurants() {
+
+    const [restaurantType, setRestaurantType] = useState('');
+    const [location, setLocation] = useState('');
+    const [restaurantName, setRestaurantName] = useState('');
+
+    const navigate = useNavigate();
+
+    function handleSearchRestaurant() {
+        navigate("/search",
+            {
+                state: { location: location, restaurantType: restaurantType, restaurantName: restaurantName }
+            })
+    }
+
     return (
         <div class="container-s w-100 text-center">
             <div class="home-background w-100">
@@ -117,21 +131,24 @@ function SearchRestaurants() {
                         <img class="big-logo" src={require("../resources/images/logo.png")} alt="logo" />
                     </div>
                     <div class="input-group mb-1 text-center">
-                        <select class="custom-select rounded-4 search-input" id="inputGroupSelect01" aria-placeholder="Location">
+                        <select value={location} onChange={(event) => setLocation(event.target.value)} class="custom-select rounded-4 search-input" id="inputGroupSelect01" aria-placeholder="Location">
                             <option selected>Location</option>
                             <option value="ff">Tehran</option>
                             <option value="tf">Rasht</option>
                             <option value="if">Gonbad</option>
                         </select>
-                        <select class="custom-select rounded-4 search-input" id="RestaurantType">
+
+                        <select value={restaurantType} onChange={(event) => setRestaurantType(event.target.value)} class="custom-select rounded-4 search-input" id="RestaurantType">
                             <option selected>Restaurant</option>
                             <option value="ff">Fast Food</option>
                             <option value="tf">Traditional Food</option>
                             <option value="if">Italian Food</option>
                         </select>
-                        <input type="text" class="search-input restaurant-search rounded-4" placeholder="Type Restaurant ..."
+
+                        <input value={restaurantName} onChange={(event) => setRestaurantName(event.target.value)} type="text" class="search-input restaurant-search rounded-4" placeholder="Type Restaurant ..."
                             aria-label="restaurant search" aria-describedby="basic-addon2" />
-                        <button class="btn search-input btn-outline-secondary rounded-4 search-button" type="button">
+
+                        <button class="btn search-input btn-outline-secondary rounded-4 search-button" type="submit" onClick={handleSearchRestaurant}>
                             Search
                         </button>
                     </div>
@@ -209,7 +226,7 @@ function SuggestedRestaurants() {
         //     });
     }, []);
 
-    
+
 
     return (
         <div>
