@@ -49,6 +49,7 @@ public class StatusController {
 
         JSONObject result = app.login(bodyJsonFormat);
 
+        logger.info("Login Response: \n" + result.toString());
         return result.toString();
     }
 

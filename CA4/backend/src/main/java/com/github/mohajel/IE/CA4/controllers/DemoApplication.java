@@ -17,6 +17,7 @@ public class DemoApplication {
 
 		// get the instance of the app for Init it
 		MizdooniApp.getInstance();
+		
         app.run(args);
 	}
 
