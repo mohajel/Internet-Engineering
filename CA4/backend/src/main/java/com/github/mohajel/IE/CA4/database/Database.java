@@ -301,7 +301,17 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return null;
     }
 
-    public JSONArray getRestaurantsContainName(String restaurantName) {
+    public ArrayList<Restaurant> getRestaurantsContainName(String restaurantName) {
+        ArrayList<Restaurant> restaurantsContainName = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.name.contains(restaurantName)) {
+                restaurantsContainName.add(restaurant);
+            }
+        }
+        return restaurantsContainName;
+    }
+
+    public JSONArray getJSONRestaurantsContainName(String restaurantName) {
         JSONArray restaurantsContainName = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {
             if (restaurant.name.contains(restaurantName)) {

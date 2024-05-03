@@ -384,13 +384,24 @@ public class MizdooniApp {
         return output;
     }
 
+    public JSONArray getRestaurantCardsContainName(String name) {
+        System.out.println("get restaurant cards contain name called");
+        ArrayList<Restaurant> restaurants = db.getRestaurantsContainName(name);
+        JSONArray restaurantCards = new JSONArray();
+        for (Restaurant restaurant : restaurants) {
+            restaurantCards.put(restaurantConvert2restaurantCard(restaurant));
+        }
+
+        return restaurantCards;
+    }
+
     public JSONObject searchRestaurantsContainName(JSONObject data) {
         System.out.println("search restaurants by name called");
         JSONObject output = new JSONObject();
         try {
             String name = data.getString("name");
 
-            JSONArray restaurants = db.getRestaurantsContainName(name);
+            JSONArray restaurants = db.getJSONRestaurantsContainName(name);
             if (restaurants.isEmpty()) {
                 throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
             }
