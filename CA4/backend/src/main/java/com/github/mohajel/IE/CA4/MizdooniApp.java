@@ -346,6 +346,15 @@ public class MizdooniApp {
         }
     }
 
+    public JSONObject getRestaurantByName(String name) {
+        System.out.println("get restaurant by name called");
+        Restaurant restaurant = db.getRestaurantByName(name);
+        if (restaurant == null) {
+            return new JSONObject();
+        }
+        return restaurant.toJson();
+    }
+
     public JSONArray searchRestaurantCardsByCity(String city) {
         System.out.println("search restaurant cards by city called");
         return db.getRestaurantCardsByCity(city);
