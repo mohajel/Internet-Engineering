@@ -37,10 +37,9 @@ public class StatusController {
         } else {
             output.put("status", "loggedIn");
             output.put("role", app.db.getUserByUserName(user).role.toString());
+            output.put("username", user);
         }
 
-        // output.put("status", "loggedIn"); // loggedIn or loggedOut
-        // output.put("role", "manager"); // manager or user
         logger.info("Status: " + output.toString());
         return output.toString();
     }

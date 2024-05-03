@@ -267,44 +267,6 @@ function TotalReviewInfo(props) {
 
         </>
     );
-
-    return (
-        <div class="review-box container w-75 align-middle">
-            <div class="container mt-2 p-3">
-                <div class="row position-relative">
-                    <div class="col">
-                        <div>
-                            <h4>What {info.reviewsCount} people are saying</h4>
-                            <div class="container rounded-4 d-flex justify-content-start">
-                                <p class="text-muted p-0 ms-3">{info.overallRate} based on recent ratings</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="d-flex justify-content-between">
-                            <div class="text-center">
-                                <p class="mb-0">Food</p>
-                                <p class="fw-bolder">{info.foodRate}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-0">Service</p>
-                                <p class="fw-bolder">{info.serviceRate}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-0">Ambience</p>
-                                <p class="fw-bolder">{info.ambianceRate}</p>
-                            </div>
-                            <div class="text-center">
-                                <p class="mb-0">Overall</p>
-                                <p class="fw-bolder">{info.overallRate}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-
 }
 
 
