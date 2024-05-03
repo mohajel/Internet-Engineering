@@ -39,8 +39,8 @@ public class MizdooniApp {
                 // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
-                // InitMizdooniFromAPI.init(single_instance);
-                InitMizdooniFromFile.init(single_instance);
+                InitMizdooniFromAPI.init(single_instance);
+                // InitMizdooniFromFile.init(single_instance);
 
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
