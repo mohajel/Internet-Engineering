@@ -567,4 +567,8 @@ public class MizdooniApp {
         return output;
     }
 
+    public JSONObject getSummaryReviewByRestaurantName(String restaurantName) {
+        return db.getAVGRateRestaurantByName(restaurantName);
+    }
+
 }

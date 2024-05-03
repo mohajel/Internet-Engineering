@@ -263,6 +263,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             return result;
         }
 
+        result.put("reviewsCount", count);
         result.put("foodRate", sumFoodRate / count);
         result.put("serviceRate", sumServiceRate / count);
         result.put("ambianceRate", sumAmbianceRate / count);
