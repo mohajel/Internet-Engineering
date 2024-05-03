@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA4.models;
 
+import com.github.mohajel.IE.CA4.utils.Utils;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA4.utils.MizdooniError;
@@ -45,5 +46,10 @@ public class Restaurant {
         json.put("description", this.description);
         json.put("address", this.address.toJson());
         return json;
+    }
+
+    public boolean isOpen() {
+        Hour now = new MizdooniDate(Utils.getCurrentTime()).getTime();
+        return now.isTimeInRange(this.startTime, this.endTime);
     }
 }
