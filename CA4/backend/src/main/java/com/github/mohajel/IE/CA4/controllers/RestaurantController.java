@@ -1,9 +1,7 @@
 package com.github.mohajel.IE.CA4.controllers;
 
 import com.github.mohajel.IE.CA4.MizdooniApp;
-import com.github.mohajel.IE.CA4.utils.Utils;
 import org.json.JSONObject;
-import org.springframework.http.MediaType;
 
 import org.json.JSONArray;
 
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.*;
