@@ -20,6 +20,7 @@ import static com.github.mohajel.IE.CA4.utils.Utils.sortJSONArray;
 @RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
+    private final int MAX_RESTAURANTS_TOP = 6;
     private final int MAX_RESTAURANTS_SUGGESTED = 6;
 
      @GetMapping({"/", ""})
@@ -49,8 +50,8 @@ public class RestaurantController {
         }
 
         restaurants = sortJSONArray(restaurants, "numberOfStars", SortOrder.DESCENDING);
-        if (restaurants.length() > MAX_RESTAURANTS_SUGGESTED) {
-            restaurants = new JSONArray(restaurants.toList().subList(0, MAX_RESTAURANTS_SUGGESTED));
+        if (restaurants.length() > MAX_RESTAURANTS_TOP) {
+            restaurants = new JSONArray(restaurants.toList().subList(0, MAX_RESTAURANTS_TOP));
         }
         return ResponseEntity.ok().body(restaurants.toString());
     }
@@ -89,10 +90,17 @@ public class RestaurantController {
         String city = app.cityOfLoggedInUser();
         JSONArray restaurants;
 
-        if (city.isEmpty()) {
+        if (city.isEmpty()) { // if user is not logged in
             restaurants = app.getAllRestaurantCards();
         } else {
             restaurants = app.searchRestaurantCardsByCity(city);
+            if (restaurants.isEmpty()) { // if no restaurants in user's city
+                restaurants = app.getAllRestaurantCards();
+            }
+        }
+
+        if (restaurants.length() > MAX_RESTAURANTS_SUGGESTED) {
+            restaurants = new JSONArray(restaurants.toList().subList(0, MAX_RESTAURANTS_SUGGESTED));
         }
 
         return ResponseEntity.ok().body(restaurants.toString());
