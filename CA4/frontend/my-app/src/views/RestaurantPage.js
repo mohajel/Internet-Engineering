@@ -7,6 +7,8 @@ import { unstable_useViewTransitionState, useParams } from 'react-router-dom';
 import "../resources/styles/restaurant_page.css"
 import Header from './Header';
 
+import ClockImg from "../resources/images/icons/clock.svg"
+import ForkImg from "../resources/images/icons/fork_knife.svg"
 
 function RestaurantPage() {
 
@@ -100,7 +102,7 @@ function RestaurantInfoPart(props) {
                             <div class="review-card">
                                 <div class="review-header">
                                     <div class="d-flex">
-                                        <img class="icon p-0" src={require("../resources/images/icons/clock.svg")} alt="star_filled" />
+                                        <img class="icon p-0" src={ClockImg} alt="star_filled" />
                                         <div class="timing p-0">From {info.startTime} to {info.endTime}</div>
                                     </div>
                                     <div class="d-flex align-items-center">
@@ -110,7 +112,7 @@ function RestaurantInfoPart(props) {
                                         <div class="rating p-0">160 Reviews</div>
                                     </div>
                                     <div class="d-flex me-5">
-                                        <img class="icon" src={require("../resources/images/icons/fork_knife.svg")} alt="star_filled" />
+                                        <img class="icon" src={ForkImg} alt="star_filled" />
                                         <div class="type">{info.type}</div>
                                     </div>
                                 </div>
