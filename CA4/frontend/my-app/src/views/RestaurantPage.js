@@ -107,7 +107,7 @@ function RestaurantInfoPart(props) {
                                         <div class="icon-container text-center">
                                             <img class="star-review" src={require("../resources/images/icons/star_inside_review.png")} alt="review" />
                                         </div>
-                                        <div class="rating p-0">Reviews</div>
+                                        <div class="rating p-0">     .{info.reviewsCount} Reviews  </div>
                                     </div>
                                     <div class="d-flex me-5">
                                         <img class="icon" src={ForkImg} alt="star_filled" />
@@ -207,21 +207,76 @@ function ReviewPart(props) {
 }
 
 function TotalReviewInfo(props) {
+
+    let name = props.name;
+
+    const [info, setInfo] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getReq("/reviews/summary/" + name)
+
+            .then(response => {
+                console.log(response);
+                setInfo(response);
+                setLoading(false);
+            });
+    }, []);
+
+    return (
+        <>
+            {
+                loading ?
+                    <div>Loading...</div>
+                    :
+                    <div class="review-box container w-75 align-middle">
+                        <div class="container mt-2 p-3">
+                            <div class="row position-relative">
+                                <div class="col">
+                                    <div>
+                                        <h4>What {info.reviewsCount} people are saying</h4>
+                                        <div class="container rounded-4 d-flex justify-content-start">
+                                            <p class="text-muted p-0 ms-3">{info.overallRate} based on recent ratings</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text-center">
+                                            <p class="mb-0">Food</p>
+                                            <p class="fw-bolder">{info.foodRate}</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="mb-0">Service</p>
+                                            <p class="fw-bolder">{info.serviceRate}</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="mb-0">Ambience</p>
+                                            <p class="fw-bolder">{info.ambianceRate}</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="mb-0">Overall</p>
+                                            <p class="fw-bolder">{info.overallRate}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+
+        </>
+    );
+
     return (
         <div class="review-box container w-75 align-middle">
             <div class="container mt-2 p-3">
                 <div class="row position-relative">
                     <div class="col">
                         <div>
-                            <h4>What 160 people are saying</h4>
+                            <h4>What {info.reviewsCount} people are saying</h4>
                             <div class="container rounded-4 d-flex justify-content-start">
-                                <img class="icon p-0" src="../resources/images/icons/star_filled.svg" alt="star_filled" />
-                                <img class="icon p-0" src="../resources/images/icons/star_filled.svg" alt="star_filled"
-                                />
-                                <img class="icon p-0" src="../resources/images/icons/star_filled.svg" alt="star_filled" />
-                                <img class="icon p-0" src="../resources/images/icons/star_filled.svg" alt="star_filled" />
-                                <img class="icon p-0" src="../resources/images/icons/star_empty.svg" alt="star_filled" />
-                                <p class="text-muted p-0 ms-3">4 based on recent ratings</p>
+                                <p class="text-muted p-0 ms-3">{info.overallRate} based on recent ratings</p>
                             </div>
                         </div>
                     </div>
@@ -229,19 +284,19 @@ function TotalReviewInfo(props) {
                         <div class="d-flex justify-content-between">
                             <div class="text-center">
                                 <p class="mb-0">Food</p>
-                                <p class="fw-bolder">4.5</p>
+                                <p class="fw-bolder">{info.foodRate}</p>
                             </div>
                             <div class="text-center">
                                 <p class="mb-0">Service</p>
-                                <p class="fw-bolder">4.1</p>
+                                <p class="fw-bolder">{info.serviceRate}</p>
                             </div>
                             <div class="text-center">
                                 <p class="mb-0">Ambience</p>
-                                <p class="fw-bolder">3.8</p>
+                                <p class="fw-bolder">{info.ambianceRate}</p>
                             </div>
                             <div class="text-center">
                                 <p class="mb-0">Overall</p>
-                                <p class="fw-bolder">4</p>
+                                <p class="fw-bolder">{info.overallRate}</p>
                             </div>
                         </div>
                     </div>
@@ -316,66 +371,10 @@ function ReviewComments(props) {
 
         </>
     );
-
-    return (
-        <div class="review-pages mt-5 container align-middle">
-            <div class="row">
-                <div class="col">
-                    <div class="review-container">
-                        <div
-                            class="container d-flex justify-content-between align-items-center my-3">
-                            <div class="rounded-4"><h4>160 Reviews</h4></div>
-                            <button class="add-review-btn rounded-4">Add Review</button>
-                        </div>
-
-
-                        {
-                            info.map((review) => (
-                                <Comment commentInfo={review} />
-                            ))
-                        }
-
-                    </div>
-                    <div class="rounded-4 d-flex fw-bold justify-content-center mt-5">
-                        <span class="page-button text-center">
-                            <span class="page-no position-relative">1</span></span>
-                        <span class="page-button text-center ms-3">
-                            <span class="page-no position-relative">2</span></span>
-                        <span class="page-button text-center ms-3">
-                            <span class="page-no position-relative">3 </span></span>
-                        <span class="ms-3 mt-3">
-                            <span>&#183;</span>
-                            <span>&#183;</span>
-                            <span>&#183;</span>
-                        </span>
-                        <span class="page-button text-center ms-3">
-                            <span class="page-no position-relative">19 </span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
 }
 
 function Comment(props) {
     let commentInfo = props.commentInfo;
-
-    //     {
-    //       "ambianceRate": 5,
-    //       "foodRate": 5,
-    //       "overallRate": 5,
-    //       "restaurantName": "MAJOR TOM",
-    //       "reviewDate": "2024-05-03",
-    //       "comment": "MAJOR TOM is a must-visit! The food and service were exceptional, and the ambiance was out of this world. A memorable dining experience.",
-    //       "serviceRate": 5,
-    //       "username": "Ali_Ataollahi"
-    //     },
-
-    // return (
-    //     <h1>salam <div><pre>{JSON.stringify(commentInfo, null, 2)}</pre></div></h1>
-    // );
-
-    // user name is in this format "Ali_Ataollahi", i want to create an abbriviative name from it like "AA"
     let userName = commentInfo.username;
     let userAbbr = userName.split("_").map((name) => name[0]).join("");
 
@@ -395,7 +394,7 @@ function Comment(props) {
                             <Stars numberOfStars={commentInfo.overallRate} />
                         </div>
                     </div>
-                        <span class="review-date ms-2">DinedOn:{commentInfo.reviewDate}</span>
+                    <span class="review-date ms-2">DinedOn:{commentInfo.reviewDate}</span>
                 </div>
             </div>
             <div class="container ms-5">
