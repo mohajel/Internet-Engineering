@@ -20,21 +20,7 @@ function RestaurantCard(props) {
     durationInfo = props.durationInfo;
     reference = "/restaurant/" + restaurantName;
     imgUrl = props.imgUrl;
-
-    function handleCardClick(reference) {
-        navigate(reference, 
-            {
-                state: {
-                    restaurantName: restaurantName,
-                    // reviewCount: reviewCount,
-                    // restaurantType: restaurantType,
-                    // location: location,
-                    // openStatus: openStatus,
-                    // durationInfo: durationInfo,
-                    // imgUrl: imgUrl
-                }
-            });
-    }
+    
 
     return (
         <div class="col">
