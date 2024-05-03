@@ -44,7 +44,7 @@ public class RestaurantController {
         JSONArray restaurants = app.getAllRestaurantCards();
 
         if (restaurants.isEmpty()) {
-            return ResponseEntity.ok().body("{}");
+            return ResponseEntity.ok().body("[]");
         }
 
         restaurants = sortJSONArray(restaurants, "numberOfStars", SortOrder.DESCENDING);
@@ -66,7 +66,7 @@ public class RestaurantController {
         String body = "";
 
         if (name.isEmpty() && location.isEmpty() && restaurantType.isEmpty()) {
-            body = "{}";
+            body = "[]";
         } else if (!name.isEmpty()) {
             body = app.getRestaurantCardsContainName(name).toString();
         } else if (!location.isEmpty()) {
