@@ -11,7 +11,8 @@ const LoginPage = React.lazy(() => import('./views/LoginPage'));
 const TestPost = React.lazy(() => import('./views/TestPost'));
 const LogoutPage = React.lazy(() => import('./views/Logout'));
 const SearchPage = React.lazy(() => import('./views/SearchRestaurantPage'));
-
+const ManagerRestaurantPage = React.lazy(() => import('./views/ManagerRestaurantPage'));
+const RestaurantPage = React.lazy(() => import('./views/RestaurantPage'));
 
 function App() {
   // get state from the server
@@ -40,6 +41,8 @@ function App() {
           <Route path="/test" element={<TestPost />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/r" element={<ManagerRestaurantPage />} />
+          <Route path="/rr" element={<RestaurantPage />} />
 
         </Routes>
       </BrowserRouter>
