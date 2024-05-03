@@ -39,7 +39,7 @@ public class MizdooniApp {
                 // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
-                 InitMizdooniFromAPI.init(single_instance);
+                InitMizdooniFromAPI.init(single_instance);
 //                InitMizdooniFromFile.init(single_instance);
 
             } catch (Exception e){
@@ -320,6 +320,10 @@ public class MizdooniApp {
         restaurantCard.put("durationInfo", restaurant.startTime.toString() + " - " + restaurant.endTime.toString());
 
         return restaurantCard;
+    }
+
+    public JSONArray getAllRestaurantCards() {
+        return db.getAllRestaurantCards();
     }
 
     public JSONObject getRestaurantCardByName(String name) {

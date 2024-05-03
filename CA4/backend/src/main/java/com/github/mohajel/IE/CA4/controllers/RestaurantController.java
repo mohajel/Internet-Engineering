@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
-    // @GetMapping({"/", ""})
-    // ResponseEntity<String> getRestaurantsWithRating() {
-    //     MizdooniApp app = MizdooniApp.getInstance();
-    //     JSONArray restaurants = app.getAllRestaurantsWithAVGRate();
+     @GetMapping({"/", ""})
+     ResponseEntity<String> getAllRestaurantCards() {
+            MizdooniApp app = MizdooniApp.getInstance();
+            JSONArray restaurants = app.getAllRestaurantCards();
 
-    //     return ResponseEntity.ok().body(restaurants.toString());
-    // }
+            return ResponseEntity.ok().body(restaurants.toString());
+        }
 
 
     @GetMapping("/{name}")
@@ -38,6 +38,8 @@ public class RestaurantController {
 
     @GetMapping("/topRated")
     ResponseEntity<String> getTopRateRestaurants() {
+
+
         JSONObject restaurant1 = new JSONObject();
         restaurant1.put("numberOfStars", 5);
         restaurant1.put("restaurantName", "KFC");

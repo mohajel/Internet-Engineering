@@ -40,7 +40,7 @@ public class Database {
         this.users.add(user);
     }
 
-    public void addRestaurant(Restaurant restaurant) throws MizdooniError {
+public void addRestaurant(Restaurant restaurant) throws MizdooniError {
 
         if (this.getRestaurantByName(restaurant.name) != null) {
             throw new MizdooniError(MizdooniError.RESTAURANT_ALREADY_EXISTS);
@@ -215,6 +215,14 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public JSONArray getAllRestaurantCards() {
+        JSONArray result = new JSONArray();
+        for (Restaurant restaurant : this.restaurants) {
+            result.put(this.restaurantConvert2restaurantCard(restaurant));
+        }
+        return result;
     }
 
     public JSONArray getAllRestaurantWithAVGRate() {
@@ -405,5 +413,21 @@ public class Database {
             }
         }
         return null;
+    }
+
+    public JSONObject restaurantConvert2restaurantCard(Restaurant restaurant) {
+        JSONObject restaurantCard = new JSONObject();
+        restaurantCard.put("imgURL", restaurant.pictureAddress);
+        JSONObject rates = this.getAVGRateRestaurantByName(restaurant.name);
+        restaurantCard.put("numberOfStars", rates.getDouble("overallRate"));
+        restaurantCard.put("openStatus", restaurant.isOpen() ? "Open" : "Closed");
+        restaurantCard.put("restaurantName", restaurant.name);
+        restaurantCard.put("reviewCount", this.getReviewsByRestaurantName(restaurant.name).length());
+        restaurantCard.put("restaurantType", restaurant.type);
+        restaurantCard.put("location", restaurant.address.city);
+        restaurantCard.put("id", restaurant.id);
+        restaurantCard.put("durationInfo", restaurant.startTime.toString() + " - " + restaurant.endTime.toString());
+
+        return restaurantCard;
     }
 }
