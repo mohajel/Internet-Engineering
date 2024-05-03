@@ -106,7 +106,7 @@ public class RestaurantController {
         return ResponseEntity.ok().body(restaurants.toString());
     }
 
-    @GetMapping("/`data`/{name}")
+    @GetMapping("/data/{name}")
     ResponseEntity<String> getRestaurantData(@PathVariable(value = "name") String name) {
         String body = """
                 {
