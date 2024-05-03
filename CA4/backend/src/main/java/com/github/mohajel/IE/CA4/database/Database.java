@@ -264,10 +264,11 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         }
 
         result.put("reviewsCount", count);
-        result.put("foodRate", sumFoodRate / count);
-        result.put("serviceRate", sumServiceRate / count);
-        result.put("ambianceRate", sumAmbianceRate / count);
-        result.put("overallRate", sumOverallRate / count);
+
+        result.put("foodRate", String.format("%.1f", sumFoodRate / count));
+        result.put("serviceRate", String.format("%.1f", sumServiceRate / count));
+        result.put("ambianceRate", String.format("%.1f", sumAmbianceRate / count));
+        result.put("overallRate", String.format("%.1f", sumOverallRate / count));
 
         return result;
     }
