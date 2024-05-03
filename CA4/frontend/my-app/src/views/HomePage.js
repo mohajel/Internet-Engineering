@@ -9,20 +9,19 @@ import "../resources/styles/home_page.css"
 
 // images
 
-import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
-import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
-import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";
-import Restaurant4Img from "../resources/images/restaurants/restaurant4.png";
-import Restaurant5Img from "../resources/images/restaurants/restaurant5.png";
-import Restaurant6Img from "../resources/images/restaurants/restaurant6.png";
-
-
+// import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
+// import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
+// import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";
+// import Restaurant4Img from "../resources/images/restaurants/restaurant4.png";
+// import Restaurant5Img from "../resources/images/restaurants/restaurant5.png";
+// import Restaurant6Img from "../resources/images/restaurants/restaurant6.png";
 
 
 import Header from './Header';
 import RestaurantCard from './RestaurantCard';
 
 const MessagePage = React.lazy(() => import('./MessagePage'));
+const ManagerRestaurantPage = React.lazy(() => import('./ManagerRestaurantPage'))
 
 
 
@@ -77,7 +76,7 @@ function HomePage() {
             <MessagePage type='info' message='please login first to continue' redirectURL='/login' />
         )
     }
-    else if (status.status == "loggedIn") {
+    else if (status.status == "loggedIn" && status.role == "CLIENT") {
         return (
             <div class="d-flex flex-column">
 
@@ -103,8 +102,17 @@ function HomePage() {
                 </footer>
             </div>
         );
-
-
+    } else if (status.status == "loggedIn" && status.role == "MANAGER") {
+        return(
+            <ManagerRestaurantPage />
+        );
+    } else {
+        return (
+            // <MessagePage type='error' message='unknown Error happened' redirectURL='/login' />
+            <div>
+                role: {status.role}
+            </div>
+        )
     }
 }
 
