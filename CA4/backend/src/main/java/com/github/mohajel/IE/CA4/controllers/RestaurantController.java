@@ -20,6 +20,7 @@ import static com.github.mohajel.IE.CA4.utils.Utils.sortJSONArray;
 @RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
+    private final int MAX_RESTAURANTS_SUGGESTED = 6;
 
      @GetMapping({"/", ""})
      ResponseEntity<String> getAllRestaurantCards() {
@@ -48,6 +49,9 @@ public class RestaurantController {
         }
 
         restaurants = sortJSONArray(restaurants, "numberOfStars", SortOrder.DESCENDING);
+        if (restaurants.length() > MAX_RESTAURANTS_SUGGESTED) {
+            restaurants = new JSONArray(restaurants.toList().subList(0, MAX_RESTAURANTS_SUGGESTED));
+        }
         return ResponseEntity.ok().body(restaurants.toString());
     }
 
