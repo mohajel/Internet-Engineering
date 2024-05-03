@@ -39,8 +39,13 @@ public class MizdooniApp {
                 // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
+<<<<<<< HEAD
                 InitMizdooniFromAPI.init(single_instance);
                 // InitMizdooniFromFile.init(single_instance);
+=======
+                 InitMizdooniFromAPI.init(single_instance);
+//                InitMizdooniFromFile.init(single_instance);
+>>>>>>> f17b4dcad4b8423b21be56d326e0579e7ddacc96
 
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
@@ -306,6 +311,22 @@ public class MizdooniApp {
     }
 
     /// Search restaurants
+    public JSONObject restaurantConvert2restaurantCard(Restaurant restaurant) {
+        JSONObject restaurantCard = new JSONObject();
+        restaurantCard.put("imgURL", restaurant.pictureAddress);
+        JSONObject rates = db.getAVGRateRestaurantByName(restaurant.name);
+        restaurantCard.put("numberOfStars", rates.getDouble("overallRate"));
+        restaurantCard.put("openStatus", restaurant.isOpen() ? "Open" : "Closed");
+        restaurantCard.put("restaurantName", restaurant.name);
+        restaurantCard.put("reviewCount", db.getReviewsByRestaurantName(restaurant.name).length());
+        restaurantCard.put("restaurantType", restaurant.type);
+        restaurantCard.put("location", restaurant.address.city);
+        restaurantCard.put("id", restaurant.id);
+        restaurantCard.put("durationInfo", restaurant.startTime.toString() + " - " + restaurant.endTime.toString());
+
+        return restaurantCard;
+    }
+
     public JSONArray getAllRestaurantsWithAVGRate() {
         return db.getAllRestaurantWithAVGRate();
     }
