@@ -45,6 +45,9 @@ public class Restaurant {
         json.put("endTime", this.endTime.toString());
         json.put("description", this.description);
         json.put("address", this.address.toJson());
+        json.put("image", this.pictureAddress);
+        json.put("managerUsername", this.managerUserName);
+
         return json;
     }
 
