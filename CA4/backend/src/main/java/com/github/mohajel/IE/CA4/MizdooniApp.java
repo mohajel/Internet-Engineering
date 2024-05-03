@@ -515,6 +515,10 @@ public class MizdooniApp {
         return output;
     }
 
+    public JSONArray getReviewsByRestaurantName(String restaurantName) {
+        return db.getReviewsByRestaurantName(restaurantName);
+    }
+
     public JSONObject addReview(JSONObject input) {
         System.out.println("add review called");
         JSONObject output = new JSONObject();
