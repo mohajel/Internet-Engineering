@@ -333,6 +333,16 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return null;
     }
 
+    public ArrayList<Restaurant> getRestaurantsByType(String restaurantType) {
+        ArrayList<Restaurant> restaurantsByType = new ArrayList<Restaurant>();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.type.equals(restaurantType)) {
+                restaurantsByType.add(restaurant);
+            }
+        }
+        return restaurantsByType;
+    }
+
     public JSONArray getRestaurantByType(String restaurantType) {
         JSONArray restaurantsByType = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {

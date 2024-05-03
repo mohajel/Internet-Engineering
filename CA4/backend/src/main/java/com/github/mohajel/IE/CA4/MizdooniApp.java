@@ -421,6 +421,18 @@ public class MizdooniApp {
         return output;
     }
 
+    public JSONArray getRestaurantCardsByType(String type) {
+        System.out.println("get restaurant cards by location called");
+        ArrayList<Restaurant> restaurants = db.getRestaurantsByType(type);
+
+        JSONArray restaurantCards = new JSONArray();
+        for (Restaurant restaurant : restaurants) {
+            restaurantCards.put(restaurantConvert2restaurantCard(restaurant));
+        }
+
+        return restaurantCards;
+    }
+
     public JSONObject searchRestaurantsByType(JSONObject input) {
         System.out.println("search restaurants by type called");
         JSONObject output = new JSONObject();
