@@ -107,10 +107,14 @@ public class RestaurantController {
     }
 
     @GetMapping("/data/{name}")
-    ResponseEntity<String> getRestaurantData(@PathVariable(value = "name") String name) {
+    ResponseEntity<String> getRestaurantData(@PathVariable(value = "name") String restaurantName) {
 
         MizdooniApp app = MizdooniApp.getInstance();
-        JSONObject restaurant = app.getRestaurantByName(name);
+
+        JSONObject restaurant = app.getRestaurantByName(restaurantName);
+        JSONObject reviewData = app.getSummaryReviewByRestaurantName(restaurantName);
+        restaurant.put("reviewsCount", reviewData.getDouble("reviewsCount"));
+
         return ResponseEntity.ok().body(restaurant.toString());
     }
 }
