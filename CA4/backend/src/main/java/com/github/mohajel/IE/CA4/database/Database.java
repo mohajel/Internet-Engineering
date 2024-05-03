@@ -335,6 +335,16 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return restaurantsByType;
     }
 
+    public JSONArray getRestaurantCardsByCity(String restaurantLocation) {
+        JSONArray restaurantsByCity = new JSONArray();
+        for (Restaurant restaurant : this.restaurants) {
+            if (restaurant.address.city.equals(restaurantLocation)) {
+                restaurantsByCity.put(this.restaurantConvert2restaurantCard(restaurant));
+            }
+        }
+        return restaurantsByCity;
+    }
+
     public JSONArray getRestaurantByCity(String restaurantLocation) {
         JSONArray restaurantsByCity = new JSONArray();
         for (Restaurant restaurant : this.restaurants) {

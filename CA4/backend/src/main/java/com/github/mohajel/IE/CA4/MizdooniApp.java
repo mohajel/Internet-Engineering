@@ -339,6 +339,11 @@ public class MizdooniApp {
         }
     }
 
+    public JSONArray searchRestaurantCardsByCity(String city) {
+        System.out.println("search restaurant cards by city called");
+        return db.getRestaurantCardsByCity(city);
+    }
+
     public JSONArray getAllRestaurantsWithAVGRate() {
         return db.getAllRestaurantWithAVGRate();
     }
