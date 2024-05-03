@@ -1,11 +1,14 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import LocationIcon from "../resources/images/icons/location.svg";
 
 import Stars from './Stars';
 
 
 function RestaurantCard(props) {
+
+    let navigate = useNavigate();
 
     let numberOfStars, restaurantName, reviewCount, restaurantType, location, openStatus, durationInfo, reference, imgUrl;
     numberOfStars = props.numberOfStars;
@@ -18,10 +21,26 @@ function RestaurantCard(props) {
     reference = "/restaurant/" + restaurantName;
     imgUrl = props.imgUrl;
 
+    function handleCardClick(reference) {
+        navigate(reference, 
+            {
+                state: {
+                    restaurantName: restaurantName,
+                    // reviewCount: reviewCount,
+                    // restaurantType: restaurantType,
+                    // location: location,
+                    // openStatus: openStatus,
+                    // durationInfo: durationInfo,
+                    // imgUrl: imgUrl
+                }
+            });
+    }
+
     return (
         <div class="col">
             <div class="restaurant card rounded-4 h-100 position-relative">
                 <a href={reference} class="restaurant-link">
+                {/* <button onClick={handleCardClick(reference)} class="restaurant-link"> */}
                     <div class="rate d-flex position-absolute px-2 py-1">
                         <Stars numberOfStars={numberOfStars} />
                     </div>

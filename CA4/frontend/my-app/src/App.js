@@ -42,7 +42,7 @@ function App() {
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/r" element={<ManagerRestaurantPage />} />
-          <Route path="/rr" element={<RestaurantPage />} />
+          <Route path="/restaurant/:name" element={<RestaurantPage />} />
 
         </Routes>
       </BrowserRouter>

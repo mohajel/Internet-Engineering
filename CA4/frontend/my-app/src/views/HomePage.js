@@ -110,7 +110,7 @@ function HomePage() {
         return (
             // <MessagePage type='error' message='unknown Error happened' redirectURL='/login' />
             <div>
-                role: {status.role}
+                Loading: {status.role}
             </div>
         )
     }
@@ -141,16 +141,22 @@ function SearchRestaurants() {
                     <div class="input-group mb-1 text-center">
                         <select value={location} onChange={(event) => setLocation(event.target.value)} class="custom-select rounded-4 search-input" id="inputGroupSelect01" aria-placeholder="Location">
                             <option selected>Location</option>
-                            <option value="Tehran">Tehran</option>
-                            <option value="Rasht">Rasht</option>
-                            <option value="Gonbad">Gonbad</option>
+                            <option value="Tokyo">Tokyo</option>
+                            <option value="Hamburg">Hamburg</option>
+                            <option value="Calgary">Calgary</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Pittsburgh">Pittsburgh</option>
                         </select>
 
                         <select value={restaurantType} onChange={(event) => setRestaurantType(event.target.value)} class="custom-select rounded-4 search-input" id="RestaurantType">
                             <option selected>Restaurant</option>
-                            <option value="Fast Food">Fast Food</option>
-                            <option value="Traditional Food">Traditional Food</option>
-                            <option value="Italian Food">Italian Food</option>
+                            <option value="American">American</option>
+                            <option value="Steakhouse">Steakhouse</option>
+                            <option value="Steak">Steak</option>
+                            <option value="Seafood">Seafood</option>
+                            <option value="French">French</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Japanese">Japanese</option>
                         </select>
 
                         <input value={restaurantName} onChange={(event) => setRestaurantName(event.target.value)} type="text" class="search-input restaurant-search rounded-4" placeholder="Type Restaurant ..."

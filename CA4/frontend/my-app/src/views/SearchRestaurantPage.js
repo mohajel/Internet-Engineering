@@ -57,18 +57,29 @@ function SimilarRestaurantCard(props) {
     return (
         <>
             {/* OK {props.restaurantName} {props.location} {props.restaurantType} */}
-            {similarRestaurants.map((restaurant) => (
-                <RestaurantCard
-                    numberOfStars={restaurant.numberOfStars}
-                    restaurantName={restaurant.restaurantName}
-                    reviewCount={restaurant.reviewCount}
-                    restaurantType={restaurant.restaurantType}
-                    location={restaurant.location}
-                    openStatus={restaurant.openStatus}
-                    durationInfo={restaurant.durationInfo}
-                    imgUrl={restaurant.imgURL}
-                />
-            ))}
+
+            {/* if length of similarRestaurants == 0 then show "NO RESULT FOUND" */}
+            {
+
+                similarRestaurants.length == 0 ?
+                    <div>
+                        "NO RESULT FOUND"
+                    </div>
+                    :
+                    similarRestaurants.map((restaurant) => (
+                        <RestaurantCard
+                            numberOfStars={restaurant.numberOfStars}
+                            restaurantName={restaurant.restaurantName}
+                            reviewCount={restaurant.reviewCount}
+                            restaurantType={restaurant.restaurantType}
+                            location={restaurant.location}
+                            openStatus={restaurant.openStatus}
+                            durationInfo={restaurant.durationInfo}
+                            imgUrl={restaurant.imgURL}
+                        />
+                    ))
+
+            }
         </>
     )
 }
