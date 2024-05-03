@@ -119,25 +119,20 @@ public class MizdooniApp {
         return tables;
     }
 
-    public JSONObject getRestaurantByManagerUsername(String managerUsername) {
-        JSONObject restaurant = new JSONObject();
+    public JSONArray getRestaurantByManagerUsername(String managerUsername) {
+        JSONArray restaurantJSONArray = new JSONArray();
 
         ArrayList<Restaurant> restaurants = db.getRestaurantsByManagerUserName(managerUsername);
 
         for (int i = 0; i < restaurants.size(); i++) {
             JSONObject restaurantJson = new JSONObject();
             restaurantJson.put("name", restaurants.get(i).name);
-            restaurantJson.put("managerUsername", restaurants.get(i).managerUserName);
-            restaurantJson.put("type", restaurants.get(i).type);
-            restaurantJson.put("startTime", restaurants.get(i).startTime.toString());
-            restaurantJson.put("endTime", restaurants.get(i).endTime.toString());
-            restaurantJson.put("description", restaurants.get(i).description);
             restaurantJson.put("address", restaurants.get(i).address.toJson());
 
-            restaurant.put(String.valueOf(i), restaurantJson);
+            restaurantJSONArray.put(restaurantJson);
         }
 
-        return restaurant;
+        return restaurantJSONArray;
     }
     
     public JSONObject addUser(JSONObject input) {
