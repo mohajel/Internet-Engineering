@@ -32,7 +32,7 @@ public class RestaurantController {
     ResponseEntity<String> getRestaurantsWithName(@PathVariable(value = "name") String name) {
         MizdooniApp app = MizdooniApp.getInstance();
 
-        JSONObject restaurant = app.getInfoOfRestaurantByName(name);
+        JSONObject restaurant = app.getRestaurantCardByName(name);
         return ResponseEntity.ok().body(restaurant.toString());
     }
 

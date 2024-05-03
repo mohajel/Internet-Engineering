@@ -322,6 +322,19 @@ public class MizdooniApp {
         return restaurantCard;
     }
 
+    public JSONObject getRestaurantCardByName(String name) {
+        JSONObject output = new JSONObject();
+        try {
+            Restaurant restaurant = db.getRestaurantByName(name);
+            if (restaurant == null) {
+                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+            }
+                return restaurantConvert2restaurantCard(restaurant);
+        } catch (MizdooniError e) {
+            return new JSONObject();
+        }
+    }
+
     public JSONArray getAllRestaurantsWithAVGRate() {
         return db.getAllRestaurantWithAVGRate();
     }
