@@ -104,7 +104,7 @@ function HomePage() {
         );
     } else if (status.status == "loggedIn" && status.role == "MANAGER") {
         return(
-            <ManagerRestaurantPage />
+            <ManagerRestaurantPage username={status.username}/>
         );
     } else {
         return (
