@@ -117,4 +117,11 @@ public class RestaurantController {
 
         return ResponseEntity.ok().body(restaurant.toString());
     }
+
+    @GetMapping("/owner/{userName}")
+    ResponseEntity<String> getRestaurantsByOwner(@PathVariable(value = "userName") String userName) {
+        MizdooniApp app = MizdooniApp.getInstance();
+        JSONArray restaurants = app.getRestaurantByManagerUsername(userName);
+        return ResponseEntity.ok().body(restaurants.toString());
+    }
 }
