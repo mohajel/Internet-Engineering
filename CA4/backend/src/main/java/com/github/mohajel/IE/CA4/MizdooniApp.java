@@ -49,6 +49,13 @@ public class MizdooniApp {
         return single_instance;
     }
 
+    public String cityOfLoggedInUser() {
+        if (loggedInUser.isEmpty()) {
+            return "";
+        }
+        return db.getUserByUserName(loggedInUser).address.city;
+    }
+
     public JSONObject login(JSONObject input) {
         System.out.println("login called");
         JSONObject output = new JSONObject();

@@ -116,10 +116,16 @@ public class RestaurantController {
 
     @GetMapping("/suggested")
     ResponseEntity<String> getSuggestions() {
-         String city = "Pittsburgh";
-         MizdooniApp app = MizdooniApp.getInstance();
-         JSONArray restaurants = app.searchRestaurantCardsByCity(city);
+        MizdooniApp app = MizdooniApp.getInstance();
+        String city = app.cityOfLoggedInUser();
+        JSONArray restaurants;
 
-         return ResponseEntity.ok().body(restaurants.toString());
+        if (city.isEmpty()) {
+            restaurants = app.getAllRestaurantCards();
+        } else {
+            restaurants = app.searchRestaurantCardsByCity(city);
+        }
+
+        return ResponseEntity.ok().body(restaurants.toString());
     }
 }
