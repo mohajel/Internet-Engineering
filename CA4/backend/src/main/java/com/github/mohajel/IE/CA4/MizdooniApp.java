@@ -260,6 +260,22 @@ public class MizdooniApp {
         return output;
     }
 
+    public JSONArray getReservesByRestaurantName(String restaurantName) {
+        System.out.println("get reserves by restaurant name called");
+        ArrayList<Reserve> reserves = db.getReservationsByRestaurantName(restaurantName);
+        JSONArray reservesJson = new JSONArray();
+        for (Reserve reserve : reserves) {
+            JSONObject singleReserve = new JSONObject();
+            singleReserve.put("userName", reserve.userName);
+            singleReserve.put("tableId", reserve.tableId);
+            singleReserve.put("reserveDate", reserve.reserveDate.toString());
+            singleReserve.put("isCancelled", reserve.isCancelled);
+
+            reservesJson.put(singleReserve);
+        }
+        return reservesJson;
+    }
+
     public JSONObject cancelReservation(JSONObject input) {
         System.out.println("cancel reservation called");
 
