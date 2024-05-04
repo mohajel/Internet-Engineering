@@ -34,7 +34,7 @@ function App() {
 
           <Route path="/login"
             element={
-              <ProtectedRoute accessType={AuthenticationLayer.LOGOUT}>
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
                 <LoginPage />
               </ProtectedRoute>
             }
@@ -53,7 +53,7 @@ function App() {
 
           <Route path="/search"
             element={
-              <ProtectedRoute accessType={AuthenticationLayer.USER_LOGIN}>
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
                 <SearchPage />
               </ProtectedRoute>
             }
@@ -63,7 +63,7 @@ function App() {
 
           <Route path="/restaurant/:name"
             element={
-              <ProtectedRoute accessType={AuthenticationLayer.USER_LOGIN}>
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
                 <RestaurantPage />
               </ProtectedRoute>
             }
