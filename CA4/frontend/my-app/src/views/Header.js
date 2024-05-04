@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
     let buttonText = props.buttonText;
+    if (buttonText == null) {
+        buttonText = "Logout"
+    }
 
     let navigateURL = props.navigateURL;
     if (navigateURL == null) {
@@ -24,7 +27,7 @@ function Header(props) {
             >Reserve Table From Anywhere!</span>
             {/* <button class="reserve-button rounded-3 border-0 ms-auto" onClick={HandelClickHeaderButton(buttonText)}> */}
                 <button class="reserve-button rounded-3 border-0 ms-auto" onClick={HandelClickHeaderButton}>
-                    Logout
+                    {buttonText}
                 </button>
         </header>
     );

@@ -78,12 +78,6 @@ function ManagerRestaurant(props) {
     let navigate = useNavigate();
     let restaurant = props.restaurant
 
-    // const handleManageClick = async (event) => {
-    //     event.preventDefault();
-    //     // navigate("/manager/restaurant/" + restaurant.name, 
-    //     // { state: { name: restaurant.name } });
-    // }
-
     return (
         <tbody>
             <tr class="restaurant-row">

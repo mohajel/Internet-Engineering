@@ -19,23 +19,6 @@ const ProtectedRoute = React.lazy(() => import('./utils/ProtectedRoute'));
 const ManagerManagePage = React.lazy(() => import('./views/ManagerManagePage'));
 
 function App() {
-  // get state from the server
-  // const [userStatus, setUserStatus] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   fetch("/api/user")
-  //     .then((res) => res.json())
-  //     .then((data) => setUserStatus(data.isLoggedIn));
-  // }
-  // , []);
-
-  // if (userStatus === null) {
-  //   return <div>Loading...</div>;
-  // }
-
-
-
-
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -103,36 +86,3 @@ function App() {
 
 
 export default App;
-
-
-
-
-
-
-
-
-// import React from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
-
-// function App() {
-//   const [data, setData] = React.useState(null);
-
-//   React.useEffect(() => {
-//     fetch("/api")
-//       .then((res) => res.json())
-//       // .then((data) => setData(data.message));
-//       .then((data) => setData(data.title));
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>{!data ? "Loadinggg..." : data}</p>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
