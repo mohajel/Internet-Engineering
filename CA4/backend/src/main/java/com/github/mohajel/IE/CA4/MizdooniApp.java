@@ -39,8 +39,11 @@ public class MizdooniApp {
                 // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
+
+                System.out.println("####### Init Mizdooni From API #######");
                 InitMizdooniFromAPI.init(single_instance);
-//                InitMizdooniFromFile.init(single_instance);
+                System.out.println("####### Init Mizdooni From File #######");
+                InitMizdooniFromFile.init(single_instance); // for get reservation data
 
             } catch (Exception e){
                 System.err.println(e.getStackTrace());
