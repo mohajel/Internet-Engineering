@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { AuthenticationLayer } from './utils/ProtectedRoute';
+
 
 import './App.css';
 // import HomePage from './views/HomePage';
@@ -13,6 +15,8 @@ const LogoutPage = React.lazy(() => import('./views/Logout'));
 const SearchPage = React.lazy(() => import('./views/SearchRestaurantPage'));
 const ManagerRestaurantPage = React.lazy(() => import('./views/ManagerRestaurantPage'));
 const RestaurantPage = React.lazy(() => import('./views/RestaurantPage'));
+const ProtectedRoute = React.lazy(() => import('./utils/ProtectedRoute'));
+const ManagerManagePage = React.lazy(() => import('./views/ManagerManagePage'));
 
 function App() {
   // get state from the server
@@ -30,19 +34,66 @@ function App() {
   // }
 
 
+
+
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="about/*" element={<AboutPage />} />
-          {/* <Route path="/error" element={<MessagePage type='error' message='message' redirectURL='/login' />} /> */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/test" element={<TestPost />} />
-          <Route path="/logout" element={<LogoutPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/r" element={<ManagerRestaurantPage />} />
-          <Route path="/restaurant/:name" element={<RestaurantPage />} />
+          <Route path="/"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="/login"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.LOGOUT}>
+                <LoginPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* <Route path="/test" element={<TestPost />} /> */}
+
+          <Route path="/logout"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
+                <LogoutPage />
+              </ProtectedRoute>
+            }
+          />
+
+
+          <Route path="/search"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.USER_LOGIN}>
+                <SearchPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* <Route path="/r" element={<ManagerRestaurantPage />} /> */}
+
+          <Route path="/restaurant/:name"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.USER_LOGIN}>
+                <RestaurantPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="/manager/:name"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
+                <ManagerManagePage />
+              </ProtectedRoute>
+            }
+          />
+
 
         </Routes>
       </BrowserRouter>
@@ -50,9 +101,6 @@ function App() {
   );
 }
 
-function AboutPage() {
-  return <h2>About</h2>;
-}
 
 export default App;
 

@@ -44,7 +44,6 @@ public class StatusController {
         return output.toString();
     }
 
-    // completed and tested
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String PostLogin(@RequestBody String body) {
 
@@ -58,7 +57,6 @@ public class StatusController {
         return result.toString();
     }
 
-    // completed and tested
     @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String PostLogout(@RequestBody String body) {
 

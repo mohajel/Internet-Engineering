@@ -1,6 +1,8 @@
 
 import React, { useLayoutEffect } from 'react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { postReq, getReq } from '../utils/api';
 
 import "../resources/styles/manager_restaurants_page.css"
@@ -73,7 +75,14 @@ function ManagerRestaurantPage(props) {
 
 function ManagerRestaurant(props) {
 
+    let navigate = useNavigate();
     let restaurant = props.restaurant
+
+    // const handleManageClick = async (event) => {
+    //     event.preventDefault();
+    //     // navigate("/manager/restaurant/" + restaurant.name, 
+    //     // { state: { name: restaurant.name } });
+    // }
 
     return (
         <tbody>
@@ -81,7 +90,7 @@ function ManagerRestaurant(props) {
                 <td class="restaurant-name">{restaurant.name}</td>
                 <td class="restaurant-address text-center">{restaurant.address.city}, {restaurant.address.country}</td>
                 <td class="text-end">
-                    <button class="manager-operation manage rounded-3 border-0">
+                    <button class="manager-operation manage rounded-3 border-0" onClick={()=>{navigate("/manager/" + restaurant.name)}} >
                         Manage
                     </button>
                 </td>

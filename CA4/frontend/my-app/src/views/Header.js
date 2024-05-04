@@ -5,10 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
     let buttonText = props.buttonText;
+
+    let navigateURL = props.navigateURL;
+    if (navigateURL == null) {
+        navigateURL = "/logout";
+    }
+
     let navigate = useNavigate();
 
     function HandelClickHeaderButton() {
-        navigate('/logout');
+        navigate(navigateURL);
     }
 
     return (
