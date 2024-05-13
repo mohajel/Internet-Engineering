@@ -4,6 +4,8 @@ import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA5.MizdooniApp;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -12,13 +14,11 @@ public class InitMizdooniFromFile {
     
     
 
-    public static void init(MizdooniApp app) {
-        InputStream inputStream = InitMizdooniFromFile.class.getResourceAsStream(input_file);
-        if (inputStream == null) {
-            System.out.println("input file not found");
-            return;
-        }
-        Scanner scanner = new Scanner(inputStream);
+    public static void init(MizdooniApp app) throws FileNotFoundException {
+        String currentDir = System.getProperty("user.dir") + "/backend/src/main/java/com/github/mohajel/IE/CA5/utils/inputForInit.txt";
+        System.out.println("Current dir using System:" +currentDir);
+        File file = new File(currentDir);
+        Scanner scanner = new Scanner(file);
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
