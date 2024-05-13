@@ -90,23 +90,6 @@ public class MizdooniApp {
         return output;
     }
 
-
-    public JSONObject getTablesByManagerName(String managerName)
-    {
-        JSONObject tables = new JSONObject();
-
-        ArrayList<Table> tablesList = db.getTablesByManagerName(managerName);
-        for (int i = 0; i < tablesList.size(); i++) {
-            JSONObject table = new JSONObject();
-            table.put("restaurantName", tablesList.get(i).restaurantName);
-            table.put("tableNumber", tablesList.get(i).id);
-            table.put("seatsNumber", tablesList.get(i).capacity);
-            tables.put(String.valueOf(i), table);
-        }
-
-        return tables;
-    }
-
     public JSONArray getTablesByRestaurantName(String restaurantName)
     {
         JSONArray tables = new JSONArray();
@@ -239,7 +222,6 @@ public class MizdooniApp {
 
             if (!MizdooniDate.isDateTimeFormatValid(input.getString("datetime"))) {
                 throw new MizdooniError(MizdooniError.DATETIME_FORMAT_INVALID);
-                // throw new MizdooniError(input.getString("datetime"));
             }
             MizdooniDate reserveDate = new MizdooniDate(input.getString("datetime"));
 
@@ -374,35 +356,6 @@ public class MizdooniApp {
         return db.getAllRestaurantWithAVGRate();
     }
 
-    public JSONObject getInfoOfRestaurantByName(String date) {
-        System.out.println("get info of restaurant by name called");
-        JSONObject output = new JSONObject();
-        try {
-            String name = date;
-
-            Restaurant restaurant = db.getRestaurantByName(name);
-            if (restaurant == null) {
-                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
-            }
-            output.put("data", new JSONObject());
-            output.getJSONObject("data").put("restaurant", restaurant.toJson());
-            output.getJSONObject("data").put("rate", db.getAVGRateRestaurantByName(name));
-            output.getJSONObject("data").put("reviews", db.getReviewsByRestaurantName(name));
-
-            output.put("success", true);
-        } catch (JSONException e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
-        } catch (MizdooniError e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", e.getMessage()));
-        } catch (Exception e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
-        }
-        return output;
-    }
-
     public JSONArray getRestaurantCardsContainName(String name) {
         System.out.println("get restaurant cards contain name called");
         ArrayList<Restaurant> restaurants = db.getRestaurantsContainName(name);
@@ -500,15 +453,6 @@ public class MizdooniApp {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
         }
-        return output;
-    }
-
-    public JSONObject showAllRestaurantWithAVGRate() {
-        System.out.println("show all restaurant with avg rate called");
-        JSONObject output = new JSONObject();
-        JSONArray restaurants = db.getAllRestaurantWithAVGRate();
-        output.put("success", true);
-        output.put("data", new JSONObject().put("restaurants", restaurants));
         return output;
     }
 
