@@ -22,7 +22,7 @@ buildNumber.properties
 # Logs and reports
 /logs/
 /test-output/
-/IE-CA4-logs.txt
+/IE-CA5-logs.txt
 
 # Miscellaneous
 *.iml
