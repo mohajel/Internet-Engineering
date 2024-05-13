@@ -418,16 +418,6 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return tablesByRestaurant;
     }
 
-    public ArrayList<Table> getTablesByManagerName(String managerUserName) {
-        ArrayList<Table> tablesByManager = new ArrayList<Table>();
-        for (Table table : this.tables) {
-            if (table.managerUserName.equals(managerUserName)) {
-                tablesByManager.add(table);
-            }
-        }
-        return tablesByManager;
-    }
-
     public ArrayList<Reserve> getReservationsByUserName(String userName) {
         ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
         for (Reserve reserve : this.reserves) {
