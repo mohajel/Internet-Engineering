@@ -1,7 +1,6 @@
 package com.github.mohajel.IE.CA5.controllers;
 
 import org.springframework.http.MediaType;
-// import org.apache.tomcat.util.http.parser.MediaType;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
