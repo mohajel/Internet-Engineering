@@ -1,14 +1,11 @@
 package com.github.mohajel.IE.CA5;
 
-import com.github.mohajel.IE.CA5.utils.InitMizdooniFromAPI;
-import com.github.mohajel.IE.CA5.utils.InitMizdooniFromFile;
+import com.github.mohajel.IE.CA5.utils.*;
 
 import org.json.*;
 
 import com.github.mohajel.IE.CA5.database.Database;
 import com.github.mohajel.IE.CA5.models.*;
-import com.github.mohajel.IE.CA5.utils.MizdooniError;
-import com.github.mohajel.IE.CA5.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -36,6 +33,8 @@ public class MizdooniApp {
     {
         if (single_instance == null) {
             try {
+                HibernateDatabaseUtil.createDataBase();
+
                 // __INIT__
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
