@@ -1,8 +1,20 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.json.JSONObject;
 
+@Entity
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
+    public String street;
+    public String city;
+    public String country;
 
     public Address(String street, String city, String country) {
         this.street = street;
@@ -16,9 +28,10 @@ public class Address {
         this.street = "";
     }
 
-    public String street;
-    public String city;
-    public String country;
+    // Empty constructor for Hibernate
+    public Address() {
+
+    }
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
