@@ -1,7 +1,12 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.json.JSONObject;
 
+@Entity
 public class Table {
 
     public Table(int id, String restaurantName, String managerUserName, int capacity) {
@@ -11,6 +16,14 @@ public class Table {
         this.managerUserName = managerUserName;
     }
 
+    // Empty constructor for Hibernate
+    public Table() {
+
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id_database;
     public int id;
     public int capacity;
     public String restaurantName;
