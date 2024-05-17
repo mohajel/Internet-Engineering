@@ -25,6 +25,7 @@ public class Restaurant {
     @JoinColumn(name = "endTime_id", referencedColumnName = "id")
     public Hour endTime;
 
+    @Column(length = 2000) // Set the length of description to 2000 characters
     public String description;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
