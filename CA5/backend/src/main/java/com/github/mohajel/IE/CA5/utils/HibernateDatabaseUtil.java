@@ -53,10 +53,4 @@ public class HibernateDatabaseUtil {
             System.err.println("EntityManagerFactory creation failed: " + ex);
         }
     }
-
-    public static void shutdown() {
-        if (entityManagerFactory != null) {
-            entityManagerFactory.close();
-        }
-    }
 }
