@@ -1,8 +1,28 @@
 package com.github.mohajel.IE.CA5.models;
 
 import com.github.mohajel.IE.CA5.utils.*;
+import jakarta.persistence.*;
 
+@Entity
 public class User {
+
+    @Id
+    public String userName;
+    public String password;
+    public String email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    public Address address;
+
+    public int numberOfReservations;
+
+    @Enumerated(EnumType.STRING)
+    public Role role;
+    public enum Role {
+        CLIENT,
+        MANAGER
+    }
 
     public User(String userName, String password, String email, Address address, String role) throws MizdooniError {
         this.userName = userName;
@@ -19,15 +39,8 @@ public class User {
         }
     }
 
-    public String userName;
-    public String password;
-    public String email;
-    public Address address;
-    public int numberOfReservations;
-    public Role role;
 
-    public enum Role {
-        CLIENT,
-        MANAGER
+    public User() {
+
     }
 }
