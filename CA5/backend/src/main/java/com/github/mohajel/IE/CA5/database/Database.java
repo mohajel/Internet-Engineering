@@ -286,12 +286,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public User getUserByUserName(String userName) {
-        for (User user : this.users) {
-            if (user.userName.equals(userName)) {
-                return user;
-            }
-        }
-        return null;
+        return UserDAO.findUserByUserName(userName);
     }
 
     public User getUserByEmail(String email) {
