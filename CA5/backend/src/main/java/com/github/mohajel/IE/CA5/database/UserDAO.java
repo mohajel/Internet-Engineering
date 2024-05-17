@@ -16,4 +16,14 @@ public class UserDAO {
         entityManager.close();
         return user;
     }
+
+    public static User findUserByEmail(String email) {
+        try (EntityManager entityManager = getEntityManager()) {
+            return entityManager.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
