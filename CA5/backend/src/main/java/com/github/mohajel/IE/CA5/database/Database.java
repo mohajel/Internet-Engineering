@@ -58,11 +58,11 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
 
     public void addTable(Table table) throws MizdooniError {
         // tableNumber is unique for each restaurant
-        for (Table t : this.tables) {
-            if (t.id == table.id && t.restaurantName.equals(table.restaurantName)) {
-                throw new MizdooniError(MizdooniError.TABLE_ID_NOT_UNIQUE);
-            }
+        Table temp_table = this.getTableByIdAndRestaurantName(table.id, table.restaurantName);
+        if (temp_table != null) {
+            throw new MizdooniError(MizdooniError.TABLE_ID_NOT_UNIQUE);
         }
+
         // managerUserName is the manager of the restaurant
         User manager = this.getUserByUserName(table.managerUserName);
         // restaurant name should exist
