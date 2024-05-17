@@ -10,6 +10,7 @@ public class HibernateDatabaseUtil {
     private static final String DATABASE_NAME = "Mizdooni";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "1234";
+    private static final String PERSISTENCE_UNIT_NAME = "MizdooniPU";
 
     private static EntityManagerFactory entityManagerFactory;
 
@@ -41,6 +42,21 @@ public class HibernateDatabaseUtil {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MizdooniPU");
+        initializeEntityManagerFactory();
+    }
+
+    private static void initializeEntityManagerFactory() {
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+            System.out.println("EntityManagerFactory initialized successfully.");
+        } catch (Exception ex) {
+            System.err.println("EntityManagerFactory creation failed: " + ex);
+        }
+    }
+
+    public static void shutdown() {
+        if (entityManagerFactory != null) {
+            entityManagerFactory.close();
+        }
     }
 }
