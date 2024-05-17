@@ -53,7 +53,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             throw new MizdooniError(MizdooniError.USER_IS_NOT_MANAGER);
         }
 
-        this.restaurants.add(restaurant);
+        RestaurantDAO.addRestaurant(restaurant);
     }
 
     public void addTable(Table table) throws MizdooniError {
@@ -317,12 +317,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
 
     /// Search for restaurants
     public Restaurant getRestaurantByName(String restaurantName) {
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.name.equals(restaurantName)) {
-                return restaurant;
-            }
-        }
-        return null;
+        return RestaurantDAO.findRestaurantByName(restaurantName);
     }
 
     public ArrayList<Restaurant> getRestaurantsByType(String restaurantType) {

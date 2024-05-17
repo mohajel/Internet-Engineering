@@ -18,5 +18,11 @@ public class RestaurantDAO {
         return restaurant;
     }
 
-
+    public static void addRestaurant(Restaurant restaurant) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(restaurant);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 }
