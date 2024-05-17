@@ -22,7 +22,6 @@ public class Table {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
     public int capacity;
     public String restaurantName;
