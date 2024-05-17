@@ -9,6 +9,14 @@ public class TableDAO {
         return HibernateDatabaseUtil.getEntityManager();
     }
 
+    public static void addTable(Table table) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(table);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
     public static Table getTableById(int tableId) {
         EntityManager entityManager = getEntityManager();
         Table table = entityManager.find(Table.class, tableId);

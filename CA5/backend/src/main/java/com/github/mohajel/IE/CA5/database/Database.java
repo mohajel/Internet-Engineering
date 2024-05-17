@@ -77,7 +77,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             throw new MizdooniError(MizdooniError.USER_IS_NOT_MANAGER);
         }
 
-        this.tables.add(table);
+        TableDAO.addTable(table);
     }
 
     public void reserveTable(Reserve reserve) throws MizdooniError {
