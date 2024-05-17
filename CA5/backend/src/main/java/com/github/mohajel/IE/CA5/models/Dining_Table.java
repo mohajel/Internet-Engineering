@@ -1,9 +1,6 @@
 package com.github.mohajel.IE.CA5.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.json.JSONObject;
 
 @Entity
