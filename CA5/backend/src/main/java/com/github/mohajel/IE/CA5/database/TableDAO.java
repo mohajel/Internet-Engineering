@@ -1,15 +1,18 @@
 package com.github.mohajel.IE.CA5.database;
 
+import com.github.mohajel.IE.CA5.models.Table;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
 
 public class TableDAO {
-    EntityManager entityManager = HibernateDatabaseUtil.getEntityManager();
+    private static EntityManager getEntityManager() {
+        return HibernateDatabaseUtil.getEntityManager();
+    }
 
-    public void getTableByIdAndRestaurantName(int tableId, String restaurantName) {
-        entityManager.createQuery("SELECT t FROM Table t WHERE t.id = :tableId AND t.restaurantName = :restaurantName")
-                .setParameter("tableId", tableId)
-                .setParameter("restaurantName", restaurantName)
-                .getSingleResult();
+    public static Table getTableById(int tableId) {
+        EntityManager entityManager = getEntityManager();
+        Table table = entityManager.find(Table.class, tableId);
+        entityManager.close();
+        return table;
     }
 }
