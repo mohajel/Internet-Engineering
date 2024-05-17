@@ -10,6 +10,16 @@ public class UserDAO {
         return HibernateDatabaseUtil.getEntityManager();
     }
 
+    // Add
+    public static void addUser(User user) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    // Search
     public static User findUserByUserName(String userName) {
         EntityManager entityManager = getEntityManager();
         User user = entityManager.find(User.class, userName);

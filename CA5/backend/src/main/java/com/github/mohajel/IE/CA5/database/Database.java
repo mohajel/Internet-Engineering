@@ -37,7 +37,7 @@ public class Database {
             throw new MizdooniError(MizdooniError.INVALID_EMAIL_FORMAT);
         }
 
-        this.users.add(user);
+        UserDAO.addUser(user);
     }
 
 public void addRestaurant(Restaurant restaurant) throws MizdooniError {
