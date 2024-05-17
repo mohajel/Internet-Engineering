@@ -1,5 +1,8 @@
 package com.github.mohajel.IE.CA5.utils;
 
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 import java.sql.*;
 
 public class HibernateDatabaseUtil {
@@ -7,6 +10,8 @@ public class HibernateDatabaseUtil {
     private static final String DATABASE_NAME = "Mizdooni";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "1234";
+
+    private static EntityManagerFactory entityManagerFactory;
 
     public static void createDataBase() {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
@@ -36,5 +41,6 @@ public class HibernateDatabaseUtil {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MizdooniPU");
     }
 }
