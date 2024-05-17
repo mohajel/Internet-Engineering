@@ -11,7 +11,7 @@ public class RestaurantDAO {
         return HibernateDatabaseUtil.getEntityManager();
     }
 
-    public static Restaurant getRestaurantByName(String name) {
+    public static Restaurant findRestaurantByName(String name) {
         EntityManager entityManager = getEntityManager();
         Restaurant restaurant = entityManager.find(Restaurant.class, name);
         entityManager.close();
