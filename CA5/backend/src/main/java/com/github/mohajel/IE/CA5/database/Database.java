@@ -365,12 +365,13 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
-        for (Table table : this.tables) {
-            if (table.id == tableId && table.restaurantName.equals(restaurantName)) {
-                return table;
-            }
+        Table table = TableDAO.getTableById(tableId);
+        if (table == null) {
+            return null;
+        } else if (!table.restaurantName.equals(restaurantName)) {
+            return null;
         }
-        return null;
+        return table;
     }
 
     public ArrayList<Restaurant> getRestaurantsByManagerUserName(String managerUserName) {
