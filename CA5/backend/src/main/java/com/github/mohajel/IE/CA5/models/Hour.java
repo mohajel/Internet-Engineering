@@ -1,6 +1,15 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Hour {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int hours;
     private int minutes;
 
@@ -8,6 +17,11 @@ public class Hour {
         String[] parts = time.split(":");
         this.hours = Integer.parseInt(parts[0]);
         this.minutes = Integer.parseInt(parts[1]);
+    }
+
+    // Empty constructor for Hibernate
+    public Hour() {
+
     }
 
     public Hour deepCopy() {
