@@ -1,5 +1,6 @@
 package com.github.mohajel.IE.CA5.utils;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
@@ -13,6 +14,10 @@ public class HibernateDatabaseUtil {
     private static final String PERSISTENCE_UNIT_NAME = "MizdooniPU";
 
     private static EntityManagerFactory entityManagerFactory;
+
+    public static EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
+    }
 
     public static void createDataBase() {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
