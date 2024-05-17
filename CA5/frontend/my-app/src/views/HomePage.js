@@ -293,18 +293,18 @@ function AboutMizdooni() {
         <div class="container">
             <div class="row mt-0">
                 <div class="col">
-                    <img src={require("../resources/images/tables_about.png")} alt="tables_logo" class="col" id="table-image" />
+                    <img src={require("../resources/images/tables_about.png")} alt="tables_logo" class="col" id="diningTable-image" />
                 </div>
                 <div class="col mt-5 general-text">
                     <h3 id="about" class="general-text">About Mizdooni</h3>
                     <span id="about-text">Are you tired of waiting in long lines at restaurants or
-                        struggling to find a table at your favorite eatery? <br />
+                        struggling to find a diningTable at your favorite eatery? <br />
                         <br />
                         Look no further than Mizdooni – the ultimate solution for all your
                         dining reservation needs.
                         <br />
                         <br />
-                        Mizdooni is a user-friendly website where you can reserve a table
+                        Mizdooni is a user-friendly website where you can reserve a diningTable
                         at any restaurant, from anywhere, at a specific time. Whether
                         you're craving sushi, Italian, or a quick bite to eat, Mizdooni
                         has you covered.
@@ -317,11 +317,11 @@ function AboutMizdooni() {
                         for making a reservation through Mizdooni. Say goodbye to the
                         hassle of calling multiple restaurants or showing up only to find
                         there's a long wait. With Mizdooni, you can relax knowing that
-                        your table is secured and waiting for you. <br />
+                        your diningTable is secured and waiting for you. <br />
                         <br />
                         Don't let dining out be a stressful experience. Visit Mizdooni
                         today and start enjoying your favorite meals without the headache
-                        of making reservations. Reserve your table with ease and dine with
+                        of making reservations. Reserve your diningTable with ease and dine with
                         peace of mind.</span>
                 </div>
             </div>

@@ -1,15 +1,13 @@
 package com.github.mohajel.IE.CA5.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.json.JSONObject;
 
 @Entity
-public class Table {
+public class Dining_Table {
 
-    public Table(int id, String restaurantName, String managerUserName, int capacity) {
+    public Dining_Table(int id, String restaurantName, String managerUserName, int capacity) {
         this.id = id;
         this.capacity = capacity;
         this.restaurantName = restaurantName;
@@ -17,7 +15,7 @@ public class Table {
     }
 
     // Empty constructor for Hibernate
-    public Table() {
+    public Dining_Table() {
 
     }
 

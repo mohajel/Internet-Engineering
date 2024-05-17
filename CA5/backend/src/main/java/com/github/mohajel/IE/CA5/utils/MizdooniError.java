@@ -36,7 +36,7 @@ public class MizdooniError extends Exception {
     public static final String RESTAURANT_ALREADY_EXISTS = "Restaurant already exists";
 
     // addTable errors
-    public static final String TABLE_ID_NOT_UNIQUE = "Table id is not unique and already exists";
+    public static final String TABLE_ID_NOT_UNIQUE = "Dining_Table id is not unique and already exists";
     public static final String RESTAURANT_DOES_NOT_EXIST = "Restaurant does not exist";
     public static final String INVALID_JSON_SEATS_NUMBER_NOT_NATURAL = "Seats number must be a natural number";
 
@@ -47,8 +47,8 @@ public class MizdooniError extends Exception {
 
     // reserveTable errors
     public static final String DATETIME_FORMAT_INVALID = "Invalid date time format";
-    public static final String TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST = "Table id in this restaurant does not exist";
-    public static final String TABLE_IS_RESERVED = "Table is reserved";
+    public static final String TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST = "Dining_Table id in this restaurant does not exist";
+    public static final String TABLE_IS_RESERVED = "Dining_Table is reserved";
     public static final String DATETIME_IS_PASSED = "Date time is passed";
     public static final String DATETIME_IS_NOT_IN_OPEN_HOURS = "Date time is not in open hours of the restaurant";
 

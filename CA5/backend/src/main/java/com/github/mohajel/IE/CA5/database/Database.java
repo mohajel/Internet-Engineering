@@ -13,14 +13,14 @@ public class Database {
 
     private ArrayList<Restaurant> restaurants;
     private ArrayList<Reserve> reserves;
-    private ArrayList<Table> tables;
+    private ArrayList<Dining_Table> diningTables;
     private ArrayList<User> users;
     private ArrayList<Review> reviews;
 
     public Database() throws MizdooniError{
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
-        this.tables = new ArrayList<Table>();
+        this.diningTables = new ArrayList<Dining_Table>();
         this.users = new ArrayList<User>();
         this.reviews = new ArrayList<Review>();
     }
@@ -56,17 +56,17 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         RestaurantDAO.addRestaurant(restaurant);
     }
 
-    public void addTable(Table table) throws MizdooniError {
+    public void addTable(Dining_Table diningTable) throws MizdooniError {
         // tableNumber is unique for each restaurant
-        Table temp_table = this.getTableByIdAndRestaurantName(table.id, table.restaurantName);
-        if (temp_table != null) {
+        Dining_Table temp_Dining_table = this.getTableByIdAndRestaurantName(diningTable.id, diningTable.restaurantName);
+        if (temp_Dining_table != null) {
             throw new MizdooniError(MizdooniError.TABLE_ID_NOT_UNIQUE);
         }
 
         // managerUserName is the manager of the restaurant
-        User manager = this.getUserByUserName(table.managerUserName);
+        User manager = this.getUserByUserName(diningTable.managerUserName);
         // restaurant name should exist
-        Restaurant restaurant = this.getRestaurantByName(table.restaurantName);
+        Restaurant restaurant = this.getRestaurantByName(diningTable.restaurantName);
         if (restaurant == null) {
             throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
         }
@@ -77,7 +77,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             throw new MizdooniError(MizdooniError.USER_IS_NOT_MANAGER);
         }
 
-        TableDAO.addTable(table);
+        TableDAO.addTable(diningTable);
     }
 
     public void reserveTable(Reserve reserve) throws MizdooniError {
@@ -97,8 +97,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
         }
 
-        Table table = this.getTableByIdAndRestaurantName(reserve.tableId, reserve.restaurantName);
-        if (table == null) {
+        Dining_Table diningTable = this.getTableByIdAndRestaurantName(reserve.tableId, reserve.restaurantName);
+        if (diningTable == null) {
             throw new MizdooniError(MizdooniError.TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST);
         }
         if (this.isTableReserved(reserve.tableId, reserve.restaurantName, reserve.reserveDate)) {
@@ -127,16 +127,16 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         MizdooniDate today = new MizdooniDate(Utils.getCurrentTime());
         JSONObject availableTablesToday = new JSONObject();
         availableTablesToday.put("availableTables", new JSONArray());
-        for (Table table : this.tables) {
-            if (table.restaurantName.equals(restaurantName)) {
+        for (Dining_Table diningTable : this.diningTables) {
+            if (diningTable.restaurantName.equals(restaurantName)) {
                 JSONObject tableJson = new JSONObject();
-                tableJson.put("tableNumber", table.id);
-                tableJson.put("seatsNumber", table.capacity);
+                tableJson.put("tableNumber", diningTable.id);
+                tableJson.put("seatsNumber", diningTable.capacity);
                 tableJson.put("availableTimes", new JSONArray());
 
                 ArrayList <Integer> reservedHours = new ArrayList<Integer>();
                 for (Reserve reserve : this.reserves) {
-                    if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == table.id
+                    if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == diningTable.id
                             && reserve.reserveDate.isNDaysAfter(today, 0) && !reserve.isCancelled) {
                         reservedHours.add(reserve.reserveDate.getTime().getJustHours());
                     }
@@ -364,14 +364,14 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return restaurantsByCity;
     }
 
-    public Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
-        Table table = TableDAO.getTableById(tableId);
-        if (table == null) {
+    public Dining_Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
+        Dining_Table diningTable = TableDAO.getTableById(tableId);
+        if (diningTable == null) {
             return null;
-        } else if (!table.restaurantName.equals(restaurantName)) {
+        } else if (!diningTable.restaurantName.equals(restaurantName)) {
             return null;
         }
-        return table;
+        return diningTable;
     }
 
     public ArrayList<Restaurant> getRestaurantsByManagerUserName(String managerUserName) {
@@ -394,11 +394,11 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return false;
     }
 
-    public ArrayList<Table> getTablesByRestaurantName(String restaurantName) {
-        ArrayList<Table> tablesByRestaurant = new ArrayList<Table>();
-        for (Table table : this.tables) {
-            if (table.restaurantName.equals(restaurantName)) {
-                tablesByRestaurant.add(table);
+    public ArrayList<Dining_Table> getTablesByRestaurantName(String restaurantName) {
+        ArrayList<Dining_Table> tablesByRestaurant = new ArrayList<Dining_Table>();
+        for (Dining_Table diningTable : this.diningTables) {
+            if (diningTable.restaurantName.equals(restaurantName)) {
+                tablesByRestaurant.add(diningTable);
             }
         }
         return tablesByRestaurant;

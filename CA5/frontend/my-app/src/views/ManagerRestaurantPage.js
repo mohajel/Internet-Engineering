@@ -37,8 +37,8 @@ function ManagerRestaurantPage(props) {
 
                         <main class="flex-grow-1">
                             <div class="p-3 container">
-                                <div class="table-responsive mx-auto w-50 mt-4 table-container p-0">
-                                    <table class="table align-middle">
+                                <div class="diningTable-responsive mx-auto w-50 mt-4 diningTable-container p-0">
+                                    <diningTable class="diningTable align-middle">
                                         <thead class="restaurant-header">
                                             <tr>
                                                 <th colspan="2" scope="colgroup">My Restaurants</th>
@@ -58,7 +58,7 @@ function ManagerRestaurantPage(props) {
                                         }
 
 
-                                    </table>
+                                    </diningTable>
                                 </div>
                             </div>
                         </main>

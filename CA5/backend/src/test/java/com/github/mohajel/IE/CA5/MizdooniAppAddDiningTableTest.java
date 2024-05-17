@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.github.mohajel.IE.CA5.testUtils.*;
 import com.github.mohajel.IE.CA5.utils.MizdooniError;
 
-public class MizdooniAppAddTableTest {
+public class MizdooniAppAddDiningTableTest {
 
     private MizdooniApp app;
 

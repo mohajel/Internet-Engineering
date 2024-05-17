@@ -1,6 +1,6 @@
 package com.github.mohajel.IE.CA5.database;
 
-import com.github.mohajel.IE.CA5.models.Table;
+import com.github.mohajel.IE.CA5.models.Dining_Table;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
 
@@ -9,18 +9,18 @@ public class TableDAO {
         return HibernateDatabaseUtil.getEntityManager();
     }
 
-    public static void addTable(Table table) {
+    public static void addTable(Dining_Table diningTable) {
         EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(table);
+        entityManager.persist(diningTable);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    public static Table getTableById(int tableId) {
+    public static Dining_Table getTableById(int tableId) {
         EntityManager entityManager = getEntityManager();
-        Table table = entityManager.find(Table.class, tableId);
+        Dining_Table diningTable = entityManager.find(Dining_Table.class, tableId);
         entityManager.close();
-        return table;
+        return diningTable;
     }
 }

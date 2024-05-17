@@ -94,9 +94,9 @@ public class MizdooniApp {
     {
         JSONArray tables = new JSONArray();
 
-        ArrayList<Table> tablesList = db.getTablesByRestaurantName(restaurantName);
-        for (Table table : tablesList) {
-            tables.put(table.toJson());
+        ArrayList<Dining_Table> tablesList = db.getTablesByRestaurantName(restaurantName);
+        for (Dining_Table diningTable : tablesList) {
+            tables.put(diningTable.toJson());
         }
         return tables;
     }
@@ -195,10 +195,10 @@ public class MizdooniApp {
                 seatsNumberInt = seatsNumber.intValue();
             }
 
-            Table table = new Table(tableNumber, restaurantName, managerUsername, seatsNumberInt);
-            db.addTable(table);
+            Dining_Table diningTable = new Dining_Table(tableNumber, restaurantName, managerUsername, seatsNumberInt);
+            db.addTable(diningTable);
             output.put("success", true);
-            output.put("data", "Table added successfully.");
+            output.put("data", "Dining_Table added successfully.");
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));

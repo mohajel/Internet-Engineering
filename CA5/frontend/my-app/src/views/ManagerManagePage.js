@@ -69,8 +69,8 @@ function SeatsPart(props) {
                 loading ?
                     <div>Loading...</div>
                     :
-                    <div class="col-8 mh-100" id="add-table">
-                        <div class="add-table-button-container">
+                    <div class="col-8 mh-100" id="add-diningTable">
+                        <div class="add-diningTable-button-container">
                             <a id="add-column-button">+ Add Table</a>
                         </div>
                         <div class="container p-4">
@@ -93,11 +93,11 @@ function Seat(props) {
     return (
         <div class="col">
             <div
-                class="rest-table mx-auto justify-content-center d-flex flex-column rounded-4"
+                class="rest-diningTable mx-auto justify-content-center d-flex flex-column rounded-4"
             >
                 <div class="icon-num d-flex justify-content-evenly">
                     <img
-                        class="table-manage-icon align-self-center"
+                        class="diningTable-manage-icon align-self-center"
                         src={HashtagImg}
                         alt="hashtag-icon"
                     />
@@ -105,7 +105,7 @@ function Seat(props) {
                 </div>
                 <div class="icon-num d-flex justify-content-evenly">
                     <img
-                        class="table-manage-icon align-self-center"
+                        class="diningTable-manage-icon align-self-center"
                         src={SeatsImg}
                         alt="seat-icon"
                     />
@@ -150,8 +150,8 @@ function ReservationInfoPart(props) {
                             </div>
                         </div>
 
-                        <div class="table-responsive">
-                            <table class="table-responsive table rounded-3 overflow-hidden">
+                        <div class="diningTable-responsive">
+                            <diningTable class="diningTable-responsive diningTable rounded-3 overflow-hidden">
                                 <tbody>
                                     {
                                         info.map((reserveInfo) => (
@@ -159,7 +159,7 @@ function ReservationInfoPart(props) {
                                         ))
                                     }
                                 </tbody>
-                            </table>
+                            </diningTable>
                         </div>
                     </div>
             }
@@ -182,7 +182,7 @@ function Reserve(props) {
         <tr class={classType}>
             <td class="manage-reservation-date">{info.reserveDate}</td>
             <td class="reserver">{info.userName}</td>
-            <td class="manage-table-id">
+            <td class="manage-diningTable-id">
                 <a href="#"> Table {info.tableId} </a>
             </td>
         </tr>
