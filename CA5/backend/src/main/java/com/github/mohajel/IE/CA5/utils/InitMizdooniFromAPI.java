@@ -19,7 +19,7 @@ public class InitMizdooniFromAPI {
         // TODO: uncomment the following lines
         initUsers(app);
         initRestaurants(app);
-//        initTables(app);
+        initTables(app);
 //        initReviews(app);
     }
 

@@ -1,6 +1,8 @@
 package com.github.mohajel.IE.CA5.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.json.JSONObject;
 
@@ -8,7 +10,7 @@ import org.json.JSONObject;
 public class Dining_Table {
 
     public Dining_Table(int id, String restaurantName, String managerUserName, int capacity) {
-        this.id = id;
+        this.tableNumber = id;
         this.capacity = capacity;
         this.restaurantName = restaurantName;
         this.managerUserName = managerUserName;
@@ -20,7 +22,9 @@ public class Dining_Table {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
+    public int tableNumber;
     public int capacity;
     public String restaurantName;
     public String managerUserName;
