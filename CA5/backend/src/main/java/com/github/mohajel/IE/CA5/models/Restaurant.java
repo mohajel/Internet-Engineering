@@ -1,11 +1,37 @@
 package com.github.mohajel.IE.CA5.models;
 
 import com.github.mohajel.IE.CA5.utils.Utils;
+import jakarta.persistence.*;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA5.utils.MizdooniError;
 
+@Entity
 public class Restaurant {
+
+    public static int OverID = 0;
+
+    @Id
+    public String name;
+    public int id;
+    public String managerUserName;
+    public String type;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "startTime_id", referencedColumnName = "id")
+    public Hour startTime;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "endTime_id", referencedColumnName = "id")
+    public Hour endTime;
+
+    public String description;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    public Address address;
+
+    public String pictureAddress;
 
     public Restaurant(String name, String managerUserName, String type, Hour startTime, Hour endTime, String description, Address address, String pictureAddress) throws MizdooniError {
         this.name = name;
@@ -24,17 +50,11 @@ public class Restaurant {
         this.pictureAddress = pictureAddress;
     }
 
-    public static int OverID = 0;
 
-    public String name;
-    public int id;
-    public String managerUserName;
-    public String type;
-    public Hour startTime;
-    public Hour endTime;
-    public String description;
-    public Address address;
-    public String pictureAddress;
+    // Empty constructor for Hibernate
+    public Restaurant() {
+
+    }
 
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
