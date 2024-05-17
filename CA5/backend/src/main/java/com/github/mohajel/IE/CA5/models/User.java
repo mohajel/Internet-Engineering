@@ -39,7 +39,7 @@ public class User {
         }
     }
 
-
+    // Empty constructor for Hibernate
     public User() {
 
     }
