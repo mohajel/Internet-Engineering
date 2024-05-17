@@ -42,7 +42,8 @@ public class MizdooniApp {
                 System.out.println("####### Init Mizdooni From API #######");
                 InitMizdooniFromAPI.init(single_instance);
                 System.out.println("####### Init Mizdooni From File #######");
-                InitMizdooniFromFile.init(single_instance); // for get reservation data
+                // TODO: uncomment the following line
+//                InitMizdooniFromFile.init(single_instance); // for get reservation data
 
             } catch (Exception e){
                 System.err.println(e.getStackTrace());

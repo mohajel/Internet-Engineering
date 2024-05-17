@@ -16,10 +16,11 @@ public class InitMizdooniFromAPI {
     private static final String URL_API = "http://91.107.137.117:55";
 
     public static void init(MizdooniApp app) {
-        initUsers(app);
-        initRestaurants(app);
-        initTables(app);
-        initReviews(app);
+        // TODO: uncomment the following lines
+//        initUsers(app);
+//        initRestaurants(app);
+//        initTables(app);
+//        initReviews(app);
     }
 
     private static JSONArray getDataFromAPI(String url) {
