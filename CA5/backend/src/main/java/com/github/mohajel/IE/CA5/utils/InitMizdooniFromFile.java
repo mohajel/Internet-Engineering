@@ -41,7 +41,7 @@ public class InitMizdooniFromFile {
             case "cancelReservation" -> app.cancelReservation(data);
             case "showReservationHistory" -> app.showReservationHistory(data);
             case "searchRestaurantsByName" -> app.searchRestaurantsContainName(data);
-//            case "searchRestaurantsByType" -> app.searchRestaurantsByType(data);
+            case "searchRestaurantsByType" -> app.searchRestaurantsByType(data);
 //            case "searchRestaurantsByCity" -> app.searchRestaurantsByCity(data);
 //            case "showAvailableTables" -> app.showAvailableTables(data);
             case "addReview" -> app.addReview(data);
