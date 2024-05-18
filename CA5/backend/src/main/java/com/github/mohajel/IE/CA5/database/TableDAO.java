@@ -17,10 +17,21 @@ public class TableDAO {
         entityManager.close();
     }
 
-    public static Dining_Table getTableById(int tableId) {
+    public static Dining_Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
         EntityManager entityManager = getEntityManager();
-        Dining_Table diningTable = entityManager.find(Dining_Table.class, tableId);
+        entityManager.getTransaction().begin();
+        Dining_Table diningTable = null;
+        try {
+            diningTable = entityManager.createQuery("SELECT t FROM Dining_Table t WHERE t.id = :id AND t.restaurantName = :restaurantName", Dining_Table.class)
+                    .setParameter("id", tableId)
+                    .setParameter("restaurantName", restaurantName)
+                    .getSingleResult();
+        } catch (Exception e) {
+            diningTable = null;
+        }
+        entityManager.getTransaction().commit();
         entityManager.close();
         return diningTable;
+
     }
 }

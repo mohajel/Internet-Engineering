@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public class Dining_Table {
 
     public Dining_Table(int id, String restaurantName, String managerUserName, int capacity) {
-        this.tableNumber = id;
+        this.id = id;
         this.capacity = capacity;
         this.restaurantName = restaurantName;
         this.managerUserName = managerUserName;
@@ -20,8 +20,8 @@ public class Dining_Table {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id_database;
     public int id;
-    public int tableNumber;
     public int capacity;
     public String restaurantName;
     public String managerUserName;
