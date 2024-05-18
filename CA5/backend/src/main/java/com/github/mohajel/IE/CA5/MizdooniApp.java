@@ -455,27 +455,27 @@ public class MizdooniApp {
         return output;
     }
 
-    public JSONObject showAvailableTables(JSONObject input) {
-        System.out.println("show available tables called");
-        JSONObject output = new JSONObject();
-        try {
-            String restaurantName = input.getString("restaurantName");
-            JSONObject availableTablesToday = db.showAvailableTablesToday(restaurantName);
-
-            output.put("success", true);
-            output.put("data", availableTablesToday);
-        } catch (JSONException e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
-        } catch (MizdooniError e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", e.getMessage()));
-        } catch (Exception e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
-        }
-        return output;
-    }
+//    public JSONObject showAvailableTables(JSONObject input) {
+//        System.out.println("show available tables called");
+//        JSONObject output = new JSONObject();
+//        try {
+//            String restaurantName = input.getString("restaurantName");
+//            JSONObject availableTablesToday = db.showAvailableTablesToday(restaurantName);
+//
+//            output.put("success", true);
+//            output.put("data", availableTablesToday);
+//        } catch (JSONException e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+//        } catch (MizdooniError e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", e.getMessage()));
+//        } catch (Exception e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+//        }
+//        return output;
+//    }
 
     public JSONArray getReviewsByRestaurantName(String restaurantName) {
         return db.getReviewsByRestaurantName(restaurantName);

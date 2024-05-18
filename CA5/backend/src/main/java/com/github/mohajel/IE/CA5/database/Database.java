@@ -116,41 +116,41 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         ReserveDAO.addReserve(reserve);
     }
 
-    public JSONObject showAvailableTablesToday(String restaurantName) throws MizdooniError {
-        Restaurant restaurant = this.getRestaurantByName(restaurantName);
-        if (restaurant == null) {
-            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
-        }
-
-        MizdooniDate today = new MizdooniDate(Utils.getCurrentTime());
-        JSONObject availableTablesToday = new JSONObject();
-        availableTablesToday.put("availableTables", new JSONArray());
-        for (Dining_Table diningTable : this.diningTables) {
-            if (diningTable.restaurantName.equals(restaurantName)) {
-                JSONObject tableJson = new JSONObject();
-                tableJson.put("tableNumber", diningTable.id);
-                tableJson.put("seatsNumber", diningTable.capacity);
-                tableJson.put("availableTimes", new JSONArray());
-
-                ArrayList <Integer> reservedHours = new ArrayList<Integer>();
-                for (Reserve reserve : this.reserves) {
-                    if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == diningTable.id
-                            && reserve.reserveDate.isNDaysAfter(today, 0) && !reserve.isCancelled) {
-                        reservedHours.add(reserve.reserveDate.getTime().getJustHours());
-                    }
-                }
-
-                for (int i = today.getTime().getJustHours(); i < 24; i++) {
-                    Hour hour = new Hour(String.format("%02d:00", i));
-                    if (!reservedHours.contains(i) && hour.isTimeInRange(restaurant.startTime, restaurant.endTime)) {
-                        tableJson.getJSONArray("availableTimes").put(today.getDateTime() + " " + String.format("%02d:00", i));
-                    }
-                }
-                availableTablesToday.getJSONArray("availableTables").put(tableJson);
-            }
-        }
-        return availableTablesToday;
-    }
+//    public JSONObject showAvailableTablesToday(String restaurantName) throws MizdooniError {
+//        Restaurant restaurant = this.getRestaurantByName(restaurantName);
+//        if (restaurant == null) {
+//            throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+//        }
+//
+//        MizdooniDate today = new MizdooniDate(Utils.getCurrentTime());
+//        JSONObject availableTablesToday = new JSONObject();
+//        availableTablesToday.put("availableTables", new JSONArray());
+//        for (Dining_Table diningTable : this.diningTables) {
+//            if (diningTable.restaurantName.equals(restaurantName)) {
+//                JSONObject tableJson = new JSONObject();
+//                tableJson.put("tableNumber", diningTable.id);
+//                tableJson.put("seatsNumber", diningTable.capacity);
+//                tableJson.put("availableTimes", new JSONArray());
+//
+//                ArrayList <Integer> reservedHours = new ArrayList<Integer>();
+//                for (Reserve reserve : this.reserves) {
+//                    if (reserve.restaurantName.equals(restaurantName) && reserve.tableId == diningTable.id
+//                            && reserve.reserveDate.isNDaysAfter(today, 0) && !reserve.isCancelled) {
+//                        reservedHours.add(reserve.reserveDate.getTime().getJustHours());
+//                    }
+//                }
+//
+//                for (int i = today.getTime().getJustHours(); i < 24; i++) {
+//                    Hour hour = new Hour(String.format("%02d:00", i));
+//                    if (!reservedHours.contains(i) && hour.isTimeInRange(restaurant.startTime, restaurant.endTime)) {
+//                        tableJson.getJSONArray("availableTimes").put(today.getDateTime() + " " + String.format("%02d:00", i));
+//                    }
+//                }
+//                availableTablesToday.getJSONArray("availableTables").put(tableJson);
+//            }
+//        }
+//        return availableTablesToday;
+//    }
 
     /// Reviews
     public void addReview(Review review) throws MizdooniError {

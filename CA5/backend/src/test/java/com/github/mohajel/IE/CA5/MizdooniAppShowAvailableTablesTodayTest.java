@@ -42,14 +42,4 @@ public class MizdooniAppShowAvailableTablesTodayTest {
         JSONObject reservation = TestReservationFactory.createSimpleReservation("user1", "restaurant1", 1, currentDateTime);
         app.reserveTable(reservation);
     }
-
-    @Test
-    public void testShowAvailableTablesToday_1Table() {
-        try (MockedStatic<Utils> utilities = Mockito.mockStatic(Utils.class)) {
-            utilities.when(Utils::getCurrentTime).thenReturn(currentDateTime);
-            JSONObject res = app.showAvailableTables(new JSONObject().put("restaurantName", "restaurant1"));
-            assertTrue(res.getBoolean("success"));
-            assertEquals(3, res.getJSONObject("data").getJSONArray("availableTables").getJSONObject(0).getJSONArray("availableTimes").length());
-        }
-    }
 }
