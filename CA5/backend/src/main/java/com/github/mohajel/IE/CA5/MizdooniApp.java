@@ -351,10 +351,6 @@ public class MizdooniApp {
         return db.getRestaurantCardsByCity(city);
     }
 
-    public JSONArray getAllRestaurantsWithAVGRate() {
-        return db.getAllRestaurantWithAVGRate();
-    }
-
     public JSONArray getRestaurantCardsContainName(String name) {
         System.out.println("get restaurant cards contain name called");
         ArrayList<Restaurant> restaurants = db.getRestaurantsContainName(name);

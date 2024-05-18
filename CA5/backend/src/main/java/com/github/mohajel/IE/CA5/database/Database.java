@@ -218,16 +218,6 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return result;
     }
 
-    public JSONArray getAllRestaurantWithAVGRate() {
-        JSONArray result = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
-            JSONObject restaurantJson = restaurant.toJson();
-            restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
-            result.put(restaurantJson);
-        }
-        return result;
-    }
-
     public JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
         JSONObject result = ReviewDAO.getAVGRateRestaurantByName(nameRestaurant);
 
