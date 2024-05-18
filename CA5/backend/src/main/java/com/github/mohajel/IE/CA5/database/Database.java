@@ -329,13 +329,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Reserve> getReservationsByUserName(String userName) {
-        ArrayList<Reserve> userReserves = new ArrayList<Reserve>();
-        for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName) && !reserve.isCancelled) {
-                userReserves.add(reserve);
-            }
-        }
-        return userReserves;
+        List<Reserve> reservations = ReserveDAO.getReservationsByUserName(userName);
+        return new ArrayList<Reserve>(reservations);
     }
 
     public Reserve getReserveByReservationIdAndUserName(int reservationId, String userName) {

@@ -5,6 +5,7 @@ import com.github.mohajel.IE.CA5.models.Reserve;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReserveDAO {
@@ -61,5 +62,19 @@ public class ReserveDAO {
         entityManager.getTransaction().commit();
         entityManager.close();
         return reserve;
+    }
+
+    public static List<Reserve> getReservationsByUserName(String userName) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        List<Reserve> reserves = entityManager.createQuery("SELECT r " +
+                        "FROM Reserve r " +
+                        "WHERE r.userName = :userName",
+                        Reserve.class)
+                .setParameter("userName", userName)
+                .getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return reserves;
     }
 }
