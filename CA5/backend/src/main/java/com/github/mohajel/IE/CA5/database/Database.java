@@ -231,39 +231,12 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public JSONObject getAVGRateRestaurantByName(String nameRestaurant) {
-        double sumFoodRate = 0;
-        double sumServiceRate = 0;
-        double sumAmbianceRate = 0;
-        double sumOverallRate = 0;
+        JSONObject result = ReviewDAO.getAVGRateRestaurantByName(nameRestaurant);
 
-        int count = 0;
-
-        for (Review review : this.reviews) {
-            if (review.restaurantName.equals(nameRestaurant)) {
-                sumFoodRate += review.foodRate;
-                sumServiceRate += review.serviceRate;
-                sumAmbianceRate += review.ambianceRate;
-                sumOverallRate += review.overallRate;
-                count++;
-            }
-        }
-
-        JSONObject result = new JSONObject();
-
-        if (count == 0) {
-            result.put("foodRate", 0);
-            result.put("serviceRate", 0);
-            result.put("ambianceRate", 0);
-            result.put("overallRate", 0);
-            return result;
-        }
-
-        result.put("reviewsCount", count);
-
-        result.put("foodRate", String.format("%.1f", sumFoodRate / count));
-        result.put("serviceRate", String.format("%.1f", sumServiceRate / count));
-        result.put("ambianceRate", String.format("%.1f", sumAmbianceRate / count));
-        result.put("overallRate", String.format("%.1f", sumOverallRate / count));
+        result.put("foodRate", String.format("%.1f", result.getDouble("foodRate")));
+        result.put("serviceRate", String.format("%.1f", result.getDouble("serviceRate")));
+        result.put("ambianceRate", String.format("%.1f", result.getDouble("ambianceRate")));
+        result.put("overallRate", String.format("%.1f", result.getDouble("overallRate")));
 
         return result;
     }

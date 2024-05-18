@@ -3,6 +3,7 @@ package com.github.mohajel.IE.CA5.database;
 import com.github.mohajel.IE.CA5.models.Review;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -51,5 +52,36 @@ public class ReviewDAO {
         entityManager.merge(review);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+
+    // Data
+    public static JSONObject getAVGRateRestaurantByName(String restaurantName) {
+        EntityManager entityManager = getEntityManager();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            String query = "SELECT AVG(r.foodRate), AVG(r.serviceRate), AVG(r.ambianceRate), AVG(r.overallRate), COUNT(r) " +
+                    "FROM Review r " +
+                    "WHERE r.restaurantName = :restaurantName";
+
+            Object[] result = (Object[]) entityManager.createQuery(query)
+                    .setParameter("restaurantName", restaurantName)
+                    .getSingleResult();
+
+            if (result[4].equals(0)) {
+                jsonObject.put("foodRate", 0);
+                jsonObject.put("serviceRate", 0);
+                jsonObject.put("ambianceRate", 0);
+                jsonObject.put("overallRate", 0);
+            } else {
+                jsonObject.put("foodRate", result[0]);
+                jsonObject.put("serviceRate", result[1]);
+                jsonObject.put("ambianceRate", result[2]);
+                jsonObject.put("overallRate", result[3]);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        entityManager.close();
+        return jsonObject;
     }
 }
