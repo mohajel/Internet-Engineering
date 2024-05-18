@@ -278,13 +278,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Restaurant> getRestaurantsByType(String restaurantType) {
-        ArrayList<Restaurant> restaurantsByType = new ArrayList<Restaurant>();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.type.equals(restaurantType)) {
-                restaurantsByType.add(restaurant);
-            }
-        }
-        return restaurantsByType;
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantsByType(restaurantType);
+        return new ArrayList<Restaurant>(restaurants);
     }
 
     public JSONArray getRestaurantByType(String restaurantType) {

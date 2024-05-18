@@ -37,4 +37,14 @@ public class RestaurantDAO {
         entityManager.close();
         return restaurants;
     }
+
+    public static List<Restaurant> getRestaurantsByType(String restaurantType) {
+        EntityManager entityManager = getEntityManager();
+        List<Restaurant> restaurants;
+        restaurants = entityManager.createQuery("SELECT r FROM Restaurant r WHERE r.type = :restaurantType", Restaurant.class)
+                .setParameter("restaurantType", restaurantType)
+                .getResultList();
+        entityManager.close();
+        return restaurants;
+    }
 }
