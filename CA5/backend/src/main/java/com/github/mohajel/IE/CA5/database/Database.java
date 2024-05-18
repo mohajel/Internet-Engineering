@@ -295,11 +295,11 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
 //    }
 
     public JSONArray getRestaurantCardsByCity(String restaurantLocation) {
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantCardsByCity(restaurantLocation);
+
         JSONArray restaurantsByCity = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.address.city.equals(restaurantLocation)) {
-                restaurantsByCity.put(this.restaurantConvert2restaurantCard(restaurant));
-            }
+        for (Restaurant restaurant : restaurants) {
+            restaurantsByCity.put(this.restaurantConvert2restaurantCard(restaurant));
         }
         return restaurantsByCity;
     }

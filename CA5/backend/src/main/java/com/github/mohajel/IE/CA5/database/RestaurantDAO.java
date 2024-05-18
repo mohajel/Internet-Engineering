@@ -47,4 +47,18 @@ public class RestaurantDAO {
         entityManager.close();
         return restaurants;
     }
+
+    public static List<Restaurant> getRestaurantCardsByCity(String city) {
+        EntityManager entityManager = getEntityManager();
+        List<Restaurant> restaurants;
+
+        restaurants = entityManager.createQuery("SELECT r " +
+                        "FROM Restaurant r " +
+                        "INNER JOIN r.address a " +
+                        "WHERE a.city = :city", Restaurant.class)
+                .setParameter("city", city)
+                .getResultList();
+        entityManager.close();
+        return restaurants;
+    }
 }
