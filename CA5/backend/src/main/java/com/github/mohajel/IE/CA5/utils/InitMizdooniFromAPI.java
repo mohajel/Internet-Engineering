@@ -20,7 +20,7 @@ public class InitMizdooniFromAPI {
         initUsers(app);
         initRestaurants(app);
         initTables(app);
-//        initReviews(app);
+        initReviews(app);
     }
 
     private static JSONArray getDataFromAPI(String url) {
