@@ -483,7 +483,6 @@ public class MizdooniApp {
     }
 
     public JSONObject addReview(JSONObject input) {
-        System.out.println("add review called");
         JSONObject output = new JSONObject();
 
         try {

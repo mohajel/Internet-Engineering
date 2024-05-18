@@ -172,7 +172,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         Review oldReview = this.getReviewByUserNameAndRestaurantName(review.userName, review.restaurantName);
 
         if (oldReview == null) {
-            this.reviews.add(review);
+            System.out.println("add review called");
+            ReviewDAO.addReview(review);
         } else {
             oldReview.foodRate = review.foodRate;
             oldReview.serviceRate = review.serviceRate;
@@ -180,6 +181,9 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
             oldReview.overallRate = review.overallRate;
             oldReview.comment = review.comment;
             oldReview.reviewDate = review.reviewDate;
+
+            System.out.println("update review called");
+            ReviewDAO.updateReview(oldReview);
         }
 
     }
@@ -209,12 +213,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     private Review getReviewByUserNameAndRestaurantName(String userName, String restaurantName) {
-        for (Review review : this.reviews) {
-            if (review.userName.equals(userName) && review.restaurantName.equals(restaurantName)) {
-                return review;
-            }
-        }
-        return null;
+        return ReviewDAO.getReviewByUserNameAndRestaurantName(userName, restaurantName);
     }
 
     public JSONArray getAllRestaurantCards() {
