@@ -288,7 +288,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
 //    }
 
     public JSONArray getRestaurantCardsByCity(String restaurantLocation) {
-        List<Restaurant> restaurants = RestaurantDAO.getRestaurantCardsByCity(restaurantLocation);
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantByCity(restaurantLocation);
 
         JSONArray restaurantsByCity = new JSONArray();
         for (Restaurant restaurant : restaurants) {

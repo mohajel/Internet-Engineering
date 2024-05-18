@@ -58,7 +58,7 @@ public class RestaurantDAO {
         return restaurants;
     }
 
-    public static List<Restaurant> getRestaurantCardsByCity(String city) {
+    public static List<Restaurant> getRestaurantByCity(String city) {
         EntityManager entityManager = getEntityManager();
         List<Restaurant> restaurants;
 
