@@ -13,13 +13,11 @@ public class Database {
 
     private ArrayList<Restaurant> restaurants;
     private ArrayList<Reserve> reserves;
-    private ArrayList<Dining_Table> diningTables;
     private ArrayList<Review> reviews;
 
     public Database() throws MizdooniError{
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
-        this.diningTables = new ArrayList<Dining_Table>();
         this.reviews = new ArrayList<Review>();
     }
 
