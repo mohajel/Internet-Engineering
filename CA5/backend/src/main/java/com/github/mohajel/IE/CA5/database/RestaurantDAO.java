@@ -20,6 +20,15 @@ public class RestaurantDAO {
         entityManager.close();
     }
 
+    public static List<Restaurant> getAllRestaurants() {
+        EntityManager entityManager = getEntityManager();
+        List<Restaurant> restaurants;
+        restaurants = entityManager.createQuery("SELECT r FROM Restaurant r", Restaurant.class)
+                .getResultList();
+        entityManager.close();
+        return restaurants;
+    }
+
     // Search
     public static Restaurant findRestaurantByName(String name) {
         EntityManager entityManager = getEntityManager();

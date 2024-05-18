@@ -212,8 +212,10 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public JSONArray getAllRestaurantCards() {
+        List<Restaurant> restaurants = RestaurantDAO.getAllRestaurants();
+
         JSONArray result = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
+        for (Restaurant restaurant : restaurants) {
             result.put(this.restaurantConvert2restaurantCard(restaurant));
         }
         return result;
