@@ -1,9 +1,11 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.*;
 import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA5.utils.MizdooniError;
 
+@Entity
 public class Review {
 
     public Review(String userName, String restaurantName, double foodRate, double serviceRate,
@@ -24,6 +26,26 @@ public class Review {
         }
     }
 
+    // Empty constructor for Hibernate
+    public Review() {
+
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
+    public String userName;
+    public String restaurantName;
+    public double foodRate;
+    public double serviceRate;
+    public double ambianceRate;
+    public double overallRate;
+    public String comment;
+    @OneToOne
+    @JoinColumn(referencedColumnName = "id")
+    public MizdooniDate reviewDate;
+
+
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("username", this.userName);
@@ -41,12 +63,4 @@ public class Review {
         return rate >= 0 && rate <= 5;
     }
 
-    public String userName;
-    public String restaurantName;
-    public double foodRate;
-    public double serviceRate;
-    public double ambianceRate;
-    public double overallRate;
-    public String comment;
-    public MizdooniDate reviewDate;
 }
