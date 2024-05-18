@@ -380,13 +380,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Dining_Table> getTablesByRestaurantName(String restaurantName) {
-        ArrayList<Dining_Table> tablesByRestaurant = new ArrayList<Dining_Table>();
-        for (Dining_Table diningTable : this.diningTables) {
-            if (diningTable.restaurantName.equals(restaurantName)) {
-                tablesByRestaurant.add(diningTable);
-            }
-        }
-        return tablesByRestaurant;
+        return TableDAO.getTablesByRestaurantName(restaurantName);
     }
 
     public ArrayList<Reserve> getReservationsByUserName(String userName) {
