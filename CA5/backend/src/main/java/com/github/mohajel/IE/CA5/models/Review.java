@@ -41,8 +41,8 @@ public class Review {
     public double ambianceRate;
     public double overallRate;
     public String comment;
-    @OneToOne
-    @JoinColumn(referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "reviewDate_id", referencedColumnName = "id")
     public MizdooniDate reviewDate;
 
 
