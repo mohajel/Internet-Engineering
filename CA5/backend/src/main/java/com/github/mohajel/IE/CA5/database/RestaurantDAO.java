@@ -4,6 +4,8 @@ import com.github.mohajel.IE.CA5.models.Restaurant;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class RestaurantDAO {
 
     private static EntityManager getEntityManager() {
@@ -24,5 +26,15 @@ public class RestaurantDAO {
         Restaurant restaurant = entityManager.find(Restaurant.class, name);
         entityManager.close();
         return restaurant;
+    }
+
+    public static List<Restaurant> getRestaurantsByManagerUserName(String managerUserName) {
+        EntityManager entityManager = getEntityManager();
+        List<Restaurant> restaurants;
+        restaurants = entityManager.createQuery("SELECT r FROM Restaurant r WHERE r.managerUserName = :managerUserName", Restaurant.class)
+                .setParameter("managerUserName", managerUserName)
+                .getResultList();
+        entityManager.close();
+        return restaurants;
     }
 }

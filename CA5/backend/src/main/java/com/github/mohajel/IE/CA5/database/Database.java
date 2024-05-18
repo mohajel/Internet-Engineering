@@ -1,6 +1,7 @@
 package com.github.mohajel.IE.CA5.database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -325,13 +326,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Restaurant> getRestaurantsByManagerUserName(String managerUserName) {
-        ArrayList<Restaurant> restaurantsByManager = new ArrayList<Restaurant>();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.managerUserName.equals(managerUserName)) {
-                restaurantsByManager.add(restaurant);
-            }
-        }
-        return restaurantsByManager;
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantsByManagerUserName(managerUserName);
+        return new ArrayList<Restaurant>(restaurants);
     }
 
     public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
