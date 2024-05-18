@@ -101,7 +101,6 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         if (diningTable == null) {
             throw new MizdooniError(MizdooniError.TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST);
         }
-        // TODO: change below
         if (this.isTableReserved(reserve.tableId, reserve.restaurantName, reserve.reserveDate)) {
             throw new MizdooniError(MizdooniError.TABLE_IS_RESERVED);
         }
