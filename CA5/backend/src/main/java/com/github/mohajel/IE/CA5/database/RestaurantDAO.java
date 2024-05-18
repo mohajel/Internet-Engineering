@@ -24,6 +24,7 @@ public class RestaurantDAO {
         EntityManager entityManager = getEntityManager();
         List<Restaurant> restaurants;
         restaurants = entityManager.createQuery("SELECT r FROM Restaurant r", Restaurant.class)
+                .setMaxResults(6)
                 .getResultList();
         entityManager.close();
         return restaurants;
