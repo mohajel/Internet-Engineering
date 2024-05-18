@@ -282,17 +282,17 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return new ArrayList<Restaurant>(restaurants);
     }
 
-    public JSONArray getRestaurantByType(String restaurantType) {
-        JSONArray restaurantsByType = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.type.equals(restaurantType)) {
-                JSONObject restaurantJson = restaurant.toJson();
-                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
-                restaurantsByType.put(restaurantJson);
-            }
-        }
-        return restaurantsByType;
-    }
+//    public JSONArray getRestaurantByType(String restaurantType) {
+//        JSONArray restaurantsByType = new JSONArray();
+//        for (Restaurant restaurant : this.restaurants) {
+//            if (restaurant.type.equals(restaurantType)) {
+//                JSONObject restaurantJson = restaurant.toJson();
+//                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+//                restaurantsByType.put(restaurantJson);
+//            }
+//        }
+//        return restaurantsByType;
+//    }
 
     public JSONArray getRestaurantCardsByCity(String restaurantLocation) {
         JSONArray restaurantsByCity = new JSONArray();

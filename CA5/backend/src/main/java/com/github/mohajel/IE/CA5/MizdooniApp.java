@@ -400,30 +400,30 @@ public class MizdooniApp {
         return restaurantCards;
     }
 
-    public JSONObject searchRestaurantsByType(JSONObject input) {
-        System.out.println("search restaurants by type called");
-        JSONObject output = new JSONObject();
-        try {
-            String type = input.getString("type");
-
-            JSONArray restaurants = db.getRestaurantByType(type);
-            if (restaurants.isEmpty()) {
-                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
-            }
-            output.put("success", true);
-            output.put("data", new JSONObject().put("restaurants", restaurants));
-        } catch (JSONException e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
-        } catch (MizdooniError e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", e.getMessage()));
-        } catch (Exception e) {
-            output.put("success", false);
-            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
-        }
-        return output;
-    }
+//    public JSONObject searchRestaurantsByType(JSONObject input) {
+//        System.out.println("search restaurants by type called");
+//        JSONObject output = new JSONObject();
+//        try {
+//            String type = input.getString("type");
+//
+//            JSONArray restaurants = db.getRestaurantByType(type);
+//            if (restaurants.isEmpty()) {
+//                throw new MizdooniError(MizdooniError.RESTAURANT_DOES_NOT_EXIST);
+//            }
+//            output.put("success", true);
+//            output.put("data", new JSONObject().put("restaurants", restaurants));
+//        } catch (JSONException e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+//        } catch (MizdooniError e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", e.getMessage()));
+//        } catch (Exception e) {
+//            output.put("success", false);
+//            output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+//        }
+//        return output;
+//    }
 
     public JSONObject searchRestaurantsByCity(JSONObject input) {
         System.out.println("search restaurants by city called");
