@@ -1,12 +1,22 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Entity
 public class MizdooniDate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private int year;
     private int month;
     private int day;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "hour_id", referencedColumnName = "id")
     private Hour time;
 
     public MizdooniDate(String dateTime) {
@@ -16,6 +26,11 @@ public class MizdooniDate {
         this.month = Integer.parseInt(dateParts[1]);
         this.day = Integer.parseInt(dateParts[2]);
         this.time = new Hour(parts[1]);
+    }
+
+    // Empty constructor for Hibernate
+    public MizdooniDate() {
+
     }
 
     public MizdooniDate deepCopy() {
