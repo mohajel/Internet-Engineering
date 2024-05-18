@@ -258,13 +258,13 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public JSONArray getJSONRestaurantsContainName(String restaurantName) {
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantsContainName(restaurantName);
+
         JSONArray restaurantsContainName = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.name.contains(restaurantName)) {
-                JSONObject restaurantJson = restaurant.toJson();
-                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
-                restaurantsContainName.put(restaurantJson);
-            }
+        for (Restaurant restaurant : restaurants) {
+            JSONObject restaurantJson = restaurant.toJson();
+            restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+            restaurantsContainName.put(restaurantJson);
         }
         return restaurantsContainName;
     }
