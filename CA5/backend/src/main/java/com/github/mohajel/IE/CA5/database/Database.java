@@ -101,6 +101,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         if (diningTable == null) {
             throw new MizdooniError(MizdooniError.TABLE_ID_IN_RESTAURANT_DOES_NOT_EXIST);
         }
+        // TODO: change below
         if (this.isTableReserved(reserve.tableId, reserve.restaurantName, reserve.reserveDate)) {
             throw new MizdooniError(MizdooniError.TABLE_IS_RESERVED);
         }
@@ -115,6 +116,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         user.numberOfReservations++;
         reserve.reservationId = user.numberOfReservations;
 
+        // TODO: Change below
         this.reserves.add(reserve);
     }
 
@@ -378,13 +380,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
-        for (Reserve reserve : this.reserves) {
-            if (reserve.tableId == tableId && reserve.restaurantName.equals(restaurantName)
-                    && reserve.reserveDate.equals(reserveDate) && !reserve.isCancelled) {
-                return true;
-            }
-        }
-        return false;
+        return ReserveDAO.isTableReserved(tableId, restaurantName, reserveDate);
     }
 
     public ArrayList<Dining_Table> getTablesByRestaurantName(String restaurantName) {
