@@ -338,13 +338,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Reserve> getReservationsByRestaurantName(String restaurantName) {
-        ArrayList<Reserve> restaurantReserves = new ArrayList<Reserve>();
-        for (Reserve reserve : this.reserves) {
-            if (reserve.restaurantName.equals(restaurantName)) {
-                restaurantReserves.add(reserve);
-            }
-        }
-        return restaurantReserves;
+        List<Reserve> reservations = ReserveDAO.getReservationsByRestaurantName(restaurantName);
+        return new ArrayList<Reserve>(reservations);
     }
 
     public JSONObject restaurantConvert2restaurantCard(Restaurant restaurant) {

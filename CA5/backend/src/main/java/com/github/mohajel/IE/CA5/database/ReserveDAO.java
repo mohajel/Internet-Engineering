@@ -77,4 +77,17 @@ public class ReserveDAO {
         entityManager.close();
         return reserves;
     }
+
+    public static List<Reserve> getReservationsByRestaurantName(String restaurantName) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        List<Reserve> reserves = entityManager.createQuery("SELECT r " +
+                        "FROM Reserve r " +
+                        "WHERE r.restaurantName = :restaurantName",
+                        Reserve.class)
+                .setParameter("restaurantName", restaurantName)
+                .getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return reserves; }
 }
