@@ -70,4 +70,14 @@ public class RestaurantDAO {
         entityManager.close();
         return restaurants;
     }
+
+    public static List<Restaurant> getRestaurantsContainName(String name) {
+        EntityManager entityManager = getEntityManager();
+        List<Restaurant> restaurants;
+        restaurants = entityManager.createQuery("SELECT r FROM Restaurant r WHERE r.name LIKE :name", Restaurant.class)
+                .setParameter("name", "%" + name + "%")
+                .getResultList();
+        entityManager.close();
+        return restaurants;
+    }
 }

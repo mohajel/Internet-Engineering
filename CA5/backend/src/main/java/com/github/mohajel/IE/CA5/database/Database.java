@@ -253,13 +253,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public ArrayList<Restaurant> getRestaurantsContainName(String restaurantName) {
-        ArrayList<Restaurant> restaurantsContainName = new ArrayList<Restaurant>();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.name.contains(restaurantName)) {
-                restaurantsContainName.add(restaurant);
-            }
-        }
-        return restaurantsContainName;
+        List<Restaurant> restaurants = RestaurantDAO.getRestaurantsContainName(restaurantName);
+        return new ArrayList<Restaurant>(restaurants);
     }
 
     public JSONArray getJSONRestaurantsContainName(String restaurantName) {
