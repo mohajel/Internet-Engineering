@@ -12,6 +12,16 @@ public class ReserveDAO {
         return HibernateDatabaseUtil.getEntityManager();
     }
 
+    public static void addReserve(Reserve reserve) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(reserve);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    // Search
+
     public static boolean isTableReserved(int tableId, String restaurantName, MizdooniDate reserveDate) {
         EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();

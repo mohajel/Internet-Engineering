@@ -115,8 +115,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         user.numberOfReservations++;
         reserve.reservationId = user.numberOfReservations;
 
-        // TODO: Change below
-        this.reserves.add(reserve);
+        ReserveDAO.addReserve(reserve);
     }
 
     public JSONObject showAvailableTablesToday(String restaurantName) throws MizdooniError {
