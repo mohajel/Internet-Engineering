@@ -14,14 +14,12 @@ public class Database {
     private ArrayList<Restaurant> restaurants;
     private ArrayList<Reserve> reserves;
     private ArrayList<Dining_Table> diningTables;
-    private ArrayList<User> users;
     private ArrayList<Review> reviews;
 
     public Database() throws MizdooniError{
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
         this.diningTables = new ArrayList<Dining_Table>();
-        this.users = new ArrayList<User>();
         this.reviews = new ArrayList<Review>();
     }
 
