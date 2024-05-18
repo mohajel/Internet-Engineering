@@ -304,17 +304,17 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         return restaurantsByCity;
     }
 
-    public JSONArray getRestaurantByCity(String restaurantLocation) {
-        JSONArray restaurantsByCity = new JSONArray();
-        for (Restaurant restaurant : this.restaurants) {
-            if (restaurant.address.city.equals(restaurantLocation)) {
-                JSONObject restaurantJson = restaurant.toJson();
-                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
-                restaurantsByCity.put(restaurantJson);
-            }
-        }
-        return restaurantsByCity;
-    }
+//    public JSONArray getRestaurantByCity(String restaurantLocation) {
+//        JSONArray restaurantsByCity = new JSONArray();
+//        for (Restaurant restaurant : this.restaurants) {
+//            if (restaurant.address.city.equals(restaurantLocation)) {
+//                JSONObject restaurantJson = restaurant.toJson();
+//                restaurantJson.put("rate", this.getAVGRateRestaurantByName(restaurant.name));
+//                restaurantsByCity.put(restaurantJson);
+//            }
+//        }
+//        return restaurantsByCity;
+//    }
 
     public Dining_Table getTableByIdAndRestaurantName(int tableId, String restaurantName) {
         return TableDAO.getTableByIdAndRestaurantName(tableId, restaurantName);
