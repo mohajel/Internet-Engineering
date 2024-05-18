@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import static com.github.mohajel.IE.CA5.utils.Utils.logAppendFile;
+
 public class InitMizdooniFromFile {
     public static String input_file = "/backend/src/main/java/com/github/mohajel/IE/CA5/utils/inputForInit.txt";
     
@@ -22,7 +24,7 @@ public class InitMizdooniFromFile {
             String line = scanner.nextLine();
             JSONObject input = Utils.pharseLine(line);
             JSONObject output = executeCommand(input, app);
-            System.out.println(output.toString());
+            logAppendFile("initReserve", output.toString());
         }
         scanner.close();
     }
