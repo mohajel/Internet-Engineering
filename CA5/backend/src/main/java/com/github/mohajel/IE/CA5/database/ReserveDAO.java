@@ -90,4 +90,16 @@ public class ReserveDAO {
         entityManager.getTransaction().commit();
         entityManager.close();
         return reserves; }
+
+    public static void cancelReservation(String userName, int reservationId) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        Reserve reserve = getReserveByReservationIdAndUserName(reservationId, userName);
+        if (reserve != null) {
+            reserve.isCancelled = true;
+            entityManager.merge(reserve);
+        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 }

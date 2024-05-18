@@ -12,10 +12,7 @@ import com.github.mohajel.IE.CA5.utils.Utils;
 
 public class Database {
 
-    private ArrayList<Reserve> reserves;
-
     public Database() throws MizdooniError{
-        this.reserves = new ArrayList<Reserve>();
     }
 
     public void addUser(User user) throws MizdooniError {
@@ -239,7 +236,8 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
         if (reserve.reserveDate.isBefore(currentTime)) {
             throw new MizdooniError(MizdooniError.RESERVATION_TIME_PASSED);
         }
-        this.reserves.remove(reserve);
+        // isCancelled is true
+        ReserveDAO.cancelReservation(userName, reservationId);
     }
 
     public User getUserByUserName(String userName) {
