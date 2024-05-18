@@ -199,11 +199,11 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public JSONArray getReviewsByRestaurantName(String restaurantName) {
+        ArrayList<Review> reviews = ReviewDAO.getReviewsByRestaurantName(restaurantName);
+
         JSONArray reviewsByRestaurant = new JSONArray();
-        for (Review review : this.reviews) {
-            if (review.restaurantName.equals(restaurantName)) {
-                reviewsByRestaurant.put(review.toJson());
-            }
+        for (Review review : reviews) {
+            reviewsByRestaurant.put(review.toJson());
         }
         return reviewsByRestaurant;
     }
