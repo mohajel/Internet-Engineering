@@ -12,11 +12,9 @@ import com.github.mohajel.IE.CA5.utils.Utils;
 
 public class Database {
 
-    private ArrayList<Restaurant> restaurants;
     private ArrayList<Reserve> reserves;
 
     public Database() throws MizdooniError{
-        this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
     }
 
