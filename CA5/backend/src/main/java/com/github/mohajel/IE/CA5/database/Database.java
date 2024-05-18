@@ -13,12 +13,10 @@ public class Database {
 
     private ArrayList<Restaurant> restaurants;
     private ArrayList<Reserve> reserves;
-    private ArrayList<Review> reviews;
 
     public Database() throws MizdooniError{
         this.restaurants = new ArrayList<Restaurant>();
         this.reserves = new ArrayList<Reserve>();
-        this.reviews = new ArrayList<Review>();
     }
 
     public void addUser(User user) throws MizdooniError {
