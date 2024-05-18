@@ -182,18 +182,18 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
 //    i wanna check user have a reservation that is not cancelled and its date is before current time
-    public boolean isUserHasReservationNotCancelled(String userName, String restaurantName) {
-        MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
-        for (Reserve reserve : this.reserves) {
-            if (reserve.userName.equals(userName) &&
-                    reserve.restaurantName.equals(restaurantName) &&
-                    !reserve.isCancelled &&
-                    reserve.reserveDate.isBefore(currentTime)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean isUserHasReservationNotCancelled(String userName, String restaurantName) {
+//        MizdooniDate currentTime = new MizdooniDate(Utils.getCurrentTime());
+//        for (Reserve reserve : this.reserves) {
+//            if (reserve.userName.equals(userName) &&
+//                    reserve.restaurantName.equals(restaurantName) &&
+//                    !reserve.isCancelled &&
+//                    reserve.reserveDate.isBefore(currentTime)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public JSONArray getReviewsByRestaurantName(String restaurantName) {
         ArrayList<Review> reviews = ReviewDAO.getReviewsByRestaurantName(restaurantName);
@@ -339,12 +339,7 @@ public void addRestaurant(Restaurant restaurant) throws MizdooniError {
     }
 
     public Reserve getReserveByReservationIdAndUserName(int reservationId, String userName) {
-        for (Reserve reserve : this.reserves) {
-            if (reserve.reservationId == reservationId && reserve.userName.equals(userName)) {
-                return reserve;
-            }
-        }
-        return null;
+        return ReserveDAO.getReserveByReservationIdAndUserName(reservationId, userName);
     }
 
     public ArrayList<Reserve> getReservationsByRestaurantName(String restaurantName) {

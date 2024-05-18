@@ -40,4 +40,26 @@ public class ReserveDAO {
         entityManager.close();
         return isReserved;
     }
+
+    public static Reserve getReserveByReservationIdAndUserName(int reservationId, String userName) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        Reserve reserve;
+        try {
+            reserve = entityManager.createQuery("SELECT r " +
+                            "FROM Reserve r " +
+                            "WHERE r.reservationId = :reservationId " +
+                            "AND r.userName = :userName",
+                            Reserve.class)
+                    .setParameter("reservationId", reservationId)
+                    .setParameter("userName", userName)
+                    .getSingleResult();
+        } catch (Exception e) {
+            System.out.println("No reservation found with reservationId: " + reservationId + " and userName: " + userName);
+            reserve = null;
+        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return reserve;
+    }
 }
