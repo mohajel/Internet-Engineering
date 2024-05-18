@@ -1,12 +1,21 @@
 package com.github.mohajel.IE.CA5.models;
 
+import jakarta.persistence.*;
 import org.json.JSONObject;
 
+@Entity
 public class Reserve {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id_database;
+
     public String userName;
     public String restaurantName;
     public int tableId;
     public int reservationId;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "reserveDate_id", referencedColumnName = "id")
     public MizdooniDate reserveDate;
 
     public boolean isCancelled;
@@ -17,6 +26,11 @@ public class Reserve {
         this.tableId = tableId;
         this.reserveDate = reserveDate;
         this.isCancelled = false;
+    }
+
+    // Empty constructor for JPA
+    public Reserve() {
+
     }
 
     public JSONObject toJson() {
