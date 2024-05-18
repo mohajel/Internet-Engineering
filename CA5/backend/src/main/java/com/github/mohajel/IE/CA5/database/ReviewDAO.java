@@ -72,11 +72,13 @@ public class ReviewDAO {
                 jsonObject.put("serviceRate", 0);
                 jsonObject.put("ambianceRate", 0);
                 jsonObject.put("overallRate", 0);
+                jsonObject.put("reviewsCount", 0);
             } else {
                 jsonObject.put("foodRate", result[0]);
                 jsonObject.put("serviceRate", result[1]);
                 jsonObject.put("ambianceRate", result[2]);
                 jsonObject.put("overallRate", result[3]);
+                jsonObject.put("reviewsCount", result[4]);
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
