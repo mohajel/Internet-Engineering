@@ -8,9 +8,9 @@ import java.sql.*;
 
 public class HibernateDatabaseUtil {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306";
-    private static final String DATABASE_NAME = "Mizdooni";
+    private static final String DATABASE_NAME = "mizdooni2";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "";
     private static final String PERSISTENCE_UNIT_NAME = "MizdooniPU";
 
     private static EntityManagerFactory entityManagerFactory;

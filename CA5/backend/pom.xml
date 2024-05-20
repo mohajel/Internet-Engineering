@@ -24,8 +24,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>19</java.version>
-        <start-class>com.github.mohajel.IE.CA5.controllers.DemoApplication</start-class>
+        <java.version>17</java.version>
+
 
     </properties>
 
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <version>8.0.28</version>
         </dependency>
 
         <dependency>
