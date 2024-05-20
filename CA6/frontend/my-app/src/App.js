@@ -10,6 +10,7 @@ import './App.css';
 const HomePage = React.lazy(() => import('./views/HomePage'));
 const MessagePage = React.lazy(() => import('./views/MessagePage'));
 const LoginPage = React.lazy(() => import('./views/LoginPage'));
+const SignupPage = React.lazy(() => import('./views/SignupPage'));
 const TestPost = React.lazy(() => import('./views/TestPost'));
 const LogoutPage = React.lazy(() => import('./views/Logout'));
 const SearchPage = React.lazy(() => import('./views/SearchRestaurantPage'));
@@ -36,6 +37,15 @@ function App() {
             element={
               <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
                 <LoginPage />
+              </ProtectedRoute>
+            }
+          />
+
+
+          <Route path="/signup"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
+                <SignupPage />
               </ProtectedRoute>
             }
           />
