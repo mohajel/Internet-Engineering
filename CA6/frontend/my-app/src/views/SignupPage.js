@@ -32,9 +32,9 @@ function SignupPage() {
                 message={loginData.success == true ? "Welcome to Mizdooni" : loginData.data.error} redirectURL="/" />)
                 : (
                     <div class="d-flex flex-column">
-                        <Header buttonText="Use Google" navigateURL="/login"/>
-                        {/* <Header buttonText="Login" navigateURL="/login"/> */}
-                    <main class="flex-grow-1">
+                        {/* <Header buttonText="Use Google" navigateURL="/login"/> */}
+                        <Header buttonText="Login" navigateURL="/login" />
+                        <main class="flex-grow-1">
 
                             <div class="container-s w-100 text-center">
                                 <div class="home-background w-100">
@@ -42,14 +42,34 @@ function SignupPage() {
                                         <div class="input-group mb-3">
                                             <img class="big-logo" src={require("../resources/images/logo.png")} alt="logo" />
                                         </div>
+
                                         <form onSubmit={handleClick} class="input-group mb-1 text-center" autocomplete="on">
+
+                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Name " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Email " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
                                             <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
                                             <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Password " aria-label="restaurant search" aria-describedby="basic-addon2" />
                                             <button class="btn search-input btn-outline-secondary rounded-4 search-button" type="submit">
                                                 Signup
+                                            </button>
+                                        </form>
+
+                                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+                                        <form onSubmit={handleClick} class="input-group mb-1 text-center" autocomplete="on">
+                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
+                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
+                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Password " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <button class="btn search-input btn-outline-secondary rounded-4 search-button " type="submit">
+                                                Google
                                             </button>
                                         </form>
                                     </div>
