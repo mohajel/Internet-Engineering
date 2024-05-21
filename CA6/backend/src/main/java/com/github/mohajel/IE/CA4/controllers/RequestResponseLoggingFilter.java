@@ -32,6 +32,7 @@ public class RequestResponseLoggingFilter implements Filter {
             logger.info(
                     ">>>> Logging Request  {} : {}", req.getMethod(),
                     req.getRequestURI());
+            req.setAttribute("name", "Ali");
             chain.doFilter(request, response);
             logger.info(
                     ">>>>> Logging Response :{}",

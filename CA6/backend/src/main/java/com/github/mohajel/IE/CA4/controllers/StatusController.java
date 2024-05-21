@@ -17,6 +17,8 @@ import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.models.Address;
 import com.github.mohajel.IE.CA4.models.User;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,10 +29,12 @@ public class StatusController {
     Logger logger = LoggerFactory.getLogger(StatusController.class);
 
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getStatus() {
+    public String getStatus(HttpServletRequest r) {
         MizdooniApp app = MizdooniApp.getInstance();
         String user = app.loggedInUser;
         JSONObject output = new JSONObject();
+
+        String s = (String) r.getAttribute("name");
 
         if (user.length() == 0) {
             output.put("status", "loggedOut");
@@ -41,6 +45,7 @@ public class StatusController {
         }
 
         logger.info("Status: " + output.toString());
+        logger.info(" >>>>>> <<<<   GOT" + s);
         return output.toString();
     }
 
