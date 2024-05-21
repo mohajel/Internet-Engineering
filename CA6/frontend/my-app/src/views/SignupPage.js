@@ -12,24 +12,26 @@ import MessagePage from './MessagePage';
 
 function SignupPage() {
 
-    const [loginData, setLoginData] = useState(null);
+    const [signupData, setSignupData] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showError, setShowError] = useState(false);
+    const [email, setEmail] = useState('');
+    const [role, setRole] = useState('');
+    const [showMessage, setShowMessage] = useState(false);
 
     const handleClick = async (event) => {
         event.preventDefault();
-        postReq('/signup', { username: username, password: password })
+        postReq('/users/signup', { username: username, password: password, email: email, role: role })
             .then(response => {
-                setLoginData(response);
-                setShowError(true)
+                setSignupData(response);
+                setShowMessage(true)
             });
     }
 
     return (
         <div>
-            {showError ? (<MessagePage type={loginData.success == true ? "success" : "error"}
-                message={loginData.success == true ? "Welcome to Mizdooni" : loginData.data.error} redirectURL="/" />)
+            {showMessage ? (<MessagePage type={signupData.success == true ? "success" : "error"}
+                message={signupData.success == true ? "Signup Sucessful" : signupData.data.error} redirectURL={signupData.success == true ? "/" : "/signup"} />)
                 : (
                     <div class="d-flex flex-column">
                         {/* <Header buttonText="Use Google" navigateURL="/login"/> */}
@@ -45,12 +47,9 @@ function SignupPage() {
 
                                         <form onSubmit={handleClick} class="input-group mb-1 text-center" autocomplete="on">
 
-                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Name " aria-label="restaurant search" aria-describedby="basic-addon2" />
                                             <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Email " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
+                                            <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Email " aria-label="restaurant search" aria-describedby="basic-addon2" />
+                                            <input type="text" value={role} onChange={(event) => setRole(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Role " aria-label="restaurant search" aria-describedby="basic-addon2" />
                                             <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Password " aria-label="restaurant search" aria-describedby="basic-addon2" />
                                             <button class="btn search-input btn-outline-secondary rounded-4 search-button" type="submit">
                                                 Signup

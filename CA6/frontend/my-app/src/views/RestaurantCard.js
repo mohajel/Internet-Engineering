@@ -47,7 +47,7 @@ function RestaurantCard(props) {
                     </div>
                     <div class="card-text d-flex time">
                         {openStatus == "Open" ? <div class="open">Open</div> : <div class="closed">Closed</div>}
-                        <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="dot-icon" />
+                        <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="*" />
                         <div class="close-time">{durationInfo}</div>
                     </div>
                 </div>

@@ -76,7 +76,7 @@ public class MizdooniApp {
 
             output.put("success", true);
             output.put("data", new JSONObject().put("role", user.role.toString()));
-            loggedInUser = username;
+            loggedInUser = username; //TODO
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
@@ -135,14 +135,19 @@ public class MizdooniApp {
     }
     
     public JSONObject addUser(JSONObject input) {
-        System.out.println("add user called");
+        System.out.println("---Add user called");
         JSONObject output = new JSONObject();
         try {
             String username = input.getString("username");
             String password = input.getString("password");
             String email = input.getString("email");
             String role = input.getString("role");
-            JSONObject address = input.getJSONObject("address");
+
+            // JSONObject address = input.getJSONObject("address");
+
+            JSONObject address = new JSONObject();
+            address.put("country", "Iran");
+            address.put("city", "Tehran");
 
             User user = new User(username, password, email,
                     new Address(address.getString("country"), address.getString("city")), role);
