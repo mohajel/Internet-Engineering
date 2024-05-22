@@ -3,6 +3,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { AuthenticationLayer } from './utils/ProtectedRoute';
 
+import Cookies from 'universal-cookie';
+
 
 import './App.css';
 // import HomePage from './views/HomePage';
@@ -20,6 +22,10 @@ const ProtectedRoute = React.lazy(() => import('./utils/ProtectedRoute'));
 const ManagerManagePage = React.lazy(() => import('./views/ManagerManagePage'));
 
 function App() {
+
+  const cookie = new Cookies();
+
+  cookie.set("c1", 1234);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

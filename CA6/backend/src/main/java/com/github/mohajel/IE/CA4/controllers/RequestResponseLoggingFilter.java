@@ -1,16 +1,19 @@
 package com.github.mohajel.IE.CA4.controllers;
 
 import java.rmi.ServerException;
+import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.WebUtils;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -30,19 +33,27 @@ public class RequestResponseLoggingFilter implements Filter {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
             logger.info(
-                    ">>>> Logging Request  {} : {}", req.getMethod(),
+                    // ">>>> Logging Request {} : {}", req.getMethod(),
                     req.getRequestURI());
             req.setAttribute("name", "Ali");
+
+            Cookie JWTCookie = WebUtils.getCookie(req, "c1");
+
+            if (JWTCookie != null) {
+                    logger.info("COOKIEEEE:", "hey \n\n");
+                    logger.info(JWTCookie.getValue());
+            } else {
+                logger.info("NO COOKIEEEE!");
+            }
+
             chain.doFilter(request, response);
             logger.info(
-                    ">>>>> Logging Response :{}",
+                    // ">>>>> Logging Response :{}",
                     res.getContentType());
 
         } catch (Exception e) {
-            logger.info("sth bad happend", e);
+            logger.info("Exception in JWT Filter ", e);
         }
 
     }
-
-    // other methods
 }
