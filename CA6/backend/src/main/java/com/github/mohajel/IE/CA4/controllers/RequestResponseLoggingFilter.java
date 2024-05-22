@@ -45,8 +45,8 @@ public class RequestResponseLoggingFilter implements Filter {
                 logger.info("NO COOKIEEEE!");
             }
             // String path = "PATH " + req.getRequestURL() + " >";
-            String path = "PATH " + req.getRequestURI().substring(req.getContextPath().length());
-            // String path2 = "PATH " + req.getPathInfo() + " >";
+            // String path = "PATH " + req.getRequestURI().substring(req.getContextPath().length());
+            String path = req.getRequestURI().substring(req.getContextPath().length());
             logger.info(path);
 
             chain.doFilter(request, response);

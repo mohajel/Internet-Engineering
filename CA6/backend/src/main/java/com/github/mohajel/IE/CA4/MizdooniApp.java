@@ -135,9 +135,9 @@ public class MizdooniApp {
     }
     
     public JSONObject addUser(JSONObject input) {
-        System.out.println("---Add user called");
         JSONObject output = new JSONObject();
         try {
+            System.out.println("Add user: " + input.getString("username"));
             String username = input.getString("username");
             String password = input.getString("password");
             String email = input.getString("email");

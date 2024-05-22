@@ -25,7 +25,7 @@ function LoginPage() {
             .then(response => {
                 setLoginData(response);
                 if (response.success == true) {
-                    cookie.set("JWT", "1234");
+                    cookie.set("JWT", response.JWT);
                 }
                 setShowError(true)
             });

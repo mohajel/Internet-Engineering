@@ -57,6 +57,10 @@ public class StatusController {
         JSONObject bodyJsonFormat = new JSONObject(body);
 
         JSONObject result = app.login(bodyJsonFormat);
+        
+        if (result.getBoolean("success") == true) {
+            result.put("JWT", "123.456.789");
+        }
 
         logger.info("Login Response: \n" + result.toString());
         return result.toString();

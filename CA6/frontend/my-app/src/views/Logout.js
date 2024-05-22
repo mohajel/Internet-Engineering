@@ -1,14 +1,15 @@
 import React, { useLayoutEffect } from 'react';
 import { useEffect, useState } from 'react';
-import { postReq, getReq } from '../utils/api';
+import Cookies from 'universal-cookie';
 
+import { postReq, getReq } from '../utils/api';
 
 import MessagePage from './MessagePage';
 
 
 function Logout() {
 
-
+    const cookie = new Cookies();
     const [logoutData, setLogoutData] = useState(null);
     const [showError, setShowError] = useState(false);
 
@@ -16,6 +17,9 @@ function Logout() {
         postReq('/logout', {})
             .then(response => {
                 setLogoutData(response);
+                if (response.success == true) {
+                    cookie.remove("JWT")
+                }
                 setShowError(true)
             });
     };
