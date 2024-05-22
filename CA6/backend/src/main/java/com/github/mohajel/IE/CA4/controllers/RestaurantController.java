@@ -87,17 +87,19 @@ public class RestaurantController {
     @GetMapping("/suggested")
     ResponseEntity<String> getSuggestions() {
         MizdooniApp app = MizdooniApp.getInstance();
-        String city = app.cityOfLoggedInUser();
+        // String city = app.cityOfLoggedInUser();
         JSONArray restaurants;
 
-        if (city.isEmpty()) { // if user is not logged in
-            restaurants = app.getAllRestaurantCards();
-        } else {
-            restaurants = app.searchRestaurantCardsByCity(city);
-            if (restaurants.isEmpty()) { // if no restaurants in user's city
-                restaurants = app.getAllRestaurantCards();
-            }
-        }
+        // if (city.isEmpty()) { // if user is not logged in
+        //     restaurants = app.getAllRestaurantCards();
+        // } else {
+        //     restaurants = app.searchRestaurantCardsByCity(city);
+        //     if (restaurants.isEmpty()) { // if no restaurants in user's city
+        //         restaurants = app.getAllRestaurantCards();
+        //     }
+        // }
+
+        restaurants = app.getAllRestaurantCards();
 
         if (restaurants.length() > MAX_RESTAURANTS_SUGGESTED) {
             restaurants = new JSONArray(restaurants.toList().subList(0, MAX_RESTAURANTS_SUGGESTED));

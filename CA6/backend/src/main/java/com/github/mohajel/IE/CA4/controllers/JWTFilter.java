@@ -9,6 +9,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
+import com.github.mohajel.IE.CA4.utils.JwtUtils;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletRequest;
@@ -19,9 +21,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 @Order(1)
-public class RequestResponseLoggingFilter implements Filter {
+public class JWTFilter implements Filter {
 
     Logger logger = LoggerFactory.getLogger(StatusController.class);
+    JwtUtils jwtUtils = JwtUtils.getInstance();
 
     @Override
     public void doFilter(
@@ -35,12 +38,23 @@ public class RequestResponseLoggingFilter implements Filter {
             logger.info(
                     // ">>>> Logging Request {} : {}", req.getMethod(),
                     req.getRequestURI());
-            req.setAttribute("name", "Ali");
 
             Cookie JWTCookie = WebUtils.getCookie(req, "JWT");
 
-            if (JWTCookie != null) {
-                    logger.info("JWT COOKIEEEE: " + JWTCookie.getValue());
+            if (JWTCookie != null) { // 
+                    String token = JWTCookie.getValue();
+
+                    if (jwtUtils.validateJwtToken(token)) { //is valid token
+                        String username = jwtUtils.getSubject(token);
+                        req.setAttribute("name", username);
+
+                    } else { // is not valid token
+                        // return error or sth 
+                        logger.info(" ------------------- JWT NOT VALID TOKEN !!!!");
+                    }
+
+                    // logger.info("JWT COOKIEEEE FOUND " + token);
+                    logger.info("JWT COOKIEEEE FOUND");
             } else {
                 logger.info("NO COOKIEEEE!");
             }

@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import java.util.Arrays;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.models.Address;
 import com.github.mohajel.IE.CA4.models.User;
+import com.github.mohajel.IE.CA4.utils.JwtUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -31,12 +33,13 @@ public class StatusController {
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getStatus(HttpServletRequest r) {
         MizdooniApp app = MizdooniApp.getInstance();
-        String user = app.loggedInUser;
         JSONObject output = new JSONObject();
 
-        String s = (String) r.getAttribute("name");
+        String user = (String) r.getAttribute("name");
 
-        if (user.length() == 0) {
+        logger.info(">>>>>>>>>>>>> user is:" + user + ".");
+
+        if (user == null) {
             output.put("status", "loggedOut");
         } else {
             output.put("status", "loggedIn");
@@ -45,7 +48,6 @@ public class StatusController {
         }
 
         logger.info("Status: " + output.toString());
-        logger.info(" >>>>>> <<<<   GOT" + s);
         return output.toString();
     }
 
@@ -59,7 +61,11 @@ public class StatusController {
         JSONObject result = app.login(bodyJsonFormat);
         
         if (result.getBoolean("success") == true) {
-            result.put("JWT", "123.456.789");
+            String username = bodyJsonFormat.getString("username");
+            String role = result.getJSONObject("data").getString("role");
+            JwtUtils jwtUtils = JwtUtils.getInstance();
+            String token = jwtUtils.generateAccessToken(username,  Arrays.asList(role));
+            result.put("JWT", token);
         }
 
         logger.info("Login Response: \n" + result.toString());
@@ -67,17 +73,17 @@ public class StatusController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String PostLogout(@RequestBody String body) {
+    public String PostLogout(@RequestBody String body, HttpServletRequest r) {
 
         logger.info("Logout Request: " + body);
 
-        MizdooniApp app = MizdooniApp.getInstance();
+        String user = (String) r.getAttribute("name");
+        logger.info("NAME:" + user);
         JSONObject result = new JSONObject();
 
-        if (app.loggedInUser.length() == 0) {
+        if (user == null) {
             result.put("success", false);
         } else {
-            app.loggedInUser = "";
             result.put("success", true);
         }
         logger.info("logout Response: " + result.toString());
