@@ -23,10 +23,6 @@ const ManagerManagePage = React.lazy(() => import('./views/ManagerManagePage'));
 
 function App() {
 
-  const cookie = new Cookies();
-
-  cookie.set("c1", 1234);
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <BrowserRouter>

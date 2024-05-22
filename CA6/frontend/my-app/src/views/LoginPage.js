@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { postReq, getReq } from '../utils/api';
+import Cookies from 'universal-cookie';
 
 
 import "../resources/styles/login_page.css"
@@ -12,6 +13,7 @@ import MessagePage from './MessagePage';
 
 function LoginPage() {
 
+    const cookie = new Cookies();
     const [loginData, setLoginData] = useState(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -22,6 +24,9 @@ function LoginPage() {
         postReq('/login', { username: username, password: password })
             .then(response => {
                 setLoginData(response);
+                if (response.success == true) {
+                    cookie.set("JWT", "1234");
+                }
                 setShowError(true)
             });
     }

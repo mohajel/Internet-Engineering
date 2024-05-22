@@ -37,14 +37,17 @@ public class RequestResponseLoggingFilter implements Filter {
                     req.getRequestURI());
             req.setAttribute("name", "Ali");
 
-            Cookie JWTCookie = WebUtils.getCookie(req, "c1");
+            Cookie JWTCookie = WebUtils.getCookie(req, "JWT");
 
             if (JWTCookie != null) {
-                    logger.info("COOKIEEEE:", "hey \n\n");
-                    logger.info(JWTCookie.getValue());
+                    logger.info("JWT COOKIEEEE: " + JWTCookie.getValue());
             } else {
                 logger.info("NO COOKIEEEE!");
             }
+            // String path = "PATH " + req.getRequestURL() + " >";
+            String path = "PATH " + req.getRequestURI().substring(req.getContextPath().length());
+            // String path2 = "PATH " + req.getPathInfo() + " >";
+            logger.info(path);
 
             chain.doFilter(request, response);
             logger.info(
