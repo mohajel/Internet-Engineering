@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserController {
 
-    Logger logger = LoggerFactory.getLogger(StatusController.class);
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody String body) {

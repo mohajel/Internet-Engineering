@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Order(1)
 public class JWTFilter implements Filter {
 
-    Logger logger = LoggerFactory.getLogger(StatusController.class);
+    Logger logger = LoggerFactory.getLogger(JWTFilter.class);
     JwtUtils jwtUtils = JwtUtils.getInstance();
 
     @Override
@@ -42,21 +42,21 @@ public class JWTFilter implements Filter {
             Cookie JWTCookie = WebUtils.getCookie(req, "JWT");
 
             if (JWTCookie != null) { // 
+                logger.info("JWT Token Found");
                     String token = JWTCookie.getValue();
 
                     if (jwtUtils.validateJwtToken(token)) { //is valid token
+                        logger.info("JWT Token Is Valid");
+                        
                         String username = jwtUtils.getSubject(token);
                         req.setAttribute("name", username);
 
                     } else { // is not valid token
                         // return error or sth 
-                        logger.info(" ------------------- JWT NOT VALID TOKEN !!!!");
+                        logger.warn(" JWT Not Valid Token !!!!");
                     }
-
-                    // logger.info("JWT COOKIEEEE FOUND " + token);
-                    logger.info("JWT COOKIEEEE FOUND");
             } else {
-                logger.info("NO COOKIEEEE!");
+                logger.info("JWT Token Not Found");
             }
             // String path = "PATH " + req.getRequestURL() + " >";
             // String path = "PATH " + req.getRequestURI().substring(req.getContextPath().length());
@@ -64,12 +64,9 @@ public class JWTFilter implements Filter {
             logger.info(path);
 
             chain.doFilter(request, response);
-            logger.info(
-                    // ">>>>> Logging Response :{}",
-                    res.getContentType());
 
         } catch (Exception e) {
-            logger.info("Exception in JWT Filter ", e);
+            logger.warn("Exception in JWT Filter ", e);
         }
 
     }

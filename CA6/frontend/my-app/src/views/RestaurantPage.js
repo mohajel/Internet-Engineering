@@ -20,7 +20,8 @@ function RestaurantPage() {
     return (
 
         <div class="d-flex flex-column">
-            <Header />
+            <Header buttonText="Home" navigateURL="/" />
+
 
             <main class="flex-grow-1">
 

@@ -2,6 +2,11 @@ package com.github.mohajel.IE.CA4.utils;
 
 import io.jsonwebtoken.*;
 import org.apache.commons.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.github.mohajel.IE.CA4.controllers.JWTFilter;
+
 import java.security.KeyPairGenerator;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -18,6 +23,7 @@ public class JwtUtils {
 
     static final int ACCESS_EXPIRATION_MS = 9600000;
     private static JwtUtils single_instance = null;
+    Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
     protected String publicKey;
     protected String privateKey;
@@ -71,7 +77,7 @@ public class JwtUtils {
                     .signWith(SignatureAlgorithm.RS256, generateJwtKeyEncryption(jwtPrivateKey))
                     .compact();
         } catch (Exception e) {
-            System.out.println("Cannot create JWT token: " + e.getMessage());
+            logger.warn("Cannot create JWT token: " + e.getMessage());
         }
         return "NO_VALID_TOKEN";
     }
@@ -96,22 +102,22 @@ public class JwtUtils {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(generateJwtKeyDecryption(jwtPublicKey))
                     .parseClaimsJws(authToken);
-            System.out.println("CLAIM:" + claims);
+            logger.info("CLAIM:" + claims);
             return true;
         } catch (SignatureException e) {
-            System.out.println("Invalid JWT signature: {}" + e.getMessage());
+            logger.warn("Invalid JWT signature: {}" + e.getMessage());
         } catch (MalformedJwtException e) {
-            System.out.println("Invalid JWT token: {}" + e.getMessage());
+            logger.warn("Invalid JWT token: {}" + e.getMessage());
         } catch (ExpiredJwtException e) {
-            System.out.println("JWT token is expired: {}" + e.getMessage());
+            logger.warn("JWT token is expired: {}" + e.getMessage());
         } catch (UnsupportedJwtException e) {
-            System.out.println("JWT token is unsupported: {}" + e.getMessage());
+            logger.warn("JWT token is unsupported: {}" + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("JWT claims string is empty: {}" + e.getMessage());
+            logger.warn("JWT claims string is empty: {}" + e.getMessage());
         } catch (NoSuchAlgorithmException e) {
-            System.out.println("no such algorithm exception");
+            logger.warn("no such algorithm exception");
         } catch (InvalidKeySpecException e) {
-            System.out.println("invalid key exception");
+            logger.warn("invalid key exception");
         }
         return false;
     }
@@ -122,7 +128,7 @@ public class JwtUtils {
                     .parseClaimsJws(authToken);
             return claims.getBody().getSubject();
         } catch (Exception e) {
-            System.out.println("UNKNOWN Exception (call it after validateJwtToken):" + e.getMessage());
+            logger.warn("UNKNOWN Exception (call it after validateJwtToken):" + e.getMessage());
         }
         return "";
     }

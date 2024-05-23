@@ -8,7 +8,6 @@ import { postReq, getReq } from '../utils/api';
 import "../resources/styles/home_page.css"
 
 // images
-
 // import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
 // import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
 // import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";

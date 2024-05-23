@@ -37,8 +37,6 @@ public class StatusController {
 
         String user = (String) r.getAttribute("name");
 
-        logger.info(">>>>>>>>>>>>> user is:" + user + ".");
-
         if (user == null) {
             output.put("status", "loggedOut");
         } else {

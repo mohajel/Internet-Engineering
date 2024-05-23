@@ -33,7 +33,7 @@ function ManagerRestaurantPage(props) {
                     :
 
                     <div class="d-flex flex-column">
-                        <Header />
+                        <Header/>
 
                         <main class="flex-grow-1">
                             <div class="p-3 container">
@@ -84,7 +84,7 @@ function ManagerRestaurant(props) {
                 <td class="restaurant-name">{restaurant.name}</td>
                 <td class="restaurant-address text-center">{restaurant.address.city}, {restaurant.address.country}</td>
                 <td class="text-end">
-                    <button class="manager-operation manage rounded-3 border-0" onClick={()=>{navigate("/manager/" + restaurant.name)}} >
+                    <button class="manager-operation manage rounded-3 border-0" onClick={() => { navigate("/manager/" + restaurant.name) }} >
                         Manage
                     </button>
                 </td>

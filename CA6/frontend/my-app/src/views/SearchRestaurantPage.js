@@ -18,7 +18,8 @@ function SearchRestaurantPage() {
 
     return (
         <div class="d-flex flex-column">
-            <Header buttonText="Logout" />
+            <Header buttonText="Home" navigateURL="/" />
+
             <main class="flex-grow-1">
                 <div class="p-3 container">
                     <div class="search-result-title">Results for</div>

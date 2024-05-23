@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import LocationIcon from "../resources/images/icons/location.svg";
+import DotIcon from "../resources/images/icons/dot.svg"
 
 import Stars from './Stars';
 
@@ -47,7 +49,7 @@ function RestaurantCard(props) {
                     </div>
                     <div class="card-text d-flex time">
                         {openStatus == "Open" ? <div class="open">Open</div> : <div class="closed">Closed</div>}
-                        <img class="icon align-self-center" src="../resources/images/icons/dot.svg" alt="*" />
+                        <img class="icon align-self-center" src={DotIcon} alt="*" />
                         <div class="close-time">{durationInfo}</div>
                     </div>
                 </div>
