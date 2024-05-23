@@ -35,39 +35,45 @@ public class JWTFilter implements Filter {
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
-            logger.info(
-                    // ">>>> Logging Request {} : {}", req.getMethod(),
-                    req.getRequestURI());
-
+            
             Cookie JWTCookie = WebUtils.getCookie(req, "JWT");
 
-            if (JWTCookie != null) { // 
+            String path = req.getRequestURI().substring(req.getContextPath().length());
+            logger.info("Path: " + path);
+
+            if (JWTCookie != null) { //
                 logger.info("JWT Token Found");
-                    String token = JWTCookie.getValue();
+                String token = JWTCookie.getValue();
 
-                    if (jwtUtils.validateJwtToken(token)) { //is valid token
-                        logger.info("JWT Token Is Valid");
-                        
-                        String username = jwtUtils.getSubject(token);
-                        req.setAttribute("name", username);
+                if (jwtUtils.validateJwtToken(token)) { // is valid token
+                    logger.info("JWT Token Is Valid");
 
-                    } else { // is not valid token
-                        // return error or sth 
-                        logger.warn(" JWT Not Valid Token !!!!");
+                    String username = jwtUtils.getSubject(token);
+                    req.setAttribute("name", username);
+
+                    if (path.startsWith("/login") || path.startsWith("/users/signup")) {
+                        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token is not valid.");
+                        return;
                     }
+
+                } else { // is not valid token
+                    logger.warn(" JWT Not Valid Token !!!!");
+                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token is not valid.");
+                    return;
+                }
             } else {
                 logger.info("JWT Token Not Found");
-            }
-            // String path = "PATH " + req.getRequestURL() + " >";
-            // String path = "PATH " + req.getRequestURI().substring(req.getContextPath().length());
-            String path = req.getRequestURI().substring(req.getContextPath().length());
-            logger.info(path);
 
+                if (!(path.startsWith("/login") || path.startsWith("/users/signup") || path.startsWith("/status"))) {
+                    logger.warn(" Accessing UnAuthurized Part ");
+                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Accessing UnAuthurized Part ");
+                    return;
+                }
+            }
             chain.doFilter(request, response);
 
         } catch (Exception e) {
             logger.warn("Exception in JWT Filter ", e);
         }
-
     }
 }
