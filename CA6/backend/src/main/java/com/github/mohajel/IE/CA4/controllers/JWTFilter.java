@@ -52,8 +52,8 @@ public class JWTFilter implements Filter {
                     req.setAttribute("name", username);
 
                     if (path.startsWith("/login") || path.startsWith("/users/signup")
-                            || path.startsWith("/auth/github")) {
-                        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token is not valid.");
+                            || path.startsWith("/auth/github") || path.startsWith("/oauth/redirect")) {
+                        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token Already Exists");
                         return;
                     }
 
@@ -66,7 +66,8 @@ public class JWTFilter implements Filter {
                 logger.info("JWT Token Not Found");
 
                 if (!(path.startsWith("/login") || path.startsWith("/users/signup") ||
-                        path.startsWith("/status") || path.startsWith("/auth/github"))) {
+                        path.startsWith("/status") || path.startsWith("/auth/github")
+                        || path.startsWith("/oauth/redirect"))) {
                     logger.warn(" Accessing UnAuthurized Part ");
                     res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Accessing UnAuthurized Part ");
                     return;

@@ -13,17 +13,7 @@ import MessagePage from './MessagePage';
 
 function AuthPage() {
 
-
-
-    // const cookie = new Cookies();
     const location = useLocation();
-
-    const [loginData, setLoginData] = useState(null);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [showError, setShowError] = useState(false);
-
-
     const searchParams = new URLSearchParams(location.search);
     const code = searchParams.get('code');
 
@@ -46,8 +36,11 @@ function AuthPage() {
                     <div>Loading...</div>
                     :
                     <h1>
-                        salam {info.code}
+                        {info.success == true ? "success" : "error"}
                     </h1>
+
+                    // (<MessagePage type={info.success == true ? "success" : "error"}
+                        // message={info.success == true ? "Signup Successful" : info.data.error} redirectURL="/login" />)
             }
         </>
     );

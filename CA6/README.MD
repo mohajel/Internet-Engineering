@@ -20,8 +20,13 @@
 
 # Github Redirect 
 http://localhost:8080/oauth/redirect?code=e295c1a778b6d5373242
+http://localhost:8080/oauth/redirect?code=f04e105bcd0525560c01
 
 
+
+```
+{"login":"mohajel","id":102811563,"node_id":"U_kgDOBiDHqw","avatar_url":"https://avatars.githubusercontent.com/u/102811563?v=4","gravatar_id":"","url":"https://api.github.com/users/mohajel","html_url":"https://github.com/mohajel","followers_url":"https://api.github.com/users/mohajel/followers","following_url":"https://api.github.com/users/mohajel/following{/other_user}","gists_url":"https://api.github.com/users/mohajel/gists{/gist_id}","starred_url":"https://api.github.com/users/mohajel/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mohajel/subscriptions","organizations_url":"https://api.github.com/users/mohajel/orgs","repos_url":"https://api.github.com/users/mohajel/repos","events_url":"https://api.github.com/users/mohajel/events{/privacy}","received_events_url":"https://api.github.com/users/mohajel/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":17,"public_gists":0,"followers":6,"following":8,"created_at":"2022-04-01T13:48:38Z","updated_at":"2024-05-09T09:39:35Z"}
+```
 
 # JWT Registered Claim Names
 

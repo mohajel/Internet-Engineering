@@ -150,7 +150,7 @@ public class MizdooniApp {
             address.put("city", "Tehran");
 
             User user = new User(username, password, email,
-                    new Address(address.getString("country"), address.getString("city")), role);
+                    new Address(address.getString("country"), address.getString("city")), role); // wth is this!!!!
             db.addUser(user);
             output.put("success", true);
             output.put("data", "User added successfully.");
