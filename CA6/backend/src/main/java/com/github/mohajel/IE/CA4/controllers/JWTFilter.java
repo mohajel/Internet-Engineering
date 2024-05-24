@@ -35,7 +35,7 @@ public class JWTFilter implements Filter {
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
-            
+
             Cookie JWTCookie = WebUtils.getCookie(req, "JWT");
 
             String path = req.getRequestURI().substring(req.getContextPath().length());
@@ -51,7 +51,8 @@ public class JWTFilter implements Filter {
                     String username = jwtUtils.getSubject(token);
                     req.setAttribute("name", username);
 
-                    if (path.startsWith("/login") || path.startsWith("/users/signup")) {
+                    if (path.startsWith("/login") || path.startsWith("/users/signup")
+                            || path.startsWith("/auth/github")) {
                         res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "The token is not valid.");
                         return;
                     }
@@ -64,7 +65,8 @@ public class JWTFilter implements Filter {
             } else {
                 logger.info("JWT Token Not Found");
 
-                if (!(path.startsWith("/login") || path.startsWith("/users/signup") || path.startsWith("/status"))) {
+                if (!(path.startsWith("/login") || path.startsWith("/users/signup") ||
+                        path.startsWith("/status") || path.startsWith("/auth/github"))) {
                     logger.warn(" Accessing UnAuthurized Part ");
                     res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Accessing UnAuthurized Part ");
                     return;

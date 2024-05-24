@@ -20,6 +20,7 @@ const ManagerRestaurantPage = React.lazy(() => import('./views/ManagerRestaurant
 const RestaurantPage = React.lazy(() => import('./views/RestaurantPage'));
 const ProtectedRoute = React.lazy(() => import('./utils/ProtectedRoute'));
 const ManagerManagePage = React.lazy(() => import('./views/ManagerManagePage'));
+const AuthPage = React.lazy(() => import('./views/AuthPage'));
 
 function App() {
 
@@ -77,6 +78,15 @@ function App() {
             element={
               <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
                 <RestaurantPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* <Route path="/oauth/redirect?code=:code" */}
+          <Route path="/oauth/redirect"
+            element={
+              <ProtectedRoute accessType={AuthenticationLayer.EVERYONE}>
+                <AuthPage />
               </ProtectedRoute>
             }
           />

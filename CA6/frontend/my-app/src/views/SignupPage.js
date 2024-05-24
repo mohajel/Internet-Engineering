@@ -4,7 +4,7 @@ import { postReq, getReq } from '../utils/api';
 
 
 import "../resources/styles/login_page.css"
-// import { useNavigate } from 'react-router-dom';
+
 
 import Header from './Header';
 import MessagePage from './MessagePage';
@@ -18,6 +18,9 @@ function SignupPage() {
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
     const [showMessage, setShowMessage] = useState(false);
+
+    const githubClientId = "92b571684150ec1038aa"
+    const githubURL = "https://github.com/login/oauth/authorize?client_id=" + githubClientId
 
     const handleClick = async (event) => {
         event.preventDefault();
@@ -34,7 +37,6 @@ function SignupPage() {
                 message={signupData.success == true ? "Signup Sucessful" : signupData.data.error} redirectURL={signupData.success == true ? "/" : "/signup"} />)
                 : (
                     <div class="d-flex flex-column">
-                        {/* <Header buttonText="Use Google" navigateURL="/login"/> */}
                         <Header buttonText="Login" navigateURL="/login" />
                         <main class="flex-grow-1">
 
@@ -58,19 +60,10 @@ function SignupPage() {
 
                                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
+                                        <a href={githubURL} class="btn search-input btn-outline-secondary rounded-4 search-button ">
+                                                Signin Using Github
+                                        </a>
 
-                                        <form onSubmit={handleClick} class="input-group mb-1 text-center" autocomplete="on">
-                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
-                                            {/* <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                        <input type="text"  value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" /> */}
-                                            <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Username " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} class="search-input restaurant-search rounded-4 mb-3" placeholder=" Password " aria-label="restaurant search" aria-describedby="basic-addon2" />
-                                            <button class="btn search-input btn-outline-secondary rounded-4 search-button " type="submit">
-                                                Google
-                                            </button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>

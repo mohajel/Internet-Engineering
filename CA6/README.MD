@@ -18,6 +18,10 @@
     output.put("message", "login"); //not necessary
 
 
+# Github Redirect 
+http://localhost:8080/oauth/redirect?code=e295c1a778b6d5373242
+
+
 
 # JWT Registered Claim Names
 
