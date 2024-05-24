@@ -61,7 +61,7 @@ function SignupPage() {
                                         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
                                         <a href={githubURL} class="btn search-input btn-outline-secondary rounded-4 search-button ">
-                                                Signin Using Github
+                                                Signup Using Github
                                         </a>
 
                                     </div>

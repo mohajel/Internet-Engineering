@@ -25,7 +25,9 @@ function AuthPage() {
             .then(response => {
                 console.log(response);
                 setInfo(response);
-                setLoading(false);
+                if (response.success != null) {
+                    setLoading(false);
+                }
             });
     }, []);
 
@@ -35,12 +37,12 @@ function AuthPage() {
                 loading ?
                     <div>Loading...</div>
                     :
-                    <h1>
-                        {info.success == true ? "success" : "error"}
-                    </h1>
+                    // <h1>
+                    //     {info.success == true ? "success" : "error"}
+                    // </h1>
 
-                    // (<MessagePage type={info.success == true ? "success" : "error"}
-                        // message={info.success == true ? "Signup Successful" : info.data.error} redirectURL="/login" />)
+                    (<MessagePage type={info.success == true ? "success" : "error"}
+                        message={info.success == true ? "Signup Successful" : info.data.error} redirectURL="/login" />)
             }
         </>
     );

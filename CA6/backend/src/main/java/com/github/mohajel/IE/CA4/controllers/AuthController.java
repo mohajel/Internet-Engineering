@@ -50,68 +50,61 @@ public class AuthController {
 
         JSONObject result = app.addUser(userInfo);
         return result.toString();
-        // return ResponseEntity.ok().body(result.toString());
     }
 
     private JSONObject getGithubUserInfo(String access_token, String code) {
 
-        String url = "https://api.github.com/user";
-        String auth = "Bearer " + access_token;
-
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", "application/json");
-        headers.set("Authorization", auth);
-
-        ResponseEntity<String> response = null;
-
-        HttpEntity<Map<String, String>> request = new HttpEntity<>(headers);
-        try {
-            response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
-        } catch (Exception e) {
-            logger.warn("GET USER GITHUB WARNING");
-        }
-
-        JSONObject body = new JSONObject(response.getBody());
-        // return body.getString("access_token");
-
-        // select what we need
-        String username = body.getString("login");
-
         JSONObject output = new JSONObject();
-        output.put("username", username);
-        output.put("password", username + "-1234");
-        output.put("email", username + "@github.com");
-        output.put("role", "client");
-
+        
+        try {
+            String url = "https://api.github.com/user";
+            String auth = "Bearer " + access_token;
+            
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Accept", "application/json");
+            headers.set("Authorization", auth);
+            
+            HttpEntity<Map<String, String>> request = new HttpEntity<>(headers);
+             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
+            JSONObject body = new JSONObject(response.getBody());
+            // return body.getString("access_token");
+    
+            // select what we need
+            String username = body.getString("login");
+    
+            output.put("username", username);
+            output.put("password", username + "-1234");
+            output.put("email", username + "@github.com");
+            output.put("role", "client");
+            return output;
+        } catch (Exception e) {
+            logger.warn("GET USER GITHUB EXCEPTION ECCURD");
+        }
         return output;
-
     }
 
     private String getAccessToken(String code) {
-        String url = "https://github.com/login/oauth/access_token";
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        Map<String, String> params = new HashMap<>();
-        params.put("client_id", github_client_id);
-        params.put("client_secret", github_client_secret);
-        params.put("code", code);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Accept", "application/json");
-
-        ResponseEntity<String> response = null;
-
-        HttpEntity<Map<String, String>> request = new HttpEntity<>(params, headers);
-
+        
         try {
+            String url = "https://github.com/login/oauth/access_token";
+            RestTemplate restTemplate = new RestTemplate();
+            Map<String, String> params = new HashMap<>();
+            params.put("client_id", github_client_id);
+            params.put("client_secret", github_client_secret);
+            params.put("code", code);
+    
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Accept", "application/json");
+    
+            ResponseEntity<String> response = null;
+            HttpEntity<Map<String, String>> request = new HttpEntity<>(params, headers);
             response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);            
+            JSONObject body = new JSONObject(response.getBody());
+            return body.getString("access_token");
         } catch (Exception e) {
-            logger.warn("GET ACEESS TOKEN GITHUB WARNING");
+            logger.warn("GET ACEESS TOKEN GITHUB EXCEPTIONN ACCURED");
         }
-        JSONObject body = new JSONObject(response.getBody());
-
-        return body.getString("access_token");
+        return "";
     }
 }
