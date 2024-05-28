@@ -1,17 +1,29 @@
 package com.github.mohajel.IE.CA7.controllers;
 
 import org.springframework.http.MediaType;
+
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import java.util.Arrays;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.mohajel.IE.CA7.MizdooniApp;
+import com.github.mohajel.IE.CA7.models.Address;
+import com.github.mohajel.IE.CA7.models.User;
+import com.github.mohajel.IE.CA7.utils.JwtUtils;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class StatusController {
@@ -19,12 +31,13 @@ public class StatusController {
     Logger logger = LoggerFactory.getLogger(StatusController.class);
 
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getStatus() {
+    public String getStatus(HttpServletRequest r) {
         MizdooniApp app = MizdooniApp.getInstance();
-        String user = app.loggedInUser;
         JSONObject output = new JSONObject();
 
-        if (user.length() == 0) {
+        String user = (String) r.getAttribute("name");
+
+        if (user == null) {
             output.put("status", "loggedOut");
         } else {
             output.put("status", "loggedIn");
@@ -44,23 +57,31 @@ public class StatusController {
         JSONObject bodyJsonFormat = new JSONObject(body);
 
         JSONObject result = app.login(bodyJsonFormat);
+        
+        if (result.getBoolean("success") == true) {
+            String username = bodyJsonFormat.getString("username");
+            String role = result.getJSONObject("data").getString("role");
+            JwtUtils jwtUtils = JwtUtils.getInstance();
+            String token = jwtUtils.generateAccessToken(username,  Arrays.asList(role));
+            result.put("JWT", token);
+        }
 
         logger.info("Login Response: \n" + result.toString());
         return result.toString();
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String PostLogout(@RequestBody String body) {
+    public String PostLogout(@RequestBody String body, HttpServletRequest r) {
 
         logger.info("Logout Request: " + body);
 
-        MizdooniApp app = MizdooniApp.getInstance();
+        String user = (String) r.getAttribute("name");
+        logger.info("NAME:" + user);
         JSONObject result = new JSONObject();
 
-        if (app.loggedInUser.length() == 0) {
+        if (user == null) {
             result.put("success", false);
         } else {
-            app.loggedInUser = "";
             result.put("success", true);
         }
         logger.info("logout Response: " + result.toString());
