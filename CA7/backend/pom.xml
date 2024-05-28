@@ -11,12 +11,12 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.github.mohajel.IE.CA5</groupId>
-    <artifactId>CA5</artifactId>
+    <groupId>com.github.mohajel.IE.CA7</groupId>
+    <artifactId>CA7</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>CA4 Maven Webapp</name>
+    <name>CA7 Maven Webapp</name>
     <url>https://www.example.com</url>
 
     <properties>
@@ -25,7 +25,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>17</java.version>
-        <start-class>com.github.mohajel.IE.CA5.controllers.DemoApplication</start-class>
+        <start-class>com.github.mohajel.IE.CA7.controllers.DemoApplication</start-class>
 
     </properties>
 
@@ -152,7 +152,7 @@
     </dependencies>
 
     <build>
-        <finalName>CA5</finalName>
+        <finalName>CA7</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to
       parent pom) -->
             <plugins>
