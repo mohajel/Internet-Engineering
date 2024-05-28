@@ -76,7 +76,6 @@ public class MizdooniApp {
 
             output.put("success", true);
             output.put("data", new JSONObject().put("role", user.role.toString()));
-            // loggedInUser = username; //TODO
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));

@@ -67,7 +67,7 @@ public class MizdooniApp {
 
             output.put("success", true);
             output.put("data", new JSONObject().put("role", user.role.toString()));
-            loggedInUser = username;
+            // loggedInUser = username; // delete this if everything works fine
         } catch (JSONException e) {
             output.put("success", false);
             output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
@@ -108,18 +108,53 @@ public class MizdooniApp {
         return restaurantJSONArray;
     }
     
+    // delete this if everything worked fine
+    // public JSONObject addUser(JSONObject input) {
+    //     System.out.println("add user called");
+    //     JSONObject output = new JSONObject();
+    //     try {
+    //         String username = input.getString("username");
+    //         String password = input.getString("password");
+    //         String email = input.getString("email");
+    //         String role = input.getString("role");
+    //         JSONObject address = input.getJSONObject("address");
+
+    //         User user = new User(username, password, email,
+    //                 new Address(address.getString("country"), address.getString("city")), role);
+    //         db.addUser(user);
+    //         output.put("success", true);
+    //         output.put("data", "User added successfully.");
+
+    //     } catch (JSONException e) {
+    //         output.put("success", false);
+    //         output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
+    //     } catch (MizdooniError e) {
+    //         output.put("success", false);
+    //         output.put("data", new JSONObject().put("error", e.getMessage()));
+    //     } catch (Exception e) {
+    //         output.put("success", false);
+    //         output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
+    //     }
+    //     return output;
+    // }
+
     public JSONObject addUser(JSONObject input) {
-        System.out.println("add user called");
         JSONObject output = new JSONObject();
         try {
+            System.out.println("Add user: " + input.getString("username"));
             String username = input.getString("username");
             String password = input.getString("password");
             String email = input.getString("email");
             String role = input.getString("role");
-            JSONObject address = input.getJSONObject("address");
+
+            // JSONObject address = input.getJSONObject("address");
+
+            JSONObject address = new JSONObject();
+            address.put("country", "Iran");
+            address.put("city", "Tehran");
 
             User user = new User(username, password, email,
-                    new Address(address.getString("country"), address.getString("city")), role);
+                    new Address(address.getString("country"), address.getString("city")), role); // wth is this!!!!
             db.addUser(user);
             output.put("success", true);
             output.put("data", "User added successfully.");
@@ -136,6 +171,7 @@ public class MizdooniApp {
         }
         return output;
     }
+
 
     public JSONObject addRestaurant(JSONObject input) {
         System.out.println("add restaurant called");
