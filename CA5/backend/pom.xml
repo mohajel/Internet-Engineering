@@ -16,7 +16,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>CA4 Maven Webapp</name>
+    <name>CA5 Maven Webapp</name>
     <url>https://www.example.com</url>
 
     <properties>
