@@ -1,193 +1,116 @@
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initUsers - {"data":{"error":"Invalid email format"},"success":false}
-Function: initUsers - {"data":{"error":"User already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initRestaurants - {"data":{"error":"Restaurant already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initTables - {"data":{"error":"Dining_Table id is not unique and already exists"},"success":false}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":{"error":"User does not exist"},"success":false}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":{"error":"User does not exist"},"success":false}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":{"error":"User does not exist"},"success":false}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReviews - {"data":"Review added successfully.","success":true}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
-Function: initReserve - {"data":{"error":"Dining_Table is reserved"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initUsers - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initRestaurants - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
+Function: initTables - {"data":{"error":"Unknown error occurred"},"success":false}
