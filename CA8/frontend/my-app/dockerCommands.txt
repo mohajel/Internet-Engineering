@@ -1,0 +1,9 @@
+#crerate docker image from dockerfile:
+docker build -f Dockerfile.dev -t mizdooni-front .
+
+#see image created
+docker images
+
+#create a container from image 
+docker run -p 8080:8080  -p 8083:8083 --name mizz1 mizdooni-front
+
