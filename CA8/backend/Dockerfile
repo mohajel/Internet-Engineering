@@ -19,4 +19,3 @@ ENTRYPOINT ["java" , "-jar" , "CA8.jar"]
 
 # Expose the port
 EXPOSE 8083
-EXPOSE 3306
