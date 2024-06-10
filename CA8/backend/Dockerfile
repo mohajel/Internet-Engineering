@@ -1,8 +1,3 @@
-# Stage 1: Build
-#FROM maven:3.8.5-openjdk-17 AS MAVEN
-#MAINTAINER BALOOT_DEVELOPER
-#COPY pom.xml /build/
-
 FROM openjdk:17-jdk-slim
 
 # Copy the entire utils directory to the Docker image
