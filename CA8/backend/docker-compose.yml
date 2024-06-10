@@ -7,10 +7,11 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: "Mizdooni"
 
   spring-boot-app:
       image: mizdooni-back
       ports:
-        - "8080:8080"
+        - "8083:8083"
       depends_on:
         - mysql
