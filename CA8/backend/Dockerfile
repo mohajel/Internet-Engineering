@@ -3,7 +3,7 @@
 #MAINTAINER BALOOT_DEVELOPER
 #COPY pom.xml /build/
 
-FROM eclipse-temurin:19.0.2_7-jre-jammy
+FROM openjdk:17-jdk-slim
 
 # Copy the entire utils directory to the Docker image
 COPY src/main/java/com/github/mohajel/IE/CA8/utils /app/com/github/mohajel/IE/CA8/utils
