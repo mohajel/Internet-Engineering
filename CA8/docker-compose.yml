@@ -15,8 +15,10 @@ services:
     networks:
       - mizdooni-network
 
-  spring-boot-app:
-    image: mizdooni-back
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8083:8083"
     depends_on:
