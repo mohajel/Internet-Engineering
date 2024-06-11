@@ -1,16 +1,30 @@
-FROM openjdk:17-jdk-slim
-
-# Copy the entire utils directory to the Docker image
-COPY src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt /app/src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt
-
-# Add the CA8.jar file
-ADD target/CA8.jar /app/CA8.jar
+# Use the official Maven image as the base image
+FROM maven:3.8.4-openjdk-17 AS build
 
 # Set the working directory
 WORKDIR /app
 
-# Define the entrypoint
-ENTRYPOINT ["java" , "-jar" , "CA8.jar"]
+# Copy the pom.xml and any other necessary configuration files
+COPY ./pom.xml /app
+COPY ./src /app/src
 
-# Expose the port
+# Enable Reading From File
+COPY src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt /app/src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt
+
+# Build the application
+RUN mvn clean package -Dmaven.test.skip=true
+
+# Create a new image for running the application
+FROM openjdk:17-jdk
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built JAR file from the previous stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose the port on which the Spring Boot application will run
 EXPOSE 8083
+
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]

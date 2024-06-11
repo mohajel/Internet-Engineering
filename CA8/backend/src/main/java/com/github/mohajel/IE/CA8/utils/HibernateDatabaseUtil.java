@@ -6,6 +6,9 @@ import jakarta.persistence.Persistence;
 
 import java.sql.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class HibernateDatabaseUtil {
     private static final String JDBC_URL = "jdbc:mysql://database:3306";
     private static final String DATABASE_NAME = "Mizdooni";
@@ -14,6 +17,8 @@ public class HibernateDatabaseUtil {
     private static final String PERSISTENCE_UNIT_NAME = "MizdooniPU";
 
     private static EntityManagerFactory entityManagerFactory;
+
+    static Logger logger = LoggerFactory.getLogger(HibernateDatabaseUtil.class);
 
     public static EntityManager getEntityManager() {
         return entityManagerFactory.createEntityManager();
@@ -26,6 +31,9 @@ public class HibernateDatabaseUtil {
             // Check if the database exists
             String showDatabasesQuery = "SHOW DATABASES";
             ResultSet resultSet = statement.executeQuery(showDatabasesQuery);
+
+            System.out.println("Successful Connection To Database");
+            System.out.println(resultSet.toString());
 
             boolean databaseExists = false;
             while (resultSet.next()) {
