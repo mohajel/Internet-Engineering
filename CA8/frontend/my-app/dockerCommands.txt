@@ -1,5 +1,5 @@
 #crerate docker image from dockerfile:
-docker build -f Dockerfile.dev -t mizdooni-front .
+docker build -f Dockerfile.dev -t mizdooni-front112 .
 
 #see image created
 docker images
