@@ -8,9 +8,6 @@ WORKDIR /app
 COPY ./pom.xml /app
 COPY ./src /app/src
 
-# Enable Reading From File
-COPY src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt /app/src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt
-
 # Build the application
 RUN mvn clean package -Dmaven.test.skip=true
 
@@ -22,6 +19,9 @@ WORKDIR /app
 
 # Copy the built JAR file from the previous stage
 COPY --from=build /app/target/*.jar app.jar
+
+# Enable Reading From File
+COPY src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt /app/src/main/java/com/github/mohajel/IE/CA8/utils/inputForInit.txt
 
 # Expose the port on which the Spring Boot application will run
 EXPOSE 8083
