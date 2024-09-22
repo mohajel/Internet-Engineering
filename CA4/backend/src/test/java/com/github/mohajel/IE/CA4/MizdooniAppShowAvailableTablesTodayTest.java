@@ -50,7 +50,7 @@ public class MizdooniAppShowAvailableTablesTodayTest {
             utilities.when(Utils::getCurrentTime).thenReturn(currentDateTime);
             JSONObject res = app.showAvailableTables(new JSONObject().put("restaurantName", "restaurant1"));
             assertTrue(res.getBoolean("success"));
-            assertEquals(3, res.getJSONObject("data").getJSONArray("availableTables").getJSONObject(0).getJSONArray("availableTimes").length());
+            assertEquals(4, res.getJSONObject("data").getJSONArray("availableTables").getJSONObject(0).getJSONArray("availableTimes").length());
         }
     }
 }
