@@ -1,25 +1,17 @@
 package com.github.mohajel.IE.CA4.controllers;
 
 import org.springframework.http.MediaType;
-// import org.apache.tomcat.util.http.parser.MediaType;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.mohajel.IE.CA4.MizdooniApp;
-import com.github.mohajel.IE.CA4.models.Address;
-import com.github.mohajel.IE.CA4.models.User;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class StatusController {

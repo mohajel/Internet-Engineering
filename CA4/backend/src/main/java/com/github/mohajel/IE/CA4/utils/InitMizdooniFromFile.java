@@ -4,8 +4,6 @@ import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA4.MizdooniApp;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
