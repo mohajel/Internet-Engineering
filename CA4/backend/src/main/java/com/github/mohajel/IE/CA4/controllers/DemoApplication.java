@@ -12,8 +12,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(DemoApplication.class);
-        app.setDefaultProperties(Collections
-          .singletonMap("server.port", "8083"));
+        app.setDefaultProperties(Collections.singletonMap("server.port", "8083"));
 
 		// get the instance of the app for Init it
 		MizdooniApp.getInstance();
