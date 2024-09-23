@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.testUtils.*;
 import com.github.mohajel.IE.CA4.utils.MizdooniError;
 

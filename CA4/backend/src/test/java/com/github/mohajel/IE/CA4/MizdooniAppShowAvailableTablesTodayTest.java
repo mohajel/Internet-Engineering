@@ -1,6 +1,5 @@
 package com.github.mohajel.IE.CA4;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.testUtils.TestReservationFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestTableFactory;
