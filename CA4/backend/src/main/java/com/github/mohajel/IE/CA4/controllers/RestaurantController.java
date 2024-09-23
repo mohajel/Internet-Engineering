@@ -23,8 +23,8 @@ public class RestaurantController {
     private final int MAX_RESTAURANTS_TOP = 6;
     private final int MAX_RESTAURANTS_SUGGESTED = 6;
 
-     @GetMapping({"/", ""})
-     ResponseEntity<String> getAllRestaurantCards() {
+    @GetMapping({"/", ""})
+    ResponseEntity<String> getAllRestaurantCards() {
             MizdooniApp app = MizdooniApp.getInstance();
             JSONArray restaurants = app.getAllRestaurantCards();
 
