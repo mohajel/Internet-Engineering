@@ -5,7 +5,6 @@ import com.github.mohajel.IE.CA5.models.Reserve;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReserveDAO {

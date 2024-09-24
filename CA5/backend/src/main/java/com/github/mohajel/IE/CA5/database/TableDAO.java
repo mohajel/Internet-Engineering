@@ -3,7 +3,6 @@ package com.github.mohajel.IE.CA5.database;
 import com.github.mohajel.IE.CA5.models.Dining_Table;
 import com.github.mohajel.IE.CA5.utils.HibernateDatabaseUtil;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 

@@ -4,16 +4,10 @@ import com.github.mohajel.IE.CA5.testUtils.TestReservationFactory;
 import com.github.mohajel.IE.CA5.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA5.testUtils.TestTableFactory;
 import com.github.mohajel.IE.CA5.testUtils.TestUserFactory;
-import com.github.mohajel.IE.CA5.utils.Utils;
 
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class MizdooniAppShowAvailableTablesTodayTest {
     private MizdooniApp app;
