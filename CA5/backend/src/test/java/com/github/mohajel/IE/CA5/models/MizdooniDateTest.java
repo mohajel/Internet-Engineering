@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-// import com.github.mohajel.IE.CA2.models.MizdooniDate;
-
 import static org.junit.Assert.assertEquals;
 
 public class MizdooniDateTest {
