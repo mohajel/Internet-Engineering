@@ -133,6 +133,14 @@
       parent pom) -->
             <plugins>
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.4.1</version>
+                    <configuration>
+                        <mainClass>com.github.mohajel.IE.CA5.Main</mainClass> <!-- Replace with your actual fully qualified class name that contains the main method -->
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.antlr</groupId>
                     <artifactId>antlr4-maven-plugin</artifactId>
                     <version>4.13.0</version>
