@@ -348,7 +348,6 @@ public class MizdooniApp {
     }
 
     public JSONObject getRestaurantCardByName(String name) {
-        JSONObject output = new JSONObject();
         try {
             Restaurant restaurant = db.getRestaurantByName(name);
             if (restaurant == null) {
