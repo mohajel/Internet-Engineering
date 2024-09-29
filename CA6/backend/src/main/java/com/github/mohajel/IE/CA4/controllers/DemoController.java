@@ -118,8 +118,6 @@ public class DemoController {
 
         JSONObject output = new JSONObject(body);
         output.put("accept", "false");
-        // output.put("username", "username");
-        // output.put("password", "password");
 
         return output.toString();
     }
