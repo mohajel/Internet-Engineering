@@ -7,43 +7,12 @@ import { postReq, getReq } from '../utils/api';
 
 import "../resources/styles/home_page.css"
 
-// images
-// import Restaurant1Img from "../resources/images/restaurants/restaurant1.png";
-// import Restaurant2Img from "../resources/images/restaurants/restaurant2.png";
-// import Restaurant3Img from "../resources/images/restaurants/restaurant3.png";
-// import Restaurant4Img from "../resources/images/restaurants/restaurant4.png";
-// import Restaurant5Img from "../resources/images/restaurants/restaurant5.png";
-// import Restaurant6Img from "../resources/images/restaurants/restaurant6.png";
-
 
 import Header from './Header';
 import RestaurantCard from './RestaurantCard';
 
 const MessagePage = React.lazy(() => import('./MessagePage'));
 const ManagerRestaurantPage = React.lazy(() => import('./ManagerRestaurantPage'))
-
-
-
-// default of how to use fetch
-
-// const navigate = useNavigate();
-
-// const [user, setUser] = useState([]);
-// useEffect(() => {
-//    fetch('/abcde')
-//       .then((response) => response.json())
-//       .then((data) => {
-//          console.log(data);
-//          setUser(data);
-//       })
-//       .catch((err) => {
-//          console.log(err.message);
-//       });
-// }, []);
-
-// return (
-//    <h1>salam <div><pre>{JSON.stringify(user, null, 2)}</pre></div></h1>
-// );
 
 
 function HomePage() {
