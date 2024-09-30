@@ -18,6 +18,7 @@ buildNumber.properties
 *.jar
 *.war
 *.ear
+frontend/node_modules/
 
 # Logs and reports
 /logs/
