@@ -4,21 +4,19 @@ import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA6.MizdooniApp;
 
-import java.io.InputStream;
+import java.io.FileNotFoundException;
+import java.io.File;
 import java.util.Scanner;
 
 public class InitMizdooniFromFile {
-    public static String input_file = "inputForInit.txt";
-    
-    
-
+    public static String input_file = "src/main/java/com/github/mohajel/IE/CA6/utils/inputForInit.txt";
     public static void init(MizdooniApp app) {
-        InputStream inputStream = InitMizdooniFromFile.class.getResourceAsStream(input_file);
-        if (inputStream == null) {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(input_file));
+        } catch (FileNotFoundException e) {
             System.out.println("input file not found");
-            return;
         }
-        Scanner scanner = new Scanner(inputStream);
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
