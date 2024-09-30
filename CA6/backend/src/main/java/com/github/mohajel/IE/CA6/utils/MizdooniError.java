@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.utils;
+package com.github.mohajel.IE.CA6.utils;
 
 public class MizdooniError extends Exception {
 

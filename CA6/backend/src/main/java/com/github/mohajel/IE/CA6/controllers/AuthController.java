@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.controllers;
+package com.github.mohajel.IE.CA6.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
+import com.github.mohajel.IE.CA6.MizdooniApp;
 
 @RestController
 @RequestMapping("/auth")

@@ -1,9 +1,9 @@
-package com.github.mohajel.IE.CA4.models;
+package com.github.mohajel.IE.CA6.models;
 
-import com.github.mohajel.IE.CA4.utils.Utils;
 import org.json.JSONObject;
 
-import com.github.mohajel.IE.CA4.utils.MizdooniError;
+import com.github.mohajel.IE.CA6.utils.MizdooniError;
+import com.github.mohajel.IE.CA6.utils.Utils;
 
 public class Restaurant {
 

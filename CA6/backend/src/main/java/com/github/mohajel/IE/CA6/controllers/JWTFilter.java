@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.controllers;
+package com.github.mohajel.IE.CA6.controllers;
 
 import java.rmi.ServerException;
 
@@ -8,7 +8,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
-import com.github.mohajel.IE.CA4.utils.JwtUtils;
+import com.github.mohajel.IE.CA6.utils.JwtUtils;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

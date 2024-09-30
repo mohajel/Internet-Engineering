@@ -1,6 +1,5 @@
-package com.github.mohajel.IE.CA4.controllers;
+package com.github.mohajel.IE.CA6.controllers;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.github.mohajel.IE.CA6.MizdooniApp;
 
 @RestController
 @RequestMapping("/users")

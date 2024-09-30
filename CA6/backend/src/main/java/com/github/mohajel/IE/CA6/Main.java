@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4;
+package com.github.mohajel.IE.CA6;
 
 import java.util.Collections;
 

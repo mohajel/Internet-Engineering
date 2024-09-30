@@ -1,8 +1,8 @@
-package com.github.mohajel.IE.CA4.utils;
+package com.github.mohajel.IE.CA6.utils;
 
 import org.json.JSONObject;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
+import com.github.mohajel.IE.CA6.MizdooniApp;
 
 import java.io.InputStream;
 import java.util.Scanner;

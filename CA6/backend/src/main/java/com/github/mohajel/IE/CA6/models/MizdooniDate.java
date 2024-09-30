@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.models;
+package com.github.mohajel.IE.CA6.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

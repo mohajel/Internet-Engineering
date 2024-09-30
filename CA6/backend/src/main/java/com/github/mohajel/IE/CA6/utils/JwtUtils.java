@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.utils;
+package com.github.mohajel.IE.CA6.utils;
 
 import io.jsonwebtoken.*;
 import org.apache.commons.codec.binary.Base64;

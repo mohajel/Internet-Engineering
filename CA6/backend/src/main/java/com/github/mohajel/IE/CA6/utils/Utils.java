@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.utils;
+package com.github.mohajel.IE.CA6.utils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -72,7 +72,7 @@ public class Utils {
         // clear content of the file from previous runs
         if (isFirstLog) {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA4-logs.txt"));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA6-logs.txt"));
                 writer.write("");
                 writer.close();
                 isFirstLog = false;
@@ -82,7 +82,7 @@ public class Utils {
         }
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA4-logs.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("IE-CA6-logs.txt", true));
             writer.write("Function: " + functionName + " - " + message + "\n");
             writer.close();
         } catch (IOException ioe) {

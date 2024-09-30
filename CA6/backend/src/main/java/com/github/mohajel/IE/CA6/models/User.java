@@ -1,6 +1,6 @@
-package com.github.mohajel.IE.CA4.models;
+package com.github.mohajel.IE.CA6.models;
 
-import com.github.mohajel.IE.CA4.utils.*;
+import com.github.mohajel.IE.CA6.utils.*;
 
 public class User {
 

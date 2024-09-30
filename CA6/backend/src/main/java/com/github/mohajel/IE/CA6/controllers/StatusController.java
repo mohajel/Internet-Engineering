@@ -1,4 +1,4 @@
-package com.github.mohajel.IE.CA4.controllers;
+package com.github.mohajel.IE.CA6.controllers;
 
 import org.springframework.http.MediaType;
 // import org.apache.tomcat.util.http.parser.MediaType;
@@ -10,8 +10,8 @@ import java.util.Arrays;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
-import com.github.mohajel.IE.CA4.utils.JwtUtils;
+import com.github.mohajel.IE.CA6.MizdooniApp;
+import com.github.mohajel.IE.CA6.utils.JwtUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
 

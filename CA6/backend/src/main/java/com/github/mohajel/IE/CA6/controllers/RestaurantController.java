@@ -1,6 +1,5 @@
-package com.github.mohajel.IE.CA4.controllers;
+package com.github.mohajel.IE.CA6.controllers;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import org.json.JSONObject;
 
 import org.json.JSONArray;
@@ -9,12 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.github.mohajel.IE.CA6.MizdooniApp;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.swing.*;
+import static com.github.mohajel.IE.CA6.utils.Utils.sortJSONArray;
 
-import static com.github.mohajel.IE.CA4.utils.Utils.sortJSONArray;
+import javax.swing.*;
 
 
 @RestController

@@ -1,16 +1,18 @@
-package com.github.mohajel.IE.CA4.utils;
+package com.github.mohajel.IE.CA6.utils;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import com.github.mohajel.IE.CA6.MizdooniApp;
+
 import org.apache.commons.io.IOUtils;
+
+import static com.github.mohajel.IE.CA6.utils.Utils.logAppendFile;
 
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-
-import static com.github.mohajel.IE.CA4.utils.Utils.logAppendFile;
 
 public class InitMizdooniFromAPI {
     private static final String URL_API = "http://91.107.137.117:55";

@@ -1,14 +1,13 @@
-package com.github.mohajel.IE.CA4;
-
-import com.github.mohajel.IE.CA4.utils.InitMizdooniFromAPI;
-import com.github.mohajel.IE.CA4.utils.InitMizdooniFromFile;
+package com.github.mohajel.IE.CA6;
 
 import org.json.*;
 
-import com.github.mohajel.IE.CA4.database.Database;
-import com.github.mohajel.IE.CA4.models.*;
-import com.github.mohajel.IE.CA4.utils.MizdooniError;
-import com.github.mohajel.IE.CA4.utils.Utils;
+import com.github.mohajel.IE.CA6.database.Database;
+import com.github.mohajel.IE.CA6.models.*;
+import com.github.mohajel.IE.CA6.utils.InitMizdooniFromAPI;
+import com.github.mohajel.IE.CA6.utils.InitMizdooniFromFile;
+import com.github.mohajel.IE.CA6.utils.MizdooniError;
+import com.github.mohajel.IE.CA6.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -40,8 +39,8 @@ public class MizdooniApp {
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
 
-                System.out.println("####### Init Mizdooni From API #######");
-                InitMizdooniFromAPI.init(single_instance);
+                // System.out.println("####### Init Mizdooni From API #######");
+                // InitMizdooniFromAPI.init(single_instance);
                 System.out.println("####### Init Mizdooni From File #######");
                 InitMizdooniFromFile.init(single_instance); // for get reservation data
 
