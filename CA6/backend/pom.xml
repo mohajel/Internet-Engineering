@@ -120,6 +120,14 @@
       parent pom) -->
       <plugins>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.4.1</version>
+          <configuration>
+              <mainClass>com.github.mohajel.IE.CA4.Main</mainClass> <!-- Replace with your actual fully qualified class name that contains the main method -->
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
