@@ -1,7 +1,6 @@
 package com.github.mohajel.IE.CA7.controllers;
 
 import java.rmi.ServerException;
-import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

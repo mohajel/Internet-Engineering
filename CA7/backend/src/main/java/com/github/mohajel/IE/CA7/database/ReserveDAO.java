@@ -2,7 +2,6 @@ package com.github.mohajel.IE.CA7.database;
 
 import jakarta.persistence.EntityManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.github.mohajel.IE.CA7.models.MizdooniDate;
