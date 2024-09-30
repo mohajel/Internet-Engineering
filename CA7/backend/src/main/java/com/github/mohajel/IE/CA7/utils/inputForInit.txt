@@ -1,17 +1,24 @@
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "The Commoner", "tableNumber": 1, "datetime": "2025-02-27 09:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "The Commoner", "tableNumber": 2, "datetime": "2025-02-27 11:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "The Commoner", "tableNumber": 3, "datetime": "2025-02-28 15:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "Sullivan's Steakhouse", "tableNumber": 1, "datetime": "2025-02-27 18:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "Sullivan's Steakhouse", "tableNumber": 2, "datetime": "2025-02-27 13:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "Eddie Merlot's Prime Aged Beef & Seafood", "tableNumber": 1, "datetime": "2025-02-27 13:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "Eddie Merlot's Prime Aged Beef & Seafood", "tableNumber": 2, "datetime": "2025-02-27 18:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "Eddie Merlot's Prime Aged Beef & Seafood", "tableNumber": 1, "datetime": "2025-02-28 16:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "The Winery Restaurant & Wine Bar", "tableNumber": 1, "datetime": "2025-02-27 16:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "The Winery Restaurant & Wine Bar", "tableNumber": 2, "datetime": "2025-02-27 19:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "The Winery Restaurant & Wine Bar", "tableNumber": 1, "datetime": "2025-02-28 15:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "Et Voilà!", "tableNumber": 1, "datetime": "2025-02-27 17:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "Et Voilà!", "tableNumber": 2, "datetime": "2025-02-27 18:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "North Italia", "tableNumber": 1, "datetime": "2025-02-27 13:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "North Italia", "tableNumber": 2, "datetime": "2025-02-27 19:00"}
-reserveTable {"username": "Mostafa_Ebrahimi", "restaurantName": "KUJIRA", "tableNumber": 1, "datetime": "2025-02-27 22:00"}
-reserveTable {"username": "Mohammad_Sadeghi", "restaurantName": "KUJIRA", "tableNumber": 2, "datetime": "2025-02-27 03:00"}
+addUser {"role": "client", "username": "user1", "password": "1234", "email":"user1@gmail.com", "address": {"country": "Iran", "city": "Tehran"}}
+addUser {"role": "manager", "username": "manager1", "password": "1234", "email":"manager1@gmail.com", "address": {"country": "Iran", "city": "Tehran"}}
+showReservationHistory { "username": "user1"}
+addRestaurant {"name": "restaurant1", "image": "url", "managerUsername": "manager1", "type": "Iranian", "startTime": "07:00", "endTime": "14:00", "description": "Iranian Restaurant1", "address": {"country": "Iran", "city": "Tehran", "street": "Street 1"}}
+addRestaurant {"name": "restaurant2", "image": "url", "managerUsername": "manager1", "type": "Italy", "startTime": "17:00", "endTime": "01:00", "description": "Italy Restaurant2", "address": {"country": "Iran", "city": "Tehran", "street": "Street 2"}}
+addRestaurant {"name": "restaurant3", "image": "url", "managerUsername": "manager1", "type": "Italy", "startTime": "18:00", "endTime": "22:00", "description": "Italy Restaurant3", "address": {"country": "Iran", "city": "Kish", "street": "Street 3"}}
+searchRestaurantsByName {"name": "restaurant1"}
+searchRestaurantsByName {"name": "restaurant"}
+searchRestaurantsByType {"type": "Iranian"}
+searchRestaurantsByType {"type": "Italy"}
+addTable {"tableNumber": 1, "restaurantName": "restaurant1", "managerUsername": "manager1", "seatsNumber" : 4}
+addTable {"tableNumber": 2, "restaurantName": "restaurant1", "managerUsername": "manager1", "seatsNumber" : 4}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2025-02-27 09:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 1, "datetime": "2025-02-27 12:00"}
+reserveTable {"username": "user1", "restaurantName": "restaurant1", "tableNumber": 2, "datetime": "2025-02-27 12:00"}
+showReservationHistory { "username": "user1"}
+showAvailableTables {"restaurantName": "restaurant1"}
+showReservationHistory { "username": "user1"}
+showAvailableTables {"restaurantName": "restaurant1"}
+addTable {"tableNumber": 1, "restaurantName": "restaurant2", "managerUsername": "manager1", "seatsNumber" : 5}
+showAvailableTables {"restaurantName": "restaurant2"}
+addReview {"username": "user1", "restaurantName": "restaurant1", "foodRate": 4.5, "serviceRate": 3, "ambianceRate": 4.5, "overallRate": 4, "comment": "Not bad!"}
+addReview {"username": "user1", "restaurantName": "restaurant2", "foodRate": 5, "serviceRate": 5, "ambianceRate": 5, "overallRate": 5, "comment": "Oh my God! Its amazing!"}
+addReview {"username": "user1", "restaurantName": "restaurant3", "foodRate": 1, "serviceRate": 2, "ambianceRate": 3, "overallRate": 4, "comment": "Arithmetic sequence"}
