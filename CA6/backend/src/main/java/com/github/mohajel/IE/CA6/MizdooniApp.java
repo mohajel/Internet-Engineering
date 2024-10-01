@@ -16,9 +16,6 @@ public class MizdooniApp {
     public Database db;
     private static MizdooniApp single_instance = null;
 
-    // using this for logged_in_user.change in nex phase
-    // public String loggedInUser = "";
-
     public MizdooniApp(){
         try {
             db = new Database();
@@ -50,13 +47,6 @@ public class MizdooniApp {
         }
         return single_instance;
     }
-
-    // public String cityOfLoggedInUser() {
-    //     if (loggedInUser.isEmpty()) {
-    //         return "";
-    //     }
-    //     return db.getUserByUserName(loggedInUser).address.city;
-    // }
 
     public JSONObject login(JSONObject input) {
         System.out.println("login called");
