@@ -4,27 +4,25 @@ import org.json.JSONObject;
 
 import com.github.mohajel.IE.CA7.MizdooniApp;
 
-import static com.github.mohajel.IE.CA7.utils.Utils.logAppendFile;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class InitMizdooniFromFile {
-    public static String input_file = "/backend/src/main/java/com/github/mohajel/IE/CA7/utils/inputForInit.txt";
-    
-    
-
-    public static void init(MizdooniApp app) throws FileNotFoundException {
-        String currentDir = System.getProperty("user.dir") + input_file;
-        File file = new File(currentDir);
-        Scanner scanner = new Scanner(file);
+    public static String input_file = "src/main/java/com/github/mohajel/IE/CA7/utils/inputForInit.txt";
+    public static void init(MizdooniApp app) {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(input_file));
+        } catch (FileNotFoundException e) {
+            System.out.println("input file not found");
+        }
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             JSONObject input = Utils.pharseLine(line);
             JSONObject output = executeCommand(input, app);
-            logAppendFile("initReserve", output.toString());
+            System.out.println(output.toString());
         }
         scanner.close();
     }

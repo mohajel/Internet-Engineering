@@ -38,8 +38,8 @@ public class MizdooniApp {
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
 
-                System.out.println("####### Init Mizdooni From API #######");
-                InitMizdooniFromAPI.init(single_instance);
+                // System.out.println("####### Init Mizdooni From API #######");
+                // InitMizdooniFromAPI.init(single_instance);
                 System.out.println("####### Init Mizdooni From File #######");
                 InitMizdooniFromFile.init(single_instance); // for get reservation data
 
@@ -107,36 +107,6 @@ public class MizdooniApp {
 
         return restaurantJSONArray;
     }
-    
-    // delete this if everything worked fine
-    // public JSONObject addUser(JSONObject input) {
-    //     System.out.println("add user called");
-    //     JSONObject output = new JSONObject();
-    //     try {
-    //         String username = input.getString("username");
-    //         String password = input.getString("password");
-    //         String email = input.getString("email");
-    //         String role = input.getString("role");
-    //         JSONObject address = input.getJSONObject("address");
-
-    //         User user = new User(username, password, email,
-    //                 new Address(address.getString("country"), address.getString("city")), role);
-    //         db.addUser(user);
-    //         output.put("success", true);
-    //         output.put("data", "User added successfully.");
-
-    //     } catch (JSONException e) {
-    //         output.put("success", false);
-    //         output.put("data", new JSONObject().put("error", MizdooniError.INVALID_JSON));
-    //     } catch (MizdooniError e) {
-    //         output.put("success", false);
-    //         output.put("data", new JSONObject().put("error", e.getMessage()));
-    //     } catch (Exception e) {
-    //         output.put("success", false);
-    //         output.put("data", new JSONObject().put("error", MizdooniError.UNKNOWN_ERROR));
-    //     }
-    //     return output;
-    // }
 
     public JSONObject addUser(JSONObject input) {
         JSONObject output = new JSONObject();
@@ -353,7 +323,6 @@ public class MizdooniApp {
     }
 
     public JSONObject getRestaurantCardByName(String name) {
-        JSONObject output = new JSONObject();
         try {
             Restaurant restaurant = db.getRestaurantByName(name);
             if (restaurant == null) {

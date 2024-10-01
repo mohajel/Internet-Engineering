@@ -83,9 +83,6 @@ public class RestaurantsHandler extends HttpServlet {
                 break;
         }
 
-        // TODO: handle errors when no restaurants found
-
-
         JSONObject output = new JSONObject();
         output.put("success", true);
         output.put("title", "restaurantsPage");

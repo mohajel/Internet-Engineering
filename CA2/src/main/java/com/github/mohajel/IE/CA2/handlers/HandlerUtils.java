@@ -21,11 +21,6 @@ public class HandlerUtils {
         request.getSession().setAttribute("notification", notification);
     }
 
-    // public static void redirectToLogin(HttpServletResponse response) throws IOException {
-    //     response.sendRedirect("/login");
-    //     log("Sending to login page to login first");
-    // }
-
     public static void redirectToHome(HttpServletResponse response) throws IOException {
         response.sendRedirect("/");
     }

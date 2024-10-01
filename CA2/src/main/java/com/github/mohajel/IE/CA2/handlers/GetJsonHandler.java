@@ -33,8 +33,6 @@ public class GetJsonHandler extends HttpServlet {
         request.setAttribute("message", message);
         request.setAttribute("data", output);
 
-        // output.toString()
-
 
         // Get the RequestDispatcher for the JSP file
         RequestDispatcher dispatcher = request.getRequestDispatcher("./templates/jsonn.jsp");

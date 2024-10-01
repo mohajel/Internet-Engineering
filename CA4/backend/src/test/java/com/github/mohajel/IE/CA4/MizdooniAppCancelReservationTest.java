@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestTableFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestUserFactory;

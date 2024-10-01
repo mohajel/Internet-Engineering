@@ -25,7 +25,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>17</java.version>
-        <start-class>com.github.mohajel.IE.CA7.controllers.DemoApplication</start-class>
+        <start-class>com.github.mohajel.IE.CA7.Main</start-class>
 
     </properties>
 
@@ -168,6 +168,14 @@
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to
       parent pom) -->
             <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.4.1</version>
+                    <configuration>
+                        <mainClass>com.github.mohajel.IE.CA7.Main</mainClass> <!-- Replace with your actual fully qualified class name that contains the main method -->
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.antlr</groupId>
                     <artifactId>antlr4-maven-plugin</artifactId>

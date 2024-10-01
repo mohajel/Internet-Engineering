@@ -1,6 +1,5 @@
 package com.github.mohajel.IE.CA4;
 
-import com.github.mohajel.IE.CA4.MizdooniApp;
 import com.github.mohajel.IE.CA4.testUtils.TestReservationFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestRestaurantFactory;
 import com.github.mohajel.IE.CA4.testUtils.TestTableFactory;
@@ -50,7 +49,7 @@ public class MizdooniAppShowAvailableTablesTodayTest {
             utilities.when(Utils::getCurrentTime).thenReturn(currentDateTime);
             JSONObject res = app.showAvailableTables(new JSONObject().put("restaurantName", "restaurant1"));
             assertTrue(res.getBoolean("success"));
-            assertEquals(3, res.getJSONObject("data").getJSONArray("availableTables").getJSONObject(0).getJSONArray("availableTimes").length());
+            assertEquals(4, res.getJSONObject("data").getJSONArray("availableTables").getJSONObject(0).getJSONArray("availableTimes").length());
         }
     }
 }

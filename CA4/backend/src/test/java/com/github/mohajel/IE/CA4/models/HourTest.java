@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import com.github.mohajel.IE.CA4.models.Hour;
-
 import static org.junit.Assert.*;
 
 public class HourTest {

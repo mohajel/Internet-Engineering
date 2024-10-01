@@ -1,7 +1,6 @@
 package com.github.mohajel.IE.CA7.database;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 
