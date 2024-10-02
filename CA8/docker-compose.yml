@@ -33,7 +33,7 @@ services:
   
   front:
     build: 
-      context: ./frontend/my-app
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
