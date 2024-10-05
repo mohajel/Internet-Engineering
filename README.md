@@ -6,8 +6,8 @@
 ## Phases
 
 - **CA1**: Logic Domain, Git, Maven, Unit Testing (JUnit)
-- **CA2**: Tomcat, Servlet, JSP, MVC, HTML, CSS(Designed a simple UI ourselves)
-- **CA3**: HTML, CSS, Figma(Designed UI based on Figma provided to us)
+- **CA2**: Tomcat, Servlet, JSP, MVC, HTML, CSS (Designed a simple UI ourselves)
+- **CA3**: HTML, CSS, Figma (Designed UI based on Figma provided to us)
 - **CA4**: React, Spring, Standard API
 - **CA5**: MySQL Database, JDBC, ORM, Hibernate
 - **CA6**: Authentication, JWT, OAuth, JWT Authentication Filter, SQL Injection
