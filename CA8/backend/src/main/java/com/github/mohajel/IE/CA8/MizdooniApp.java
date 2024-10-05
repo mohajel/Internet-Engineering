@@ -38,8 +38,8 @@ public class MizdooniApp {
                 Database db = new Database();
                 single_instance = new MizdooniApp(db);
 
-                System.out.println("####### Init Mizdooni From API #######");
-                InitMizdooniFromAPI.init(single_instance);
+                // System.out.println("####### Init Mizdooni From API #######");
+                // InitMizdooniFromAPI.init(single_instance);
                 System.out.println("####### Init Mizdooni From File #######");
                 InitMizdooniFromFile.init(single_instance); // for get reservation data
 
@@ -353,7 +353,6 @@ public class MizdooniApp {
     }
 
     public JSONObject getRestaurantCardByName(String name) {
-        JSONObject output = new JSONObject();
         try {
             Restaurant restaurant = db.getRestaurantByName(name);
             if (restaurant == null) {
