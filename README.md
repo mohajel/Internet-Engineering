@@ -47,7 +47,7 @@
 </p>
 
 <p align="center">
-    <strong>Figma Design</strong>
+    <strong>Figma Design (Provided by TA)</strong>
 </p>
 <p align="center">
     <img src="Screenshots/UI-Designs/UI-Figma-Customer.jpeg" width="750" />
