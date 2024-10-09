@@ -27,7 +27,9 @@
 </p>
 
 ### UI Designs
-#### Our Design
+<p align="center">
+    <strong>Our Design</strong>
+</p>
 <p align="center">
     <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Login.png" width="750" />
 </p>
@@ -44,7 +46,9 @@
     <img src="Screenshots/UI-Designs/UI-OurDesign-Manager-Home.png" width="750" />
 </p>
 
-#### Figma Design
+<p align="center">
+    <strong>Figma Design</strong>
+</p>
 <p align="center">
     <img src="Screenshots/UI-Designs/UI-Figma-Customer.jpeg" width="750" />
 </p>
