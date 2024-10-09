@@ -19,85 +19,86 @@
 
 ### Logic Tests
 <p align="center">
-    <img src="Screenshots/Logic-Tests/Logic-Run.png" height="450" />
+    <img src="Screenshots/Logic-Tests/Logic-Run.png" width="750" />
 </p>
+
 <p align="center">
-    <img src="Screenshots/Logic-Tests/Tests-Run.png" height="450" />
+    <img src="Screenshots/Logic-Tests/Tests-Run.png" width="750" />
 </p>
 
 ### UI Designs
 #### Our Design
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Login.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Login.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Reservation.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Reservation.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Restaurant-Info.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Restaurant-Info.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Restaurants.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-OurDesign-Client-Restaurants.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-OurDesign-Manager-Home.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-OurDesign-Manager-Home.png" width="750" />
 </p>
 
 #### Figma Design
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Customer.jpeg" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Customer.jpeg" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Error.jpeg" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Error.jpeg" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Home.jpeg" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Home.jpeg" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Login.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Login.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Manager-Manage-Restaurant.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Manager-Manage-Restaurant.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Manager-Restaurants.jpeg" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Manager-Restaurants.jpeg" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Restaurant-Info.png" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Restaurant-Info.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/UI-Designs/UI-Figma-Search.jpeg" height="450" />
+    <img src="Screenshots/UI-Designs/UI-Figma-Search.jpeg" width="750" />
 </p>
 
 ### APIs
 <p align="center">
-    <img src="Screenshots/APIs/API-TestAPI1.png" height="450" />
+    <img src="Screenshots/APIs/API-TestAPI1.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/APIs/API-TestAPI2.png" height="450" />
+    <img src="Screenshots/APIs/API-TestAPI2.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/APIs/API-TestAPI3.png" height="450" />
+    <img src="Screenshots/APIs/API-TestAPI3.png" width="750" />
 </p>
 
 ### Database
 <p align="center">
-    <img src="Screenshots/Database/DB-Hibernate.png" height="450" />
+    <img src="Screenshots/Database/DB-Hibernate.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/Database/DB-MySQL1.png" height="450" />
+    <img src="Screenshots/Database/DB-MySQL1.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/Database/DB-MySQL2.png" height="450" />
+    <img src="Screenshots/Database/DB-MySQL2.png" width="750" />
 </p>
 
 
 ### Docker
 <p align="center">
-    <img src="Screenshots/Docker/Docker-Dockerfiles.png" height="450" />
+    <img src="Screenshots/Docker/Docker-Dockerfiles.png" width="750" />
 </p>
 <p align="center">
-    <img src="Screenshots/Docker/Docker-Images.png" height="450" />
+    <img src="Screenshots/Docker/Docker-Images.png" width="750"/>
 </p>
 
 ## Contributors
